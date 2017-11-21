@@ -3,7 +3,7 @@ vec3 EscherLike()
     vec4 output_tex;
     
     vec2 U = gl_FragCoord.xy;
-    U *= remap(param3,0.0,1.0,3.,26.0)/resolution.y;
+    U *= remap(param3,0.0,1.0,3.,16.0)/resolution.y;
     output_tex-=output_tex;
     float iter = remap(param2,0.0,1.0,1.0,2.0);
     

@@ -7,7 +7,7 @@ void ofApp::setup(){
     ofBackground(0);
 
 
-    static int num_layers = 1;
+    static int num_layers = 20;
     
     for(int i = 0; i < num_layers; i++){
         VisualLayer *layer = new VisualLayer();

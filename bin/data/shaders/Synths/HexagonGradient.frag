@@ -1,7 +1,7 @@
 vec3 HexagonGradient()
 {
     float speed = remap(param1,0.0,1.0,0.25,1.5);
-    float circle_iter = remap(param2,0.0,1.0,0.75,5.0);
+    float circle_iter = remap(param2,0.0,1.0,0.75,3.0);
     float iter = remap(param3,0.0,1.0,4.0,10.0);
     
     vec4 O = vec4(0.0);

@@ -67,10 +67,12 @@ void VisualLayer::load_movie(string file){
 
 //--------------------------------------------------------------
 void VisualLayer::update(){
-    hue_offset = ofGetElapsedTimef() * 0.1;
+    //hue_offset = ofGetElapsedTimef() * 0.1;
     
-    if(ofGetFrameNum() % 30 == 0){
+
+    if(ofGetFrameNum() % 360 == 0){
         scene_select = (int)ofRandom(8);
+        hue_offset = ofRandom(PI*2);
         for(int i = 0; i < 8; i++){
             shader_params[i].params = {ofRandomuf(),ofRandomuf(),ofRandomuf()};
         }

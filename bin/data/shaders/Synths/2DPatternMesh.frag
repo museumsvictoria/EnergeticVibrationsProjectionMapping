@@ -7,8 +7,8 @@ vec3 PatternMesh2D()
     vec4 o = vec4(0.0);
 
     float speed = remap(param1,0.0,1.0,0.05,1.0);
-    float iter = remap(param2,0.0,1.0,10.0,100.0);
-    float grid_iter = remap(param3,0.0,1.0,3.0,12.0);
+    float iter = remap(param2,0.0,1.0,10.0,20.0);//100.0);
+    float grid_iter = remap(param3,0.0,1.0,0.5,6.0);//12.0);
 
 
     u *= mat2(1,-1./1.73, 0,2./1.73) * grid_iter/ resolution.y;  // conversion to 

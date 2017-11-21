@@ -22,7 +22,7 @@ float hexToFloat(in vec3 hex, in float amt) {
 
 float formula(in vec2 tx, in float time) {
     float len = length(tx.y) * sin(time);
-    vec3 hex = coordToHex(tx, remap(param3,0.0,1.0,10.0,50.0));
+    vec3 hex = coordToHex(tx, remap(param3,0.0,1.0,5.0,30.0));
     vec3 cell = hexToCell(hex, 1.0);
     float value = hexToFloat(cell,nsin(time + len));
     return value;
