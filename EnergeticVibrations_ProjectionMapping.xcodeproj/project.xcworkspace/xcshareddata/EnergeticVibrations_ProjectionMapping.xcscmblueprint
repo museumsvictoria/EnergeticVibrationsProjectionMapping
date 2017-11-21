@@ -1,0 +1,37 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "3B0D36513453A666A188F5E0EE99B24C8F794C85",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "3B0D36513453A666A188F5E0EE99B24C8F794C85" : 9223372036854775807,
+    "F18B6FEBE66912B859D879DB0D93A2398D3668F4" : 9223372036854775807,
+    "55505DE6675E1AEB4CF72AD63A972936EC984D97" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "59D6FF98-7843-4ECA-86D3-9BEB2C59073D",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "3B0D36513453A666A188F5E0EE99B24C8F794C85" : "EnergeticVibrationsProjectionMapping\/",
+    "F18B6FEBE66912B859D879DB0D93A2398D3668F4" : "..\/..\/addons\/ofxPiMapper",
+    "55505DE6675E1AEB4CF72AD63A972936EC984D97" : "..\/..\/addons\/ofxImGui"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "EnergeticVibrations_ProjectionMapping",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "EnergeticVibrations_ProjectionMapping.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/JoshuaBatty\/EnergeticVibrationsProjectionMapping",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3B0D36513453A666A188F5E0EE99B24C8F794C85"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/jvcleave\/ofxImGui",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "55505DE6675E1AEB4CF72AD63A972936EC984D97"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/kr15h\/ofxPiMapper",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F18B6FEBE66912B859D879DB0D93A2398D3668F4"
+    }
+  ]
+}

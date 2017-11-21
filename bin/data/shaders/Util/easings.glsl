@@ -1,9 +1,6 @@
 // Robert Penner's easing functions in GLSL
 // https://github.com/stackgl/glsl-easings
 
-#define PI 3.141592653589793
-#define HALF_PI 1.5707963267948966
-
 float linear(float t) {
     return t;
 }

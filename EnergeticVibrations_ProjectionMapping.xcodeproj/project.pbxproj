@@ -166,7 +166,6 @@
 		13067A841FA6B61600ECD1B1 /* VisualLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VisualLayer.cpp; sourceTree = "<group>"; };
 		13067A851FA6B61600ECD1B1 /* VisualLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisualLayer.h; sourceTree = "<group>"; };
 		13903A991FA954E400C60C92 /* passthrough.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = passthrough.vert; sourceTree = "<group>"; };
-		13903A9A1FA954E400C60C92 /* shader1.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader1.frag; sourceTree = "<group>"; };
 		13903A9D1FA9555500C60C92 /* FullscreenQuad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FullscreenQuad.h; sourceTree = "<group>"; };
 		13903A9F1FA9564500C60C92 /* RenderFbo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenderFbo.h; sourceTree = "<group>"; };
 		13903AA31FA95AA200C60C92 /* GuiTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuiTheme.h; sourceTree = "<group>"; };
@@ -200,6 +199,19 @@
 		13903B0D1FA95ADA00C60C92 /* ofxImGuiLoggerChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxImGuiLoggerChannel.h; sourceTree = "<group>"; };
 		13903B0E1FA95ADA00C60C92 /* ThemeTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeTest.h; sourceTree = "<group>"; };
 		13903B331FA9642400C60C92 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
+		139124731FC3D63400277C0A /* 2DPatternMesh.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = 2DPatternMesh.frag; sourceTree = "<group>"; };
+		139124741FC3D63400277C0A /* ColourGradient.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = ColourGradient.frag; sourceTree = "<group>"; };
+		139124751FC3D63400277C0A /* EscherLike.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = EscherLike.frag; sourceTree = "<group>"; };
+		139124761FC3D63400277C0A /* FlowerOfLife.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = FlowerOfLife.frag; sourceTree = "<group>"; };
+		139124771FC3D63400277C0A /* HexagonGradient.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = HexagonGradient.frag; sourceTree = "<group>"; };
+		139124781FC3D63400277C0A /* OpArtTwister.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = OpArtTwister.frag; sourceTree = "<group>"; };
+		139124791FC3D63400277C0A /* PolygonPatterns.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = PolygonPatterns.frag; sourceTree = "<group>"; };
+		1391247A1FC3D63400277C0A /* TriLattice.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = TriLattice.frag; sourceTree = "<group>"; };
+		1391247B1FC3D73000277C0A /* shader_selector.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader_selector.frag; sourceTree = "<group>"; };
+		1391247D1FC3D8B700277C0A /* easings.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = easings.glsl; sourceTree = "<group>"; };
+		1391247E1FC3D8B700277C0A /* hue_shift.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = hue_shift.frag; sourceTree = "<group>"; };
+		1391247F1FC3D8B700277C0A /* pi.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = pi.glsl; sourceTree = "<group>"; };
+		139124801FC3D8B700277C0A /* remap.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = remap.glsl; sourceTree = "<group>"; };
 		140C0677F9F5A5D3B8A89AC4 /* SelNextVertexCmd.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = SelNextVertexCmd.cpp; path = ../../../addons/ofxPiMapper/src/Commands/SelNextVertexCmd.cpp; sourceTree = SOURCE_ROOT; };
 		15C9B02F2CF08112845CD074 /* SetPresetCmd.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = SetPresetCmd.cpp; path = ../../../addons/ofxPiMapper/src/Commands/SetPresetCmd.cpp; sourceTree = SOURCE_ROOT; };
 		15F2C6477A769C03A56D1401 /* ofxSlider.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxSlider.cpp; path = ../../../addons/ofxGui/src/ofxSlider.cpp; sourceTree = SOURCE_ROOT; };
@@ -445,8 +457,10 @@
 		13903A981FA954E400C60C92 /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				1391247B1FC3D73000277C0A /* shader_selector.frag */,
+				1391247C1FC3D8B700277C0A /* Util */,
+				139124721FC3D63400277C0A /* Synths */,
 				13903A991FA954E400C60C92 /* passthrough.vert */,
-				13903A9A1FA954E400C60C92 /* shader1.frag */,
 			);
 			name = shaders;
 			path = bin/data/shaders;
@@ -536,6 +550,32 @@
 				13903B0E1FA95ADA00C60C92 /* ThemeTest.h */,
 			);
 			path = src;
+			sourceTree = "<group>";
+		};
+		139124721FC3D63400277C0A /* Synths */ = {
+			isa = PBXGroup;
+			children = (
+				139124731FC3D63400277C0A /* 2DPatternMesh.frag */,
+				139124741FC3D63400277C0A /* ColourGradient.frag */,
+				139124751FC3D63400277C0A /* EscherLike.frag */,
+				139124761FC3D63400277C0A /* FlowerOfLife.frag */,
+				139124771FC3D63400277C0A /* HexagonGradient.frag */,
+				139124781FC3D63400277C0A /* OpArtTwister.frag */,
+				139124791FC3D63400277C0A /* PolygonPatterns.frag */,
+				1391247A1FC3D63400277C0A /* TriLattice.frag */,
+			);
+			path = Synths;
+			sourceTree = "<group>";
+		};
+		1391247C1FC3D8B700277C0A /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				1391247D1FC3D8B700277C0A /* easings.glsl */,
+				1391247E1FC3D8B700277C0A /* hue_shift.frag */,
+				1391247F1FC3D8B700277C0A /* pi.glsl */,
+				139124801FC3D8B700277C0A /* remap.glsl */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 		1F4FB5C423662B96ADFDCC0B /* ofxXmlSettings */ = {

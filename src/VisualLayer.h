@@ -14,13 +14,27 @@
 #include "FullscreenQuad.h"
 #include "RenderFbo.h"
 
+const int PATTERN_MESH_2D = 0;
+const int COLOUR_GRADIENT = 1;
+const int ESCHER_LIKE = 2;
+const int FLOWER_OF_LIFE = 3;
+const int TRI_LATTICE = 4;
+const int POLYGON_PATTERNS = 5;
+const int OP_ART_TWISTER = 6;
+const int HEXAGON_GRADIENT = 7;
+
+struct ShaderParams{
+    vector<float> params = {0.0,0.0,0.0};
+    vector<string> names = {"","",""};
+};
+
 class VisualLayer : public ofx::piMapper::FboSource {
 public:
     
     VisualLayer();
+    void init_params();
     void setup(string name);
     
-    void load_shader(string file);
     void load_movie(string file);
     
     void update();
@@ -32,6 +46,8 @@ private:
     RenderFbo render_fbo;
     FullscreenQuad quad;
     
-    float shader_param1, shader_param2, shader_param3;
     float hue_offset;
+    int scene_select;
+    
+    vector<ShaderParams> shader_params;
 };

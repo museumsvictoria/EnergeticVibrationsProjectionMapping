@@ -13,7 +13,6 @@ void ofApp::setup(){
         VisualLayer *layer = new VisualLayer();
         layers.push_back(layer);
         layers[i]->setup("Shader" + ofToString(1+i));
-        layers[i]->load_shader("shaders/shader" + ofToString(1+i) + ".frag");
         
         mapper.registerFboSource(layers[i]);
     }
