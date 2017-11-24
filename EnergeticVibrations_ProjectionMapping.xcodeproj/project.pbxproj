@@ -165,6 +165,7 @@
 		0B691BBAB665F94F09B2C276 /* SelSurfaceCmd.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = SelSurfaceCmd.cpp; path = ../../../addons/ofxPiMapper/src/Commands/SelSurfaceCmd.cpp; sourceTree = SOURCE_ROOT; };
 		13067A841FA6B61600ECD1B1 /* VisualLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VisualLayer.cpp; sourceTree = "<group>"; };
 		13067A851FA6B61600ECD1B1 /* VisualLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisualLayer.h; sourceTree = "<group>"; };
+		1351A1791FC7D2F400A7ED94 /* RadialHexagon.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = RadialHexagon.frag; sourceTree = "<group>"; };
 		13903A991FA954E400C60C92 /* passthrough.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = passthrough.vert; sourceTree = "<group>"; };
 		13903A9D1FA9555500C60C92 /* FullscreenQuad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FullscreenQuad.h; sourceTree = "<group>"; };
 		13903A9F1FA9564500C60C92 /* RenderFbo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenderFbo.h; sourceTree = "<group>"; };
@@ -561,6 +562,7 @@
 				139124761FC3D63400277C0A /* FlowerOfLife.frag */,
 				139124771FC3D63400277C0A /* HexagonGradient.frag */,
 				139124781FC3D63400277C0A /* OpArtTwister.frag */,
+				1351A1791FC7D2F400A7ED94 /* RadialHexagon.frag */,
 				139124791FC3D63400277C0A /* PolygonPatterns.frag */,
 				1391247A1FC3D63400277C0A /* TriLattice.frag */,
 			);

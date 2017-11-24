@@ -20,7 +20,7 @@ uniform float param3;
 #pragma include "Synths/EscherLike.frag"      // shader 3
 #pragma include "Synths/FlowerOfLife.frag"    // shader 4
 #pragma include "Synths/TriLattice.frag"      // shader 5
-#pragma include "Synths/PolygonPatterns.frag" // shader 6
+#pragma include "Synths/RadialHexagon.frag" // shader 6
 #pragma include "Synths/OpArtTwister.frag"    // shader 7
 #pragma include "Synths/HexagonGradient.frag" // shader 8
 
@@ -45,7 +45,7 @@ void main(void)
         final_out = TriLattice();
     }
     else if(scene_select == 5){
-        final_out = PolygonPatterns();
+        final_out = RadialHexagon();
     }
     else if(scene_select == 6){
         final_out = OpArtTwister();

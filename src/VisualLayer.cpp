@@ -37,8 +37,8 @@ void VisualLayer::init_params(){
     shader_params[TRI_LATTICE].params = {1.0,0.0,1.0};
     shader_params[TRI_LATTICE].names = {"num_triangles","intensity","colour mix"};
     
-    shader_params[POLYGON_PATTERNS].params = {0.01,0.6,0.0};
-    shader_params[POLYGON_PATTERNS].names = {"speed","line_width","invert"};
+    shader_params[RADIAL_HEXAGON].params = {0.0,1.0,0.0};
+    shader_params[RADIAL_HEXAGON].names = {"circle_iter","grid_size","time_skip"};
 
     shader_params[OP_ART_TWISTER].params = {1.0,1.0,0.0};
     shader_params[OP_ART_TWISTER].names = {"iter_size","grid_size","speed"};
@@ -70,7 +70,7 @@ void VisualLayer::update(){
     //hue_offset = ofGetElapsedTimef() * 0.1;
     
 
-    if(ofGetFrameNum() % 360 == 0){
+    if(ofGetFrameNum() % 120 == 0){
         scene_select = (int)ofRandom(8);
         hue_offset = ofRandom(PI*2);
         for(int i = 0; i < 8; i++){

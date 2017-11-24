@@ -19,7 +19,7 @@ const int COLOUR_GRADIENT = 1;
 const int ESCHER_LIKE = 2;
 const int FLOWER_OF_LIFE = 3;
 const int TRI_LATTICE = 4;
-const int POLYGON_PATTERNS = 5;
+const int RADIAL_HEXAGON = 5;
 const int OP_ART_TWISTER = 6;
 const int HEXAGON_GRADIENT = 7;
 
