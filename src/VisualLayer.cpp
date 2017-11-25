@@ -11,7 +11,6 @@
 //--------------------------------------------------------------
 VisualLayer::VisualLayer(){
     hue_offset = 0.0;
-    scene_select = 7;
 }
 
 //--------------------------------------------------------------
@@ -48,9 +47,10 @@ void VisualLayer::init_params(){
 }
 
 //--------------------------------------------------------------
-void VisualLayer::setup(string name){
+void VisualLayer::setup(string name, int scene_num){
     
     this->name = name; // Give our source a decent name
+    scene_select = scene_num;
     allocate(LAYER_RENDER_SIZE_X, LAYER_RENDER_SIZE_Y); // Allocate our FBO source, decide how big it should be
     
     render_fbo.init(LAYER_RENDER_SIZE_X, LAYER_RENDER_SIZE_Y);
@@ -69,7 +69,7 @@ void VisualLayer::load_movie(string file){
 void VisualLayer::update(){
     //hue_offset = ofGetElapsedTimef() * 0.1;
     
-
+/*
     if(ofGetFrameNum() % 120 == 0){
         scene_select = (int)ofRandom(8);
         hue_offset = ofRandom(PI*2);
@@ -77,6 +77,7 @@ void VisualLayer::update(){
             shader_params[i].params = {ofRandomuf(),ofRandomuf(),ofRandomuf()};
         }
     }
+*/
     
     render_fbo.fbo.begin();
         ofClear(0,0,0,0);

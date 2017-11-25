@@ -7,12 +7,12 @@ void ofApp::setup(){
     ofBackground(0);
 
 
-    static int num_layers = 20;
+    static int num_layers = 8;
     
     for(int i = 0; i < num_layers; i++){
         VisualLayer *layer = new VisualLayer();
         layers.push_back(layer);
-        layers[i]->setup("Shader" + ofToString(1+i));
+        layers[i]->setup("Shader" + ofToString(1+i), i);
         
         mapper.registerFboSource(layers[i]);
     }
@@ -21,6 +21,7 @@ void ofApp::setup(){
     ofx::piMapper::VideoSource::useHDMIForAudio = false;
     mapper.setup();
     
+    selected_layer = 0;
 }
 
 //--------------------------------------------------------------
@@ -37,6 +38,12 @@ void ofApp::setupGui(){
     gui_theme.init_theme();
 }
 
+char *convert(const std::string & s) {
+    char *pc = new char[s.size()+1];
+    std::strcpy(pc, s.c_str());
+    return pc;
+}
+
 //--------------------------------------------------------------
 void ofApp::drawGui(ofEventArgs & args){
     this->gui.begin();
@@ -46,12 +53,18 @@ void ofApp::drawGui(ofEventArgs & args){
     
     if (ofxImGui::BeginWindow("Shader control", mainSettings, false))
     {
+        vector<float> *params = &layers[selected_layer]->shader_params[selected_layer].params;
+
+        vector<char*> names_char;
+        vector<string> names = layers[selected_layer]->shader_params[selected_layer].names;
+        transform(names.begin(), names.end(), back_inserter(names_char), convert);
+
         // Basic columns
         if (ofxImGui::BeginTree("Shader", mainSettings)){
-            //ImGui::SliderFloat("Param1",&params.scale_speed,0.0,1.0);
-            //ImGui::SliderFloat("Param2",&params.rot_speed,0.0,1.0);
-            //ImGui::SliderFloat("Param3",&params.grid_offset,0.0,1.0);
-            //ImGui::SliderFloat("Hue Shift",&params.shape_morph,0.0,1.0);
+            ImGui::SliderFloat(names_char[0],&params->at(0),0.0,1.0);
+            ImGui::SliderFloat(names_char[1],&params->at(1),0.0,1.0);
+            ImGui::SliderFloat(names_char[2],&params->at(2),0.0,1.0);
+            ImGui::SliderFloat("Hue Shift",&layers[selected_layer]->hue_offset,0.0,PI*2);
             ofxImGui::EndTree(mainSettings);
         }
     }
@@ -71,6 +84,10 @@ void ofApp::update(){
 void ofApp::draw(){
     mapper.draw();
     
+    int size = 100;
+    for(int i = 0; i < layers.size(); i++){
+        layers[i]->FboSource::drawPreview(i * size, ofGetHeight()-size, size, size);
+    }
     //layers[0]->hue_fbo.fbo.draw(0,0,ofGetWidth(),ofGetHeight());
 
 }
@@ -78,6 +95,37 @@ void ofApp::draw(){
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
     mapper.keyPressed(key);
+    
+    switch (key) {
+        case '1':
+            selected_layer = 0;
+            break;
+        case '2':
+            selected_layer = 1;
+            break;
+        case '3':
+            selected_layer = 2;
+            break;
+        case '4':
+            selected_layer = 3;
+            break;
+        case '5':
+            selected_layer = 4;
+            break;
+        case '6':
+            selected_layer = 5;
+            break;
+        case '7':
+            selected_layer = 6;
+            break;
+        case '8':
+            selected_layer = 7;
+            break;
+        default:
+            break;
+    }
+    
+    cout << "selected latyer = " << selected_layer << endl;
 }
 
 //--------------------------------------------------------------

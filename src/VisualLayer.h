@@ -33,21 +33,22 @@ public:
     
     VisualLayer();
     void init_params();
-    void setup(string name);
+    void setup(string name, int scene_num);
     
     void load_movie(string file);
     
     void update();
     void draw();
     
+    vector<ShaderParams> shader_params;
+    float hue_offset;
+
 private:
     ofShader scene_shader;
     ofVideoPlayer player;
     RenderFbo render_fbo;
     FullscreenQuad quad;
     
-    float hue_offset;
     int scene_select;
     
-    vector<ShaderParams> shader_params;
 };

@@ -14,8 +14,8 @@ int main( ){
     settings.resizable = true;
     shared_ptr<ofAppBaseWindow> mainWindow = ofCreateWindow(settings);
     
-    settings.width = 1920/6;
-    settings.height = 1080/6;
+    settings.width = 1920/5;
+    settings.height = 1080/5;
     settings.setPosition(ofVec2f(0,0));
     settings.resizable = false;
     // uncomment next line to share main's OpenGL resources with gui
