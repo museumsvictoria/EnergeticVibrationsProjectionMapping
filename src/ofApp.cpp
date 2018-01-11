@@ -1,5 +1,6 @@
 #include "ofApp.h"
 
+/*
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofSetFrameRate(60);
@@ -23,19 +24,21 @@ void ofApp::setup(){
     
     selected_layer = 0;
 }
-
+*/
 //--------------------------------------------------------------
 void ofApp::setupGui(){
     ofSetBackgroundColor(0);
     
-    //load fonts first
-    gui_theme.load_font();
+//    //load fonts first
+//    gui_theme.load_font();
+//    
+//    //required call
+//    gui.setup();
+//    
+//    //load theme
+//    gui_theme.init_theme();
     
-    //required call
-    gui.setup();
-    
-    //load theme
-    gui_theme.init_theme();
+    gui_interface.setup();
 }
 
 char *convert(const std::string & s) {
@@ -46,35 +49,36 @@ char *convert(const std::string & s) {
 
 //--------------------------------------------------------------
 void ofApp::drawGui(ofEventArgs & args){
-    this->gui.begin();
+//    this->gui.begin();
+//    
+//    auto mainSettings = ofxImGui::Settings();
+//    mainSettings.windowPos = ofVec2f(0, 0);
+//    
+//    if (ofxImGui::BeginWindow("Shader control", mainSettings, false))
+//    {
+//        vector<float> *params = &layers[selected_layer]->shader_params[selected_layer].params;
+//
+//        vector<char*> names_char;
+//        vector<string> names = layers[selected_layer]->shader_params[selected_layer].names;
+//        transform(names.begin(), names.end(), back_inserter(names_char), convert);
+//
+//        // Basic columns
+//        if (ofxImGui::BeginTree("Shader", mainSettings)){
+//            ImGui::SliderFloat(names_char[0],&params->at(0),0.0,1.0);
+//            ImGui::SliderFloat(names_char[1],&params->at(1),0.0,1.0);
+//            ImGui::SliderFloat(names_char[2],&params->at(2),0.0,1.0);
+//            ImGui::SliderFloat("Hue Shift",&layers[selected_layer]->hue_offset,0.0,PI*2);
+//            ofxImGui::EndTree(mainSettings);
+//        }
+//    }
+//    ofxImGui::EndWindow(mainSettings);
+//    
+//    this->gui.end();
     
-    auto mainSettings = ofxImGui::Settings();
-    mainSettings.windowPos = ofVec2f(0, 0);
-    
-    if (ofxImGui::BeginWindow("Shader control", mainSettings, false))
-    {
-        vector<float> *params = &layers[selected_layer]->shader_params[selected_layer].params;
-
-        vector<char*> names_char;
-        vector<string> names = layers[selected_layer]->shader_params[selected_layer].names;
-        transform(names.begin(), names.end(), back_inserter(names_char), convert);
-
-        // Basic columns
-        if (ofxImGui::BeginTree("Shader", mainSettings)){
-            ImGui::SliderFloat(names_char[0],&params->at(0),0.0,1.0);
-            ImGui::SliderFloat(names_char[1],&params->at(1),0.0,1.0);
-            ImGui::SliderFloat(names_char[2],&params->at(2),0.0,1.0);
-            ImGui::SliderFloat("Hue Shift",&layers[selected_layer]->hue_offset,0.0,PI*2);
-            ofxImGui::EndTree(mainSettings);
-        }
-    }
-    ofxImGui::EndWindow(mainSettings);
-    
-    this->gui.end();
-    
-    
+    gui_interface.draw();
 }
 
+/*
 //--------------------------------------------------------------
 void ofApp::update(){
     mapper.update();
@@ -177,3 +181,4 @@ void ofApp::gotMessage(ofMessage msg){
 void ofApp::dragEvent(ofDragInfo dragInfo){ 
 
 }
+*/

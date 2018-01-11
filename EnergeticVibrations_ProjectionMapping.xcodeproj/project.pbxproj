@@ -10,6 +10,7 @@
 		0546D1A38E13BD319CC9755B /* OscReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9BF3AA0D4FAA89D0F8A0E545 /* OscReceivedElements.cpp */; };
 		06765053D7BFBBEB43E77B23 /* StartDragSurfaceCmd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8DA47AF2B265F778E74D4DA /* StartDragSurfaceCmd.cpp */; };
 		13067A861FA6B61600ECD1B1 /* VisualLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13067A841FA6B61600ECD1B1 /* VisualLayer.cpp */; };
+		1366084B2006E8CD00ABDCA8 /* GuiInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 136608492006E8CD00ABDCA8 /* GuiInterface.cpp */; };
 		13903B171FA95ADA00C60C92 /* imgui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13903AD21FA95ADA00C60C92 /* imgui.cpp */; };
 		13903B181FA95ADA00C60C92 /* imgui_demo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13903AD41FA95ADA00C60C92 /* imgui_demo.cpp */; };
 		13903B191FA95ADA00C60C92 /* imgui_draw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13903AD51FA95ADA00C60C92 /* imgui_draw.cpp */; };
@@ -166,6 +167,9 @@
 		13067A841FA6B61600ECD1B1 /* VisualLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VisualLayer.cpp; sourceTree = "<group>"; };
 		13067A851FA6B61600ECD1B1 /* VisualLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisualLayer.h; sourceTree = "<group>"; };
 		1351A1791FC7D2F400A7ED94 /* RadialHexagon.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = RadialHexagon.frag; sourceTree = "<group>"; };
+		136608492006E8CD00ABDCA8 /* GuiInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GuiInterface.cpp; sourceTree = "<group>"; };
+		1366084A2006E8CD00ABDCA8 /* GuiInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuiInterface.h; sourceTree = "<group>"; };
+		1366084E2007037700ABDCA8 /* grid.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = grid.frag; sourceTree = "<group>"; };
 		13903A991FA954E400C60C92 /* passthrough.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = passthrough.vert; sourceTree = "<group>"; };
 		13903A9D1FA9555500C60C92 /* FullscreenQuad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FullscreenQuad.h; sourceTree = "<group>"; };
 		13903A9F1FA9564500C60C92 /* RenderFbo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenderFbo.h; sourceTree = "<group>"; };
@@ -455,10 +459,19 @@
 			name = Widgets;
 			sourceTree = "<group>";
 		};
+		1366084D2007037700ABDCA8 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				1366084E2007037700ABDCA8 /* grid.frag */,
+			);
+			path = Interface;
+			sourceTree = "<group>";
+		};
 		13903A981FA954E400C60C92 /* shaders */ = {
 			isa = PBXGroup;
 			children = (
 				1391247B1FC3D73000277C0A /* shader_selector.frag */,
+				1366084D2007037700ABDCA8 /* Interface */,
 				1391247C1FC3D8B700277C0A /* Util */,
 				139124721FC3D63400277C0A /* Synths */,
 				13903A991FA954E400C60C92 /* passthrough.vert */,
@@ -480,6 +493,8 @@
 			isa = PBXGroup;
 			children = (
 				13903AA31FA95AA200C60C92 /* GuiTheme.h */,
+				136608492006E8CD00ABDCA8 /* GuiInterface.cpp */,
+				1366084A2006E8CD00ABDCA8 /* GuiInterface.h */,
 			);
 			path = GUI;
 			sourceTree = "<group>";
@@ -1143,6 +1158,7 @@
 				67FE4C7B15C2F0478C8126C2 /* NetworkingUtils.cpp in Sources */,
 				510CAFE035E576A4E1502D52 /* UdpSocket.cpp in Sources */,
 				62545D179C94265CA1389D4A /* OscOutboundPacketStream.cpp in Sources */,
+				1366084B2006E8CD00ABDCA8 /* GuiInterface.cpp in Sources */,
 				C4782ECC372420ACE0615B74 /* OscPrintReceivedElements.cpp in Sources */,
 				0546D1A38E13BD319CC9755B /* OscReceivedElements.cpp in Sources */,
 				879A251454401BC0B6E4F238 /* OscTypes.cpp in Sources */,
