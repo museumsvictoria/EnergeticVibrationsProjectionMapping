@@ -14,9 +14,11 @@ class GuiInterface{
     public:
     void setup();
     void setup_mapping_panel();
+    void setup_gradient_shader();
     
     void draw();
     
+    void draw_red_gradient(int verticle_or_horizontal, float perc, int x, int y, int w, int h);
     void draw_border(ofRectangle rect);
     
     void draw_add_shape(ofRectangle rect);
@@ -42,4 +44,7 @@ private:
     /// Mapping Panel
     ofFbo mp_fbo;
     ofShader mp_grid;
+    
+    /// Red Shader Gradient
+    ofShader gradient;
 };

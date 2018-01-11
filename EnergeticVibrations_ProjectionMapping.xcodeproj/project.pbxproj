@@ -170,6 +170,7 @@
 		136608492006E8CD00ABDCA8 /* GuiInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GuiInterface.cpp; sourceTree = "<group>"; };
 		1366084A2006E8CD00ABDCA8 /* GuiInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuiInterface.h; sourceTree = "<group>"; };
 		1366084E2007037700ABDCA8 /* grid.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = grid.frag; sourceTree = "<group>"; };
+		1366084F20070F4700ABDCA8 /* gradient.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = gradient.frag; sourceTree = "<group>"; };
 		13903A991FA954E400C60C92 /* passthrough.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = passthrough.vert; sourceTree = "<group>"; };
 		13903A9D1FA9555500C60C92 /* FullscreenQuad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FullscreenQuad.h; sourceTree = "<group>"; };
 		13903A9F1FA9564500C60C92 /* RenderFbo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenderFbo.h; sourceTree = "<group>"; };
@@ -462,6 +463,7 @@
 		1366084D2007037700ABDCA8 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				1366084F20070F4700ABDCA8 /* gradient.frag */,
 				1366084E2007037700ABDCA8 /* grid.frag */,
 			);
 			path = Interface;
