@@ -31,7 +31,6 @@ void GuiInterface::setup(){
 //------------------------------------
 void GuiInterface::setup_mapping_panel(){
     mp_grid.load("shaders/passthrough.vert","shaders/Interface/grid.frag");
-    
     mp_fbo.allocate(mapping_panel_rect.width, mapping_panel_rect.height,GL_RGBA);
 }
 
@@ -86,14 +85,9 @@ void GuiInterface::draw_selected_layer(ofRectangle rect){
 void GuiInterface::draw_audio_analysis(ofRectangle rect){
     draw_border(rect);
     
-    float speed = ofGetElapsedTimef() * 5.0;
-    float bass = ofNoise(speed);
-    float mid = ofNoise(300000+speed);
-    float high = ofNoise(10000+speed);
-    
-    draw_red_gradient(1, bass,rect.x + 10, rect.y + 10, 100, rect.height - 20);
-    draw_red_gradient(1, mid,rect.x + 130, rect.y + 10, 100, rect.height - 20);
-    draw_red_gradient(1, high,rect.x + 250, rect.y + 10, 100, rect.height - 20);
+    draw_red_gradient(1, get_bass_vol(),rect.x + 10, rect.y + 10, 100, rect.height - 20);
+    draw_red_gradient(1, get_mid_vol(),rect.x + 130, rect.y + 10, 100, rect.height - 20);
+    draw_red_gradient(1, get_high_vol(),rect.x + 250, rect.y + 10, 100, rect.height - 20);
     
     font_large.drawString("BASS", rect.x + 10, rect.y + padding.y);
     font_large.drawString("MID", rect.x + 130, rect.y + padding.y);
@@ -118,4 +112,15 @@ void GuiInterface::draw_mapping_panel(ofRectangle rect){
     mp_fbo.end();
     
     mp_fbo.draw(rect);
+}
+
+//------------------------------------
+float GuiInterface::get_bass_vol() {
+    return ofNoise(ofGetElapsedTimef() * 5.0);
+}
+float GuiInterface::get_mid_vol() {
+    return ofNoise(10000+ofGetElapsedTimef() * 5.0);
+}
+float GuiInterface::get_high_vol() {
+    return ofNoise(200000+ofGetElapsedTimef() * 5.0);
 }

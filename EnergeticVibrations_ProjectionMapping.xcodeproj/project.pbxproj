@@ -23,6 +23,7 @@
 		13903B291FA95ADA00C60C92 /* Gui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13903B061FA95ADA00C60C92 /* Gui.cpp */; };
 		13903B2A1FA95ADA00C60C92 /* Helpers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13903B081FA95ADA00C60C92 /* Helpers.cpp */; };
 		13903B2B1FA95ADA00C60C92 /* ofxImGuiLoggerChannel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13903B0C1FA95ADA00C60C92 /* ofxImGuiLoggerChannel.cpp */; };
+		13F4B397200D7D9E00D48D3A /* ofxSimpleSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13F4B395200D7D9E00D48D3A /* ofxSimpleSlider.cpp */; };
 		14566DCD28D35A80428886C4 /* SelTexCoordCmd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27453C6FAE9B674FD694508D /* SelTexCoordCmd.cpp */; };
 		1CD33E884D9E3358252E82A1 /* ofxToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 907C5B5E104864A2D3A25745 /* ofxToggle.cpp */; };
 		1F4453EA1589AD79F4B34493 /* RadioList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4048CA09E6AAB5F673CBD2F0 /* RadioList.cpp */; };
@@ -218,6 +219,8 @@
 		1391247E1FC3D8B700277C0A /* hue_shift.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = hue_shift.frag; sourceTree = "<group>"; };
 		1391247F1FC3D8B700277C0A /* pi.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = pi.glsl; sourceTree = "<group>"; };
 		139124801FC3D8B700277C0A /* remap.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = remap.glsl; sourceTree = "<group>"; };
+		13F4B395200D7D9E00D48D3A /* ofxSimpleSlider.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSimpleSlider.cpp; sourceTree = "<group>"; };
+		13F4B396200D7D9E00D48D3A /* ofxSimpleSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSimpleSlider.h; sourceTree = "<group>"; };
 		140C0677F9F5A5D3B8A89AC4 /* SelNextVertexCmd.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = SelNextVertexCmd.cpp; path = ../../../addons/ofxPiMapper/src/Commands/SelNextVertexCmd.cpp; sourceTree = SOURCE_ROOT; };
 		15C9B02F2CF08112845CD074 /* SetPresetCmd.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = SetPresetCmd.cpp; path = ../../../addons/ofxPiMapper/src/Commands/SetPresetCmd.cpp; sourceTree = SOURCE_ROOT; };
 		15F2C6477A769C03A56D1401 /* ofxSlider.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxSlider.cpp; path = ../../../addons/ofxGui/src/ofxSlider.cpp; sourceTree = SOURCE_ROOT; };
@@ -497,6 +500,8 @@
 				13903AA31FA95AA200C60C92 /* GuiTheme.h */,
 				136608492006E8CD00ABDCA8 /* GuiInterface.cpp */,
 				1366084A2006E8CD00ABDCA8 /* GuiInterface.h */,
+				13F4B395200D7D9E00D48D3A /* ofxSimpleSlider.cpp */,
+				13F4B396200D7D9E00D48D3A /* ofxSimpleSlider.h */,
 			);
 			path = GUI;
 			sourceTree = "<group>";
@@ -1232,6 +1237,7 @@
 				92527EF632E7EC0E96BC329C /* MediaServer.cpp in Sources */,
 				3B90107DB9BF4857E357FCA8 /* ofxPiMapper.cpp in Sources */,
 				892923A127FC7C57469FD078 /* BaseSource.cpp in Sources */,
+				13F4B397200D7D9E00D48D3A /* ofxSimpleSlider.cpp in Sources */,
 				7702233BBFB6E8D9E8B93CBC /* FboSource.cpp in Sources */,
 				95CB0A22296B3DB402835DCF /* ImageSource.cpp in Sources */,
 				588E33B9B0BD6F5A2E4DF31D /* OMXPlayerCache.cpp in Sources */,

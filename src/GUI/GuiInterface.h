@@ -27,7 +27,10 @@ class GuiInterface{
     void draw_shader_toggles(ofRectangle rect);
     void draw_mapping_panel(ofRectangle rect);
     
-    ofImage img; // background template ref
+    float get_bass_vol();
+    float get_mid_vol();
+    float get_high_vol();
+    
 private:
     ofRectangle add_shape_rect;
     ofRectangle selected_layer_rect;
@@ -47,4 +50,7 @@ private:
     
     /// Red Shader Gradient
     ofShader gradient;
+    
+    ofImage img; // background template ref
+
 };
