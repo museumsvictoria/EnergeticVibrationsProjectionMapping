@@ -10,6 +10,7 @@
 		0546D1A38E13BD319CC9755B /* OscReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9BF3AA0D4FAA89D0F8A0E545 /* OscReceivedElements.cpp */; };
 		06765053D7BFBBEB43E77B23 /* StartDragSurfaceCmd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8DA47AF2B265F778E74D4DA /* StartDragSurfaceCmd.cpp */; };
 		1303CF9C200D9E550010EC63 /* AudioToggles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1303CF9A200D9E550010EC63 /* AudioToggles.cpp */; };
+		1303CFA0200DAECF0010EC63 /* ShaderSelector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1303CF9E200DAECF0010EC63 /* ShaderSelector.cpp */; };
 		13067A861FA6B61600ECD1B1 /* VisualLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13067A841FA6B61600ECD1B1 /* VisualLayer.cpp */; };
 		1366084B2006E8CD00ABDCA8 /* GuiInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 136608492006E8CD00ABDCA8 /* GuiInterface.cpp */; };
 		13903B171FA95ADA00C60C92 /* imgui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13903AD21FA95ADA00C60C92 /* imgui.cpp */; };
@@ -169,6 +170,8 @@
 		0B691BBAB665F94F09B2C276 /* SelSurfaceCmd.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = SelSurfaceCmd.cpp; path = ../../../addons/ofxPiMapper/src/Commands/SelSurfaceCmd.cpp; sourceTree = SOURCE_ROOT; };
 		1303CF9A200D9E550010EC63 /* AudioToggles.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AudioToggles.cpp; path = src/GUI/AudioToggles.cpp; sourceTree = SOURCE_ROOT; };
 		1303CF9B200D9E550010EC63 /* AudioToggles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioToggles.h; path = src/GUI/AudioToggles.h; sourceTree = SOURCE_ROOT; };
+		1303CF9E200DAECF0010EC63 /* ShaderSelector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShaderSelector.cpp; sourceTree = "<group>"; };
+		1303CF9F200DAECF0010EC63 /* ShaderSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShaderSelector.h; sourceTree = "<group>"; };
 		13067A841FA6B61600ECD1B1 /* VisualLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VisualLayer.cpp; sourceTree = "<group>"; };
 		13067A851FA6B61600ECD1B1 /* VisualLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisualLayer.h; sourceTree = "<group>"; };
 		1351A1791FC7D2F400A7ED94 /* RadialHexagon.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = RadialHexagon.frag; sourceTree = "<group>"; };
@@ -512,6 +515,8 @@
 				13F4B396200D7D9E00D48D3A /* CustomSlider.h */,
 				1303CF9A200D9E550010EC63 /* AudioToggles.cpp */,
 				1303CF9B200D9E550010EC63 /* AudioToggles.h */,
+				1303CF9E200DAECF0010EC63 /* ShaderSelector.cpp */,
+				1303CF9F200DAECF0010EC63 /* ShaderSelector.h */,
 			);
 			path = GUI;
 			sourceTree = "<group>";
@@ -1206,6 +1211,7 @@
 				6056983B92E88B475FF04299 /* MvSelectionCmd.cpp in Sources */,
 				845DC872C79A75F7B5FABC02 /* MvSurfaceVertCmd.cpp in Sources */,
 				25F5CD753AF35B53464E56AE /* MvTexCoordCmd.cpp in Sources */,
+				1303CFA0200DAECF0010EC63 /* ShaderSelector.cpp in Sources */,
 				13903B261FA95ADA00C60C92 /* EngineGLFW.cpp in Sources */,
 				82643E358DF270B9EC939699 /* RmGridColCmd.cpp in Sources */,
 				5826FF4F63DC430E90AFDA5E /* RmGridRowCmd.cpp in Sources */,
