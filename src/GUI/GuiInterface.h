@@ -11,14 +11,16 @@
 #include "ofMain.h"
 #include "Gradient.h"
 #include "CustomSlider.h"
+#include "AudioToggles.h"
+#include "ofxImGui.h"
 
 class GuiInterface{
     public:
-    void setup();
+    void setup(ofxImGui::Gui &gui);
     void setup_mapping_panel();
-    void setup_selected_layer();
+    void setup_selected_layer(ofxImGui::Gui &gui);
     
-    void draw();
+    void draw(ofxImGui::Gui &gui);
     
     void draw_border(ofRectangle rect);
     
@@ -56,4 +58,7 @@ private:
     
     //Shader Sliders
     CustomSlider slider;
+    
+    //Audio Select Toggles
+    AudioToggles toggles;
 };

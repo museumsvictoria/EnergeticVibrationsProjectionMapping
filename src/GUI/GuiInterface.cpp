@@ -9,7 +9,7 @@
 #include "GuiInterface.h"
 
 //------------------------------------
-void GuiInterface::setup(){
+void GuiInterface::setup(ofxImGui::Gui &gui){
     img.load("BP_PROJECTION_INTERFACE.png");
     
     font_large.load("fonts/Ruda-Bold.ttf", 15);
@@ -24,15 +24,16 @@ void GuiInterface::setup(){
     shader_toggles_rect = ofRectangle(50,200,360,680);
     mapping_panel_rect = ofRectangle(422,13,1450,870);
     
-    setup_selected_layer();
+    setup_selected_layer(gui);
     setup_mapping_panel();
 }
 
 //------------------------------------
-void GuiInterface::setup_selected_layer(){
+void GuiInterface::setup_selected_layer(ofxImGui::Gui &gui){
     slider.setup(selected_layer_rect.x + padding.x + 10, selected_layer_rect.y + 80,
                  selected_layer_rect.width - (padding.x*2) - 20, 40,0.0,1.0,20,false, false);
 
+    toggles.setup(gui);
 }
 
 //------------------------------------
@@ -42,7 +43,7 @@ void GuiInterface::setup_mapping_panel(){
 }
 
 //------------------------------------
-void GuiInterface::draw(){
+void GuiInterface::draw(ofxImGui::Gui &gui){
     if(ofGetMousePressed()){
         //img.draw(0,0);
     }
@@ -52,6 +53,7 @@ void GuiInterface::draw(){
     draw_audio_analysis(audio_analysis_rect);
     draw_shader_toggles(shader_toggles_rect);
     draw_mapping_panel(mapping_panel_rect);
+    
 }
 
 //------------------------------------

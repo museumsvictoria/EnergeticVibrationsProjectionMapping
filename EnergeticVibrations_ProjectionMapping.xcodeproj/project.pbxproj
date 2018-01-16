@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0546D1A38E13BD319CC9755B /* OscReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9BF3AA0D4FAA89D0F8A0E545 /* OscReceivedElements.cpp */; };
 		06765053D7BFBBEB43E77B23 /* StartDragSurfaceCmd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8DA47AF2B265F778E74D4DA /* StartDragSurfaceCmd.cpp */; };
+		1303CF9C200D9E550010EC63 /* AudioToggles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1303CF9A200D9E550010EC63 /* AudioToggles.cpp */; };
 		13067A861FA6B61600ECD1B1 /* VisualLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13067A841FA6B61600ECD1B1 /* VisualLayer.cpp */; };
 		1366084B2006E8CD00ABDCA8 /* GuiInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 136608492006E8CD00ABDCA8 /* GuiInterface.cpp */; };
 		13903B171FA95ADA00C60C92 /* imgui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13903AD21FA95ADA00C60C92 /* imgui.cpp */; };
@@ -166,6 +167,8 @@
 		0AED834CE4DEC5260AF302A2 /* ofxOscParameterSync.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxOscParameterSync.cpp; path = ../../../addons/ofxOsc/src/ofxOscParameterSync.cpp; sourceTree = SOURCE_ROOT; };
 		0B4D5D37A2AE7AB30D726C16 /* HexagonSurface.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = HexagonSurface.h; path = ../../../addons/ofxPiMapper/src/Surfaces/HexagonSurface.h; sourceTree = SOURCE_ROOT; };
 		0B691BBAB665F94F09B2C276 /* SelSurfaceCmd.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = SelSurfaceCmd.cpp; path = ../../../addons/ofxPiMapper/src/Commands/SelSurfaceCmd.cpp; sourceTree = SOURCE_ROOT; };
+		1303CF9A200D9E550010EC63 /* AudioToggles.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AudioToggles.cpp; path = src/GUI/AudioToggles.cpp; sourceTree = SOURCE_ROOT; };
+		1303CF9B200D9E550010EC63 /* AudioToggles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioToggles.h; path = src/GUI/AudioToggles.h; sourceTree = SOURCE_ROOT; };
 		13067A841FA6B61600ECD1B1 /* VisualLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VisualLayer.cpp; sourceTree = "<group>"; };
 		13067A851FA6B61600ECD1B1 /* VisualLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisualLayer.h; sourceTree = "<group>"; };
 		1351A1791FC7D2F400A7ED94 /* RadialHexagon.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = RadialHexagon.frag; sourceTree = "<group>"; };
@@ -507,6 +510,8 @@
 				13F4B399200D7E9D00D48D3A /* Gradient.h */,
 				13F4B395200D7D9E00D48D3A /* CustomSlider.cpp */,
 				13F4B396200D7D9E00D48D3A /* CustomSlider.h */,
+				1303CF9A200D9E550010EC63 /* AudioToggles.cpp */,
+				1303CF9B200D9E550010EC63 /* AudioToggles.h */,
 			);
 			path = GUI;
 			sourceTree = "<group>";
@@ -1206,6 +1211,7 @@
 				5826FF4F63DC430E90AFDA5E /* RmGridRowCmd.cpp in Sources */,
 				B01F972DDDA5F21EF4C8B99D /* RmSurfaceCmd.cpp in Sources */,
 				36A98A331EAE1D0A19998A59 /* SaveTexCoordPosCmd.cpp in Sources */,
+				1303CF9C200D9E550010EC63 /* AudioToggles.cpp in Sources */,
 				E327ACE85A208BAFACD1B7C7 /* ScaleSurfaceFromToCmd.cpp in Sources */,
 				67FF225B68ECC1942C833BFE /* SelNextSurfaceCmd.cpp in Sources */,
 				13067A861FA6B61600ECD1B1 /* VisualLayer.cpp in Sources */,

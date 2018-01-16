@@ -29,16 +29,16 @@ void ofApp::setup(){
 void ofApp::setupGui(){
     ofSetBackgroundColor(0);
     
-//    //load fonts first
-//    gui_theme.load_font();
-//    
-//    //required call
-//    gui.setup();
-//    
-//    //load theme
-//    gui_theme.init_theme();
+    //load fonts first
+    gui_theme.load_font();
     
-    gui_interface.setup();
+    //required call
+    gui.setup();
+    
+    //load theme
+    gui_theme.init_theme();
+    
+    gui_interface.setup(gui);
 }
 
 char *convert(const std::string & s) {
@@ -49,7 +49,7 @@ char *convert(const std::string & s) {
 
 //--------------------------------------------------------------
 void ofApp::drawGui(ofEventArgs & args){
-//    this->gui.begin();
+    this->gui.begin();
 //    
 //    auto mainSettings = ofxImGui::Settings();
 //    mainSettings.windowPos = ofVec2f(0, 0);
@@ -73,9 +73,10 @@ void ofApp::drawGui(ofEventArgs & args){
 //    }
 //    ofxImGui::EndWindow(mainSettings);
 //    
-//    this->gui.end();
+    gui_interface.draw(gui);
+
+    this->gui.end();
     
-    gui_interface.draw();
 }
 
 /*
