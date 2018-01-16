@@ -35,7 +35,7 @@ void GuiInterface::setup_shader_toggles(vector<VisualLayer*> &layers){
         ShaderToggle t;
         t.b = false;
         if(i==0) t.b = true;
-        t.buttonID = (ImTextureID)layers[i]->FboSource::fbo->getTexture().texData.textureID;
+        t.buttonID = (ImTextureID)layers[i]->render_fbo.fbo.getTexture().texData.textureID;
         shader_toggles.push_back(t);
     }
 }
@@ -126,10 +126,31 @@ void GuiInterface::draw_shader_toggles(ofRectangle rect, ofxImGui::Gui &gui){
     if (!no_menu)     window_flags |= ImGuiWindowFlags_MenuBar;
     
 
+    int size = 180;
+    
 
     if (ofxImGui::BeginWindow("", mainSettings, window_flags))
     {
-
+        for(int i = 0; i < shader_toggles.size(); i++){
+            ShaderToggle* toggle;
+            
+            //if(x==names.size()-1) toggle = &layer_assignments[i].disabled;
+            //else toggle = &layer_assignments[i].outputs[x];
+            
+            //ImTextureID texID = (ImTextureID)(uintptr_t) (toggle->b ? toggle->buttonID : toggle->buttonOffID);
+            ImTextureID texID = (ImTextureID)(uintptr_t) shader_toggles[i].buttonID;
+            
+            if(ImGui::ImageButton(shader_toggles[i].buttonID, ImVec2(size,size))){
+                //toggle->b = !toggle->b;
+                //if(x < names.size()-1) layer_assignments[i].disabled.b = false;
+                
+                //if(layer_assignments[i].disabled.b == true){
+                //    for(int y = 0; y < names.size()-1; y++){
+                //        layer_assignments[i].outputs[y].b = false;
+                //    }
+                //}
+            }ImGui::SameLine();
+        }
     }
     ofxImGui::EndWindow(mainSettings);
 }

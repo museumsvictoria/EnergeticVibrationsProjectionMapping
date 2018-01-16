@@ -43,10 +43,11 @@ public:
     vector<ShaderParams> shader_params;
     float hue_offset;
 
+    RenderFbo render_fbo;
+
 private:
     ofShader scene_shader;
     ofVideoPlayer player;
-    RenderFbo render_fbo;
     FullscreenQuad quad;
     
     int scene_select;
