@@ -21,11 +21,23 @@ void GuiInterface::setup(ofxImGui::Gui &gui){
     add_shape_rect = ofRectangle(50,13,360,175);
     selected_layer_rect = ofRectangle(50,200,360,683);
     audio_analysis_rect = ofRectangle(50,892,360,175);
-    shader_toggles_rect = ofRectangle(50,200,360,680);
+    shader_toggles_rect = ofRectangle(422,892,1450,175);
     mapping_panel_rect = ofRectangle(422,13,1450,870);
     
     setup_selected_layer(gui);
     setup_mapping_panel();
+    
+}
+
+//------------------------------------
+void GuiInterface::setup_shader_toggles(vector<VisualLayer*> &layers){
+    for(int i = 0; i < 7; i++){
+        ShaderToggle t;
+        t.b = false;
+        if(i==0) t.b = true;
+        t.buttonID = (ImTextureID)layers[i]->FboSource::fbo->getTexture().texData.textureID;
+        shader_toggles.push_back(t);
+    }
 }
 
 //------------------------------------
@@ -51,7 +63,7 @@ void GuiInterface::draw(ofxImGui::Gui &gui){
     draw_add_shape(add_shape_rect);
     draw_selected_layer(selected_layer_rect);
     draw_audio_analysis(audio_analysis_rect);
-    draw_shader_toggles(shader_toggles_rect);
+    draw_shader_toggles(shader_toggles_rect, gui);
     draw_mapping_panel(mapping_panel_rect);
     
 }
@@ -86,9 +98,43 @@ void GuiInterface::draw_audio_analysis(ofRectangle rect){
     font_large.drawString("HIGH", rect.x + 250, rect.y + padding.y);
 
 }
-void GuiInterface::draw_shader_toggles(ofRectangle rect){
+
+//------------------------------------
+void GuiInterface::draw_shader_toggles(ofRectangle rect, ofxImGui::Gui &gui){
+    auto mainSettings = ofxImGui::Settings();
+    int gui_width = 350;
+    int scroll_bar = 17;
+    mainSettings.windowPos = ofVec2f(rect.x, rect.y);
+    mainSettings.windowSize = ofVec2f(rect.width, rect.height);
     
+    static bool no_titlebar = true;
+    static bool no_border = true;
+    static bool no_resize = true;
+    static bool no_move = true;
+    static bool no_scrollbar = true;
+    static bool no_collapse = true;
+    static bool no_menu = true;
+    
+    // Demonstrate the various window flags. Typically you would just use the default.
+    ImGuiWindowFlags window_flags = 0;
+    if (no_titlebar)  window_flags |= ImGuiWindowFlags_NoTitleBar;
+    if (!no_border)   window_flags |= ImGuiWindowFlags_ShowBorders;
+    if (no_resize)    window_flags |= ImGuiWindowFlags_NoResize;
+    if (no_move)      window_flags |= ImGuiWindowFlags_NoMove;
+    if (no_scrollbar) window_flags |= ImGuiWindowFlags_NoScrollbar;
+    if (no_collapse)  window_flags |= ImGuiWindowFlags_NoCollapse;
+    if (!no_menu)     window_flags |= ImGuiWindowFlags_MenuBar;
+    
+
+
+    if (ofxImGui::BeginWindow("", mainSettings, window_flags))
+    {
+
+    }
+    ofxImGui::EndWindow(mainSettings);
 }
+
+//------------------------------------
 void GuiInterface::draw_mapping_panel(ofRectangle rect){
     draw_border(rect);
     

@@ -13,10 +13,17 @@
 #include "CustomSlider.h"
 #include "AudioToggles.h"
 #include "ofxImGui.h"
+#include "VisualLayer.h"
+
+struct ShaderToggle{
+    bool b;
+    ImTextureID buttonID;
+};
 
 class GuiInterface{
     public:
     void setup(ofxImGui::Gui &gui);
+    void setup_shader_toggles(vector<VisualLayer*> &layers);
     void setup_mapping_panel();
     void setup_selected_layer(ofxImGui::Gui &gui);
     
@@ -27,7 +34,7 @@ class GuiInterface{
     void draw_add_shape(ofRectangle rect);
     void draw_selected_layer(ofRectangle rect);
     void draw_audio_analysis(ofRectangle rect);
-    void draw_shader_toggles(ofRectangle rect);
+    void draw_shader_toggles(ofRectangle rect, ofxImGui::Gui &gui);
     void draw_mapping_panel(ofRectangle rect);
     
     float get_bass_vol();
@@ -61,4 +68,7 @@ private:
     
     //Audio Select Toggles
     AudioToggles toggles;
+    
+    //Shader Selection Buttons
+    vector<ShaderToggle> shader_toggles;
 };

@@ -1,6 +1,6 @@
 #include "ofApp.h"
 
-/*
+
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofSetFrameRate(60);
@@ -23,8 +23,12 @@ void ofApp::setup(){
     mapper.setup();
     
     selected_layer = 0;
+    
+    // SetupGui() is called in main.cpp before layers has had a chance to fill up
+    // hence the reason we need to call this funciton here.
+    gui_interface.setup_shader_toggles(layers);
 }
-*/
+
 //--------------------------------------------------------------
 void ofApp::setupGui(){
     ofSetBackgroundColor(0);
@@ -49,6 +53,8 @@ char *convert(const std::string & s) {
 
 //--------------------------------------------------------------
 void ofApp::drawGui(ofEventArgs & args){
+
+    ofShowCursor();
     this->gui.begin();
 //    
 //    auto mainSettings = ofxImGui::Settings();
@@ -79,7 +85,7 @@ void ofApp::drawGui(ofEventArgs & args){
     
 }
 
-/*
+
 //--------------------------------------------------------------
 void ofApp::update(){
     mapper.update();
@@ -182,4 +188,4 @@ void ofApp::gotMessage(ofMessage msg){
 void ofApp::dragEvent(ofDragInfo dragInfo){ 
 
 }
-*/
+
