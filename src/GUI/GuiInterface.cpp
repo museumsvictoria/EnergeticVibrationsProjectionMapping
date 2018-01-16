@@ -24,8 +24,15 @@ void GuiInterface::setup(){
     shader_toggles_rect = ofRectangle(50,200,360,680);
     mapping_panel_rect = ofRectangle(422,13,1450,870);
     
+    setup_selected_layer();
     setup_mapping_panel();
-    setup_gradient_shader();
+}
+
+//------------------------------------
+void GuiInterface::setup_selected_layer(){
+    slider.setup(selected_layer_rect.x + padding.x + 10, selected_layer_rect.y + 80,
+                 selected_layer_rect.width - (padding.x*2) - 20, 40,0.0,1.0,20,false, false);
+
 }
 
 //------------------------------------
@@ -35,14 +42,9 @@ void GuiInterface::setup_mapping_panel(){
 }
 
 //------------------------------------
-void GuiInterface::setup_gradient_shader(){
-    gradient.load("shaders/passthrough.vert","shaders/Interface/gradient.frag");
-}
-
-//------------------------------------
 void GuiInterface::draw(){
     if(ofGetMousePressed()){
-        img.draw(0,0);
+        //img.draw(0,0);
     }
 
     draw_add_shape(add_shape_rect);
@@ -59,18 +61,6 @@ void GuiInterface::draw_border(ofRectangle rect){
     ofDrawRectangle(rect);
 }
 
-//------------------------------------
-void GuiInterface::draw_red_gradient(int verticle_or_horizontal, float perc, int x, int y, int w, int h){
-    ofFill();
-    ofSetColor(255);
-    
-    gradient.begin();
-    gradient.setUniform3f("resolution",w,h,1);
-    gradient.setUniform1f("perc",perc);
-    gradient.setUniform1i("verticle_or_horizontal", verticle_or_horizontal);
-    ofDrawRectangle(x, y, w, h);
-    gradient.end();
-}
 
 //------------------------------------
 void GuiInterface::draw_add_shape(ofRectangle rect){
@@ -85,9 +75,9 @@ void GuiInterface::draw_selected_layer(ofRectangle rect){
 void GuiInterface::draw_audio_analysis(ofRectangle rect){
     draw_border(rect);
     
-    draw_red_gradient(1, get_bass_vol(),rect.x + 10, rect.y + 10, 100, rect.height - 20);
-    draw_red_gradient(1, get_mid_vol(),rect.x + 130, rect.y + 10, 100, rect.height - 20);
-    draw_red_gradient(1, get_high_vol(),rect.x + 250, rect.y + 10, 100, rect.height - 20);
+    red_gradient.draw(1, get_bass_vol(),rect.x + 10, rect.y + 10, 100, rect.height - 20);
+    red_gradient.draw(1, get_mid_vol(),rect.x + 130, rect.y + 10, 100, rect.height - 20);
+    red_gradient.draw(1, get_high_vol(),rect.x + 250, rect.y + 10, 100, rect.height - 20);
     
     font_large.drawString("BASS", rect.x + 10, rect.y + padding.y);
     font_large.drawString("MID", rect.x + 130, rect.y + padding.y);

@@ -1,5 +1,5 @@
 /*
- *  ofxSimpleSlider.h
+ *  CustomSlider.h
  *  Created by Golan Levin on 2/24/12.
  *
  */
@@ -8,13 +8,14 @@
 #pragma once
 
 #include "ofMain.h"
+#include "Gradient.h"
 
-class ofxSimpleSlider {
+class CustomSlider {
 
 	public:
 			
-		ofxSimpleSlider();
-		~ofxSimpleSlider();
+		CustomSlider();
+		~CustomSlider();
 
 		void	setup (float inx, float iny, float inw, float inh, float loVal, float hiVal, float initialPercent, bool bVert, bool bDrawNum);
 		void	clear();
@@ -37,9 +38,12 @@ class ofxSimpleSlider {
 		void	setLabelString (string str);
 		void	updatePercentFromMouse(int mx, int my); 
 		
-	
+        //Red Gradient Shader
+        Gradient red_gradient;
+    
 	protected:
 		
+        float   thumb_radius;
 		float	x;
 		float	y; 
 		float	width; 

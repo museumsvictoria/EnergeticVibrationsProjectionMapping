@@ -1,23 +1,23 @@
 /*
- *  ofxSimpleSlider.cpp
+ *  CustomSlider.cpp
  *  Created by Golan Levin on 2/24/12.
  *
  */
 
-#include "ofxSimpleSlider.h"
+#include "CustomSlider.h"
 
 //----------------------------------------------------
-ofxSimpleSlider::ofxSimpleSlider(){
+CustomSlider::CustomSlider(){
 	bWasSetup = false;
 }
 
 //----------------------------------------------------
-ofxSimpleSlider::~ofxSimpleSlider(){
+CustomSlider::~CustomSlider(){
 	clear();
 }
 
 //-----------------------------------------------------------------------------------------------------------------------
-void ofxSimpleSlider::setup(float inx, float iny, float inw, float inh, float loVal, float hiVal, float initialValue, bool bVert, bool bDrawNum){
+void CustomSlider::setup(float inx, float iny, float inw, float inh, float loVal, float hiVal, float initialValue, bool bVert, bool bDrawNum){
 	x = inx;
 	y = iny; 
 	width = inw; 
@@ -36,36 +36,38 @@ void ofxSimpleSlider::setup(float inx, float iny, float inw, float inh, float lo
 	
 	labelString = ""; 
 	
+    thumb_radius = 20;
+    
 	if(!bWasSetup){
-		ofAddListener(ofEvents().draw, this, &ofxSimpleSlider::draw);
-		ofAddListener(ofEvents().mouseMoved, this, &ofxSimpleSlider::mouseMoved);
-		ofAddListener(ofEvents().mousePressed, this, &ofxSimpleSlider::mousePressed);
-		ofAddListener(ofEvents().mouseReleased, this, &ofxSimpleSlider::mouseReleased);
-		ofAddListener(ofEvents().mouseDragged, this, &ofxSimpleSlider::mouseDragged);
+		ofAddListener(ofEvents().draw, this, &CustomSlider::draw);
+		ofAddListener(ofEvents().mouseMoved, this, &CustomSlider::mouseMoved);
+		ofAddListener(ofEvents().mousePressed, this, &CustomSlider::mousePressed);
+		ofAddListener(ofEvents().mouseReleased, this, &CustomSlider::mouseReleased);
+		ofAddListener(ofEvents().mouseDragged, this, &CustomSlider::mouseDragged);
 		bWasSetup = true;
 	}
 }
 
 //----------------------------------------------------
-void ofxSimpleSlider::clear(){
+void CustomSlider::clear(){
 	if(bWasSetup){
-		ofRemoveListener(ofEvents().draw, this, &ofxSimpleSlider::draw);
-		ofRemoveListener(ofEvents().mouseMoved, this, &ofxSimpleSlider::mouseMoved);
-		ofRemoveListener(ofEvents().mousePressed, this, &ofxSimpleSlider::mousePressed);
-		ofRemoveListener(ofEvents().mouseReleased, this, &ofxSimpleSlider::mouseReleased);
-		ofRemoveListener(ofEvents().mouseDragged, this, &ofxSimpleSlider::mouseDragged);
+		ofRemoveListener(ofEvents().draw, this, &CustomSlider::draw);
+		ofRemoveListener(ofEvents().mouseMoved, this, &CustomSlider::mouseMoved);
+		ofRemoveListener(ofEvents().mousePressed, this, &CustomSlider::mousePressed);
+		ofRemoveListener(ofEvents().mouseReleased, this, &CustomSlider::mouseReleased);
+		ofRemoveListener(ofEvents().mouseDragged, this, &CustomSlider::mouseDragged);
 	}
 	bWasSetup = false;
 }
 
 //----------------------------------------------------
-void ofxSimpleSlider::setLabelString (string str){
+void CustomSlider::setLabelString (string str){
 	labelString = str;
 }
 
 
 //----------------------------------------------------
-void ofxSimpleSlider::draw(ofEventArgs& event){
+void CustomSlider::draw(ofEventArgs& event){
 	
 	ofPushStyle();
 	ofEnableAlphaBlending();
@@ -74,19 +76,21 @@ void ofxSimpleSlider::draw(ofEventArgs& event){
 	ofTranslate(x,y,0);
 	
 	// Use different alphas if we're actively maniupulating me. 
-	float sliderAlpha = (bHasFocus) ? 128:64;
 	float spineAlpha  = (bHasFocus) ? 192:128;
-	float thumbAlpha  = (bHasFocus) ? 255:160;
 	
 	// draw box outline
 	ofNoFill();
-	ofSetLineWidth(1.0);
-	ofSetColor(64,64,64, sliderAlpha); 
-	ofDrawRectangle(0,0, width,height); 
-	
+	ofSetLineWidth(18.0);
+	ofSetColor(25,25,25, 255);
+    ofDrawLine(-10, 0, width+10, 0);
+	ofDrawLine(-10,height, width+10,height);
+    ofSetLineWidth(10.0);
+    ofDrawLine(-5, 0, -5, height);
+    ofDrawLine(width+5, 0, width+5, height);
+
 	// draw spine
 	ofSetLineWidth(1.0);
-	ofSetColor(0,0,0, spineAlpha); 
+	ofSetColor(255,255,255, spineAlpha);
 	if (bVertical){
 		ofDrawLine(width/2,0, width/2,height); 
 	} else {
@@ -94,15 +98,14 @@ void ofxSimpleSlider::draw(ofEventArgs& event){
 	}
 	
 	// draw thumb
-	ofSetLineWidth(5.0);
-	ofSetColor(0,0,0, thumbAlpha);
-	if (bVertical){
-		float thumbY = ofMap(percent, 0,1, height,0, true);
-		ofDrawLine(0,thumbY, width,thumbY); 
-	} else {
-		float thumbX = ofMap(percent, 0,1, 0,width, true);
-		ofDrawLine(thumbX,0, thumbX,height); 
-	}
+    ofSetCircleResolution(160);
+    float thumbX = ofMap(percent, 0,1, 0 + thumb_radius,width - thumb_radius, true);
+	ofSetLineWidth(3.0);
+	ofSetColor(25, 25, 25, 255);
+    ofDrawCircle(thumbX, height/2, 22);
+    ofSetColor(255, 26, 34, 255);
+    ofFill();
+    ofDrawCircle(thumbX, height/2, thumb_radius);
 	
 	// draw numeric value 
 	if (bHasFocus){
@@ -124,7 +127,7 @@ void ofxSimpleSlider::draw(ofEventArgs& event){
 }
 
 //----------------------------------------------------
-float ofxSimpleSlider::getValue(){
+float CustomSlider::getValue(){
 	// THIS IS THE MAIN WAY YOU GET THE VALUE FROM THE SLIDER!
 	float out = ofMap(percent, 0,1, lowValue,highValue, true); 
 	return out;
@@ -133,50 +136,50 @@ float ofxSimpleSlider::getValue(){
 
 //----------------------------------------------------
 // Probably not used very much. 
-float ofxSimpleSlider::getLowValue(){
+float CustomSlider::getLowValue(){
 	return lowValue;
 }
-float ofxSimpleSlider::getHighValue(){
+float CustomSlider::getHighValue(){
 	return highValue;
 }
-float ofxSimpleSlider::getPercent(){
+float CustomSlider::getPercent(){
 	return percent;
 }
 
 //----------------------------------------------------
 // Probably not used very much. 
-void ofxSimpleSlider::setLowValue(float lv){
+void CustomSlider::setLowValue(float lv){
 	lowValue = lv;
 }
-void ofxSimpleSlider::setHighValue(float hv){
+void CustomSlider::setHighValue(float hv){
 	highValue = hv; 
 }
-void ofxSimpleSlider::setPercent (float p){
+void CustomSlider::setPercent (float p){
 	// Set the slider's percentage from the outside. 
 	p = ofClamp(p, 0,1);
 	percent	= p;
 }
-void ofxSimpleSlider::setNumberDisplayPrecision(int prec){
+void CustomSlider::setNumberDisplayPrecision(int prec){
 	numberDisplayPrecision = prec;
 }
 		
 //----------------------------------------------------
-void ofxSimpleSlider::mouseMoved(ofMouseEventArgs& event){
+void CustomSlider::mouseMoved(ofMouseEventArgs& event){
 	bHasFocus = false;
 }
-void ofxSimpleSlider::mouseDragged(ofMouseEventArgs& event){
+void CustomSlider::mouseDragged(ofMouseEventArgs& event){
 	if (bHasFocus){
 		updatePercentFromMouse (event.x, event.y); 
 	}
 }
-void ofxSimpleSlider::mousePressed(ofMouseEventArgs& event){
+void CustomSlider::mousePressed(ofMouseEventArgs& event){
 	bHasFocus = false;
 	if (box.inside(event.x, event.y)){
 		bHasFocus = true;
 		updatePercentFromMouse (event.x, event.y); 
 	}
 }
-void ofxSimpleSlider::mouseReleased(ofMouseEventArgs& event){
+void CustomSlider::mouseReleased(ofMouseEventArgs& event){
 	if (bHasFocus){
 		if (box.inside(event.x, event.y)){
 			updatePercentFromMouse (event.x, event.y); 
@@ -186,13 +189,8 @@ void ofxSimpleSlider::mouseReleased(ofMouseEventArgs& event){
 }
 
 //----------------------------------------------------
-void ofxSimpleSlider::updatePercentFromMouse (int mx, int my){
-	// Given the mouse value, compute the percentage.
-	if (bVertical){
-		percent = ofMap(my, y, y+height, 1,0, true);
-	} else {
-		percent = ofMap(mx, x, x+width,  0,1, true);
-	}
+void CustomSlider::updatePercentFromMouse (int mx, int my){
+    percent = ofMap(mx, x + thumb_radius, (x+width) - thumb_radius,  0,1, true);
 }
 		
 

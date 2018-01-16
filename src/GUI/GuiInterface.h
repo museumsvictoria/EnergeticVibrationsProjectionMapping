@@ -9,16 +9,17 @@
 #pragma once 
 
 #include "ofMain.h"
+#include "Gradient.h"
+#include "CustomSlider.h"
 
 class GuiInterface{
     public:
     void setup();
     void setup_mapping_panel();
-    void setup_gradient_shader();
+    void setup_selected_layer();
     
     void draw();
     
-    void draw_red_gradient(int verticle_or_horizontal, float perc, int x, int y, int w, int h);
     void draw_border(ofRectangle rect);
     
     void draw_add_shape(ofRectangle rect);
@@ -48,9 +49,11 @@ private:
     ofFbo mp_fbo;
     ofShader mp_grid;
     
-    /// Red Shader Gradient
-    ofShader gradient;
-    
     ofImage img; // background template ref
 
+    //Red Gradient Shader
+    Gradient red_gradient;
+    
+    //Shader Sliders
+    CustomSlider slider;
 };
