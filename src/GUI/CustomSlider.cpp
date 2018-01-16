@@ -87,16 +87,9 @@ void CustomSlider::draw(ofEventArgs& event){
     ofSetLineWidth(10.0);
     ofDrawLine(-5, 0, -5, height);
     ofDrawLine(width+5, 0, width+5, height);
-
-	// draw spine
-	ofSetLineWidth(1.0);
-	ofSetColor(255,255,255, spineAlpha);
-	if (bVertical){
-		ofDrawLine(width/2,0, width/2,height); 
-	} else {
-		ofDrawLine(0,height/2, width,height/2); 
-	}
 	
+    red_gradient.draw(0, getValue(), 0, 9, width, height - 18);
+
 	// draw thumb
     ofSetCircleResolution(160);
     float thumbX = ofMap(percent, 0,1, 0 + thumb_radius,width - thumb_radius, true);
@@ -107,21 +100,6 @@ void CustomSlider::draw(ofEventArgs& event){
     ofFill();
     ofDrawCircle(thumbX, height/2, thumb_radius);
 	
-	// draw numeric value 
-	if (bHasFocus){
-		ofSetColor(0); 
-	} else {
-		ofSetColor(128); 
-	}
-	if (bVertical){
-		ofDrawBitmapString( ofToString(getValue(),numberDisplayPrecision), width+5,height);
-	} else {
-		ofDrawBitmapString( ofToString(getValue(),numberDisplayPrecision), width+5,height/2 + 4);
-		
-		float labelStringWidth = labelString.size();
-		ofDrawBitmapString( labelString, 0-labelStringWidth*8-5, height/2 + 4); 
-	}	
-
 	ofPopMatrix();
 	ofPopStyle();
 }

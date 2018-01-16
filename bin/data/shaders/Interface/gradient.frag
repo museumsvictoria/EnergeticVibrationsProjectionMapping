@@ -101,7 +101,7 @@ void main(void)
     float gradient = 0.0;
     
     if(verticle_or_horizontal == 0){
-        uv.x = gl_FragCoord.x / (perc*resolution.x);
+        uv.x = (gl_FragCoord.x / (resolution.x * (.25+perc)));
         uv.y = gl_FragCoord.y / resolution.y;
         gradient = quadraticPoint(1.0-uv.x, 0.233, 0.340);
     }
@@ -110,7 +110,6 @@ void main(void)
         uv.x = gl_FragCoord.x / resolution.x;
         gradient = quadraticPoint(1.0-uv.y, 0.233, 0.340);
     }
-    
     
     gl_FragColor = vec4(gradient,0.,0., 1.0);
 }

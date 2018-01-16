@@ -16,6 +16,8 @@ Gradient::Gradient(){
 
 //------------------------------------
 void Gradient::draw(int verticle_or_horizontal, float perc, int x, int y, int w, int h){
+    gradient.load("shaders/passthrough.vert","shaders/Interface/gradient.frag");
+
     ofFill();
     ofSetColor(255);
     
