@@ -104,8 +104,8 @@ void GuiInterface::draw_shader_toggles(ofRectangle rect, ofxImGui::Gui &gui){
     auto mainSettings = ofxImGui::Settings();
     int gui_width = 350;
     int scroll_bar = 17;
-    mainSettings.windowPos = ofVec2f(rect.x, rect.y);
-    mainSettings.windowSize = ofVec2f(rect.width, rect.height);
+    mainSettings.windowPos = ofVec2f(rect.x-15, rect.y-15);
+    mainSettings.windowSize = ofVec2f(rect.width+30, rect.height+30);
     
     static bool no_titlebar = true;
     static bool no_border = true;
@@ -140,7 +140,7 @@ void GuiInterface::draw_shader_toggles(ofRectangle rect, ofxImGui::Gui &gui){
             //ImTextureID texID = (ImTextureID)(uintptr_t) (toggle->b ? toggle->buttonID : toggle->buttonOffID);
             ImTextureID texID = (ImTextureID)(uintptr_t) shader_toggles[i].buttonID;
             
-            if(ImGui::ImageButton(shader_toggles[i].buttonID, ImVec2(size,size))){
+            if(ImGui::ImageButton(shader_toggles[i].buttonID, ImVec2(196,167))){
                 //toggle->b = !toggle->b;
                 //if(x < names.size()-1) layer_assignments[i].disabled.b = false;
                 
@@ -149,7 +149,7 @@ void GuiInterface::draw_shader_toggles(ofRectangle rect, ofxImGui::Gui &gui){
                 //        layer_assignments[i].outputs[y].b = false;
                 //    }
                 //}
-            }ImGui::SameLine();
+            }ImGui::SameLine(0,2); // squish the toggles closer togther 
         }
     }
     ofxImGui::EndWindow(mainSettings);
