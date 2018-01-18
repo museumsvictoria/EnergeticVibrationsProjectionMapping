@@ -45,11 +45,7 @@ void ofApp::setupGui(){
     gui_interface.setup(gui);
 }
 
-char *convert(const std::string & s) {
-    char *pc = new char[s.size()+1];
-    std::strcpy(pc, s.c_str());
-    return pc;
-}
+
 
 //--------------------------------------------------------------
 void ofApp::drawGui(ofEventArgs & args){
@@ -79,8 +75,9 @@ void ofApp::drawGui(ofEventArgs & args){
 //        }
 //    }
 //   ofxImGui::EndWindow(mainSettings);
-//    
-    gui_interface.draw();
+//
+    int selected_layer = gui_interface.get_selected_shader();
+    gui_interface.draw(layers[selected_layer]->shader_params[selected_layer]);
 
     this->gui.end();
     

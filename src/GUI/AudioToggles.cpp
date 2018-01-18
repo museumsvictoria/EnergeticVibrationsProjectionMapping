@@ -31,9 +31,22 @@ void AudioToggles::setup(ofxImGui::Gui &gui){
 }
 
 //------------------------------------
+void AudioToggles::set_selected_toggle(int val){
+    selected = val;
+    for(int i = 0; i < toggles.size(); i++){
+        if(i == selected) toggles[i].b = true;
+        else toggles[i].b = false;
+    }
+}
+
+//------------------------------------
+int AudioToggles::get_selected_toggle(){
+    return selected;
+}
+
+//------------------------------------
 void AudioToggles::draw(string name, ofVec2f pos, ofVec2f size){
 
-    
     auto mainSettings = ofxImGui::Settings();
     mainSettings.windowPos = ofVec2f(pos.x-15, pos.y-15);
     mainSettings.windowSize = ofVec2f(size.x, size.y);
@@ -76,5 +89,4 @@ void AudioToggles::draw(string name, ofVec2f pos, ofVec2f size){
             toggles[i].b = false;
         }
     }
-    
 }

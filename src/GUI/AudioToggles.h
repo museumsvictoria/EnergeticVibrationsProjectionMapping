@@ -26,6 +26,9 @@ public:
     
     vector<Toggle> toggles;
 
+    void set_selected_toggle(int val);
+    int get_selected_toggle();
+    
 private:
     int selected;
 };

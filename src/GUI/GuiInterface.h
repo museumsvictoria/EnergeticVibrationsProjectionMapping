@@ -22,17 +22,18 @@ struct ShaderToggle{
 
 class GuiInterface{
     public:
+    ~GuiInterface();
     void setup(ofxImGui::Gui &gui);
     void setup_shader_toggles(vector<VisualLayer*> &layers);
     void setup_mapping_panel();
     void setup_selected_layer(ofxImGui::Gui &gui);
     
-    void draw();
+    void draw(ShaderParams &params);
     
     void draw_border(ofRectangle rect);
     
     void draw_add_shape(ofRectangle rect);
-    void draw_selected_layer(ofRectangle rect);
+    void draw_selected_layer(ofRectangle rect, ShaderParams &params);
     void draw_audio_analysis(ofRectangle rect);
     void draw_shader_toggles(ofRectangle rect);
     void draw_mapping_panel(ofRectangle rect);
@@ -53,6 +54,7 @@ private:
     ofTrueTypeFont font_large;
     ofTrueTypeFont font_mid;
     
+    int param_gui_offset;
     ofVec2f padding; // used to offset the titles from their containing rectangle pos
     
     
@@ -66,10 +68,10 @@ private:
     Gradient red_gradient;
     
     //Shader Sliders
-    CustomSlider slider;
+    vector<CustomSlider*> sliders;
     
     //Audio Select Toggles
-    AudioToggles toggles;
+    vector<AudioToggles> toggles;
     
     //Shader Selection Buttons
     vector<ShaderToggle> shader_toggles;
