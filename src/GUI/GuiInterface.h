@@ -30,13 +30,14 @@ struct ShaderState{
 
 class GuiInterface{
     public:
+    GuiInterface();
     ~GuiInterface();
     void setup(ofxImGui::Gui &gui);
     void setup_shader_toggles(vector<VisualLayer*> &layers);
     void setup_mapping_panel();
     void setup_selected_layer(ofxImGui::Gui &gui);
     
-    void update_slider_positions();
+    void update_active_sliders();
     
     void draw(ShaderParams &params);
     

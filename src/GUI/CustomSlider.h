@@ -21,6 +21,7 @@ class CustomSlider {
 		void	clear();
 
 		void	draw();
+        void    set_is_active(bool val);
 		void	mouseMoved(ofMouseEventArgs& event);
 		void	mouseDragged(ofMouseEventArgs& event);
 		void	mousePressed(ofMouseEventArgs& event);
@@ -56,7 +57,7 @@ class CustomSlider {
 		bool	bVertical;
 		bool	bDrawNumber;
 		bool	bHasFocus; 
-		
+        bool    isActive;
 	
 		float	lowValue;
 		float	highValue;

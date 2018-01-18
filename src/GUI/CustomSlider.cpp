@@ -28,7 +28,8 @@ void CustomSlider::setup(float inx, float iny, float inw, float inh, float loVal
 	bVertical = bVert;
 	bDrawNumber = bDrawNum;
 	bHasFocus = false;
-
+    isActive = false;
+    
 	lowValue = loVal;
 	highValue = hiVal;
 	percent = ofMap(initialValue, lowValue,highValue, 0,1); 
@@ -143,6 +144,11 @@ void CustomSlider::setPercent (float p){
 void CustomSlider::setNumberDisplayPrecision(int prec){
 	numberDisplayPrecision = prec;
 }
+
+//----------------------------------------------------
+void CustomSlider::set_is_active(bool val){
+    isActive = val;
+}
 		
 //----------------------------------------------------
 void CustomSlider::mouseMoved(ofMouseEventArgs& event){
@@ -150,20 +156,26 @@ void CustomSlider::mouseMoved(ofMouseEventArgs& event){
 }
 void CustomSlider::mouseDragged(ofMouseEventArgs& event){
 	if (bHasFocus){
-		updatePercentFromMouse (event.x, event.y); 
-	}
+        if(isActive){
+            updatePercentFromMouse (event.x, event.y);
+        }
+    }
 }
 void CustomSlider::mousePressed(ofMouseEventArgs& event){
 	bHasFocus = false;
 	if (box.inside(event.x, event.y)){
 		bHasFocus = true;
-		updatePercentFromMouse (event.x, event.y); 
-	}
+        if(isActive){
+            updatePercentFromMouse (event.x, event.y);
+        }
+    }
 }
 void CustomSlider::mouseReleased(ofMouseEventArgs& event){
 	if (bHasFocus){
 		if (box.inside(event.x, event.y)){
-			updatePercentFromMouse (event.x, event.y); 
+            if(isActive){
+                updatePercentFromMouse (event.x, event.y);
+            }
 		}
 	}
 	bHasFocus = false;

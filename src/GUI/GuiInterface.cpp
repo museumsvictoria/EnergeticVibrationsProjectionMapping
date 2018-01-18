@@ -18,6 +18,11 @@ GuiInterface::~GuiInterface(){
 }
 
 //------------------------------------
+GuiInterface::GuiInterface(){
+    selected_shader = 0;
+}
+
+//------------------------------------
 void GuiInterface::setup(ofxImGui::Gui &gui){
     img.load("BP_PROJECTION_INTERFACE.png");
     
@@ -44,7 +49,6 @@ void GuiInterface::setup(ofxImGui::Gui &gui){
 
 //------------------------------------
 void GuiInterface::setup_shader_toggles(vector<VisualLayer*> &layers){
-    selected_shader = 0;
     for(int i = 0; i < 7; i++){
         ShaderToggle t;
         t.b = false;
@@ -77,15 +81,28 @@ void GuiInterface::setup_selected_layer(ofxImGui::Gui &gui){
             CustomSlider* slider = new CustomSlider();
             slider->setup(selected_layer_rect.x + padding.x + 10, (param_gui_offset * y) + (selected_layer_rect.y + 80),
                           selected_layer_rect.width - (padding.x*2) - 20, 40,0.0,1.0,20,false, false);
+            
             shader_states[i].sliders.push_back(slider);
         }
     }
+    update_active_sliders();
+
 }
 
 //------------------------------------
 void GuiInterface::setup_mapping_panel(){
     mp_grid.load("shaders/passthrough.vert","shaders/Interface/grid.frag");
     mp_fbo.allocate(mapping_panel_rect.width, mapping_panel_rect.height,GL_RGBA);
+}
+
+//------------------------------------
+void GuiInterface::update_active_sliders(){
+    for(int i = 0; i < shader_states.size(); i++){
+        for(int y = 0; y < 4; y++){
+            if(i == selected_shader) shader_states[i].sliders[y]->set_is_active(true);
+            else shader_states[i].sliders[y]->set_is_active(false);
+        }
+    }
 }
 
 //------------------------------------
@@ -139,15 +156,16 @@ void GuiInterface::draw_selected_layer(ofRectangle rect, ShaderParams &params){
                 shader_states[selected_shader].sliders[i]->update_gradient_percent(volumes[shader_states[selected_shader].toggles[i].get_selected_toggle()-1]);
             }
         }
-        shader_states[selected_shader].sliders[i]->setPercent(params.params[i]);
+        //shader_states[selected_shader].sliders[i]->setPercent(params.params[i]);
         
-        //params.params[i] = sliders[i]->getValue();
+        params.params[i] = shader_states[selected_shader].sliders[i]->getValue();
     }
     
     for(int i = 0; i < shader_states[selected_shader].sliders.size(); i++){
         shader_states[selected_shader].sliders[i]->draw();
     }
 
+    cout << "value 0 = " << shader_states[0].sliders[0]->getValue() << "value 1 = " << shader_states[1].sliders[0]->getValue()<< endl;
 }
 
 //------------------------------------
@@ -203,6 +221,13 @@ void GuiInterface::draw_shader_toggles(ofRectangle rect){
             if(ImGui::ImageButton(shader_toggles[i].buttonID, ImVec2(196,167))){
                 shader_toggles[i].b = true;
                 selected_shader = i;
+                
+                for(int x = 0; x < shader_states[selected_shader].sliders.size(); x++){
+                    float value = shader_states[selected_shader].sliders[x]->getValue();
+                    shader_states[selected_shader].sliders[x]->setPercent(value);
+                }
+                
+                update_active_sliders();
             }
             ImGui::PopStyleColor();
             ImGui::SameLine(0,2); // squish the toggles closer togther
