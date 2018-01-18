@@ -20,7 +20,7 @@ class CustomSlider {
 		void	setup (float inx, float iny, float inw, float inh, float loVal, float hiVal, float initialPercent, bool bVert, bool bDrawNum);
 		void	clear();
 
-		void	draw(ofEventArgs& event);
+		void	draw();
 		void	mouseMoved(ofMouseEventArgs& event);
 		void	mouseDragged(ofMouseEventArgs& event);
 		void	mousePressed(ofMouseEventArgs& event);

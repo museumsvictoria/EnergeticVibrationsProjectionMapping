@@ -10,8 +10,10 @@
 
 //------------------------------------
 GuiInterface::~GuiInterface(){
-    for(int i = 0; i < sliders.size(); i++){
-        delete sliders[i];
+    for(int i = 0; i < shader_states.size(); i++){
+        for(int x = 0; x < shader_states[i].sliders.size(); x++){
+            delete shader_states[i].sliders[x];
+        }
     }
 }
 
@@ -43,23 +45,22 @@ void GuiInterface::setup(ofxImGui::Gui &gui){
 //------------------------------------
 void GuiInterface::setup_shader_toggles(vector<VisualLayer*> &layers){
     selected_shader = 0;
-    for(int i = 0; i < layers.size(); i++){
+    for(int i = 0; i < 7; i++){
         ShaderToggle t;
         t.b = false;
         if(i==0) t.b = true;
         t.buttonID = (ImTextureID)layers[i]->render_fbo.fbo.getTexture().texData.textureID;
         shader_toggles.push_back(t);
+        
+        // Init the slider positions to the shader param defaluts
+        for(int x = 0; x < layers[i]->shader_params[i].params.size(); x++){
+            shader_states[i].sliders[x]->setPercent(layers[i]->shader_params[i].params[x]);
+        }
     }
 }
 
 //------------------------------------
 void GuiInterface::setup_selected_layer(ofxImGui::Gui &gui){
-    for(int i = 0; i < 4; i++){
-        CustomSlider* slider = new CustomSlider();
-        slider->setup(selected_layer_rect.x + padding.x + 10, (param_gui_offset * i) + (selected_layer_rect.y + 80),
-                         selected_layer_rect.width - (padding.x*2) - 20, 40,0.0,1.0,20,false, false);
-        sliders.push_back(slider);
-    }
     
     for(int i = 0; i < 7; i++){
         ShaderState state;
@@ -71,6 +72,12 @@ void GuiInterface::setup_selected_layer(ofxImGui::Gui &gui){
             AudioToggles toggle;
             toggle.setup(gui);
             shader_states[i].toggles.push_back(toggle);
+        }
+        for(int y = 0; y < 4; y++){
+            CustomSlider* slider = new CustomSlider();
+            slider->setup(selected_layer_rect.x + padding.x + 10, (param_gui_offset * y) + (selected_layer_rect.y + 80),
+                          selected_layer_rect.width - (padding.x*2) - 20, 40,0.0,1.0,20,false, false);
+            shader_states[i].sliders.push_back(slider);
         }
     }
 }
@@ -126,13 +133,17 @@ void GuiInterface::draw_selected_layer(ofRectangle rect, ShaderParams &params){
         shader_states[selected_shader].toggles[i].draw(params.names[i] + ofToString(i), ofVec2f(rect.x + padding.x, (param_gui_offset * i) + (rect.y+140)), ofVec2f(rect.width+10, 80));
         
         if(shader_states[selected_shader].toggles[i].get_selected_toggle() == 0){
-            sliders[i]->update_gradient_percent(sliders[i]->getValue());
+            shader_states[selected_shader].sliders[i]->update_gradient_percent(shader_states[selected_shader].sliders[i]->getValue());
         } else {
-            sliders[i]->update_gradient_percent(volumes[shader_states[selected_shader].toggles[i].get_selected_toggle()-1]);
+            shader_states[selected_shader].sliders[i]->update_gradient_percent(volumes[shader_states[selected_shader].toggles[i].get_selected_toggle()-1]);
         }
-        sliders[i]->setPercent(params.params[i]);
+        shader_states[selected_shader].sliders[i]->setPercent(params.params[i]);
         
         //params.params[i] = sliders[i]->getValue();
+    }
+    
+    for(int i = 0; i < shader_states[selected_shader].sliders.size(); i++){
+        shader_states[selected_shader].sliders[i]->draw();
     }
     
     ofSetColor(236, 60, 53);

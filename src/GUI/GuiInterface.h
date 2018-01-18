@@ -21,7 +21,8 @@ struct ShaderToggle{
 };
 
 struct ShaderState{
-
+    //Shader Sliders
+    vector<CustomSlider*> sliders;
     
     //Audio Select Toggles
     vector<AudioToggles> toggles;
@@ -77,9 +78,6 @@ private:
     Gradient red_gradient;
     
     vector<ShaderState> shader_states;
-    
-    //Shader Sliders
-    vector<CustomSlider*> sliders;
     
     //Shader Selection Buttons
     vector<ShaderToggle> shader_toggles;

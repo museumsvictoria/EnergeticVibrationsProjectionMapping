@@ -40,7 +40,6 @@ void CustomSlider::setup(float inx, float iny, float inw, float inh, float loVal
     gradient_perc = getValue();
     
 	if(!bWasSetup){
-		ofAddListener(ofEvents().draw, this, &CustomSlider::draw);
 		ofAddListener(ofEvents().mouseMoved, this, &CustomSlider::mouseMoved);
 		ofAddListener(ofEvents().mousePressed, this, &CustomSlider::mousePressed);
 		ofAddListener(ofEvents().mouseReleased, this, &CustomSlider::mouseReleased);
@@ -52,7 +51,6 @@ void CustomSlider::setup(float inx, float iny, float inw, float inh, float loVal
 //----------------------------------------------------
 void CustomSlider::clear(){
 	if(bWasSetup){
-		ofRemoveListener(ofEvents().draw, this, &CustomSlider::draw);
 		ofRemoveListener(ofEvents().mouseMoved, this, &CustomSlider::mouseMoved);
 		ofRemoveListener(ofEvents().mousePressed, this, &CustomSlider::mousePressed);
 		ofRemoveListener(ofEvents().mouseReleased, this, &CustomSlider::mouseReleased);
@@ -72,7 +70,7 @@ void CustomSlider::update_gradient_percent(float perc){
 }
 
 //----------------------------------------------------
-void CustomSlider::draw(ofEventArgs& event){
+void CustomSlider::draw(){
 	
 	ofPushStyle();
 	ofEnableAlphaBlending();

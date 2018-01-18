@@ -17,12 +17,12 @@ VisualLayer::VisualLayer(){
 void VisualLayer::init_params(){
     shader_params.clear();
     
-    for(int i = 0; i < 8; i++){
+    for(int i = 0; i < 7; i++){
         shader_params.push_back(ShaderParams());
     }
     
-    shader_params[HEXAGON_GRADIENT].params = {0.5,0.2,0.0};
-    shader_params[HEXAGON_GRADIENT].names = {"speed","circle_iter","iter"};
+//    shader_params[HEXAGON_GRADIENT].params = {0.5,0.2,0.0};
+//    shader_params[HEXAGON_GRADIENT].names = {"speed","circle_iter","iter"};
     
     shader_params[COLOUR_GRADIENT].params = {0.1,0.02,0.0};
     shader_params[COLOUR_GRADIENT].names = {"col_iter_x", "col_iter_y", "speed"};
