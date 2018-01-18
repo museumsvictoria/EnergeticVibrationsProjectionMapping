@@ -89,9 +89,9 @@ void ofApp::update(){
     mapper.update();
     
     vector<float> volumes;
-    volumes.push_back(ofNoise(ofGetElapsedTimef() * 5.0));
-    volumes.push_back(ofNoise(10000+ofGetElapsedTimef() * 5.0));
-    volumes.push_back(ofNoise(200000+ofGetElapsedTimef() * 5.0));
+    volumes.push_back(ofNoise(ofGetElapsedTimef() * 2.0));
+    volumes.push_back(ofNoise(10000+ofGetElapsedTimef() * 2.0));
+    volumes.push_back(ofNoise(200000+ofGetElapsedTimef() * 2.0));
     gui_interface.update_volumes(volumes);
 }
 
