@@ -21,8 +21,8 @@ void VisualLayer::init_params(){
         shader_params.push_back(ShaderParams());
     }
     
-    shader_params[PATTERN_MESH_2D].params = {0.0,0.0,0.0};
-    shader_params[PATTERN_MESH_2D].names = {"speed","shape_iter","grid_iter"};
+    shader_params[HEXAGON_GRADIENT].params = {0.5,0.2,0.0};
+    shader_params[HEXAGON_GRADIENT].names = {"speed","circle_iter","iter"};
     
     shader_params[COLOUR_GRADIENT].params = {0.1,0.02,0.0};
     shader_params[COLOUR_GRADIENT].names = {"col_iter_x", "col_iter_y", "speed"};
@@ -42,8 +42,8 @@ void VisualLayer::init_params(){
     shader_params[OP_ART_TWISTER].params = {1.0,1.0,0.0};
     shader_params[OP_ART_TWISTER].names = {"iter_size","grid_size","speed"};
 
-    shader_params[HEXAGON_GRADIENT].params = {0.5,0.2,0.0};
-    shader_params[HEXAGON_GRADIENT].names = {"speed","circle_iter","iter"};
+    shader_params[PATTERN_MESH_2D].params = {0.0,0.0,0.0};
+    shader_params[PATTERN_MESH_2D].names = {"speed","shape_iter","grid_iter"};
 }
 
 //--------------------------------------------------------------

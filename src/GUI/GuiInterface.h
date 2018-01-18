@@ -41,6 +41,8 @@ class GuiInterface{
     float get_mid_vol();
     float get_high_vol();
     
+    int get_selected_shader();
+    
 private:
     ofRectangle add_shape_rect;
     ofRectangle selected_layer_rect;
@@ -71,4 +73,5 @@ private:
     
     //Shader Selection Buttons
     vector<ShaderToggle> shader_toggles;
+    int selected_shader;
 };

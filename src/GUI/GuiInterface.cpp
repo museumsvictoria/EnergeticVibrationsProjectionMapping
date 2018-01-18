@@ -31,6 +31,7 @@ void GuiInterface::setup(ofxImGui::Gui &gui){
 
 //------------------------------------
 void GuiInterface::setup_shader_toggles(vector<VisualLayer*> &layers){
+    selected_shader = 0;
     for(int i = 0; i < 7; i++){
         ShaderToggle t;
         t.b = false;
@@ -124,35 +125,35 @@ void GuiInterface::draw_shader_toggles(ofRectangle rect, ofxImGui::Gui &gui){
     if (no_scrollbar) window_flags |= ImGuiWindowFlags_NoScrollbar;
     if (no_collapse)  window_flags |= ImGuiWindowFlags_NoCollapse;
     if (!no_menu)     window_flags |= ImGuiWindowFlags_MenuBar;
-    
 
-    int size = 180;
+    ImVec4 c1 = ImColor(1.f, 0.1f, 0.13f, 1.00f);
+    ImVec4 c2 = ImColor(0.10f, 0.09f, 0.12f, 1.00f);
     
-
     if (ofxImGui::BeginWindow("", mainSettings, window_flags))
     {
         for(int i = 0; i < shader_toggles.size(); i++){
-            ShaderToggle* toggle;
-            
-            //if(x==names.size()-1) toggle = &layer_assignments[i].disabled;
-            //else toggle = &layer_assignments[i].outputs[x];
-            
-            //ImTextureID texID = (ImTextureID)(uintptr_t) (toggle->b ? toggle->buttonID : toggle->buttonOffID);
             ImTextureID texID = (ImTextureID)(uintptr_t) shader_toggles[i].buttonID;
             
+            // Active Shader is highlighted
+            if (selected_shader == i) ImGui::PushStyleColor(ImGuiCol_Button, c1);
+            else ImGui::PushStyleColor(ImGuiCol_Button, c2);
+            
             if(ImGui::ImageButton(shader_toggles[i].buttonID, ImVec2(196,167))){
-                //toggle->b = !toggle->b;
-                //if(x < names.size()-1) layer_assignments[i].disabled.b = false;
-                
-                //if(layer_assignments[i].disabled.b == true){
-                //    for(int y = 0; y < names.size()-1; y++){
-                //        layer_assignments[i].outputs[y].b = false;
-                //    }
-                //}
-            }ImGui::SameLine(0,2); // squish the toggles closer togther 
+                shader_toggles[i].b = true;
+                selected_shader = i;
+            }
+            ImGui::PopStyleColor();
+            ImGui::SameLine(0,2); // squish the toggles closer togther
         }
     }
     ofxImGui::EndWindow(mainSettings);
+    
+    // Make sure only the selected shaders toggle is active.
+    for(int i = 0; i < shader_toggles.size(); i++){
+        if(i != selected_shader){
+            shader_toggles[i].b = false;
+        }
+    }
 }
 
 //------------------------------------
@@ -171,6 +172,11 @@ void GuiInterface::draw_mapping_panel(ofRectangle rect){
     mp_fbo.end();
     
     mp_fbo.draw(rect);
+}
+
+//------------------------------------
+int GuiInterface::get_selected_shader(){
+    return selected_shader;
 }
 
 //------------------------------------
