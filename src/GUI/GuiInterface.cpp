@@ -43,7 +43,7 @@ void GuiInterface::setup(ofxImGui::Gui &gui){
 //------------------------------------
 void GuiInterface::setup_shader_toggles(vector<VisualLayer*> &layers){
     selected_shader = 0;
-    for(int i = 0; i < 7; i++){
+    for(int i = 0; i < layers.size(); i++){
         ShaderToggle t;
         t.b = false;
         if(i==0) t.b = true;
@@ -61,10 +61,17 @@ void GuiInterface::setup_selected_layer(ofxImGui::Gui &gui){
         sliders.push_back(slider);
     }
     
-    for(int i = 0; i < 3; i++){
-        AudioToggles toggle;
-        toggle.setup(gui);
-        toggles.push_back(toggle);
+    for(int i = 0; i < 7; i++){
+        ShaderState state;
+        shader_states.push_back(state);
+    }
+
+    for(int i = 0; i < shader_states.size(); i++){
+        for(int x = 0; x < 3; x++){
+            AudioToggles toggle;
+            toggle.setup(gui);
+            shader_states[i].toggles.push_back(toggle);
+        }
     }
 }
 
@@ -113,15 +120,15 @@ void GuiInterface::draw_selected_layer(ofRectangle rect, ShaderParams &params){
     font_large.drawString("SELECTED LAYER", rect.x + padding.x, rect.y + padding.y);
     
     //--- PARAMS
-    for(int i = 0; i < toggles.size(); i++){
+    for(int i = 0; i < shader_states[selected_shader].toggles.size(); i++){
         ofSetColor(236, 60, 53);
         font_mid.drawString(params.names[i], rect.x + padding.x, (param_gui_offset * i) + (rect.y+62));
-        toggles[i].draw(params.names[i] + ofToString(i), ofVec2f(rect.x + padding.x, (param_gui_offset * i) + (rect.y+140)), ofVec2f(rect.width+10, 80));
+        shader_states[selected_shader].toggles[i].draw(params.names[i] + ofToString(i), ofVec2f(rect.x + padding.x, (param_gui_offset * i) + (rect.y+140)), ofVec2f(rect.width+10, 80));
         
-        if(toggles[i].get_selected_toggle() == 0){
+        if(shader_states[selected_shader].toggles[i].get_selected_toggle() == 0){
             sliders[i]->update_gradient_percent(sliders[i]->getValue());
         } else {
-            sliders[i]->update_gradient_percent(volumes[toggles[i].get_selected_toggle()-1]);
+            sliders[i]->update_gradient_percent(volumes[shader_states[selected_shader].toggles[i].get_selected_toggle()-1]);
         }
         sliders[i]->setPercent(params.params[i]);
         

@@ -20,6 +20,13 @@ struct ShaderToggle{
     ImTextureID buttonID;
 };
 
+struct ShaderState{
+
+    
+    //Audio Select Toggles
+    vector<AudioToggles> toggles;
+};
+
 class GuiInterface{
     public:
     ~GuiInterface();
@@ -69,11 +76,10 @@ private:
     //Red Gradient Shader
     Gradient red_gradient;
     
+    vector<ShaderState> shader_states;
+    
     //Shader Sliders
     vector<CustomSlider*> sliders;
-    
-    //Audio Select Toggles
-    vector<AudioToggles> toggles;
     
     //Shader Selection Buttons
     vector<ShaderToggle> shader_toggles;
