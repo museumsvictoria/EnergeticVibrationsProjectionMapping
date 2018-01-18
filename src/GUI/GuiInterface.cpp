@@ -56,7 +56,7 @@ void GuiInterface::setup_mapping_panel(){
 }
 
 //------------------------------------
-void GuiInterface::draw(ofxImGui::Gui &gui){
+void GuiInterface::draw(){
     if(ofGetMousePressed()){
         //img.draw(0,0);
     }
@@ -64,7 +64,7 @@ void GuiInterface::draw(ofxImGui::Gui &gui){
     draw_add_shape(add_shape_rect);
     draw_selected_layer(selected_layer_rect);
     draw_audio_analysis(audio_analysis_rect);
-    draw_shader_toggles(shader_toggles_rect, gui);
+    draw_shader_toggles(shader_toggles_rect);
     draw_mapping_panel(mapping_panel_rect);
     
 }
@@ -86,6 +86,7 @@ void GuiInterface::draw_add_shape(ofRectangle rect){
 void GuiInterface::draw_selected_layer(ofRectangle rect){
     draw_border(rect);
     font_large.drawString("SELECTED LAYER", rect.x + padding.x, rect.y + padding.y);
+    toggles.draw("param1", ofVec2f(rect.x + padding.x, rect.y+140), ofVec2f(rect.width+10, 80));
 }
 void GuiInterface::draw_audio_analysis(ofRectangle rect){
     draw_border(rect);
@@ -101,10 +102,8 @@ void GuiInterface::draw_audio_analysis(ofRectangle rect){
 }
 
 //------------------------------------
-void GuiInterface::draw_shader_toggles(ofRectangle rect, ofxImGui::Gui &gui){
+void GuiInterface::draw_shader_toggles(ofRectangle rect){
     auto mainSettings = ofxImGui::Settings();
-    int gui_width = 350;
-    int scroll_bar = 17;
     mainSettings.windowPos = ofVec2f(rect.x-15, rect.y-15);
     mainSettings.windowSize = ofVec2f(rect.width+30, rect.height+30);
     
@@ -129,7 +128,7 @@ void GuiInterface::draw_shader_toggles(ofRectangle rect, ofxImGui::Gui &gui){
     ImVec4 c1 = ImColor(1.f, 0.1f, 0.13f, 1.00f);
     ImVec4 c2 = ImColor(0.10f, 0.09f, 0.12f, 1.00f);
     
-    if (ofxImGui::BeginWindow("", mainSettings, window_flags))
+    if (ofxImGui::BeginWindow("shader_toggles", mainSettings, window_flags))
     {
         for(int i = 0; i < shader_toggles.size(); i++){
             ImTextureID texID = (ImTextureID)(uintptr_t) shader_toggles[i].buttonID;

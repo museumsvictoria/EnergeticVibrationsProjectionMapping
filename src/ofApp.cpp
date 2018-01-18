@@ -56,7 +56,8 @@ void ofApp::drawGui(ofEventArgs & args){
 
     ofShowCursor();
     this->gui.begin();
-//    
+
+//
 //    auto mainSettings = ofxImGui::Settings();
 //    mainSettings.windowPos = ofVec2f(0, 0);
 //    
@@ -77,9 +78,9 @@ void ofApp::drawGui(ofEventArgs & args){
 //            ofxImGui::EndTree(mainSettings);
 //        }
 //    }
-//    ofxImGui::EndWindow(mainSettings);
+//   ofxImGui::EndWindow(mainSettings);
 //    
-    gui_interface.draw(gui);
+    gui_interface.draw();
 
     this->gui.end();
     
