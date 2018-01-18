@@ -28,6 +28,8 @@ class GuiInterface{
     void setup_mapping_panel();
     void setup_selected_layer(ofxImGui::Gui &gui);
     
+    void update_slider_positions();
+    
     void draw(ShaderParams &params);
     
     void draw_border(ofRectangle rect);
@@ -38,9 +40,9 @@ class GuiInterface{
     void draw_shader_toggles(ofRectangle rect);
     void draw_mapping_panel(ofRectangle rect);
     
-    float get_bass_vol();
-    float get_mid_vol();
-    float get_high_vol();
+    void update_volumes(vector<float> volumes);
+    vector<float> volumes;
+
     
     int get_selected_shader();
     

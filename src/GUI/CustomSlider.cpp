@@ -37,6 +37,7 @@ void CustomSlider::setup(float inx, float iny, float inw, float inh, float loVal
 	labelString = ""; 
 	
     thumb_radius = 20;
+    gradient_perc = getValue();
     
 	if(!bWasSetup){
 		ofAddListener(ofEvents().draw, this, &CustomSlider::draw);
@@ -65,6 +66,10 @@ void CustomSlider::setLabelString (string str){
 	labelString = str;
 }
 
+//----------------------------------------------------
+void CustomSlider::update_gradient_percent(float perc){
+    gradient_perc = perc;
+}
 
 //----------------------------------------------------
 void CustomSlider::draw(ofEventArgs& event){
@@ -88,7 +93,7 @@ void CustomSlider::draw(ofEventArgs& event){
     ofDrawLine(-5, 0, -5, height);
     ofDrawLine(width+5, 0, width+5, height);
 	
-    red_gradient.draw(0, getValue(), 0, 9, width, height - 18);
+    red_gradient.draw(0, gradient_perc, 0, 9, width, height - 18);
 
 	// draw thumb
     ofSetCircleResolution(160);

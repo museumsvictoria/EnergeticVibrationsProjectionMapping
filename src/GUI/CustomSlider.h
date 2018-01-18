@@ -40,6 +40,8 @@ class CustomSlider {
 		
         //Red Gradient Shader
         Gradient red_gradient;
+        void update_gradient_percent(float perc);
+        float gradient_perc;
     
 	protected:
 		

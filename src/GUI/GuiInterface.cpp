@@ -36,6 +36,8 @@ void GuiInterface::setup(ofxImGui::Gui &gui){
     setup_selected_layer(gui);
     setup_mapping_panel();
     
+    // init volume vector
+    volumes = {0.0, 0.0, 0.0};
 }
 
 //------------------------------------
@@ -73,6 +75,11 @@ void GuiInterface::setup_mapping_panel(){
 }
 
 //------------------------------------
+void GuiInterface::update_volumes(vector<float> volumes){
+    this->volumes = volumes;
+}
+
+//------------------------------------
 void GuiInterface::draw(ShaderParams &params){
     if(ofGetMousePressed()){
         //img.draw(0,0);
@@ -105,13 +112,20 @@ void GuiInterface::draw_selected_layer(ofRectangle rect, ShaderParams &params){
     draw_border(rect);
     font_large.drawString("SELECTED LAYER", rect.x + padding.x, rect.y + padding.y);
     
-    //vector<float> *params = &layer->shader_params[selected_layer].params;
-    
     //--- PARAMS
     for(int i = 0; i < toggles.size(); i++){
         ofSetColor(236, 60, 53);
         font_mid.drawString(params.names[i], rect.x + padding.x, (param_gui_offset * i) + (rect.y+62));
-        toggles[i].draw(params.names[i], ofVec2f(rect.x + padding.x, (param_gui_offset * i) + (rect.y+140)), ofVec2f(rect.width+10, 80));
+        toggles[i].draw(params.names[i] + ofToString(i), ofVec2f(rect.x + padding.x, (param_gui_offset * i) + (rect.y+140)), ofVec2f(rect.width+10, 80));
+        
+        if(toggles[i].get_selected_toggle() == 0){
+            sliders[i]->update_gradient_percent(sliders[i]->getValue());
+        } else {
+            sliders[i]->update_gradient_percent(volumes[toggles[i].get_selected_toggle()-1]);
+        }
+        sliders[i]->setPercent(params.params[i]);
+        
+        //params.params[i] = sliders[i]->getValue();
     }
     
     ofSetColor(236, 60, 53);
@@ -123,9 +137,9 @@ void GuiInterface::draw_selected_layer(ofRectangle rect, ShaderParams &params){
 void GuiInterface::draw_audio_analysis(ofRectangle rect){
     draw_border(rect);
     
-    red_gradient.draw(1, get_bass_vol(),rect.x + 10, rect.y + 10, 100, rect.height - 20);
-    red_gradient.draw(1, get_mid_vol(),rect.x + 130, rect.y + 10, 100, rect.height - 20);
-    red_gradient.draw(1, get_high_vol(),rect.x + 250, rect.y + 10, 100, rect.height - 20);
+    red_gradient.draw(1, volumes[0],rect.x + 10, rect.y + 10, 100, rect.height - 20);
+    red_gradient.draw(1, volumes[1],rect.x + 130, rect.y + 10, 100, rect.height - 20);
+    red_gradient.draw(1, volumes[2],rect.x + 250, rect.y + 10, 100, rect.height - 20);
     
     font_large.drawString("BASS", rect.x + 10, rect.y + padding.y);
     font_large.drawString("MID", rect.x + 130, rect.y + padding.y);
@@ -210,13 +224,3 @@ int GuiInterface::get_selected_shader(){
     return selected_shader;
 }
 
-//------------------------------------
-float GuiInterface::get_bass_vol() {
-    return ofNoise(ofGetElapsedTimef() * 5.0);
-}
-float GuiInterface::get_mid_vol() {
-    return ofNoise(10000+ofGetElapsedTimef() * 5.0);
-}
-float GuiInterface::get_high_vol() {
-    return ofNoise(200000+ofGetElapsedTimef() * 5.0);
-}
