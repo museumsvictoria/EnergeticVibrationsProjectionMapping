@@ -114,7 +114,6 @@ void GuiInterface::draw_border(ofRectangle rect){
     ofDrawRectangle(rect);
 }
 
-
 //------------------------------------
 void GuiInterface::draw_add_shape(ofRectangle rect){
     draw_border(rect);
@@ -127,15 +126,18 @@ void GuiInterface::draw_selected_layer(ofRectangle rect, ShaderParams &params){
     font_large.drawString("SELECTED LAYER", rect.x + padding.x, rect.y + padding.y);
     
     //--- PARAMS
-    for(int i = 0; i < shader_states[selected_shader].toggles.size(); i++){
+    for(int i = 0; i < shader_states[selected_shader].sliders.size(); i++){
         ofSetColor(236, 60, 53);
         font_mid.drawString(params.names[i], rect.x + padding.x, (param_gui_offset * i) + (rect.y+62));
-        shader_states[selected_shader].toggles[i].draw(params.names[i] + ofToString(i), ofVec2f(rect.x + padding.x, (param_gui_offset * i) + (rect.y+140)), ofVec2f(rect.width+10, 80));
         
-        if(shader_states[selected_shader].toggles[i].get_selected_toggle() == 0){
-            shader_states[selected_shader].sliders[i]->update_gradient_percent(shader_states[selected_shader].sliders[i]->getValue());
-        } else {
-            shader_states[selected_shader].sliders[i]->update_gradient_percent(volumes[shader_states[selected_shader].toggles[i].get_selected_toggle()-1]);
+        if(i < shader_states[selected_shader].toggles.size()){
+            shader_states[selected_shader].toggles[i].draw(params.names[i] + ofToString(i), ofVec2f(rect.x + padding.x, (param_gui_offset * i) + (rect.y+140)), ofVec2f(rect.width+10, 80));
+            
+            if(shader_states[selected_shader].toggles[i].get_selected_toggle() == 0){
+                shader_states[selected_shader].sliders[i]->update_gradient_percent(shader_states[selected_shader].sliders[i]->getValue());
+            } else {
+                shader_states[selected_shader].sliders[i]->update_gradient_percent(volumes[shader_states[selected_shader].toggles[i].get_selected_toggle()-1]);
+            }
         }
         shader_states[selected_shader].sliders[i]->setPercent(params.params[i]);
         
@@ -145,9 +147,6 @@ void GuiInterface::draw_selected_layer(ofRectangle rect, ShaderParams &params){
     for(int i = 0; i < shader_states[selected_shader].sliders.size(); i++){
         shader_states[selected_shader].sliders[i]->draw();
     }
-    
-    ofSetColor(236, 60, 53);
-    font_mid.drawString("HUESHIFT", rect.x + padding.x, (param_gui_offset * 3) + (rect.y+62));
 
 }
 
@@ -231,9 +230,7 @@ void GuiInterface::draw_mapping_panel(ofRectangle rect){
         mp_grid.setUniform3f("resolution", mapping_panel_rect.width, mapping_panel_rect.height, 1);
         ofDrawRectangle(0, 0, mapping_panel_rect.width, mapping_panel_rect.height);
         mp_grid.end();
-    
     mp_fbo.end();
-    
     mp_fbo.draw(rect);
 }
 

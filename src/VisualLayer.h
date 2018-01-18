@@ -24,8 +24,8 @@ const int OP_ART_TWISTER = 6;
 const int HEXAGON_GRADIENT = 7;
 
 struct ShaderParams{
-    vector<float> params = {0.0,0.0,0.0};
-    vector<string> names = {"","",""};
+    vector<float> params = {0.0,0.0,0.0,0.0};
+    vector<string> names = {"","","",""};
 };
 
 class VisualLayer : public ofx::piMapper::FboSource {
@@ -41,7 +41,6 @@ public:
     void draw();
     
     vector<ShaderParams> shader_params;
-    float hue_offset;
 
     RenderFbo render_fbo;
 

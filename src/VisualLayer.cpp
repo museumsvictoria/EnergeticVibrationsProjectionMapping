@@ -10,7 +10,6 @@
 
 //--------------------------------------------------------------
 VisualLayer::VisualLayer(){
-    hue_offset = 0.0;
 }
 
 //--------------------------------------------------------------
@@ -24,26 +23,26 @@ void VisualLayer::init_params(){
 //    shader_params[HEXAGON_GRADIENT].params = {0.5,0.2,0.0};
 //    shader_params[HEXAGON_GRADIENT].names = {"speed","circle_iter","iter"};
     
-    shader_params[COLOUR_GRADIENT].params = {0.1,0.02,0.0};
-    shader_params[COLOUR_GRADIENT].names = {"col_iter_x", "col_iter_y", "speed"};
+    shader_params[COLOUR_GRADIENT].params = {0.1,0.02,0.0,0.0};
+    shader_params[COLOUR_GRADIENT].names = {"col_iter_x", "col_iter_y", "speed", "HUESHIFT"};
     
-    shader_params[ESCHER_LIKE].params = {0.5,0.0,1.0};
-    shader_params[ESCHER_LIKE].names = {"circle_offset", "circle_iter", "grid_iter"};
+    shader_params[ESCHER_LIKE].params = {0.5,0.0,1.0,0.0};
+    shader_params[ESCHER_LIKE].names = {"circle_offset", "circle_iter", "grid_iter", "HUESHIFT"};
     
-    shader_params[FLOWER_OF_LIFE].params = {1.0,0.0,0.3};
-    shader_params[FLOWER_OF_LIFE].names = {"brightness","time_scale","grid_size"};
+    shader_params[FLOWER_OF_LIFE].params = {1.0,0.0,0.3,0.0};
+    shader_params[FLOWER_OF_LIFE].names = {"brightness","time_scale","grid_size", "HUESHIFT"};
 
-    shader_params[TRI_LATTICE].params = {1.0,0.0,1.0};
-    shader_params[TRI_LATTICE].names = {"num_triangles","intensity","colour mix"};
+    shader_params[TRI_LATTICE].params = {1.0,0.0,1.0,0.0};
+    shader_params[TRI_LATTICE].names = {"num_triangles","intensity","colour mix", "HUESHIFT"};
     
-    shader_params[RADIAL_HEXAGON].params = {0.0,1.0,0.0};
-    shader_params[RADIAL_HEXAGON].names = {"circle_iter","grid_size","time_skip"};
+    shader_params[RADIAL_HEXAGON].params = {0.0,1.0,0.0,0.0};
+    shader_params[RADIAL_HEXAGON].names = {"circle_iter","grid_size","time_skip", "HUESHIFT"};
 
-    shader_params[OP_ART_TWISTER].params = {1.0,1.0,0.0};
-    shader_params[OP_ART_TWISTER].names = {"iter_size","grid_size","speed"};
+    shader_params[OP_ART_TWISTER].params = {1.0,1.0,0.0,0.0};
+    shader_params[OP_ART_TWISTER].names = {"iter_size","grid_size","speed", "HUESHIFT"};
 
-    shader_params[PATTERN_MESH_2D].params = {0.0,0.0,0.0};
-    shader_params[PATTERN_MESH_2D].names = {"speed","shape_iter","grid_iter"};
+    shader_params[PATTERN_MESH_2D].params = {0.0,0.0,0.0,0.0};
+    shader_params[PATTERN_MESH_2D].names = {"speed","shape_iter","grid_iter", "HUESHIFT"};
 }
 
 //--------------------------------------------------------------
@@ -89,7 +88,7 @@ void VisualLayer::update(){
         scene_shader.setUniform1f("param1", shader_params[scene_select].params[0]);
         scene_shader.setUniform1f("param2", shader_params[scene_select].params[1]);
         scene_shader.setUniform1f("param3", shader_params[scene_select].params[2]);
-        scene_shader.setUniform1f("hue_offset", hue_offset);
+        scene_shader.setUniform1f("hue_offset", shader_params[scene_select].params[3]);
         ofDrawRectangle(0, 0, render_fbo.fbo.getWidth(), render_fbo.fbo.getHeight());
 
         scene_shader.end();
