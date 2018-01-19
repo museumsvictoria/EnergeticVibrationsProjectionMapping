@@ -209,6 +209,7 @@ void GuiInterface::draw_selected_layer(ofRectangle rect, ShaderParams &params){
                 params.params[i] = audio_val * slider_val;
             }
         } else {
+            shader_states[selected_shader].sliders[i]->update_gradient_percent(slider_val);
             params.params[i] = slider_val;
         }
     }

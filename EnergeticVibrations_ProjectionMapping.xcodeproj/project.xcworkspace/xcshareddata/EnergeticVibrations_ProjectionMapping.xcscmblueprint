@@ -12,7 +12,7 @@
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
     "3B0D36513453A666A188F5E0EE99B24C8F794C85" : "EnergeticVibrationsProjectionMapping\/",
     "F18B6FEBE66912B859D879DB0D93A2398D3668F4" : "..\/..\/addons\/ofxPiMapper",
-    "55505DE6675E1AEB4CF72AD63A972936EC984D97" : "..\/..\/addons\/ofxImGui"
+    "55505DE6675E1AEB4CF72AD63A972936EC984D97" : "EnergeticVibrationsProjectionMapping\/addons\/ofxImGui\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "EnergeticVibrations_ProjectionMapping",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,

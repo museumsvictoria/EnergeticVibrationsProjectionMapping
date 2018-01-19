@@ -53,31 +53,11 @@ void ofApp::drawGui(ofEventArgs & args){
     ofShowCursor();
     this->gui.begin();
 
-//
-//    auto mainSettings = ofxImGui::Settings();
-//    mainSettings.windowPos = ofVec2f(0, 0);
-//    
-//    if (ofxImGui::BeginWindow("Shader control", mainSettings, false))
-//    {
-//        vector<float> *params = &layers[selected_layer]->shader_params[selected_layer].params;
-//
-//        vector<char*> names_char;
-//        vector<string> names = layers[selected_layer]->shader_params[selected_layer].names;
-//        transform(names.begin(), names.end(), back_inserter(names_char), convert);
-//
-//        // Basic columns
-//        if (ofxImGui::BeginTree("Shader", mainSettings)){
-//            ImGui::SliderFloat(names_char[0],&params->at(0),0.0,1.0);
-//            ImGui::SliderFloat(names_char[1],&params->at(1),0.0,1.0);
-//            ImGui::SliderFloat(names_char[2],&params->at(2),0.0,1.0);
-//            ImGui::SliderFloat("Hue Shift",&layers[selected_layer]->hue_offset,0.0,PI*2);
-//            ofxImGui::EndTree(mainSettings);
-//        }
-//    }
-//   ofxImGui::EndWindow(mainSettings);
-//
+
     int selected_layer = gui_interface.get_selected_shader();
     gui_interface.draw(layers[selected_layer]->shader_params[selected_layer]);
+
+    mapper.draw();
 
     this->gui.end();
     
