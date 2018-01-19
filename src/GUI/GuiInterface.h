@@ -14,7 +14,6 @@
 #include "AudioToggles.h"
 #include "ofxImGui.h"
 #include "VisualLayer.h"
-#include "ofxPiMapper.h"
 #include "PiMapperHelper.h"
 
 struct ShaderToggle{
@@ -58,6 +57,8 @@ class GuiInterface{
     vector<float> volumes;
 
     bool is_mouse_over_mapping_toggles();
+    bool is_mouse_inside_mapping_rect();
+    
     int get_selected_shader();
     
 private:

@@ -42,7 +42,6 @@ class ofApp : public ofBaseApp{
         ///------------- GUI
         ofxImGui::Gui gui;
         GuiTheme gui_theme;
-        int selected_layer;
     
         GuiInterface gui_interface;
 };

@@ -30,8 +30,7 @@ void PiMapperHelper::update_layer_source(int layer){
         ofLogNotice("SourcesEditorWidget") << "No surface selected. Not enabling and not showing source list.";
         return;
     }
-    string path = "Shader1";// get_source->getName();
-    cout << "source name = " << path << endl;
+    string path = "Shader" + ofToString(layer + 1);// get_source->getName();
     SourcesEditorWidget* sourceEditorWidget = &Gui::instance()->getSourcesEditorWidget();
     sourceEditorWidget->setFboSource(path);
 }

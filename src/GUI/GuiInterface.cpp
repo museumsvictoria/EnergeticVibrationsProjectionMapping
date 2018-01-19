@@ -259,6 +259,7 @@ void GuiInterface::draw_shader_toggles(ofRectangle rect){
             if(ImGui::ImageButton(shader_toggles[i].buttonID, ImVec2(196,167))){
                 shader_toggles[i].b = true;
                 selected_shader = i;
+                map_helper.update_layer_source(selected_shader);
                 
                 for(int x = 0; x < shader_states[selected_shader].sliders.size(); x++){
                     float value = shader_states[selected_shader].sliders[x]->getValue();
@@ -332,6 +333,11 @@ bool GuiInterface::is_mouse_over_mapping_toggles(){
     } else {
         return false;
     }
+}
+
+//------------------------------------
+bool GuiInterface::is_mouse_inside_mapping_rect(){
+    return mapping_panel_rect.inside(ofGetMouseX(), ofGetMouseY());
 }
 
 //------------------------------------

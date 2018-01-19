@@ -22,7 +22,6 @@ void ofApp::setup(){
     ofx::piMapper::VideoSource::useHDMIForAudio = false;
     mapper.setup();
     
-    selected_layer = 0;
     
     //load fonts first
     gui_theme.load_font();
@@ -99,37 +98,6 @@ void ofApp::draw(){
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
     mapper.keyPressed(key);
-    
-    switch (key) {
-        case '1':
-            selected_layer = 0;
-            break;
-        case '2':
-            selected_layer = 1;
-            break;
-        case '3':
-            selected_layer = 2;
-            break;
-        case '4':
-            selected_layer = 3;
-            break;
-        case '5':
-            selected_layer = 4;
-            break;
-        case '6':
-            selected_layer = 5;
-            break;
-        case '7':
-            selected_layer = 6;
-            break;
-        case '8':
-            selected_layer = 7;
-            break;
-        default:
-            break;
-    }
-    
-    cout << "selected latyer = " << selected_layer << endl;
 }
 
 //--------------------------------------------------------------
@@ -153,7 +121,12 @@ void ofApp::mousePressed(int x, int y, int button){
     // over the layer selection and deselection. otherwise the layers
     // deselect when the button is clicked. This results in no selected objects
     if(!gui_interface.is_mouse_over_mapping_toggles()){
-        mapper.mousePressed(x, y, button);
+        // Make sure that the mouse is actually within the mapping
+        // rectangle before registering mouse events so we dont
+        // deselect the currently selected layer.
+        if(gui_interface.is_mouse_inside_mapping_rect()){
+            mapper.mousePressed(x, y, button);
+        }
     }
 }
 
