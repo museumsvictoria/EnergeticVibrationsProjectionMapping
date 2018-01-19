@@ -37,6 +37,7 @@ class GuiInterface{
     void setup_mapping_panel();
     void setup_selected_layer(ofxImGui::Gui &gui);
     
+    void update_audio_reactivity(vector<VisualLayer*> &layers);
     void update_active_sliders();
     
     void draw(ShaderParams &params);

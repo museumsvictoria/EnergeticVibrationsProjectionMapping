@@ -30,7 +30,7 @@ vec3 TriLattice()
     
     // gradient inside triangles
     float r = rand(uv2tri(uv));
-    c *= abs(remap(param2,0.0,1.0,0.5,1.0) - fract(d + r + time * remap(param2,0.0,1.0,.02,2.0))) * 2.0;
+    c *= abs(remap(param2,0.0,1.0,0.5,0.53) - fract(d + r + time * remap(param2,0.0,1.0,.02,.20))) * 2.0;
     
     // color variation
     float cb = sin(time * 4.8 + r * 32.984) * 0.5 + 0.5;

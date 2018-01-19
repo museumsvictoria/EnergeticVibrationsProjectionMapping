@@ -33,7 +33,7 @@ void VisualLayer::init_params(){
     shader_params[FLOWER_OF_LIFE].names = {"brightness","time_scale","grid_size", "HUESHIFT"};
 
     shader_params[TRI_LATTICE].params = {1.0,0.0,1.0,0.0};
-    shader_params[TRI_LATTICE].names = {"num_triangles","intensity","colour mix", "HUESHIFT"};
+    shader_params[TRI_LATTICE].names = {"num_triangles","ROTATION","colour mix", "HUESHIFT"};
     
     shader_params[RADIAL_HEXAGON].params = {0.0,1.0,0.0,0.0};
     shader_params[RADIAL_HEXAGON].names = {"circle_iter","grid_size","time_skip", "HUESHIFT"};

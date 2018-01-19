@@ -143,36 +143,6 @@ void GuiInterface::draw_selected_layer(ofRectangle rect, ShaderParams &params){
     font_large.drawString("SELECTED LAYER", rect.x + padding.x, rect.y + padding.y);
     
     //--- PARAMS
-//    for(int x = 0; x < shader_states.size(); x++){
-//
-//        for(int i = 0; i < shader_states[x].toggles.size(); i++){
-//            float slider_val = shader_states[x].sliders[i]->getValue();
-//            float audio_val = volumes[shader_states[x].toggles[i].get_selected_toggle()-1];
-//
-//            // Draw Font
-//            ofSetColor(236, 60, 53);
-//            font_mid.drawString(params.names[i], rect.x + padding.x, (param_gui_offset * i) + (rect.y+62));
-//            
-//            // Draw Toggles
-//            shader_states[selected_shader].toggles[i].draw(params.names[i] + ofToString(i), ofVec2f(rect.x + padding.x, (param_gui_offset * i) + (rect.y+140)), ofVec2f(rect.width+10, 80));
-//
-//            
-//                
-//
-//                
-//            if(shader_states[selected_shader].toggles[i].get_selected_toggle() == 0){
-//                shader_states[selected_shader].sliders[i]->update_gradient_percent(slider_val);
-//                params.params[i] = slider_val;
-//            } else {
-//                shader_states[x].sliders[i]->update_gradient_percent(audio_val * slider_val);
-//                params.params[i] = audio_val * slider_val;
-//            }
-//            //    params.params[i] = slider_val;
-//
-//        }
-//    }
-    
-
     for(int i = 0; i < shader_states[selected_shader].sliders.size(); i++){
         ofSetColor(236, 60, 53);
         font_mid.drawString(params.names[i], rect.x + padding.x, (param_gui_offset * i) + (rect.y+62));
@@ -199,6 +169,25 @@ void GuiInterface::draw_selected_layer(ofRectangle rect, ShaderParams &params){
     
     for(int i = 0; i < shader_states[selected_shader].sliders.size(); i++){
         shader_states[selected_shader].sliders[i]->draw();
+    }
+    
+    
+
+}
+
+//------------------------------------
+void GuiInterface::update_audio_reactivity(vector<VisualLayer *> &layers){
+    for(int x = 0; x < shader_states.size(); x++){
+        ShaderParams& params = layers[x]->shader_params[x];
+        for(int i = 0; i < shader_states[x].toggles.size(); i++){
+            float slider_val = shader_states[x].sliders[i]->getValue();
+            float audio_val = volumes[shader_states[x].toggles[i].get_selected_toggle()-1];
+            
+            if(shader_states[x].toggles[i].get_selected_toggle() != 0){
+                shader_states[x].sliders[i]->update_gradient_percent(audio_val * slider_val);
+                params.params[i] = audio_val * slider_val;
+            }
+        }
     }
 }
 
