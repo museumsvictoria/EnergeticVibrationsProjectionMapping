@@ -17,8 +17,8 @@ class ofApp : public ofBaseApp{
 		void update();
 		void draw();
     
-        void setupGui();
-        void drawGui(ofEventArgs & args);
+        void setupProjectionWindow();
+        void drawProjections(ofEventArgs & args);
 
 		void keyPressed(int key);
 		void keyReleased(int key);
@@ -34,7 +34,8 @@ class ofApp : public ofBaseApp{
     
         ///------------- MAPPING
         ofxPiMapper mapper;
-
+        ofFbo projection_fbo;
+    
         ///------------- GUI
         vector<VisualLayer*> layers;
     

@@ -24,15 +24,6 @@ void ofApp::setup(){
     
     selected_layer = 0;
     
-    // SetupGui() is called in main.cpp before layers has had a chance to fill up
-    // hence the reason we need to call this funciton here.
-    gui_interface.setup_shader_toggles(layers);
-}
-
-//--------------------------------------------------------------
-void ofApp::setupGui(){
-    ofSetBackgroundColor(0);
-    
     //load fonts first
     gui_theme.load_font();
     
@@ -43,24 +34,25 @@ void ofApp::setupGui(){
     gui_theme.init_theme();
     
     gui_interface.setup(gui);
+    gui_interface.setup_shader_toggles(layers);
+    
+    projection_fbo.allocate(ofGetWidth(),ofGetHeight(),GL_RGBA);
 }
 
-
+//--------------------------------------------------------------
+void ofApp::setupProjectionWindow(){
+    ofSetBackgroundColor(0);
+    mapper._application.getSurfaceManager()->assign_projection_fbo(&projection_fbo);
+}
 
 //--------------------------------------------------------------
-void ofApp::drawGui(ofEventArgs & args){
-
+void ofApp::drawProjections(ofEventArgs & args){
     ofShowCursor();
-    this->gui.begin();
-
-
-    int selected_layer = gui_interface.get_selected_shader();
-    gui_interface.draw(layers[selected_layer]->shader_params[selected_layer]);
-
-    mapper.draw();
-    
-    this->gui.end();
-    
+ 
+    if(projection_fbo.isAllocated()){
+        projection_fbo.getTexture().draw(0,0);
+    }
+//    mapper._application.getSurfaceManager()->draw_projection_fbo();
 }
 
 
@@ -80,13 +72,21 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
     
+    ofShowCursor();
+    this->gui.begin();
     
-    mapper._application.draw_projection_screen(1, 0, 0, 0);
+    int selected_layer = gui_interface.get_selected_shader();
+    gui_interface.draw(layers[selected_layer]->shader_params[selected_layer]);
+    
+    this->gui.end();
 
-    int size = 100;
-    for(int i = 0; i < layers.size(); i++){
-        layers[i]->FboSource::drawPreview(i * size, ofGetHeight()-size, size, size);
-    }
+    ofSetColor(255,255);
+    mapper.draw();
+
+//    int size = 100;
+//    for(int i = 0; i < layers.size(); i++){
+//        layers[i]->FboSource::drawPreview(i * size, ofGetHeight()-size, size, size);
+//    }
     //layers[0]->hue_fbo.fbo.draw(0,0,ofGetWidth(),ofGetHeight());
 
 }
