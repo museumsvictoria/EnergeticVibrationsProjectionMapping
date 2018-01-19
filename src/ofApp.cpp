@@ -36,7 +36,7 @@ void ofApp::setup(){
     gui_interface.setup(gui);
     gui_interface.setup_shader_toggles(layers);
     
-    projection_fbo.allocate(ofGetWidth(),ofGetHeight(),GL_RGBA);
+    projection_fbo.allocate(1450,870,GL_RGBA);
 }
 
 //--------------------------------------------------------------
@@ -50,7 +50,7 @@ void ofApp::drawProjections(ofEventArgs & args){
     ofShowCursor();
  
     if(projection_fbo.isAllocated()){
-        projection_fbo.getTexture().draw(0,0);
+        projection_fbo.getTexture().draw(0,0,ofGetWidth(), ofGetHeight());
     }
 //    mapper._application.getSurfaceManager()->draw_projection_fbo();
 }
