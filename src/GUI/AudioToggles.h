@@ -22,7 +22,7 @@ class AudioToggles{
 public:
     
     void setup(ofxImGui::Gui &gui);
-    void draw(string name, ofVec2f pos, ofVec2f size);
+    void draw(string name, ofVec2f pos, ofVec2f size, ImGuiWindowFlags window_flags);
     
     vector<Toggle> toggles;
 

@@ -23,6 +23,27 @@ GuiInterface::GuiInterface(){
 }
 
 //------------------------------------
+void GuiInterface::init_window_flags(){
+    static bool no_titlebar = true;
+    static bool no_border = true;
+    static bool no_resize = true;
+    static bool no_move = true;
+    static bool no_scrollbar = true;
+    static bool no_collapse = true;
+    static bool no_menu = true;
+    
+    // Demonstrate the various window flags. Typically you would just use the default.
+    window_flags = 0;
+    if (no_titlebar)  window_flags |= ImGuiWindowFlags_NoTitleBar;
+    if (!no_border)   window_flags |= ImGuiWindowFlags_ShowBorders;
+    if (no_resize)    window_flags |= ImGuiWindowFlags_NoResize;
+    if (no_move)      window_flags |= ImGuiWindowFlags_NoMove;
+    if (no_scrollbar) window_flags |= ImGuiWindowFlags_NoScrollbar;
+    if (no_collapse)  window_flags |= ImGuiWindowFlags_NoCollapse;
+    if (!no_menu)     window_flags |= ImGuiWindowFlags_MenuBar;
+}
+
+//------------------------------------
 void GuiInterface::setup(ofxImGui::Gui &gui){
     img.load("BP_PROJECTION_INTERFACE.png");
     
@@ -40,8 +61,10 @@ void GuiInterface::setup(ofxImGui::Gui &gui){
     shader_toggles_rect = ofRectangle(422,892,1450,175);
     mapping_panel_rect = ofRectangle(422,13,1450,870);
     
+    init_window_flags();
+    
     setup_selected_layer(gui);
-    setup_mapping_panel();
+    setup_mapping_panel(gui);
     
     // init volume vector
     volumes = {0.0, 0.0, 0.0};
@@ -90,9 +113,16 @@ void GuiInterface::setup_selected_layer(ofxImGui::Gui &gui){
 }
 
 //------------------------------------
-void GuiInterface::setup_mapping_panel(){
+void GuiInterface::setup_mapping_panel(ofxImGui::Gui &gui){
     mp_grid.load("shaders/passthrough.vert","shaders/Interface/grid.frag");
     mp_fbo.allocate(mapping_panel_rect.width, mapping_panel_rect.height,GL_RGBA);
+    
+    ofImage remove_image;
+    ofImage duplicate_image;
+    remove_image.load("buttons/remove.png");
+    duplicate_image.load("buttons/duplicate.png");
+    remove_button_ID = gui.loadImage(remove_image);
+    duplicate_button_ID = gui.loadImage(duplicate_image);
 }
 
 //------------------------------------
@@ -111,9 +141,25 @@ void GuiInterface::update_volumes(vector<float> volumes){
 }
 
 //------------------------------------
+void GuiInterface::update_audio_reactivity(vector<VisualLayer *> &layers){
+    for(int x = 0; x < shader_states.size(); x++){
+        ShaderParams& params = layers[x]->shader_params[x];
+        for(int i = 0; i < shader_states[x].toggles.size(); i++){
+            float slider_val = shader_states[x].sliders[i]->getValue();
+            float audio_val = volumes[shader_states[x].toggles[i].get_selected_toggle()-1];
+            
+            if(shader_states[x].toggles[i].get_selected_toggle() != 0){
+                shader_states[x].sliders[i]->update_gradient_percent(audio_val * slider_val);
+                params.params[i] = audio_val * slider_val;
+            }
+        }
+    }
+}
+
+//------------------------------------
 void GuiInterface::draw(ShaderParams &params){
     if(ofGetMousePressed()){
-        //img.draw(0,0);
+        img.draw(0,0);
     }
 
     draw_add_shape(add_shape_rect);
@@ -153,7 +199,7 @@ void GuiInterface::draw_selected_layer(ofRectangle rect, ShaderParams &params){
             
             float audio_val = volumes[shader_states[selected_shader].toggles[i].get_selected_toggle()-1];
             
-            shader_states[selected_shader].toggles[i].draw(params.names[i] + ofToString(i), ofVec2f(rect.x + padding.x, (param_gui_offset * i) + (rect.y+140)), ofVec2f(rect.width+10, 80));
+            shader_states[selected_shader].toggles[i].draw(params.names[i] + ofToString(i), ofVec2f(rect.x + padding.x, (param_gui_offset * i) + (rect.y+140)), ofVec2f(rect.width+10, 80), window_flags);
             
             if(shader_states[selected_shader].toggles[i].get_selected_toggle() == 0){
                 shader_states[selected_shader].sliders[i]->update_gradient_percent(slider_val);
@@ -169,25 +215,6 @@ void GuiInterface::draw_selected_layer(ofRectangle rect, ShaderParams &params){
     
     for(int i = 0; i < shader_states[selected_shader].sliders.size(); i++){
         shader_states[selected_shader].sliders[i]->draw();
-    }
-    
-    
-
-}
-
-//------------------------------------
-void GuiInterface::update_audio_reactivity(vector<VisualLayer *> &layers){
-    for(int x = 0; x < shader_states.size(); x++){
-        ShaderParams& params = layers[x]->shader_params[x];
-        for(int i = 0; i < shader_states[x].toggles.size(); i++){
-            float slider_val = shader_states[x].sliders[i]->getValue();
-            float audio_val = volumes[shader_states[x].toggles[i].get_selected_toggle()-1];
-            
-            if(shader_states[x].toggles[i].get_selected_toggle() != 0){
-                shader_states[x].sliders[i]->update_gradient_percent(audio_val * slider_val);
-                params.params[i] = audio_val * slider_val;
-            }
-        }
     }
 }
 
@@ -210,24 +237,6 @@ void GuiInterface::draw_shader_toggles(ofRectangle rect){
     auto mainSettings = ofxImGui::Settings();
     mainSettings.windowPos = ofVec2f(rect.x-15, rect.y-15);
     mainSettings.windowSize = ofVec2f(rect.width+30, rect.height+30);
-    
-    static bool no_titlebar = true;
-    static bool no_border = true;
-    static bool no_resize = true;
-    static bool no_move = true;
-    static bool no_scrollbar = true;
-    static bool no_collapse = true;
-    static bool no_menu = true;
-    
-    // Demonstrate the various window flags. Typically you would just use the default.
-    ImGuiWindowFlags window_flags = 0;
-    if (no_titlebar)  window_flags |= ImGuiWindowFlags_NoTitleBar;
-    if (!no_border)   window_flags |= ImGuiWindowFlags_ShowBorders;
-    if (no_resize)    window_flags |= ImGuiWindowFlags_NoResize;
-    if (no_move)      window_flags |= ImGuiWindowFlags_NoMove;
-    if (no_scrollbar) window_flags |= ImGuiWindowFlags_NoScrollbar;
-    if (no_collapse)  window_flags |= ImGuiWindowFlags_NoCollapse;
-    if (!no_menu)     window_flags |= ImGuiWindowFlags_MenuBar;
 
     ImVec4 c1 = ImColor(1.f, 0.1f, 0.13f, 1.00f);
     ImVec4 c2 = ImColor(0.10f, 0.09f, 0.12f, 1.00f);
@@ -280,6 +289,32 @@ void GuiInterface::draw_mapping_panel(ofRectangle rect){
         mp_grid.end();
     mp_fbo.end();
     mp_fbo.draw(rect);
+    
+    
+    auto mainSettings = ofxImGui::Settings();
+    mainSettings.windowPos = ofVec2f((rect.x + rect.width) - 165, rect.y + 10);
+    mainSettings.windowSize = ofVec2f(120,80);
+    
+    if (ofxImGui::BeginWindow("duplicate panel", mainSettings, window_flags))
+    {
+        ImTextureID duplicate_texID = (ImTextureID)(uintptr_t)(duplicate_button_ID);
+        if(ImGui::ImageButton(duplicate_texID, ImVec2(111,51))){
+            
+        }
+    }
+    ofxImGui::EndWindow(mainSettings);
+    
+    mainSettings.windowPos = ofVec2f((rect.x + rect.width) - 165, rect.y + 70);
+    if (ofxImGui::BeginWindow("remove panel", mainSettings, window_flags))
+    {
+        ImTextureID remove_texID = (ImTextureID)(uintptr_t)(remove_button_ID);
+        if(ImGui::ImageButton(remove_texID, ImVec2(111,51))){
+            
+        }
+    }
+    ofxImGui::EndWindow(mainSettings);
+    
+
 }
 
 //------------------------------------

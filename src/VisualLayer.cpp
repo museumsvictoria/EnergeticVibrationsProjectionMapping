@@ -77,7 +77,7 @@ void VisualLayer::update(){
         }
     }
 */
-    
+
     render_fbo.fbo.begin();
         ofClear(0,0,0,0);
         scene_shader.begin();
@@ -88,7 +88,7 @@ void VisualLayer::update(){
         scene_shader.setUniform1f("param1", shader_params[scene_select].params[0]);
         scene_shader.setUniform1f("param2", shader_params[scene_select].params[1]);
         scene_shader.setUniform1f("param3", shader_params[scene_select].params[2]);
-        scene_shader.setUniform1f("hue_offset", shader_params[scene_select].params[3]);
+        scene_shader.setUniform1f("hue_offset", shader_params[scene_select].params[3] * PI);
         ofDrawRectangle(0, 0, render_fbo.fbo.getWidth(), render_fbo.fbo.getHeight());
 
         scene_shader.end();

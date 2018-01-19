@@ -45,30 +45,11 @@ int AudioToggles::get_selected_toggle(){
 }
 
 //------------------------------------
-void AudioToggles::draw(string name, ofVec2f pos, ofVec2f size){
+void AudioToggles::draw(string name, ofVec2f pos, ofVec2f size, ImGuiWindowFlags window_flags){
 
     auto mainSettings = ofxImGui::Settings();
     mainSettings.windowPos = ofVec2f(pos.x-15, pos.y-15);
     mainSettings.windowSize = ofVec2f(size.x, size.y);
-    
-    static bool no_titlebar = true;
-    static bool no_border = true;
-    static bool no_resize = true;
-    static bool no_move = true;
-    static bool no_scrollbar = true;
-    static bool no_collapse = true;
-    static bool no_menu = true;
-    
-    // Demonstrate the various window flags. Typically you would just use the default.
-    ImGuiWindowFlags window_flags = 0;
-    if (no_titlebar)  window_flags |= ImGuiWindowFlags_NoTitleBar;
-    if (!no_border)   window_flags |= ImGuiWindowFlags_ShowBorders;
-    if (no_resize)    window_flags |= ImGuiWindowFlags_NoResize;
-    if (no_move)      window_flags |= ImGuiWindowFlags_NoMove;
-    if (no_scrollbar) window_flags |= ImGuiWindowFlags_NoScrollbar;
-    if (no_collapse)  window_flags |= ImGuiWindowFlags_NoCollapse;
-    if (!no_menu)     window_flags |= ImGuiWindowFlags_MenuBar;
-    
     
     if (ofxImGui::BeginWindow(name, mainSettings, window_flags))
     {

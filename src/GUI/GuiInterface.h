@@ -32,9 +32,10 @@ class GuiInterface{
     public:
     GuiInterface();
     ~GuiInterface();
+    void init_window_flags();
     void setup(ofxImGui::Gui &gui);
     void setup_shader_toggles(vector<VisualLayer*> &layers);
-    void setup_mapping_panel();
+    void setup_mapping_panel(ofxImGui::Gui &gui);
     void setup_selected_layer(ofxImGui::Gui &gui);
     
     void update_audio_reactivity(vector<VisualLayer*> &layers);
@@ -57,6 +58,8 @@ class GuiInterface{
     int get_selected_shader();
     
 private:
+    ImGuiWindowFlags window_flags;
+    
     ofRectangle add_shape_rect;
     ofRectangle selected_layer_rect;
     ofRectangle audio_analysis_rect;
@@ -73,7 +76,9 @@ private:
     /// Mapping Panel
     ofFbo mp_fbo;
     ofShader mp_grid;
-    
+    GLuint remove_button_ID;
+    GLuint duplicate_button_ID;
+
     ofImage img; // background template ref
 
     //Red Gradient Shader
