@@ -17,14 +17,19 @@ using namespace ofx::piMapper;
 class PiMapperHelper{
 public:
     void setup(ofxPiMapper& mapper);
+    bool check_if_source_sxists();
+    
     void update_layer_source(int layer);
     
     void remove_surface();
     void duplicate_surface();
     
-    BaseSource* get_source();
-    ofxPiMapper* mapper;
+    int get_selected_source();
+    
+
 
 private:
+    BaseSource* get_source();
+    ofxPiMapper* mapper;
     SurfaceManager * surfaceManager;
 };

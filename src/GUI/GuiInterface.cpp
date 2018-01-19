@@ -280,6 +280,8 @@ void GuiInterface::draw_shader_toggles(ofRectangle rect){
             shader_toggles[i].b = false;
         }
     }
+    
+    cout << "sel = " << map_helper.get_selected_source() << endl;
 }
 
 //------------------------------------
