@@ -1,5 +1,6 @@
 #include "ofApp.h"
 
+using namespace ofx::piMapper;
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -90,6 +91,20 @@ void ofApp::draw(){
 
     //cout << "selected surface = " << mapper._application.getSurfaceManager()->getSelectedSurface() << endl;
     
+//    mapper._application.Gui::getSourcesEditorWidget();
+//    ofx::piMapper::Gui::getSourcesEditorWidget().getLoadedTexCount();
+    
+    SurfaceManager * surfaceManager = mapper._application.getSurfaceManager();
+    // Don't enable if there is no surface selected
+    if(surfaceManager->getSelectedSurface() == 0){
+        ofLogNotice("SourcesEditorWidget") << "No surface selected. Not enabling and not showing source list.";
+        return;
+    }
+    BaseSource * source = mapper._application.getSurfaceManager()->getSelectedSurface()->getSource();
+    string path = "Shader1";//source->getName();
+    cout << "source name = " << path << endl;
+    SourcesEditorWidget* sourceEditorWidget = &Gui::instance()->getSourcesEditorWidget();
+    sourceEditorWidget->setFboSource(path);
 }
 
 //--------------------------------------------------------------
