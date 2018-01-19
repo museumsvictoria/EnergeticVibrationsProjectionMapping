@@ -68,6 +68,7 @@ void GuiInterface::setup(ofxImGui::Gui &gui, ofxPiMapper& mapper){
     
     init_window_flags();
     
+    setup_add_shape();
     setup_selected_layer(gui);
     setup_mapping_panel(gui);
     
@@ -131,6 +132,33 @@ void GuiInterface::setup_mapping_panel(ofxImGui::Gui &gui){
 }
 
 //------------------------------------
+void GuiInterface::setup_add_shape(){
+    int size = 100;
+    int line_width = 10;
+    quad_fbo.allocate(size+line_width, size+line_width, GL_RGBA);
+    tri_fbo.allocate(size+line_width, size+line_width, GL_RGBA);
+    
+    ofPushStyle();
+    ofNoFill();
+    ofSetLineWidth(line_width);
+    ofSetColor(255, 26, 34);
+    
+    quad_fbo.begin();
+    ofClear(0,0,0,255);
+    ofDrawRectangle(line_width, line_width, size - line_width, size - line_width);
+    quad_fbo.end();
+    
+    tri_fbo.begin();
+    ofClear(0,0,0,255);
+    ofDrawTriangle(tri_fbo.getWidth()/2, line_width, size, size, line_width, size);
+    tri_fbo.end();
+    ofPopStyle();
+    
+    quad_buttonID = (ImTextureID)quad_fbo.getTexture().texData.textureID;
+    triangle_buttonID = (ImTextureID)tri_fbo.getTexture().texData.textureID;
+}
+
+//------------------------------------
 void GuiInterface::update_active_sliders(){
     for(int i = 0; i < shader_states.size(); i++){
         for(int y = 0; y < 4; y++){
@@ -186,6 +214,25 @@ void GuiInterface::draw_border(ofRectangle rect){
 void GuiInterface::draw_add_shape(ofRectangle rect){
     draw_border(rect);
     font_large.drawString("ADD SHAPE", rect.x + padding.x, rect.y + padding.y);
+    
+    auto mainSettings = ofxImGui::Settings();
+    mainSettings.windowPos = ofVec2f(rect.x+30, rect.y+30);
+    mainSettings.windowSize = ofVec2f(rect.width+30, rect.height+30);
+    
+    if (ofxImGui::BeginWindow("add shape", mainSettings, window_flags))
+    {
+        ImTextureID quadID = (ImTextureID)(uintptr_t)quad_buttonID;
+        ImTextureID triangleID = (ImTextureID)(uintptr_t)triangle_buttonID;
+
+        if(ImGui::ImageButton(quadID, ImVec2(100,100))){
+
+        }
+        ImGui::SameLine(0,50);
+        if(ImGui::ImageButton(triangleID, ImVec2(100,100))){
+            
+        }
+    }
+    ofxImGui::EndWindow(mainSettings);
 }
 
 //------------------------------------
