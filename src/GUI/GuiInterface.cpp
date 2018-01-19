@@ -205,9 +205,12 @@ void GuiInterface::draw(ShaderParams &params){
 
 //------------------------------------
 void GuiInterface::draw_border(ofRectangle rect){
+    ofPushStyle();
     ofNoFill();
-    ofSetColor(255);
+    ofSetColor(255,255);
+    ofSetLineWidth(2);
     ofDrawRectangle(rect);
+    ofPopStyle();
 }
 
 //------------------------------------
