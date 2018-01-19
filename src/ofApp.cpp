@@ -58,7 +58,7 @@ void ofApp::drawGui(ofEventArgs & args){
     gui_interface.draw(layers[selected_layer]->shader_params[selected_layer]);
 
     mapper.draw();
-
+    
     this->gui.end();
     
 }
@@ -79,8 +79,10 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    mapper.draw();
     
+    
+    mapper._application.draw_projection_screen(1, 0, 0, 0);
+
     int size = 100;
     for(int i = 0; i < layers.size(); i++){
         layers[i]->FboSource::drawPreview(i * size, ofGetHeight()-size, size, size);
