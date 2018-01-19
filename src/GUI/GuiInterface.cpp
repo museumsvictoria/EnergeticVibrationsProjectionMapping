@@ -47,7 +47,8 @@ void GuiInterface::init_window_flags(){
 
 //------------------------------------
 void GuiInterface::setup(ofxImGui::Gui &gui, ofxPiMapper& mapper){
-    this->mapper = &mapper;
+    
+    map_helper.setup(mapper);
     
     img.load("BP_PROJECTION_INTERFACE.png");
     
@@ -305,7 +306,7 @@ void GuiInterface::draw_mapping_panel(ofRectangle rect){
         mouse_over_duplicate_toggle = ImGui::IsMouseHoveringWindow();
         ImTextureID duplicate_texID = (ImTextureID)(uintptr_t)(duplicate_button_ID);
         if(ImGui::ImageButton(duplicate_texID, ImVec2(111,51))){
-            mapper->_application.duplicateSurface();
+            map_helper.duplicate_surface();
         }
     }
     ofxImGui::EndWindow(mainSettings);
@@ -316,8 +317,7 @@ void GuiInterface::draw_mapping_panel(ofRectangle rect){
         mouse_over_remove_toggle = ImGui::IsMouseHoveringWindow();
         ImTextureID remove_texID = (ImTextureID)(uintptr_t)(remove_button_ID);
         if(ImGui::ImageButton(remove_texID, ImVec2(111,51))){
-            int surface_to_delete = mapper->_application.getSurfaceManager()->getSelectedSurfaceIndex();
-            mapper->_application.eraseSurface(surface_to_delete);
+            map_helper.remove_surface();
         }
     }
     ofxImGui::EndWindow(mainSettings);

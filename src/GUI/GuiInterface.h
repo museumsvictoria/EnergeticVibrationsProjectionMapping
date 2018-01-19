@@ -15,6 +15,7 @@
 #include "ofxImGui.h"
 #include "VisualLayer.h"
 #include "ofxPiMapper.h"
+#include "PiMapperHelper.h"
 
 struct ShaderToggle{
     bool b;
@@ -59,9 +60,9 @@ class GuiInterface{
     bool is_mouse_over_mapping_toggles();
     int get_selected_shader();
     
-    ofxPiMapper* mapper;
-    
 private:
+    PiMapperHelper map_helper;
+    
     ImGuiWindowFlags window_flags;
     
     ofRectangle add_shape_rect;

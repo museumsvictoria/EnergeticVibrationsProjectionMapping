@@ -9,7 +9,6 @@
 #include "Settings.h"
 #include "ofxPiMapper.h"
 
-#include "PiGui.h"
 
 class ofApp : public ofBaseApp{
 

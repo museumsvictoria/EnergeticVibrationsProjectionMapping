@@ -99,6 +99,7 @@
 		13BB99522011A888002E9CD6 /* CircleJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13BB98F42011A888002E9CD6 /* CircleJoint.cpp */; };
 		13BB99532011A888002E9CD6 /* RadioList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13BB98F82011A888002E9CD6 /* RadioList.cpp */; };
 		13BB99542011A888002E9CD6 /* HomographyHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13BB98FB2011A888002E9CD6 /* HomographyHelper.cpp */; };
+		13BB9957201207EA002E9CD6 /* PiMapperHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13BB9955201207EA002E9CD6 /* PiMapperHelper.cpp */; };
 		13F4B397200D7D9E00D48D3A /* CustomSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13F4B395200D7D9E00D48D3A /* CustomSlider.cpp */; };
 		13F4B39A200D7E9D00D48D3A /* Gradient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13F4B398200D7E9D00D48D3A /* Gradient.cpp */; };
 		1CD33E884D9E3358252E82A1 /* ofxToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 907C5B5E104864A2D3A25745 /* ofxToggle.cpp */; };
@@ -386,6 +387,8 @@
 		13BB98F92011A888002E9CD6 /* RadioList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioList.h; sourceTree = "<group>"; };
 		13BB98FB2011A888002E9CD6 /* HomographyHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HomographyHelper.cpp; sourceTree = "<group>"; };
 		13BB98FC2011A888002E9CD6 /* HomographyHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomographyHelper.h; sourceTree = "<group>"; };
+		13BB9955201207EA002E9CD6 /* PiMapperHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PiMapperHelper.cpp; sourceTree = "<group>"; };
+		13BB9956201207EA002E9CD6 /* PiMapperHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiMapperHelper.h; sourceTree = "<group>"; };
 		13F4B395200D7D9E00D48D3A /* CustomSlider.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CustomSlider.cpp; sourceTree = "<group>"; };
 		13F4B396200D7D9E00D48D3A /* CustomSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSlider.h; sourceTree = "<group>"; };
 		13F4B398200D7E9D00D48D3A /* Gradient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Gradient.cpp; sourceTree = "<group>"; };
@@ -505,6 +508,8 @@
 				13F4B396200D7D9E00D48D3A /* CustomSlider.h */,
 				1303CF9A200D9E550010EC63 /* AudioToggles.cpp */,
 				1303CF9B200D9E550010EC63 /* AudioToggles.h */,
+				13BB9955201207EA002E9CD6 /* PiMapperHelper.cpp */,
+				13BB9956201207EA002E9CD6 /* PiMapperHelper.h */,
 			);
 			path = GUI;
 			sourceTree = "<group>";
@@ -1288,6 +1293,7 @@
 				13BB99352011A888002E9CD6 /* ToggleAnimatedSourceCmd.cpp in Sources */,
 				13BB99292011A888002E9CD6 /* SelPrevSurfaceCmd.cpp in Sources */,
 				13BB99022011A888002E9CD6 /* BaseEngine.cpp in Sources */,
+				13BB9957201207EA002E9CD6 /* PiMapperHelper.cpp in Sources */,
 				13BB98FD2011A888002E9CD6 /* imgui.cpp in Sources */,
 				13BB99112011A888002E9CD6 /* TextureMappingMode.cpp in Sources */,
 				13BB99512011A888002E9CD6 /* BaseJoint.cpp in Sources */,
