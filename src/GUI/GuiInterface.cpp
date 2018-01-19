@@ -20,6 +20,8 @@ GuiInterface::~GuiInterface(){
 //------------------------------------
 GuiInterface::GuiInterface(){
     selected_shader = 0;
+    mouse_over_remove_toggle = false;
+    mouse_over_duplicate_toggle = false;
 }
 
 //------------------------------------
@@ -44,7 +46,9 @@ void GuiInterface::init_window_flags(){
 }
 
 //------------------------------------
-void GuiInterface::setup(ofxImGui::Gui &gui){
+void GuiInterface::setup(ofxImGui::Gui &gui, ofxPiMapper& mapper){
+    this->mapper = &mapper;
+    
     img.load("BP_PROJECTION_INTERFACE.png");
     
     font_large.load("fonts/ArialRoundedBold.ttf", 15);
@@ -159,7 +163,7 @@ void GuiInterface::update_audio_reactivity(vector<VisualLayer *> &layers){
 //------------------------------------
 void GuiInterface::draw(ShaderParams &params){
     if(ofGetMousePressed()){
-        img.draw(0,0);
+        //img.draw(0,0);
     }
 
     draw_add_shape(add_shape_rect);
@@ -294,28 +298,40 @@ void GuiInterface::draw_mapping_panel(ofRectangle rect){
     
     auto mainSettings = ofxImGui::Settings();
     mainSettings.windowPos = ofVec2f((rect.x + rect.width) - 165, rect.y + 10);
-    mainSettings.windowSize = ofVec2f(120,80);
+    mainSettings.windowSize = ofVec2f(111,75);
     
     if (ofxImGui::BeginWindow("duplicate panel", mainSettings, window_flags))
     {
+        mouse_over_duplicate_toggle = ImGui::IsMouseHoveringWindow();
         ImTextureID duplicate_texID = (ImTextureID)(uintptr_t)(duplicate_button_ID);
         if(ImGui::ImageButton(duplicate_texID, ImVec2(111,51))){
-            
+            mapper->_application.duplicateSurface();
         }
     }
     ofxImGui::EndWindow(mainSettings);
     
-    mainSettings.windowPos = ofVec2f((rect.x + rect.width) - 165, rect.y + 70);
+    mainSettings.windowPos = ofVec2f((rect.x + rect.width) - 165, rect.y + 82);
     if (ofxImGui::BeginWindow("remove panel", mainSettings, window_flags))
     {
+        mouse_over_remove_toggle = ImGui::IsMouseHoveringWindow();
         ImTextureID remove_texID = (ImTextureID)(uintptr_t)(remove_button_ID);
         if(ImGui::ImageButton(remove_texID, ImVec2(111,51))){
-            
+            int surface_to_delete = mapper->_application.getSurfaceManager()->getSelectedSurfaceIndex();
+            mapper->_application.eraseSurface(surface_to_delete);
         }
     }
     ofxImGui::EndWindow(mainSettings);
     
 
+}
+
+//------------------------------------
+bool GuiInterface::is_mouse_over_mapping_toggles(){
+    if(mouse_over_remove_toggle | mouse_over_duplicate_toggle){
+        return true;
+    } else {
+        return false;
+    }
 }
 
 //------------------------------------

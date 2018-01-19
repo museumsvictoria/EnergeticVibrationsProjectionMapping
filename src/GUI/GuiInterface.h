@@ -14,6 +14,7 @@
 #include "AudioToggles.h"
 #include "ofxImGui.h"
 #include "VisualLayer.h"
+#include "ofxPiMapper.h"
 
 struct ShaderToggle{
     bool b;
@@ -33,7 +34,7 @@ class GuiInterface{
     GuiInterface();
     ~GuiInterface();
     void init_window_flags();
-    void setup(ofxImGui::Gui &gui);
+    void setup(ofxImGui::Gui &gui, ofxPiMapper& mapper);
     void setup_shader_toggles(vector<VisualLayer*> &layers);
     void setup_mapping_panel(ofxImGui::Gui &gui);
     void setup_selected_layer(ofxImGui::Gui &gui);
@@ -54,8 +55,10 @@ class GuiInterface{
     void update_volumes(vector<float> volumes);
     vector<float> volumes;
 
-    
+    bool is_mouse_over_mapping_toggles();
     int get_selected_shader();
+    
+    ofxPiMapper* mapper;
     
 private:
     ImGuiWindowFlags window_flags;
@@ -78,7 +81,9 @@ private:
     ofShader mp_grid;
     GLuint remove_button_ID;
     GLuint duplicate_button_ID;
-
+    bool mouse_over_remove_toggle;
+    bool mouse_over_duplicate_toggle;
+    
     ofImage img; // background template ref
 
     //Red Gradient Shader

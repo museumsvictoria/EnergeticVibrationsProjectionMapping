@@ -6,7 +6,7 @@ void ofApp::setup(){
     ofSetFrameRate(60);
     ofDisableArbTex(); // Use GL_TEXTURE_2D Textures (normalized texture coordinates 0..1)
     ofBackground(0);
-
+    ofEnableSmoothing();
 
     static int num_layers = 7;
     
@@ -33,7 +33,7 @@ void ofApp::setup(){
     //load theme
     gui_theme.init_theme();
     
-    gui_interface.setup(gui);
+    gui_interface.setup(gui, mapper);
     gui_interface.setup_shader_toggles(layers);
     
     projection_fbo.allocate(1450,870,GL_RGBA);
@@ -52,7 +52,6 @@ void ofApp::drawProjections(ofEventArgs & args){
     if(projection_fbo.isAllocated()){
         projection_fbo.getTexture().draw(0,0,ofGetWidth(), ofGetHeight());
     }
-//    mapper._application.getSurfaceManager()->draw_projection_fbo();
 }
 
 
@@ -89,6 +88,8 @@ void ofApp::draw(){
 //    }
     //layers[0]->hue_fbo.fbo.draw(0,0,ofGetWidth(),ofGetHeight());
 
+    //cout << "selected surface = " << mapper._application.getSurfaceManager()->getSelectedSurface() << endl;
+    
 }
 
 //--------------------------------------------------------------
@@ -144,7 +145,12 @@ void ofApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
-    mapper.mousePressed(x, y, button);
+    // allow the ImGui duplicate and remove buttons to take precedence
+    // over the layer selection and deselection. otherwise the layers
+    // deselect when the button is clicked. This results in no selected objects
+    if(!gui_interface.is_mouse_over_mapping_toggles()){
+        mapper.mousePressed(x, y, button);
+    }
 }
 
 //--------------------------------------------------------------
