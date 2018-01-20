@@ -228,11 +228,11 @@ void GuiInterface::draw_add_shape(ofRectangle rect){
         ImTextureID triangleID = (ImTextureID)(uintptr_t)triangle_buttonID;
 
         if(ImGui::ImageButton(quadID, ImVec2(100,100))){
-
+            map_helper.add_quad_surface();
         }
         ImGui::SameLine(0,50);
         if(ImGui::ImageButton(triangleID, ImVec2(100,100))){
-            
+            map_helper.add_triangle_surface();
         }
     }
     ofxImGui::EndWindow(mainSettings);
@@ -331,7 +331,8 @@ void GuiInterface::draw_shader_toggles(ofRectangle rect){
         }
     }
     
-    cout << "sel = " << map_helper.get_selected_source() << endl;
+    cout << "selected shader = " << map_helper.currently_selected_shader << endl;
+    //cout << "sel = " << map_helper.get_selected_source() << endl;
 }
 
 //------------------------------------

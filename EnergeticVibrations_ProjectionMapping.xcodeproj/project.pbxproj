@@ -226,10 +226,7 @@
 		13BB984B2011A888002E9CD6 /* ofxImGuiLoggerChannel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxImGuiLoggerChannel.cpp; sourceTree = "<group>"; };
 		13BB984C2011A888002E9CD6 /* ofxImGuiLoggerChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxImGuiLoggerChannel.h; sourceTree = "<group>"; };
 		13BB984D2011A888002E9CD6 /* ThemeTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeTest.h; sourceTree = "<group>"; };
-		13BB984F2011A888002E9CD6 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		13BB98502011A888002E9CD6 /* addon_config.mk */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = addon_config.mk; sourceTree = "<group>"; };
 		13BB98512011A888002E9CD6 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
-		13BB98522011A888002E9CD6 /* ofxaddons_thumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ofxaddons_thumbnail.png; sourceTree = "<group>"; };
 		13BB98532011A888002E9CD6 /* piMapperLogo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = piMapperLogo.jpg; sourceTree = "<group>"; };
 		13BB98542011A888002E9CD6 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		13BB98562011A888002E9CD6 /* startup.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = startup.sh; sourceTree = "<group>"; };
@@ -626,10 +623,7 @@
 		13BB984E2011A888002E9CD6 /* ofxPiMapper */ = {
 			isa = PBXGroup;
 			children = (
-				13BB984F2011A888002E9CD6 /* .gitignore */,
-				13BB98502011A888002E9CD6 /* addon_config.mk */,
 				13BB98512011A888002E9CD6 /* LICENSE.md */,
-				13BB98522011A888002E9CD6 /* ofxaddons_thumbnail.png */,
 				13BB98532011A888002E9CD6 /* piMapperLogo.jpg */,
 				13BB98542011A888002E9CD6 /* README.md */,
 				13BB98552011A888002E9CD6 /* scripts */,

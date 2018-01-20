@@ -19,6 +19,9 @@ public:
     void setup(ofxPiMapper& mapper);
     bool check_if_source_sxists();
     
+    void add_triangle_surface();
+    void add_quad_surface();
+    
     void update_layer_source(int layer);
     
     void remove_surface();
@@ -27,8 +30,10 @@ public:
     int get_selected_source();
     
 
+    string currently_selected_shader;
 
 private:
+    
     BaseSource* get_source();
     ofxPiMapper* mapper;
     SurfaceManager * surfaceManager;

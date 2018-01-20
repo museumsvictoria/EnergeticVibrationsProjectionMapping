@@ -15,7 +15,7 @@ void PiMapperHelper::setup(ofxPiMapper& mapper){
     this->mapper = &mapper;
     
     surfaceManager = mapper._application.getSurfaceManager();
-    
+    currently_selected_shader = "Shader1";
 }
 
 //----------------------------------------
@@ -34,12 +34,25 @@ BaseSource* PiMapperHelper::get_source(){
 }
 
 //----------------------------------------
-void PiMapperHelper::update_layer_source(int layer){
-    if(!check_if_source_sxists()) return;
-    
-    string path = "Shader" + ofToString(layer + 1);
+void PiMapperHelper::add_triangle_surface(){
+    mapper->_application.createSurface(SurfaceType::TRIANGLE_SURFACE);
     SourcesEditorWidget* sourceEditorWidget = &Gui::instance()->getSourcesEditorWidget();
-    sourceEditorWidget->setFboSource(path);
+    sourceEditorWidget->setFboSource(currently_selected_shader);
+}
+//----------------------------------------
+void PiMapperHelper::add_quad_surface(){
+    mapper->_application.createSurface(SurfaceType::QUAD_SURFACE);
+    SourcesEditorWidget* sourceEditorWidget = &Gui::instance()->getSourcesEditorWidget();
+    sourceEditorWidget->setFboSource(currently_selected_shader);
+}
+
+//----------------------------------------
+void PiMapperHelper::update_layer_source(int layer){
+    currently_selected_shader = "Shader" + ofToString(layer + 1);
+
+    if(!check_if_source_sxists()) return;
+    SourcesEditorWidget* sourceEditorWidget = &Gui::instance()->getSourcesEditorWidget();
+    sourceEditorWidget->setFboSource(currently_selected_shader);
 }
 
 //----------------------------------------
