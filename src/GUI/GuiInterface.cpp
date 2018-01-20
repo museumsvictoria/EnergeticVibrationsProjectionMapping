@@ -15,6 +15,8 @@ GuiInterface::~GuiInterface(){
             delete shader_states[i].sliders[x];
         }
     }
+    
+    ofRemoveListener(map_helper.get_surface_manager()->surfaceSelectedEvent, this, &GuiInterface::onSurfaceSelected);
 }
 
 //------------------------------------
@@ -74,6 +76,14 @@ void GuiInterface::setup(ofxImGui::Gui &gui, ofxPiMapper& mapper){
     
     // init volume vector
     volumes = {0.0, 0.0, 0.0};
+    
+    // Receive events from ofxPiMapper when a new surface is selected
+    ofAddListener(map_helper.get_surface_manager()->surfaceSelectedEvent, this, &GuiInterface::onSurfaceSelected);
+}
+
+//----------------------------------------
+void GuiInterface::onSurfaceSelected(int & surfaceIndex){
+    update_active_shader(map_helper.get_selected_source());
 }
 
 //------------------------------------
@@ -156,6 +166,20 @@ void GuiInterface::setup_add_shape(){
     
     quad_buttonID = (ImTextureID)quad_fbo.getTexture().texData.textureID;
     triangle_buttonID = (ImTextureID)tri_fbo.getTexture().texData.textureID;
+}
+
+//------------------------------------
+void GuiInterface::update_active_shader(int selected){
+    selected_shader = selected;
+    shader_toggles[selected_shader].b = true;
+    map_helper.update_layer_source(selected_shader);
+    
+    for(int x = 0; x < shader_states[selected_shader].sliders.size(); x++){
+        float value = shader_states[selected_shader].sliders[x]->getValue();
+        shader_states[selected_shader].sliders[x]->setPercent(value);
+    }
+    
+    update_active_sliders();
 }
 
 //------------------------------------
@@ -307,16 +331,7 @@ void GuiInterface::draw_shader_toggles(ofRectangle rect){
             else ImGui::PushStyleColor(ImGuiCol_Button, c2);
             
             if(ImGui::ImageButton(shader_toggles[i].buttonID, ImVec2(196,167))){
-                shader_toggles[i].b = true;
-                selected_shader = i;
-                map_helper.update_layer_source(selected_shader);
-                
-                for(int x = 0; x < shader_states[selected_shader].sliders.size(); x++){
-                    float value = shader_states[selected_shader].sliders[x]->getValue();
-                    shader_states[selected_shader].sliders[x]->setPercent(value);
-                }
-                
-                update_active_sliders();
+                update_active_shader(i);
             }
             ImGui::PopStyleColor();
             ImGui::SameLine(0,2); // squish the toggles closer togther
@@ -331,8 +346,6 @@ void GuiInterface::draw_shader_toggles(ofRectangle rect){
         }
     }
     
-    cout << "selected shader = " << map_helper.currently_selected_shader << endl;
-    //cout << "sel = " << map_helper.get_selected_source() << endl;
 }
 
 //------------------------------------

@@ -42,6 +42,7 @@ class GuiInterface{
     void setup_selected_layer(ofxImGui::Gui &gui);
     
     void update_audio_reactivity(vector<VisualLayer*> &layers);
+    void update_active_shader(int selected);
     void update_active_sliders();
     
     void draw(ShaderParams &params);
@@ -62,6 +63,9 @@ class GuiInterface{
     
     int get_selected_shader();
     
+    // Event from PiMapper when sureface is selected
+    void onSurfaceSelected(int & surfaceIndex);
+
 private:
     PiMapperHelper map_helper;
     

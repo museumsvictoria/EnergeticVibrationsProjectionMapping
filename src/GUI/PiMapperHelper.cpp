@@ -9,6 +9,9 @@
 #include "PiMapperHelper.h"
 
 
+//----------------------------------------
+PiMapperHelper::~PiMapperHelper(){
+}
 
 //----------------------------------------
 void PiMapperHelper::setup(ofxPiMapper& mapper){
@@ -16,6 +19,12 @@ void PiMapperHelper::setup(ofxPiMapper& mapper){
     
     surfaceManager = mapper._application.getSurfaceManager();
     currently_selected_shader = "Shader1";
+    current_src_idx = 0;
+}
+
+//----------------------------------------
+SurfaceManager* PiMapperHelper::get_surface_manager(){
+    return surfaceManager;
 }
 
 //----------------------------------------
@@ -49,7 +58,8 @@ void PiMapperHelper::add_quad_surface(){
 //----------------------------------------
 void PiMapperHelper::update_layer_source(int layer){
     currently_selected_shader = "Shader" + ofToString(layer + 1);
-
+    current_src_idx = layer;
+    cout << "currently_selected_shader = " << currently_selected_shader << endl;
     if(!check_if_source_sxists()) return;
     SourcesEditorWidget* sourceEditorWidget = &Gui::instance()->getSourcesEditorWidget();
     sourceEditorWidget->setFboSource(currently_selected_shader);
@@ -68,8 +78,17 @@ void PiMapperHelper::duplicate_surface(){
 //----------------------------------------
 int PiMapperHelper::get_selected_source(){
     if(!check_if_source_sxists()) return 0;
-    //ascii code numbers start from 48
-    // we subtract 1 from this cause our shaders are
-    // indexed from 0 not 1
-    return (int)(get_source()->getName().back()) - 48 - 1;
+    
+    // If no source layer is currently selected, then use the last
+    // current source shader index
+    if(get_source()->getName() == ""){
+        return current_src_idx;
+    }
+    else {
+        //ascii code numbers start from 48
+        // we subtract 1 from this cause our shaders are
+        // indexed from 0 not 1
+        current_src_idx = (int)(get_source()->getName().back()) - 48 - 1;
+        return current_src_idx;
+    }
 }

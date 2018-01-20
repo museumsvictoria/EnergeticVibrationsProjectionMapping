@@ -16,6 +16,7 @@ using namespace ofx::piMapper;
 
 class PiMapperHelper{
 public:
+    ~PiMapperHelper();
     void setup(ofxPiMapper& mapper);
     bool check_if_source_sxists();
     
@@ -29,9 +30,11 @@ public:
     
     int get_selected_source();
     
-
     string currently_selected_shader;
-
+    int current_src_idx;
+    
+    SurfaceManager * get_surface_manager();
+    
 private:
     
     BaseSource* get_source();
