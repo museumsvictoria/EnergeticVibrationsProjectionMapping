@@ -17,10 +17,11 @@ public:
     void load_font(){
         // Load unicode font, has to be done before gui set up - see https://github.com/jvcleave/ofxImGui/issues/19
         ImGuiIO * io = &ImGui::GetIO();
-        const char * font = "/Users/joshuabatty/Documents/Software/openFrameworks/git/openFrameworks/addons/ofxImGui/example-demo/bin/data/fonts/Ruda-Bold.ttf";
+//        const char * font = "/Users/joshuabatty/Documents/Software/openFrameworks/git/openFrameworks/addons/ofxImGui/example-demo/bin/data/fonts/Ruda-Bold.ttf";
         ImFontConfig font_config; font_config.OversampleH = 1; font_config.OversampleV = 1; font_config.PixelSnapH = 1;
         // load Lucinda SansRegular Unicode font - file name L_10646.TTF
-        io->Fonts->AddFontFromFileTTF(font, 16.0f, NULL, io->Fonts->GetGlyphRangesDefault());
+//        io->Fonts->AddFontFromFileTTF(font, 16.0f, NULL, io->Fonts->GetGlyphRangesDefault());
+        io->Fonts->AddFontFromFileTTF(&ofToDataPath("fonts/Ruda-Bold.ttf")[0], 16.0f, NULL, io->Fonts->GetGlyphRangesDefault());
         unsigned char * pixels;
         int width, height;
         io->Fonts->GetTexDataAsRGBA32(&pixels, &width, &height);
