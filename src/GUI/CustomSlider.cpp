@@ -45,6 +45,19 @@ void CustomSlider::setup(float inx, float iny, float inw, float inh, float loVal
 		ofAddListener(ofEvents().mousePressed, this, &CustomSlider::mousePressed);
 		ofAddListener(ofEvents().mouseReleased, this, &CustomSlider::mouseReleased);
 		ofAddListener(ofEvents().mouseDragged, this, &CustomSlider::mouseDragged);
+        
+        //----------------WINDOWS ONLY
+#ifdef WINDOWS_TOUCH
+        /* Essential setup */
+        ofxWin8TouchSetup();
+        ofRegisterTouchEvents(this);
+        ofAddListener(ofEvents().touchDown, this, &CustomSlider::touchDown);
+        ofAddListener(ofEvents().touchMoved, this, &CustomSlider::touchMoved);
+        ofAddListener(ofEvents().touchUp, this, &CustomSlider::touchUp);
+        ofAddListener(ofEvents().touchDoubleTap, this, &CustomSlider::touchDoubleTap);
+        ofAddListener(ofEvents().touchCancelled, this, &CustomSlider::touchCancelled);
+#endif
+        
 		bWasSetup = true;
 	}
 }
@@ -56,6 +69,15 @@ void CustomSlider::clear(){
 		ofRemoveListener(ofEvents().mousePressed, this, &CustomSlider::mousePressed);
 		ofRemoveListener(ofEvents().mouseReleased, this, &CustomSlider::mouseReleased);
 		ofRemoveListener(ofEvents().mouseDragged, this, &CustomSlider::mouseDragged);
+        
+        //----------------WINDOWS ONLY
+#ifdef WINDOWS_TOUCH
+        ofRemoveListener(ofEvents().touchDown, this, &CustomSlider::touchDown);
+        ofRemoveListener(ofEvents().touchMoved, this, &CustomSlider::touchMoved);
+        ofRemoveListener(ofEvents().touchUp, this, &CustomSlider::touchUp);
+        ofRemoveListener(ofEvents().touchDoubleTap, this, &CustomSlider::touchDoubleTap);
+        ofRemoveListener(ofEvents().touchCancelled, this, &CustomSlider::touchCancelled);
+#endif
 	}
 	bWasSetup = false;
 }
@@ -185,5 +207,56 @@ void CustomSlider::mouseReleased(ofMouseEventArgs& event){
 void CustomSlider::updatePercentFromMouse (int mx, int my){
     percent = ofMap(mx, x + thumb_radius, (x+width) - thumb_radius,  0,1, true);
 }
+
+#ifdef WINDOWS_TOUCH
+//----------------WINDOWS ONLY
+//--------------------------------------------------------------
+void CustomSlider::touchDown(ofTouchEventArgs & touch){
+    touchMap[touch.id] = touch;
+    
+    bHasFocus = false;
+    if (box.inside(touch.x, touch.y)){
+        bHasFocus = true;
+        if(isActive){
+            updatePercentFromMouse (touch.x, touch.y);
+        }
+    }
+}
+
+//--------------------------------------------------------------
+void CustomSlider::touchMoved(ofTouchEventArgs & touch){
+    touchMap[touch.id] = touch;
+    
+    if (bHasFocus){
+        if(isActive){
+            updatePercentFromMouse (touch.x, touch.y);
+        }
+    }
+}
+
+//--------------------------------------------------------------
+void CustomSlider::touchUp(ofTouchEventArgs & touch){
+    touchMap.erase(touch.id);
+    
+    if (bHasFocus){
+        if (box.inside(touch.x, touch.y)){
+            if(isActive){
+                updatePercentFromMouse (touch.x, touch.y);
+            }
+        }
+    }
+    bHasFocus = false;
+}
+
+//--------------------------------------------------------------
+void CustomSlider::touchDoubleTap(ofTouchEventArgs & touch){
+    
+}
+
+//--------------------------------------------------------------
+void CustomSlider::touchCancelled(ofTouchEventArgs & touch){
+    touchMap.erase(touch.id);
+}
+#endif
 		
 
