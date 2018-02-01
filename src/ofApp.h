@@ -9,6 +9,12 @@
 #include "Settings.h"
 #include "ofxPiMapper.h"
 
+//#define WINDOWS_TOUCH
+
+//----------------WINDOWS ONLY
+#ifdef WINDOWS_TOUCH
+#include "ofxWin8Touch.h"
+#endif
 
 class ofApp : public ofBaseApp{
 
@@ -31,6 +37,17 @@ class ofApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
+    
+        //----------------WINDOWS ONLY
+#ifdef WINDOWS_TOUCH
+        /* Touches */
+        void touchDown(ofTouchEventArgs & touch);
+        void touchMoved(ofTouchEventArgs & touch);
+        void touchUp(ofTouchEventArgs & touch);
+        void touchDoubleTap(ofTouchEventArgs & touch);
+        void touchCancelled(ofTouchEventArgs & touch);
+        map<int, ofTouchEventArgs> touchMap;
+#endif
     
         ///------------- MAPPING
         ofxPiMapper mapper;

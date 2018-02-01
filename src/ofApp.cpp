@@ -36,6 +36,14 @@ void ofApp::setup(){
     gui_interface.setup_shader_toggles(layers);
     
     projection_fbo.allocate(1450,870,GL_RGBA);
+    
+    //----------------WINDOWS ONLY
+#ifdef WINDOWS_TOUCH
+    /* Essential setup */
+    ofxWin8TouchSetup();
+    ofRegisterTouchEvents(this);
+#endif
+
 }
 
 //--------------------------------------------------------------
@@ -160,3 +168,30 @@ void ofApp::dragEvent(ofDragInfo dragInfo){
 
 }
 
+#ifdef WINDOWS_TOUCH
+//----------------WINDOWS ONLY
+//--------------------------------------------------------------
+void ofApp::touchDown(ofTouchEventArgs & touch){
+    touchMap[touch.id] = touch;
+}
+
+//--------------------------------------------------------------
+void ofApp::touchMoved(ofTouchEventArgs & touch){
+    touchMap[touch.id] = touch;
+}
+
+//--------------------------------------------------------------
+void ofApp::touchUp(ofTouchEventArgs & touch){
+    touchMap.erase(touch.id);
+}
+
+//--------------------------------------------------------------
+void ofApp::touchDoubleTap(ofTouchEventArgs & touch){
+    
+}
+
+//--------------------------------------------------------------
+void ofApp::touchCancelled(ofTouchEventArgs & touch){
+    touchMap.erase(touch.id);
+}
+#endif

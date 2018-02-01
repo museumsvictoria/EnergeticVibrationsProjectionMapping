@@ -4,20 +4,27 @@
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
-    "3B0D36513453A666A188F5E0EE99B24C8F794C85" : 9223372036854775807,
     "F18B6FEBE66912B859D879DB0D93A2398D3668F4" : 9223372036854775807,
-    "55505DE6675E1AEB4CF72AD63A972936EC984D97" : 9223372036854775807
+    "55505DE6675E1AEB4CF72AD63A972936EC984D97" : 9223372036854775807,
+    "1E1F555BAAB494BC34FACFF686398272A321A9AF" : 9223372036854775807,
+    "3B0D36513453A666A188F5E0EE99B24C8F794C85" : 9223372036854775807
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "59D6FF98-7843-4ECA-86D3-9BEB2C59073D",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "3B0D36513453A666A188F5E0EE99B24C8F794C85" : "EnergeticVibrationsProjectionMapping\/",
     "F18B6FEBE66912B859D879DB0D93A2398D3668F4" : "..\/..\/addons\/ofxPiMapper",
-    "55505DE6675E1AEB4CF72AD63A972936EC984D97" : "EnergeticVibrationsProjectionMapping\/addons\/ofxImGui\/"
+    "55505DE6675E1AEB4CF72AD63A972936EC984D97" : "EnergeticVibrationsProjectionMapping\/addons\/ofxImGui\/",
+    "1E1F555BAAB494BC34FACFF686398272A321A9AF" : "EnergeticVibrationsProjectionMapping\/addons\/ofxWin8Touch\/",
+    "3B0D36513453A666A188F5E0EE99B24C8F794C85" : "EnergeticVibrationsProjectionMapping\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "EnergeticVibrations_ProjectionMapping",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
   "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "EnergeticVibrations_ProjectionMapping.xcodeproj",
   "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/nneonneo\/ofxWin8Touch",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1E1F555BAAB494BC34FACFF686398272A321A9AF"
+    },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/JoshuaBatty\/EnergeticVibrationsProjectionMapping",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
