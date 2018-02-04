@@ -7,7 +7,7 @@ void ofApp::setup(){
     ofDisableArbTex(); // Use GL_TEXTURE_2D Textures (normalized texture coordinates 0..1)
     ofBackground(0);
     ofEnableSmoothing();
-
+	
     static int num_layers = 7;
     
     for(int i = 0; i < num_layers; i++){
@@ -22,7 +22,7 @@ void ofApp::setup(){
     ofx::piMapper::VideoSource::useHDMIForAudio = false;
     mapper.setup();
     
-    
+  
     //load fonts first
     gui_theme.load_font();
     
@@ -37,13 +37,14 @@ void ofApp::setup(){
     
     projection_fbo.allocate(1450,870,GL_RGBA);
     
+	/*
     //----------------WINDOWS ONLY
 #ifdef WINDOWS_TOUCH
-    /* Essential setup */
+    // Essential setup //
     ofxWin8TouchSetup();
     ofRegisterTouchEvents(this);
 #endif
-
+	*/
 }
 
 //--------------------------------------------------------------
@@ -61,7 +62,6 @@ void ofApp::drawProjections(ofEventArgs & args){
     }
 }
 
-
 //--------------------------------------------------------------
 void ofApp::update(){
     mapper.update();
@@ -70,7 +70,7 @@ void ofApp::update(){
     volumes.push_back(ofNoise(ofGetElapsedTimef() * 2.0));
     volumes.push_back(ofNoise(10000+ofGetElapsedTimef() * 2.0));
     volumes.push_back(ofNoise(200000+ofGetElapsedTimef() * 2.0));
-    gui_interface.update_volumes(volumes);
+	gui_interface.update_volumes(volumes);
     
     gui_interface.update_audio_reactivity(layers);
 }
@@ -99,10 +99,9 @@ void ofApp::draw(){
     
 //    mapper._application.Gui::getSourcesEditorWidget();
 //    ofx::piMapper::Gui::getSourcesEditorWidget().getLoadedTexCount();
-    
-
 }
 
+/*
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
     mapper.keyPressed(key);
@@ -195,3 +194,4 @@ void ofApp::touchCancelled(ofTouchEventArgs & touch){
     touchMap.erase(touch.id);
 }
 #endif
+*/

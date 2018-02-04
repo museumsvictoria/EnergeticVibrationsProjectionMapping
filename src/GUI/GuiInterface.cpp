@@ -200,13 +200,13 @@ void GuiInterface::update_volumes(vector<float> volumes){
 //------------------------------------
 void GuiInterface::update_audio_reactivity(vector<VisualLayer *> &layers){
     for(int x = 0; x < shader_states.size(); x++){
+
         ShaderParams& params = layers[x]->shader_params[x];
         for(int i = 0; i < shader_states[x].toggles.size(); i++){
             float slider_val = shader_states[x].sliders[i]->getValue();
-            float audio_val = volumes[shader_states[x].toggles[i].get_selected_toggle()-1];
-            
             if(shader_states[x].toggles[i].get_selected_toggle() != 0){
-                shader_states[x].sliders[i]->update_gradient_percent(audio_val * slider_val);
+				float audio_val = volumes[shader_states[x].toggles[i].get_selected_toggle() - 1];
+				shader_states[x].sliders[i]->update_gradient_percent(audio_val * slider_val);
                 params.params[i] = audio_val * slider_val;
             }
         }
@@ -220,11 +220,10 @@ void GuiInterface::draw(ShaderParams &params){
     }
 
     draw_add_shape(add_shape_rect);
-    draw_selected_layer(selected_layer_rect, params);
-    draw_audio_analysis(audio_analysis_rect);
+	draw_selected_layer(selected_layer_rect, params);
+	draw_audio_analysis(audio_analysis_rect);
     draw_shader_toggles(shader_toggles_rect);
     draw_mapping_panel(mapping_panel_rect);
-    
 }
 
 //------------------------------------
@@ -276,15 +275,14 @@ void GuiInterface::draw_selected_layer(ofRectangle rect, ShaderParams &params){
         
         if(i < shader_states[selected_shader].toggles.size()){
             
-            float audio_val = volumes[shader_states[selected_shader].toggles[i].get_selected_toggle()-1];
-            
             shader_states[selected_shader].toggles[i].draw(params.names[i] + ofToString(i), ofVec2f(rect.x + padding.x, (param_gui_offset * i) + (rect.y+140)), ofVec2f(rect.width+10, 80), window_flags);
             
             if(shader_states[selected_shader].toggles[i].get_selected_toggle() == 0){
                 shader_states[selected_shader].sliders[i]->update_gradient_percent(slider_val);
                 params.params[i] = slider_val;
             } else {
-                shader_states[selected_shader].sliders[i]->update_gradient_percent(audio_val * slider_val);
+				float audio_val = volumes[shader_states[selected_shader].toggles[i].get_selected_toggle() - 1];
+				shader_states[selected_shader].sliders[i]->update_gradient_percent(audio_val * slider_val);
                 params.params[i] = audio_val * slider_val;
             }
         } else {

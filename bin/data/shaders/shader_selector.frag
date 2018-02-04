@@ -21,7 +21,7 @@ uniform float param3;
 #pragma include "Synths/EscherLike.frag"      // shader 3
 #pragma include "Synths/FlowerOfLife.frag"    // shader 4
 #pragma include "Synths/TriLattice.frag"      // shader 5
-#pragma include "Synths/RadialHexagon.frag" // shader 6
+#pragma include "Synths/RadialHexagon.frag"   // shader 6
 #pragma include "Synths/OpArtTwister.frag"    // shader 7
 #pragma include "Synths/2DPatternMesh.frag"   // shader 8
 
@@ -54,6 +54,6 @@ void main(void)
     else if(scene_select == 7){
         final_out = PatternMesh2D() * mix(vec3(1.0),colourise(hue_offset),remap(hue_offset,0.0,TWO_PI,0.0,1.0));
     }
-    
+
     gl_FragColor = vec4(final_out,1.0);
 }

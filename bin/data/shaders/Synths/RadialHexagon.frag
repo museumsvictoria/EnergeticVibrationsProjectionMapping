@@ -13,13 +13,13 @@ vec3 RadialHexagon()
     g = fract(g); g.z = 1.-g.x-g.y;                       // triangle coords
     g2 = abs(2.*g-1.);                                    // distance to borders
     
-    U = id.xy * mat2(1,.5, 0,1.73/2.);
+    U = id.xy * mat2(1,.5, 0.,1.73/2.);
     float l00 = length(U-uv),                    // screenspace distance to nodes
-    l10 = length(U+vec2(1,0)-uv),
+    l10 = length(U+vec2(1.,0.)-uv),
     l01 = length(U+vec2(.5,1.73/2.)-uv),
     l11 = length(U+vec2(1.5,1.73/2.)-uv),
     l = min(min(l00, l10), min( l01, l11)); // closest node: l=dist, C=coord
-    vec2 C = U+ ( l==l00 ? vec2(0) : l==l10 ? vec2(1,0) : l==l01 ? vec2(.5,1.73/2.) : vec2(1.5,1.73/2.) );
+    vec2 C = U + ( l==l00 ? vec2(0) : l==l10 ? vec2(1.,0.) : l==l01 ? vec2(.5,1.73/2.) : vec2(1.5,1.73/2.) );
     U = uv-C;
     float  s = 2.*mod(ceil(C.x+C.y),2.)-1.,
     r = length(U)/(1.73/2.)*3.,

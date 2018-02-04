@@ -9,7 +9,7 @@
 #include "Settings.h"
 #include "ofxPiMapper.h"
 
-//#define WINDOWS_TOUCH
+#define WINDOWS_TOUCH
 
 //----------------WINDOWS ONLY
 #ifdef WINDOWS_TOUCH
@@ -26,6 +26,7 @@ class ofApp : public ofBaseApp{
         void setupProjectionWindow();
         void drawProjections(ofEventArgs & args);
 
+		/*
 		void keyPressed(int key);
 		void keyReleased(int key);
 		void mouseMoved(int x, int y );
@@ -37,10 +38,10 @@ class ofApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
-    
+		
         //----------------WINDOWS ONLY
 #ifdef WINDOWS_TOUCH
-        /* Touches */
+        // Touches //
         void touchDown(ofTouchEventArgs & touch);
         void touchMoved(ofTouchEventArgs & touch);
         void touchUp(ofTouchEventArgs & touch);
@@ -48,7 +49,8 @@ class ofApp : public ofBaseApp{
         void touchCancelled(ofTouchEventArgs & touch);
         map<int, ofTouchEventArgs> touchMap;
 #endif
-    
+
+		*/
         ///------------- MAPPING
         ofxPiMapper mapper;
         ofFbo projection_fbo;
@@ -61,4 +63,5 @@ class ofApp : public ofBaseApp{
         GuiTheme gui_theme;
     
         GuiInterface gui_interface;
+	
 };

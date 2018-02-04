@@ -2,4 +2,5 @@ ofxGui
 ofxImGui
 ofxOsc
 ofxPiMapper
+ofxWin8Touch
 ofxXmlSettings
