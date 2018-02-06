@@ -152,6 +152,17 @@ void Application::onKeyReleased(ofKeyEventArgs & args){
 	}
 }
 
+// Josh adding in touch events
+void Application::touchDown(ofTouchEventArgs & touch) {
+	_state->onTouchDown(this, touch);
+}
+void Application::touchMoved(ofTouchEventArgs & touch) {
+	_state->onTouchMoved(this, touch);
+}
+void Application::touchUp(ofTouchEventArgs & touch) {
+	_state->onTouchUp(this, touch);
+}
+
 void Application::onMousePressed(ofMouseEventArgs & args){
     _state->onMousePressed(this, args);
 }

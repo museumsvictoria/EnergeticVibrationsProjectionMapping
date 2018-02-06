@@ -21,7 +21,12 @@ class ofxPiMapper {
 		void mousePressed(int x, int y, int button);
 		void mouseReleased(int x, int y, int button);
 		void mouseDragged(int x, int y, int button);
-	
+
+		// JOSH adding in touch events
+		void touchDown(int x, int y, int touchID);
+		void touchMoved(int x, int y, int touchID);
+		void touchUp(int x, int y, int touchID);
+
 		void registerFboSource(ofx::piMapper::FboSource & fboSource);
 		void registerFboSource(ofx::piMapper::FboSource * fboSource);
 	

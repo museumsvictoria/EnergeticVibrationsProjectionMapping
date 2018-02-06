@@ -188,6 +188,7 @@ void ofApp::dragEvent(ofDragInfo dragInfo){
 void ofApp::touchDown(ofTouchEventArgs & touch){
     touchMap[touch.id] = touch;
 	gui_interface.touchDown(touchMap);
+	//mapper.touchDown(touch.x, touch.y, touch.id);
 
 	// This is hear incase we really need to start hacking ImGui
 	// TO enable mouse events to be set from the touch screen. 
@@ -200,12 +201,14 @@ void ofApp::touchDown(ofTouchEventArgs & touch){
 void ofApp::touchMoved(ofTouchEventArgs & touch){
     touchMap[touch.id] = touch;
 	gui_interface.touchMoved(touchMap);
+	//mapper.touchMoved(touch.x, touch.y, touch.id);
 }
 
 //--------------------------------------------------------------
 void ofApp::touchUp(ofTouchEventArgs & touch){
     touchMap.erase(touch.id);
 	gui_interface.touchUp(touchMap);
+	//mapper.touchUp(touch.x, touch.y, touch.id);
 
 	// This is hear incase we really need to start hacking ImGui
 	// TO enable mouse events to be set from the touch screen. 

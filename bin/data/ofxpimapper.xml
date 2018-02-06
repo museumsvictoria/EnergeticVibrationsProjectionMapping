@@ -30,7 +30,7 @@
         </texCoords>
         <source>
             <source-type>fbo</source-type>
-            <source-name>Shader6</source-name>
+            <source-name>Shader3</source-name>
         </source>
     </surface>
     <surface type="0">
@@ -177,7 +177,7 @@
         </texCoords>
         <source>
             <source-type>fbo</source-type>
-            <source-name>Shader6</source-name>
+            <source-name>Shader3</source-name>
         </source>
     </surface>
     <surface type="0">
@@ -538,7 +538,7 @@
         </texCoords>
         <source>
             <source-type>fbo</source-type>
-            <source-name>Shader2</source-name>
+            <source-name>Shader3</source-name>
         </source>
     </surface>
     <surface type="0">
@@ -572,26 +572,26 @@
         </texCoords>
         <source>
             <source-type>fbo</source-type>
-            <source-name>Shader6</source-name>
+            <source-name>Shader3</source-name>
         </source>
     </surface>
     <surface type="1">
         <vertices>
             <vertex>
-                <x>1053.000000000</x>
-                <y>318.000000000</y>
+                <x>971.000000000</x>
+                <y>290.000000000</y>
             </vertex>
             <vertex>
-                <x>1264.000000000</x>
-                <y>332.000000000</y>
+                <x>1099.000000000</x>
+                <y>306.000000000</y>
             </vertex>
             <vertex>
-                <x>1245.000000000</x>
-                <y>492.000000000</y>
+                <x>1140.000000000</x>
+                <y>501.000000000</y>
             </vertex>
             <vertex>
-                <x>935.000000000</x>
-                <y>499.000000000</y>
+                <x>930.000000000</x>
+                <y>437.000000000</y>
             </vertex>
         </vertices>
         <texCoords>

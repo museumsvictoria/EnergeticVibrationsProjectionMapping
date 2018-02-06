@@ -74,6 +74,11 @@ class Application {
 		void onMousePressed(ofMouseEventArgs & args);
 		void onMouseReleased(ofMouseEventArgs & args);
 		void onMouseDragged(ofMouseEventArgs & args);
+
+		// JOSH adding in touch events
+		void touchDown(ofTouchEventArgs & touch);
+		void touchMoved(ofTouchEventArgs & touch);
+		void touchUp(ofTouchEventArgs & touch);
 	
 		// Then we catch GUI events with this one and create commands
 		void onJointPressed(GuiJointEvent & e);

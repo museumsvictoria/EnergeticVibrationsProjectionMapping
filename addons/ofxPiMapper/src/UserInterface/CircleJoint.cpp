@@ -56,7 +56,7 @@ void CircleJoint::draw(){
 }
 
 void CircleJoint::setDefaultProperties(){
-	radius = 10.0f;
+	radius = 20.0f;
 }
 
 bool CircleJoint::hitTest(ofVec2f pos){

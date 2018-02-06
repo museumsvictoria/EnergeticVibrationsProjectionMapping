@@ -53,6 +53,34 @@ void ofxPiMapper::mouseDragged(int x, int y, int button){
 	_application.onMouseDragged(args);
 }
 
+// JOSH adding in touch events
+void ofxPiMapper::touchDown(int x, int y, int touchID) {
+	ofTouchEventArgs touch;
+	touch.x = x;
+	touch.y = y;
+	touch.id = touchID;
+	touch.type = ofTouchEventArgs::down;
+	_application.touchDown(touch);
+}
+
+void ofxPiMapper::touchMoved(int x, int y, int touchID) {
+	ofTouchEventArgs touch;
+	touch.x = x;
+	touch.y = y;
+	touch.id = touchID;
+	touch.type = ofTouchEventArgs::move;
+	_application.touchMoved(touch);
+}
+
+void ofxPiMapper::touchUp(int x, int y, int touchID) {
+	ofTouchEventArgs touch;
+	touch.x = x;
+	touch.y = y;
+	touch.id = touchID;
+	touch.type = ofTouchEventArgs::up;
+	_application.touchUp(touch);
+}
+
 void ofxPiMapper::registerFboSource(ofx::piMapper::FboSource & fboSource){
 	_application.addFboSource(fboSource);
 }
