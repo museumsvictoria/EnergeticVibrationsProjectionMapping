@@ -66,6 +66,12 @@ class GuiInterface{
     // Event from PiMapper when sureface is selected
     void onSurfaceSelected(int & surfaceIndex);
 
+	//----------------WINDOWS ONLY
+	/* Touches */
+	void touchDown(map<int, ofTouchEventArgs> touchMap);
+	void touchMoved(map<int, ofTouchEventArgs> touchMap);
+	void touchUp(map<int, ofTouchEventArgs> touchMap);
+
 private:
     PiMapperHelper map_helper;
     
@@ -102,9 +108,9 @@ private:
 
     //Red Gradient Shader
     Gradient red_gradient;
-    
-    vector<ShaderState> shader_states;
-    
+        
+	vector<ShaderState> shader_states;
+
     //Shader Selection Buttons
     vector<ShaderToggle> shader_toggles;
     int selected_shader;

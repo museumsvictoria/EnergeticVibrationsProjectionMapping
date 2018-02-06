@@ -2,5 +2,5 @@ ofxGui
 ofxImGui
 ofxOsc
 ofxPiMapper
-ofxWin8Touch
+ofxWinTouchHook
 ofxXmlSettings

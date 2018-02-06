@@ -1,6 +1,5 @@
 #include "ofApp.h"
 
-
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofSetFrameRate(60);
@@ -8,6 +7,18 @@ void ofApp::setup(){
     ofBackground(0);
     ofEnableSmoothing();
 	
+	//----------------WINDOWS ONLY
+#ifdef WINDOWS_TOUCH
+	// enable the Windows Touch Hook
+	ofxWinTouchHook::EnableTouch();
+
+	// add touch listeners
+	ofAddListener(ofxWinTouchHook::touchDown, this, &ofApp::touchDown);
+	ofAddListener(ofxWinTouchHook::touchMoved, this, &ofApp::touchMoved);
+	ofAddListener(ofxWinTouchHook::touchUp, this, &ofApp::touchUp);
+#endif
+
+
     static int num_layers = 7;
     
     for(int i = 0; i < num_layers; i++){
@@ -35,35 +46,39 @@ void ofApp::setup(){
     gui_interface.setup(gui, mapper);
     gui_interface.setup_shader_toggles(layers);
     
-    projection_fbo.allocate(1450,870,GL_RGBA);
-    
-	/*
-    //----------------WINDOWS ONLY
-#ifdef WINDOWS_TOUCH
-    // Essential setup //
-    ofxWin8TouchSetup();
-    ofRegisterTouchEvents(this);
-#endif
-	*/
+	clear_touch_in_two_frames = 0;
+
+    projection_fbo.allocate(1450,870,GL_RGBA);	
 }
+
 
 //--------------------------------------------------------------
 void ofApp::setupProjectionWindow(){
-    ofSetBackgroundColor(0);
-    mapper._application.getSurfaceManager()->assign_projection_fbo(&projection_fbo);
+   ofSetBackgroundColor(0);
+   mapper._application.getSurfaceManager()->assign_projection_fbo(&projection_fbo);
 }
 
 //--------------------------------------------------------------
 void ofApp::drawProjections(ofEventArgs & args){
-    ofShowCursor();
+   ofShowCursor();
  
-    if(projection_fbo.isAllocated()){
+   if(projection_fbo.isAllocated()){
         projection_fbo.getTexture().draw(0,0,ofGetWidth(), ofGetHeight());
     }
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
+	// This is hear incase we really need to start hacking ImGui
+	// TO enable mouse events to be set from the touch screen. 
+	// We need to call this function 2 frames after the last touch event happened 
+	// So that button is hovered can be cleared. https://github.com/ocornut/imgui/issues/1470
+	//if (ofGetFrameNum() - clear_touch_in_two_frames == 2) {
+	//	ImGuiIO *io = &ImGui::GetIO();
+	//	io->MousePos = ImVec2(-FLT_MAX, -FLT_MAX);
+	//	cout << "frame cleared! -- frame num = " << ofGetFrameNum() << endl;
+	//}
+
     mapper.update();
     
     vector<float> volumes;
@@ -101,7 +116,6 @@ void ofApp::draw(){
 //    ofx::piMapper::Gui::getSourcesEditorWidget().getLoadedTexCount();
 }
 
-/*
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
     mapper.keyPressed(key);
@@ -167,31 +181,36 @@ void ofApp::dragEvent(ofDragInfo dragInfo){
 
 }
 
+
 #ifdef WINDOWS_TOUCH
 //----------------WINDOWS ONLY
 //--------------------------------------------------------------
 void ofApp::touchDown(ofTouchEventArgs & touch){
     touchMap[touch.id] = touch;
+	gui_interface.touchDown(touchMap);
+
+	// This is hear incase we really need to start hacking ImGui
+	// TO enable mouse events to be set from the touch screen. 
+	//ImGuiIO *io = &ImGui::GetIO();
+	//io->MousePos = ImVec2(touch.x, touch.y);
+	//io->MouseDown[0] = true;
 }
 
 //--------------------------------------------------------------
 void ofApp::touchMoved(ofTouchEventArgs & touch){
     touchMap[touch.id] = touch;
+	gui_interface.touchMoved(touchMap);
 }
 
 //--------------------------------------------------------------
 void ofApp::touchUp(ofTouchEventArgs & touch){
     touchMap.erase(touch.id);
-}
+	gui_interface.touchUp(touchMap);
 
-//--------------------------------------------------------------
-void ofApp::touchDoubleTap(ofTouchEventArgs & touch){
-    
-}
-
-//--------------------------------------------------------------
-void ofApp::touchCancelled(ofTouchEventArgs & touch){
-    touchMap.erase(touch.id);
+	// This is hear incase we really need to start hacking ImGui
+	// TO enable mouse events to be set from the touch screen. 
+	//ImGuiIO *io = &ImGui::GetIO();
+	//io->MouseDown[0] = false;
+	//clear_touch_in_two_frames = ofGetFrameNum();
 }
 #endif
-*/

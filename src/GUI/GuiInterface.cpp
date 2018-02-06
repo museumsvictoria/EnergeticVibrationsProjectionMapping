@@ -409,3 +409,42 @@ int GuiInterface::get_selected_shader(){
     return selected_shader;
 }
 
+
+//----------------WINDOWS ONLY
+//--------------------------------------------------------------
+void GuiInterface::touchDown(map<int, ofTouchEventArgs> touchMap) {
+
+	vector<CustomSlider*> sliders = shader_states[get_selected_shader()].sliders;
+	for (int i = 0; i < sliders.size(); i++) {
+		for (auto &t : touchMap) {
+			auto &touch = t.second;
+			if (sliders[i]->box.inside(touch.x, touch.y)) {
+				sliders[i]->active_touch_idx = touch.id;
+				sliders[i]->updatePercentFromMouse(touch.x, touch.y);
+			}
+		}
+	}
+
+
+}
+
+//--------------------------------------------------------------
+void GuiInterface::touchMoved(map<int, ofTouchEventArgs> touchMap) {
+
+	vector<CustomSlider*> sliders = shader_states[get_selected_shader()].sliders;
+	for (int i = 0; i < sliders.size(); i++) {
+		for (auto &t : touchMap) {
+			auto &touch = t.second;
+			if (sliders[i]->active_touch_idx == touch.id) {
+				if (sliders[i]->get_is_active()) {
+					sliders[i]->updatePercentFromMouse(touch.x, touch.y);
+				}
+			}
+		}
+	}
+}
+
+//--------------------------------------------------------------
+void GuiInterface::touchUp(map<int, ofTouchEventArgs> touchMap) {
+
+}

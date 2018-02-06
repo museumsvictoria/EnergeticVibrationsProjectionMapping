@@ -10,11 +10,6 @@
 #include "ofMain.h"
 #include "Gradient.h"
 
-//----------------WINDOWS ONLY
-#ifdef WINDOWS_TOUCH
-#include "ofxWin8Touch.h"
-#endif
-
 class CustomSlider {
 
 	public:
@@ -32,17 +27,6 @@ class CustomSlider {
 		void	mousePressed(ofMouseEventArgs& event);
 		void	mouseReleased(ofMouseEventArgs& event);
 	
-        //----------------WINDOWS ONLY
-    #ifdef WINDOWS_TOUCH
-        /* Touches */
-        void touchDown(ofTouchEventArgs & touch);
-        void touchMoved(ofTouchEventArgs & touch);
-        void touchUp(ofTouchEventArgs & touch);
-        void touchDoubleTap(ofTouchEventArgs & touch);
-        void touchCancelled(ofTouchEventArgs & touch);
-        map<int, ofTouchEventArgs> touchMap;
-    #endif
-    
 		float	getValue();
 		float	getLowValue();
 		float	getHighValue();
@@ -60,6 +44,12 @@ class CustomSlider {
         void update_gradient_percent(float perc);
         float gradient_perc;
     
+		//Touch Events
+		int active_touch_idx;
+
+		ofRectangle box;
+		bool get_is_active();
+
 	protected:
 		
         float   thumb_radius;
@@ -67,7 +57,6 @@ class CustomSlider {
 		float	y; 
 		float	width; 
 		float	height;
-		ofRectangle box; 
 		int		numberDisplayPrecision;
 	
 		bool	bVertical;

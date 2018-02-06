@@ -55,7 +55,7 @@ void AudioToggles::draw(string name, ofVec2f pos, ofVec2f size, ImGuiWindowFlags
     {
         for(int i = 0; i < toggles.size(); i++){
             ImTextureID texID = (ImTextureID)(uintptr_t) (toggles[i].b ? toggles[i].buttonOnID : toggles[i].buttonOffID);
-            
+			
             if(ImGui::ImageButton(texID, ImVec2(73,52))){
                 toggles[i].b = true;
                 selected = i;
@@ -63,7 +63,7 @@ void AudioToggles::draw(string name, ofVec2f pos, ofVec2f size, ImGuiWindowFlags
         }
     }
     ofxImGui::EndWindow(mainSettings);
-    
+
     // Make sure only the selected shaders toggle is active.
     for(int i = 0; i < toggles.size(); i++){
         if(i != selected){

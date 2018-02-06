@@ -343,8 +343,8 @@
 		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Utils\HomographyHelper.cpp">
 			<Filter>addons\ofxPiMapper\src\Utils</Filter>
 		</ClCompile>
-		<ClCompile Include="..\..\..\addons\ofxWin8Touch\src\ofxWin8Touch.cpp">
-			<Filter>addons\ofxWin8Touch\src</Filter>
+		<ClCompile Include="..\..\..\addons\ofxWinTouchHook\src\ofxWinTouchHook.cpp">
+			<Filter>addons\ofxWinTouchHook\src</Filter>
 		</ClCompile>
 		<ClCompile Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.cpp">
 			<Filter>addons\ofxXmlSettings\src</Filter>
@@ -456,11 +456,11 @@
 		<Filter Include="addons\ofxPiMapper\src\Utils">
 			<UniqueIdentifier>{31018051-CA03-DF14-F73E-7D6F}</UniqueIdentifier>
 		</Filter>
-		<Filter Include="addons\ofxWin8Touch">
-			<UniqueIdentifier>{7BD16398-29F9-7826-F113-2AB6}</UniqueIdentifier>
+		<Filter Include="addons\ofxWinTouchHook">
+			<UniqueIdentifier>{F0C9ACB0-1D28-9CB8-7522-9E5A}</UniqueIdentifier>
 		</Filter>
-		<Filter Include="addons\ofxWin8Touch\src">
-			<UniqueIdentifier>{77869FFA-D144-7587-3764-48C5}</UniqueIdentifier>
+		<Filter Include="addons\ofxWinTouchHook\src">
+			<UniqueIdentifier>{90C9F9A1-B591-309D-E15D-1854}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="addons\ofxXmlSettings">
 			<UniqueIdentifier>{877F005D-13E6-0592-1D97-F2E3}</UniqueIdentifier>
@@ -887,8 +887,8 @@
 		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Utils\HomographyHelper.h">
 			<Filter>addons\ofxPiMapper\src\Utils</Filter>
 		</ClInclude>
-		<ClInclude Include="..\..\..\addons\ofxWin8Touch\src\ofxWin8Touch.h">
-			<Filter>addons\ofxWin8Touch\src</Filter>
+		<ClInclude Include="..\..\..\addons\ofxWinTouchHook\src\ofxWinTouchHook.h">
+			<Filter>addons\ofxWinTouchHook\src</Filter>
 		</ClInclude>
 		<ClInclude Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.h">
 			<Filter>addons\ofxXmlSettings\src</Filter>

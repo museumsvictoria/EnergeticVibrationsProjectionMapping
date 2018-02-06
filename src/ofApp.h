@@ -1,4 +1,5 @@
 #pragma once
+#define WINDOWS_TOUCH
 
 #include "ofMain.h"
 #include "ofxImGui.h"
@@ -9,11 +10,9 @@
 #include "Settings.h"
 #include "ofxPiMapper.h"
 
-#define WINDOWS_TOUCH
-
 //----------------WINDOWS ONLY
 #ifdef WINDOWS_TOUCH
-#include "ofxWin8Touch.h"
+#include "ofxWinTouchHook.h"
 #endif
 
 class ofApp : public ofBaseApp{
@@ -25,8 +24,7 @@ class ofApp : public ofBaseApp{
     
         void setupProjectionWindow();
         void drawProjections(ofEventArgs & args);
-
-		/*
+		
 		void keyPressed(int key);
 		void keyReleased(int key);
 		void mouseMoved(int x, int y );
@@ -45,12 +43,9 @@ class ofApp : public ofBaseApp{
         void touchDown(ofTouchEventArgs & touch);
         void touchMoved(ofTouchEventArgs & touch);
         void touchUp(ofTouchEventArgs & touch);
-        void touchDoubleTap(ofTouchEventArgs & touch);
-        void touchCancelled(ofTouchEventArgs & touch);
         map<int, ofTouchEventArgs> touchMap;
 #endif
 
-		*/
         ///------------- MAPPING
         ofxPiMapper mapper;
         ofFbo projection_fbo;
@@ -61,6 +56,7 @@ class ofApp : public ofBaseApp{
         ///------------- GUI
         ofxImGui::Gui gui;
         GuiTheme gui_theme;
+		int clear_touch_in_two_frames;
     
         GuiInterface gui_interface;
 	
