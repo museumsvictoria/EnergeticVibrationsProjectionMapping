@@ -92,8 +92,8 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-
-	ofShowCursor();
+    
+    ofShowCursor();
     this->gui.begin();
     
     int selected_layer = gui_interface.get_selected_shader();
@@ -126,7 +126,7 @@ void ofApp::keyReleased(int key){
     mapper.keyReleased(key);
 }
 
-
+/*
 //--------------------------------------------------------------
 void ofApp::mouseMoved(int x, int y ){
 
@@ -166,7 +166,7 @@ void ofApp::mouseEntered(int x, int y){
 void ofApp::mouseExited(int x, int y){
 
 }
-
+*/
 //--------------------------------------------------------------
 void ofApp::windowResized(int w, int h){
 

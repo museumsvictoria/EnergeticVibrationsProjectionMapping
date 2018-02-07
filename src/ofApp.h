@@ -1,6 +1,6 @@
 #pragma once
 
-//#define WINDOWS_TOUCH
+#define WINDOWS_TOUCH
 
 #include "ofMain.h"
 #include "ofxImGui.h"

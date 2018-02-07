@@ -17,6 +17,7 @@ namespace piMapper {
 
 struct GuiEvent{
 	ofMouseEventArgs args;
+	ofTouchEventArgs touch;
 	GuiBaseWidget * widget;
 };
 
