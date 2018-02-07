@@ -129,6 +129,18 @@ void Gui::notifyBackgroundPressed(ofTouchEventArgs & touch){
     e.touch = touch;
     ofNotifyEvent(backgroundPressedEvent, e, this);
 }
+    
+void Gui::touchDown(map<int, ofTouchEventArgs> &touchMap){
+    _scaleWidget.touchDown(touchMap);
+}
+
+void Gui::touchUp(map<int, ofTouchEventArgs> &touchMap){
+    _scaleWidget.touchUp(touchMap);
+}
+
+void Gui::touchMoved(map<int, ofTouchEventArgs> &touchMap){
+    _scaleWidget.touchMoved(touchMap);
+}
 
 ScaleWidget & Gui::getScaleWidget(){
 	return _scaleWidget;

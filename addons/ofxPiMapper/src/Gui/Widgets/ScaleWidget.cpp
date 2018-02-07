@@ -87,6 +87,76 @@ void ScaleWidget::draw(){
 	ofPopStyle();
 }
 
+//---------- TOUCH EVENTS
+void ScaleWidget::touchDown(map<int, ofTouchEventArgs> & touchMap){
+    if(_surfaceManager->getSelectedSurface() == 0){
+        return;
+    }
+    
+    for(auto &i: touchMap){
+        auto touch = i.second;
+        if(_handle.inside(touch.x, touch.y)){
+            _dragging = true;
+            
+            GuiWidgetEvent e;
+            e.touch = touch;
+            ofNotifyEvent(guiWidgetEvent, e, this);
+        }
+    }
+}
+
+void ScaleWidget::touchUp(map<int, ofTouchEventArgs> & touchMap){
+    for(auto &i: touchMap){
+        auto touch = i.second;
+        
+        if(_dragging){
+            GuiWidgetEvent e;
+            e.touch = touch;
+            ofNotifyEvent(guiWidgetEvent, e, this);
+        }
+        
+        _dragging = false;
+    }
+}
+
+void ScaleWidget::touchMoved(map<int, ofTouchEventArgs> & touchMap){
+    for(auto &i: touchMap){
+        auto touch = i.second;
+        
+        if(_dragging){
+            if(_surfaceManager == 0){
+                return;
+            }
+            
+            if(_surfaceManager->getSelectedSurface() == 0){
+                return;
+            }
+            
+            ofRectangle box = _surfaceManager->getSelectedSurface()->getBoundingBox();
+            float boxAspect = box.width / box.height;
+            
+            ofPolyline newLine = _line;
+            newLine[1].x = touch.x;
+            newLine[1].y = touch.y;
+            
+            _scale = _surfaceManager->getSelectedSurface()->getScale() /
+            _line[0].distance(_line[1]) *
+            newLine[0].distance(newLine[1]);
+            
+            _line = newLine;
+            
+            _handle.x = _line[1].x - (_handle.width / 2.0f);
+            _handle.y = _line[1].y - (_handle.height / 2.0f);
+            
+            GuiWidgetEvent e;
+            e.touch = touch;
+            ofNotifyEvent(guiWidgetEvent, e, this);
+        }
+    }
+}
+
+    
+//---------- MOUSE EVENTS
 void ScaleWidget::onMousePressed(ofMouseEventArgs & args){
 	if(_surfaceManager->getSelectedSurface() == 0){
 		return;

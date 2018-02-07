@@ -91,6 +91,11 @@ class Gui {
 		void onMouseReleased(ofMouseEventArgs & args);
 		void onMouseDragged(ofMouseEventArgs & args);
 	
+        // JOSH adding in touch events
+        void touchDown(map<int, ofTouchEventArgs> & touchMap);
+        void touchMoved(map<int, ofTouchEventArgs> & touchMap);
+        void touchUp(map<int, ofTouchEventArgs> & touchMap);
+        
 		void onScaleWidgetEvent(GuiWidgetEvent & event);
 	
 		ofEvent <GuiEvent> guiEvent;

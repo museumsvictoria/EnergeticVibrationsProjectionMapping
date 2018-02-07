@@ -190,6 +190,8 @@ void ProjectionMappingMode::onKeyPressed(Application * app, ofKeyEventArgs & arg
 
 // JOSH additions
 void ProjectionMappingMode::onTouchDown(Application * app, map<int, ofTouchEventArgs> & touchMap){
+    Gui::instance()->touchDown(touchMap);
+
     for (auto &t : touchMap) {
         auto &touch = t.second;
         
@@ -233,6 +235,7 @@ void ProjectionMappingMode::onTouchDown(Application * app, map<int, ofTouchEvent
 }
     
 void ProjectionMappingMode::onTouchUp(Application * app, map<int, ofTouchEventArgs> & touchMap){
+    Gui::instance()->touchUp(touchMap);
     _bSurfaceDrag = false; // TODO: handle this locally
     Gui::instance()->getProjectionEditorWidget().stopDragJoints();
 }
@@ -242,6 +245,7 @@ void ProjectionMappingMode::onTouchMoved(Application * app, map<int, ofTouchEven
     // I need to make sure the i look up the vertices of the ucrrently selectd object and make sure it doesn't go out of bounds
     //vector <ofVec3f> & vertices = app->getSurfaceManager()->getSelectedSurface()->getVertices();
     
+    Gui::instance()->touchMoved(touchMap);
     Gui::instance()->getProjectionEditorWidget().touchMoved(touchMap);
 
     //JOSH clamp the joints so they stay within the mapping panel rect

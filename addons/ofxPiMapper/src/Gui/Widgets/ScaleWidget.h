@@ -17,6 +17,11 @@ class ScaleWidget : public GuiBaseWidget {
 		void setup();
 		void update();
 		void draw();
+    
+        // JOSH adding in touch events
+        void touchDown(map<int, ofTouchEventArgs> & touchMap);
+        void touchMoved(map<int, ofTouchEventArgs> & touchMap);
+        void touchUp(map<int, ofTouchEventArgs> & touchMap);
 	
 		void onMousePressed(ofMouseEventArgs & args);
 		void onMouseReleased(ofMouseEventArgs & args);

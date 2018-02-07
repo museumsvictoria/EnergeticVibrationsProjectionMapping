@@ -24,6 +24,13 @@ void PresentationMode::onMousePressed(Application * app, ofMouseEventArgs & args
         new ofx::piMapper::SetApplicationModeCmd(
             app, ProjectionMappingMode::instance()));
 }
+    
+//JOSH additions
+void PresentationMode::onTouchDown(Application * app, map<int, ofTouchEventArgs> & touchMap){
+    app->getCmdManager()->exec(
+        new ofx::piMapper::SetApplicationModeCmd(
+            app, ProjectionMappingMode::instance()));
+}
 
 } // namespace piMapper
 } // namespace ofx

@@ -16,6 +16,7 @@ class PresentationMode : public ApplicationBaseMode {
 	public:
 		static PresentationMode * instance();
 		void draw(Application * app);
+        void onTouchDown(Application * app, map<int, ofTouchEventArgs> & touchMap);
         void onMousePressed(Application * app, ofMouseEventArgs & args);
 	
 		void onGuiEvent(Application * app, GuiEvent & e){}

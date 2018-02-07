@@ -7,6 +7,7 @@ namespace piMapper {
 
 struct GuiWidgetEvent{
 	ofMouseEventArgs args;
+    ofTouchEventArgs touch;
 };
 
 class GuiBaseWidget {
