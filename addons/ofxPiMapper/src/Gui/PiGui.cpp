@@ -20,6 +20,7 @@ Gui::~Gui(){
 	ofRemoveListener(_scaleWidget.guiWidgetEvent, this, &Gui::onScaleWidgetEvent);
 }
 
+//-------- MOUSE EVENTS
 void Gui::notifyJointPressed(ofMouseEventArgs & args, int jointIndex){
 	GuiJointEvent e;
 	e.args = args;
@@ -69,15 +70,64 @@ void Gui::notifyBackgroundPressed(ofMouseEventArgs & args){
 }
 
 void Gui::onMousePressed(ofMouseEventArgs & args){
-	_scaleWidget.onMousePressed(args);
+    _scaleWidget.onMousePressed(args);
 }
 
 void Gui::onMouseReleased(ofMouseEventArgs & args){
-	_scaleWidget.onMouseReleased(args);
+    _scaleWidget.onMouseReleased(args);
 }
 
 void Gui::onMouseDragged(ofMouseEventArgs & args){
-	_scaleWidget.onMouseDragged(args);
+    _scaleWidget.onMouseDragged(args);
+}
+    
+//------- TOUCH EVENTS
+void Gui::notifyJointPressed(ofTouchEventArgs & touch, int jointIndex){
+    GuiJointEvent e;
+    e.touch = touch;
+    e.jointIndex = jointIndex;
+    ofNotifyEvent(jointPressedEvent, e, this);
+}
+
+void Gui::notifyJointReleased(ofTouchEventArgs & touch, int jointIndex){
+    GuiJointEvent e;
+    e.touch = touch;
+    e.jointIndex = jointIndex;
+    ofNotifyEvent(jointReleasedEvent, e, this);
+}
+
+void Gui::notifyJointDragged(ofTouchEventArgs & touch, int jointIndex){
+    GuiJointEvent e;
+    e.touch = touch;
+    e.jointIndex = jointIndex;
+    ofNotifyEvent(jointDraggedEvent, e, this);
+}
+
+void Gui::notifySurfacePressed(ofTouchEventArgs & touch, BaseSurface * surface){
+    GuiSurfaceEvent e;
+    e.touch = touch;
+    e.surface = surface;
+    ofNotifyEvent(surfacePressedEvent, e, this);
+}
+
+void Gui::notifySurfaceReleased(ofTouchEventArgs & touch, BaseSurface * surface){
+    GuiSurfaceEvent e;
+    e.touch = touch;
+    e.surface = surface;
+    ofNotifyEvent(surfaceReleasedEvent, e, this);
+}
+
+void Gui::notifySurfaceDragged(ofTouchEventArgs & touch, BaseSurface * surface){
+    GuiSurfaceEvent e;
+    e.touch = touch;
+    e.surface = surface;
+    ofNotifyEvent(surfaceDraggedEvent, e, this);
+}
+
+void Gui::notifyBackgroundPressed(ofTouchEventArgs & touch){
+    GuiBackgroundEvent e;
+    e.touch = touch;
+    ofNotifyEvent(backgroundPressedEvent, e, this);
 }
 
 ScaleWidget & Gui::getScaleWidget(){

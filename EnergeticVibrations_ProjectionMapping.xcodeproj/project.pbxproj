@@ -100,10 +100,10 @@
 		13BB99532011A888002E9CD6 /* RadioList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13BB98F82011A888002E9CD6 /* RadioList.cpp */; };
 		13BB99542011A888002E9CD6 /* HomographyHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13BB98FB2011A888002E9CD6 /* HomographyHelper.cpp */; };
 		13BB9957201207EA002E9CD6 /* PiMapperHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13BB9955201207EA002E9CD6 /* PiMapperHelper.cpp */; };
+		13CDDC7320296EF200BF5112 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 13CDDC5520296EF200BF5112 /* README.md */; };
+		13CDDC7420296EF200BF5112 /* ofxWinTouchHook.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13CDDC5720296EF200BF5112 /* ofxWinTouchHook.cpp */; };
 		13F4B397200D7D9E00D48D3A /* CustomSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13F4B395200D7D9E00D48D3A /* CustomSlider.cpp */; };
 		13F4B39A200D7E9D00D48D3A /* Gradient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13F4B398200D7E9D00D48D3A /* Gradient.cpp */; };
-		13FF567B2022C2F0001A6AF4 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 13FF56752022C2F0001A6AF4 /* README.md */; };
-		13FF567C2022C2F0001A6AF4 /* ofxWin8Touch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13FF56772022C2F0001A6AF4 /* ofxWin8Touch.cpp */; };
 		1CD33E884D9E3358252E82A1 /* ofxToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 907C5B5E104864A2D3A25745 /* ofxToggle.cpp */; };
 		483908258D00B98B4BE69F07 /* ofxLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78D67A00EB899FAC09430597 /* ofxLabel.cpp */; };
 		4ADB88E2FB52E76A471065DE /* ofxOscParameterSync.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0AED834CE4DEC5260AF302A2 /* ofxOscParameterSync.cpp */; };
@@ -388,14 +388,14 @@
 		13BB98FC2011A888002E9CD6 /* HomographyHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomographyHelper.h; sourceTree = "<group>"; };
 		13BB9955201207EA002E9CD6 /* PiMapperHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PiMapperHelper.cpp; sourceTree = "<group>"; };
 		13BB9956201207EA002E9CD6 /* PiMapperHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiMapperHelper.h; sourceTree = "<group>"; };
+		13CDDC5420296EF200BF5112 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		13CDDC5520296EF200BF5112 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		13CDDC5720296EF200BF5112 /* ofxWinTouchHook.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxWinTouchHook.cpp; sourceTree = "<group>"; };
+		13CDDC5820296EF200BF5112 /* ofxWinTouchHook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxWinTouchHook.h; sourceTree = "<group>"; };
 		13F4B395200D7D9E00D48D3A /* CustomSlider.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CustomSlider.cpp; sourceTree = "<group>"; };
 		13F4B396200D7D9E00D48D3A /* CustomSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSlider.h; sourceTree = "<group>"; };
 		13F4B398200D7E9D00D48D3A /* Gradient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Gradient.cpp; sourceTree = "<group>"; };
 		13F4B399200D7E9D00D48D3A /* Gradient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gradient.h; sourceTree = "<group>"; };
-		13FF566A2022C2F0001A6AF4 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		13FF56752022C2F0001A6AF4 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		13FF56772022C2F0001A6AF4 /* ofxWin8Touch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxWin8Touch.cpp; sourceTree = "<group>"; };
-		13FF56782022C2F0001A6AF4 /* ofxWin8Touch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxWin8Touch.h; sourceTree = "<group>"; };
 		15F2C6477A769C03A56D1401 /* ofxSlider.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxSlider.cpp; path = ../../../addons/ofxGui/src/ofxSlider.cpp; sourceTree = SOURCE_ROOT; };
 		17E65988300FBD9AAA2CD0CA /* ofxGui.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxGui.h; path = ../../../addons/ofxGui/src/ofxGui.h; sourceTree = SOURCE_ROOT; };
 		1C0DA2561397A7DE0246858B /* ofxGuiGroup.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxGuiGroup.h; path = ../../../addons/ofxGui/src/ofxGuiGroup.h; sourceTree = SOURCE_ROOT; };
@@ -896,22 +896,22 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		13FF56692022C2F0001A6AF4 /* ofxWin8Touch */ = {
+		13CDDC5320296EF200BF5112 /* ofxWinTouchHook */ = {
 			isa = PBXGroup;
 			children = (
-				13FF566A2022C2F0001A6AF4 /* .gitignore */,
-				13FF56752022C2F0001A6AF4 /* README.md */,
-				13FF56762022C2F0001A6AF4 /* src */,
+				13CDDC5420296EF200BF5112 /* .gitignore */,
+				13CDDC5520296EF200BF5112 /* README.md */,
+				13CDDC5620296EF200BF5112 /* src */,
 			);
-			name = ofxWin8Touch;
-			path = addons/ofxWin8Touch;
+			name = ofxWinTouchHook;
+			path = addons/ofxWinTouchHook;
 			sourceTree = "<group>";
 		};
-		13FF56762022C2F0001A6AF4 /* src */ = {
+		13CDDC5620296EF200BF5112 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				13FF56772022C2F0001A6AF4 /* ofxWin8Touch.cpp */,
-				13FF56782022C2F0001A6AF4 /* ofxWin8Touch.h */,
+				13CDDC5720296EF200BF5112 /* ofxWinTouchHook.cpp */,
+				13CDDC5820296EF200BF5112 /* ofxWinTouchHook.h */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -1031,7 +1031,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
-				13FF56692022C2F0001A6AF4 /* ofxWin8Touch */,
+				13CDDC5320296EF200BF5112 /* ofxWinTouchHook */,
 				13BB98262011A888002E9CD6 /* ofxImGui */,
 				13BB984E2011A888002E9CD6 /* ofxPiMapper */,
 				480A780D8D0308AE4A368801 /* ofxGui */,
@@ -1262,7 +1262,6 @@
 				13BB990A2011A888002E9CD6 /* LICENSE.md in Sources */,
 				837220E80EB56CD44AD27F2A /* ofxSlider.cpp in Sources */,
 				B56FE57CC35806596D38118C /* ofxSliderGroup.cpp in Sources */,
-				13FF567B2022C2F0001A6AF4 /* README.md in Sources */,
 				13BB993F2011A888002E9CD6 /* TextureHighlightWidget.cpp in Sources */,
 				1CD33E884D9E3358252E82A1 /* ofxToggle.cpp in Sources */,
 				13BB98FF2011A888002E9CD6 /* imgui_draw.cpp in Sources */,
@@ -1290,7 +1289,7 @@
 				13BB99002011A888002E9CD6 /* README.md in Sources */,
 				13BB99372011A888002E9CD6 /* TranslateCanvasCmd.cpp in Sources */,
 				13BB994B2011A888002E9CD6 /* HexagonSurface.cpp in Sources */,
-				13FF567C2022C2F0001A6AF4 /* ofxWin8Touch.cpp in Sources */,
+				13CDDC7320296EF200BF5112 /* README.md in Sources */,
 				13BB99082011A888002E9CD6 /* Helpers.cpp in Sources */,
 				13BB99042011A888002E9CD6 /* EngineGLFW.cpp in Sources */,
 				13BB99362011A888002E9CD6 /* TogglePerspectiveCmd.cpp in Sources */,
@@ -1301,6 +1300,7 @@
 				13BB99302011A888002E9CD6 /* SetNextSourceCmd.cpp in Sources */,
 				13BB990D2011A888002E9CD6 /* ApplicationBaseMode.cpp in Sources */,
 				13BB991F2011A888002E9CD6 /* MvSurfaceVertCmd.cpp in Sources */,
+				13CDDC7420296EF200BF5112 /* ofxWinTouchHook.cpp in Sources */,
 				67FE4C7B15C2F0478C8126C2 /* NetworkingUtils.cpp in Sources */,
 				13BB99492011A888002E9CD6 /* BaseSurface.cpp in Sources */,
 				13BB99252011A888002E9CD6 /* ScaleSurfaceFromToCmd.cpp in Sources */,
@@ -1527,7 +1527,10 @@
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = /Applications;
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/addons/ofxWinTouchHook/winTouchHookExample/bin",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)Debug";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1580,7 +1583,10 @@
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = /Applications;
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/addons/ofxWinTouchHook/winTouchHookExample/bin",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 				baseConfigurationReference = E4EB6923138AFD0F00A09F29;

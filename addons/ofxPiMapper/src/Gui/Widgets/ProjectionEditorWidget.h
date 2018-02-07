@@ -14,6 +14,9 @@ class ProjectionEditorWidget {
 		void update();
 		void draw();
 	
+        //JOSH addition
+        void touchMoved(map<int, ofTouchEventArgs> & touchMap);
+    
 		void mouseDragged(ofMouseEventArgs & args);
 		void gotMessage(ofMessage & msg);
 	

@@ -18,9 +18,9 @@ class ApplicationBaseMode {
 		virtual void setState(Application * app, ApplicationBaseMode * st);
 
 		// Event handler virtual methods
-		virtual void onTouchDown(Application * app, ofTouchEventArgs & touch){}
-		virtual void onTouchMoved(Application * app, ofTouchEventArgs & touch){}
-		virtual void onTouchUp(Application * app, ofTouchEventArgs & touch){}
+		virtual void onTouchDown(Application * app, map<int, ofTouchEventArgs> & touchMap){}
+		virtual void onTouchMoved(Application * app, map<int, ofTouchEventArgs> & touchMap){}
+		virtual void onTouchUp(Application * app, map<int, ofTouchEventArgs> & touchMap){}
 
 		virtual void onKeyPressed(Application * app, ofKeyEventArgs & args){}
         virtual void onMousePressed(Application * app, ofMouseEventArgs & args){}

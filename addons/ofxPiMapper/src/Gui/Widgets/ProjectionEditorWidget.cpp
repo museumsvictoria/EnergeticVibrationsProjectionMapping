@@ -76,6 +76,48 @@ void ProjectionEditorWidget::mouseDragged(ofMouseEventArgs & args){
 		}
 	}
 }
+    
+void ProjectionEditorWidget::touchMoved(map<int, ofTouchEventArgs> &touchMap){
+    
+    for (auto &t : touchMap) {
+        auto &touch = t.second;
+        
+        // Pass args to joint mouse events
+        for(unsigned int i = 0; i < joints.size(); ++i){
+            joints[i]->touchMoved(touch);
+        }
+        
+        ofVec2f touchPosition = ofVec2f(touch.x, touch.y);
+        
+        // Collect all vertices of the projection surfaces
+        vector <ofVec3f *> allVertices;
+        for(int i = 0; i < surfaceManager->size(); i++){
+            BaseSurface * surface = surfaceManager->getSurface(i);
+            if(surface == surfaceManager->getSelectedSurface()){
+                continue; // Don't add vertices of selected surface
+            }
+            for(int j = 0; j < surface->getVertices().size(); j++){
+                allVertices.push_back(&surface->getVertices()[j]);
+            }
+        }
+        
+        // Snap currently dragged joint to nearest vertex
+        for(int i = 0; i < joints.size(); i++){
+            if(joints[i]->isDragged()){
+                for(int j = 0; j < allVertices.size(); j++){
+                    float distance = touchPosition.distance(*allVertices[j]);
+                    if(distance < fSnapDistance){
+                        joints[i]->position = *allVertices[j];
+                        ofVec2f clickDistance = joints[i]->position - ofVec2f(touch.x, touch.y);
+                        joints[i]->setClickDistance(clickDistance);
+                        break;
+                    }
+                }
+            }
+        }
+    }
+}
+
 
 void ProjectionEditorWidget::gotMessage(ofMessage & msg){
 	if(msg.message == "surfaceSelected"){
@@ -176,15 +218,6 @@ void ProjectionEditorWidget::moveSelectedSurface(ofVec2f by){
     cout << "mapping_panel_rect = " << mapping_panel_rect << endl;
     cout << "move by = " << by << endl;
     for(int i = 0; i < vertices.size(); i++){
-//        if(vertices[i].x < mapping_panel_rect.x || vertices[i].x > (mapping_panel_rect.x + mapping_panel_rect.width) ||
-//           vertices[i].y < mapping_panel_rect.y || vertices[i].y > (mapping_panel_rect.y + mapping_panel_rect.height)){
-//            cout << "outside of rect bitch!" << endl;
-//            
-//            cout << "vertices[i].x = " << vertices[i].x << " -- vertices[i].y = " << vertices[i].y << endl;
-//            is_inside_rect = false;
-//            break;
-//        }
-//
         if(mapping_panel_rect.inside(vertices[i].x + by.x, vertices[i].y + by.y) == false){
             cout << "outside of rect bitch!" << endl;
             is_inside_rect = false;

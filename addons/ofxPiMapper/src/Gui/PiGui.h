@@ -29,16 +29,19 @@ struct GuiEvent{
 // to decide what to do next.
 struct GuiJointEvent{
 	ofMouseEventArgs args;
+    ofTouchEventArgs touch;
 	int jointIndex;
 };
 
 struct GuiSurfaceEvent{
 	ofMouseEventArgs args;
+    ofTouchEventArgs touch;
 	BaseSurface * surface;
 };
 
 struct GuiBackgroundEvent{
 	ofMouseEventArgs args;
+    ofTouchEventArgs touch;
 };
 
 class Gui {
@@ -53,6 +56,10 @@ class Gui {
 		void notifyJointPressed(ofMouseEventArgs & args, int jointIndex);
 		void notifyJointReleased(ofMouseEventArgs & args, int jointIndex);
 		void notifyJointDragged(ofMouseEventArgs & args, int jointIndex);
+    
+        void notifyJointPressed(ofTouchEventArgs & touch, int jointIndex);
+        void notifyJointReleased(ofTouchEventArgs & touch, int jointIndex);
+        void notifyJointDragged(ofTouchEventArgs & touch, int jointIndex);
 	
 		ofEvent <GuiSurfaceEvent> surfacePressedEvent;
 		ofEvent <GuiSurfaceEvent> surfaceReleasedEvent;
@@ -61,10 +68,15 @@ class Gui {
 		void notifySurfacePressed(ofMouseEventArgs & args, BaseSurface * surface);
 		void notifySurfaceReleased(ofMouseEventArgs & args, BaseSurface * surface);
 		void notifySurfaceDragged(ofMouseEventArgs & args, BaseSurface * surface);
+    
+        void notifySurfacePressed(ofTouchEventArgs & touch, BaseSurface * surface);
+        void notifySurfaceReleased(ofTouchEventArgs & touch, BaseSurface * surface);
+        void notifySurfaceDragged(ofTouchEventArgs & touch, BaseSurface * surface);
 	
 		ofEvent <GuiBackgroundEvent> backgroundPressedEvent;
 	
 		void notifyBackgroundPressed(ofMouseEventArgs & args);
+        void notifyBackgroundPressed(ofTouchEventArgs & touch);
 	
 		ScaleWidget & getScaleWidget();
 		LayerPanelWidget & getLayerPanelWidget();

@@ -21,6 +21,11 @@ class ProjectionMappingMode : public ApplicationBaseMode {
 		void setup(Application * app);
 		void update(Application * app);
 		void draw(Application * app);
+    
+        void onTouchDown(Application * app, map<int, ofTouchEventArgs> & touchMap);
+        void onTouchMoved(Application * app, map<int, ofTouchEventArgs> & touchMap);
+        void onTouchUp(Application * app, map<int, ofTouchEventArgs> & touchMap);
+    
 		void onKeyPressed(Application * app, ofKeyEventArgs & args);
 		void onMousePressed(Application * app, ofMouseEventArgs & args);
 		void onMouseReleased(Application * app, ofMouseEventArgs & args);

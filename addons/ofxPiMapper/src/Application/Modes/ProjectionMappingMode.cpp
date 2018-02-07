@@ -188,6 +188,82 @@ void ProjectionMappingMode::onKeyPressed(Application * app, ofKeyEventArgs & arg
 	}
 }
 
+// JOSH additions
+void ProjectionMappingMode::onTouchDown(Application * app, map<int, ofTouchEventArgs> & touchMap){
+    for (auto &t : touchMap) {
+        auto &touch = t.second;
+        
+        CircleJoint * hitJoint = 0;
+        int hitJointIndex = -1;
+        BaseSurface * hitSurface = 0;
+        
+        hitJoint = Gui::instance()->getProjectionEditorWidget().hitTestJoints(ofVec2f(touch.x, touch.y));
+        
+        if(hitJoint){
+            for(int i = Gui::instance()->getProjectionEditorWidget().getJoints()->size() - 1; i >= 0 ; --i){
+                if((*Gui::instance()->getProjectionEditorWidget().getJoints())[i] == hitJoint){
+                    hitJointIndex = i;
+                    break;
+                }
+            }
+        }else{
+            for(int i = app->getSurfaceManager()->size() - 1; i >= 0; --i){
+                if(app->getSurfaceManager()->getSurface(i)->hitTest(ofVec2f(touch.x, touch.y))){
+                    hitSurface = app->getSurfaceManager()->getSurface(i);
+                    break;
+                }
+            }
+        }
+        
+        if(Gui::instance()->getScaleWidget().inside(touch.x, touch.y)){
+            //
+        }else if(hitJoint){
+            hitJoint->select();
+            hitJoint->startDrag();
+            Gui::instance()->notifyJointPressed(touch, hitJointIndex);
+        }else if(hitSurface){
+            _clickPosition = ofVec2f(touch.x, touch.y); // TODO: redesign this so we can use a kind of
+            //       display stack.
+            _bSurfaceDrag = true; // TODO: Should be something like `hitSurface->startDrag()`
+            Gui::instance()->notifySurfacePressed(touch, hitSurface);
+        }else{
+            Gui::instance()->notifyBackgroundPressed(touch);
+        }
+    }
+}
+    
+void ProjectionMappingMode::onTouchUp(Application * app, map<int, ofTouchEventArgs> & touchMap){
+    _bSurfaceDrag = false; // TODO: handle this locally
+    Gui::instance()->getProjectionEditorWidget().stopDragJoints();
+}
+    
+void ProjectionMappingMode::onTouchMoved(Application * app, map<int, ofTouchEventArgs> & touchMap){
+    
+    // I need to make sure the i look up the vertices of the ucrrently selectd object and make sure it doesn't go out of bounds
+    //vector <ofVec3f> & vertices = app->getSurfaceManager()->getSelectedSurface()->getVertices();
+    
+    Gui::instance()->getProjectionEditorWidget().touchMoved(touchMap);
+
+    //JOSH clamp the joints so they stay within the mapping panel rect
+    ofRectangle mapping_panel_rect = ofRectangle(422,13,1450,870);
+    for (auto &t : touchMap) {
+        auto &touch = t.second;
+        
+        touch.x = ofClamp(touch.x,mapping_panel_rect.x,mapping_panel_rect.x + mapping_panel_rect.width);
+        touch.y = ofClamp(touch.y,mapping_panel_rect.y,mapping_panel_rect.y+mapping_panel_rect.height);
+        
+       // Gui::instance()->onMouseDragged(args);
+        
+        // TODO: Handle app->getGui()->clickPosition and app->getGui()->bDrag locally.
+        if(_bSurfaceDrag){
+            ofVec2f touchPosition = ofVec2f(touch.x, touch.y);
+            ofVec2f distance = touchPosition - _clickPosition;
+            Gui::instance()->getProjectionEditorWidget().moveSelectedSurface(distance);
+            _clickPosition = touchPosition;
+        }
+    }
+}
+    
 void ProjectionMappingMode::onMousePressed(Application * app, ofMouseEventArgs & args){
 	Gui::instance()->onMousePressed(args);
 	
