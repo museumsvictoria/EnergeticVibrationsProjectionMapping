@@ -1,8 +1,10 @@
 #pragma once
 
-#define WINDOWS_TOUCH
+//#define WINDOWS_TOUCH
+#define OSC_PORT 9002
 
 #include "ofMain.h"
+#include "ofxOsc.h"
 #include "ofxImGui.h"
 #include "GuiTheme.h"
 #include "GuiInterface.h"
@@ -46,6 +48,10 @@ class ofApp : public ofBaseApp{
         void touchUp(ofTouchEventArgs & touch);
         map<int, ofTouchEventArgs> touchMap;
 #endif
+        ///------------- OSC
+        void update_osc();
+        ofxOscReceiver receiver;
+        vector<float> volumes;
 
         ///------------- MAPPING
         ofxPiMapper mapper;

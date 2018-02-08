@@ -48,7 +48,11 @@ void ofApp::setup(){
     
 	clear_touch_in_two_frames = 0;
 
-    projection_fbo.allocate(1450,870,GL_RGBA);	
+    projection_fbo.allocate(1450,870,GL_RGBA);
+    
+    // OSC
+    volumes = {1.0f,1.0f,1.0f};
+    receiver.setup(OSC_PORT);
 }
 
 
@@ -79,15 +83,26 @@ void ofApp::update(){
 	//	cout << "frame cleared! -- frame num = " << ofGetFrameNum() << endl;
 	//}
 
+    update_osc();
     mapper.update();
-    
-    vector<float> volumes;
-    volumes.push_back(ofNoise(ofGetElapsedTimef() * 2.0));
-    volumes.push_back(ofNoise(10000+ofGetElapsedTimef() * 2.0));
-    volumes.push_back(ofNoise(200000+ofGetElapsedTimef() * 2.0));
 	gui_interface.update_volumes(volumes);
-    
     gui_interface.update_audio_reactivity(layers);
+}
+
+//--------------------------------------------------------------
+void ofApp::update_osc(){
+    // check for waiting messages
+    while(receiver.hasWaitingMessages()){
+        // get the next message
+        ofxOscMessage m;
+        receiver.getNextMessage(m);
+        
+        if(m.getAddress() == "/caco/0"){
+            volumes[0] = m.getArgAsFloat(0);
+            volumes[1] = m.getArgAsFloat(1);
+            volumes[2] = m.getArgAsFloat(2);
+        }
+    }
 }
 
 //--------------------------------------------------------------
@@ -134,7 +149,7 @@ void ofApp::mouseMoved(int x, int y ){
 
 //--------------------------------------------------------------
 void ofApp::mouseDragged(int x, int y, int button){
-   // mapper.mouseDragged(x, y, button);
+    mapper.mouseDragged(x, y, button);
 }
 
 //--------------------------------------------------------------
@@ -147,14 +162,14 @@ void ofApp::mousePressed(int x, int y, int button){
         // rectangle before registering mouse events so we dont
         // deselect the currently selected layer.
         if(gui_interface.is_mouse_inside_mapping_rect()){
-          //  mapper.mousePressed(x, y, button);
+            mapper.mousePressed(x, y, button);
         }
     }
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button){
-  //  mapper.mouseReleased(x, y, button);
+    mapper.mouseReleased(x, y, button);
 }
 
 //--------------------------------------------------------------
