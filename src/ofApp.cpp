@@ -149,7 +149,13 @@ void ofApp::mouseMoved(int x, int y ){
 
 //--------------------------------------------------------------
 void ofApp::mouseDragged(int x, int y, int button){
+#ifdef FAKETOUCH 
+  auto touch = ofTouchEventArgs(ofTouchEventArgs::down, x, y, 1);
+  touchMap[touch.id] = touch;
+  mapper.touchMoved(touchMap);
+#else
     mapper.mouseDragged(x, y, button);
+#endif
 }
 
 //--------------------------------------------------------------
@@ -162,14 +168,29 @@ void ofApp::mousePressed(int x, int y, int button){
         // rectangle before registering mouse events so we dont
         // deselect the currently selected layer.
         if(gui_interface.is_mouse_inside_mapping_rect()){
+#ifdef FAKETOUCH 
+            //---- Tom
+            // create a fake touch down event and send it through to
+            // text touch when cliked
+            // create up when released
+            auto touch = ofTouchEventArgs(ofTouchEventArgs::down, x, y, 1);
+            touchMap[touch.id] = touch;
+            mapper.touchDown(touchMap);
+#else
             mapper.mousePressed(x, y, button);
+#endif
         }
     }
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button){
+#ifdef FAKETOUCH 
+  mapper.touchUp(touchMap);
+    touchMap.erase(1);
+#else
     mapper.mouseReleased(x, y, button);
+#endif
 }
 
 //--------------------------------------------------------------
@@ -222,6 +243,7 @@ void ofApp::touchMoved(ofTouchEventArgs & touch){
 
 //--------------------------------------------------------------
 void ofApp::touchUp(ofTouchEventArgs & touch){
+  //TODO this probably needs to be erased after passing in?
     touchMap.erase(touch.id);
 	gui_interface.touchUp(touchMap);
 	mapper.touchUp(touchMap);

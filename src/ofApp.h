@@ -1,6 +1,6 @@
 #pragma once
 
-//#define WINDOWS_TOUCH
+#define WINDOWS_TOUCH
 #define OSC_PORT 9002
 
 #include "ofMain.h"
@@ -12,6 +12,8 @@
 #include "VisualLayer.h"
 #include "Settings.h"
 #include "ofxPiMapper.h"
+
+#include "MultiTouch/MultiTouch.hpp"
 
 //----------------WINDOWS ONLY
 #ifdef WINDOWS_TOUCH
