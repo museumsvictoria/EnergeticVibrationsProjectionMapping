@@ -27,7 +27,7 @@ class ProjectionMappingMode : public ApplicationBaseMode {
         void onTouchDown(Application * app, map<int, ofTouchEventArgs> & touchMap);
         void onTouchMoved(Application * app, map<int, ofTouchEventArgs> & touchMap);
         void onTouchUp(Application * app, map<int, ofTouchEventArgs> & touchMap);
-        void onTouchUp(Application * app, map<int, ofTouchEventArgs> & touchMap, int touch_id);
+
     
 		void onKeyPressed(Application * app, ofKeyEventArgs & args);
 		void onMousePressed(Application * app, ofMouseEventArgs & args);
@@ -45,7 +45,7 @@ class ProjectionMappingMode : public ApplicationBaseMode {
 		static ProjectionMappingMode * _instance;
 	
 		float _surfaceScaleBeforeTransform;
-	
+    
 		ofVec2f _clickPosition;
 	
 		bool _bSurfaceDrag;
@@ -54,6 +54,7 @@ class ProjectionMappingMode : public ApplicationBaseMode {
     // Tom added for multitracking
     drag_manager::ActiveHits active_hits;
     drag_manager::ActiveJoints active_joints;
+    map<int, ofVec2f> last_touch_positions;
 
 };
 

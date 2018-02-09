@@ -62,8 +62,8 @@ void ofxPiMapper::touchMoved(map<int, ofTouchEventArgs> & touchMap) {
 	_application.touchMoved(touchMap);
 }
 
-void ofxPiMapper::touchUp(map<int, ofTouchEventArgs> & touchMap, int touch_id) {
-	_application.touchUp(touchMap, touch_id);
+void ofxPiMapper::touchUp(map<int, ofTouchEventArgs> & touchMap) {
+	_application.touchUp(touchMap);
 }
 
 void ofxPiMapper::registerFboSource(ofx::piMapper::FboSource & fboSource){

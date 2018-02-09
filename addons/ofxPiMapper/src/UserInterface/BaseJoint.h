@@ -47,6 +47,9 @@ class BaseJoint {
 	private:
 		void setDefaultColors();
 		void setDefaultProperties();
+    
+    // Tom added for multitouch
+    map<int, ofVec2f> touch_distance;
 
 };
 

@@ -26,7 +26,6 @@ class ofxPiMapper {
 		void touchDown(map<int, ofTouchEventArgs> & touchMap);
 		void touchMoved(map<int, ofTouchEventArgs> & touchMap);
 		void touchUp(map<int, ofTouchEventArgs> & touchMap);
-        void touchUp(map<int, ofTouchEventArgs> & touchMap, int touch_id);
 
 		void registerFboSource(ofx::piMapper::FboSource & fboSource);
 		void registerFboSource(ofx::piMapper::FboSource * fboSource);

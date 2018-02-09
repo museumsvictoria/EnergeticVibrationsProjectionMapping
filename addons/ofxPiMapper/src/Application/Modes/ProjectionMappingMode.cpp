@@ -228,8 +228,11 @@ void ProjectionMappingMode::onTouchDown(Application * app, map<int, ofTouchEvent
             hitJoint->startDrag();
             Gui::instance()->notifyJointPressed(touch, hitJointIndex);
         }else if(hitSurface){
-            _clickPosition = ofVec2f(touch.x, touch.y); // TODO: redesign this so we can use a kind of
+            
+            // TODO: redesign this so we can use a kind of
             //       display stack.
+            // Tom changed to link last position to individual touches
+            last_touch_positions[touch.id] = ofVec2f(touch.x, touch.y);
             _bSurfaceDrag = true; // TODO: Should be something like `hitSurface->startDrag()`
             Gui::instance()->notifySurfacePressed(touch, hitSurface);
         }else{
@@ -237,23 +240,32 @@ void ProjectionMappingMode::onTouchDown(Application * app, map<int, ofTouchEvent
         }
     }
 }
-    //Tom added this for overload
-    // TODO tidy up
-    void ProjectionMappingMode::onTouchUp(Application * app, map<int, ofTouchEventArgs> & touchMap){
-        onTouchUp(app, touchMap, 1);
+
+    
+void ProjectionMappingMode::onTouchUp(Application * app, map<int, ofTouchEventArgs> & touchMap){
+    Gui::instance()->touchUp(touchMap);
+// Tom added for multitouch
+    int touch_id;
+    int count = 0;
+    for(auto const & t : touchMap){
+        if(t.second.type == ofTouchEventArgs::up){
+            touch_id = t.second.id;
+            break;
+        }
+        count++;
+    }
+    if(count == touchMap.size()){
+        //No up touch
+        return;
     }
     
-void ProjectionMappingMode::onTouchUp(Application * app, map<int, ofTouchEventArgs> & touchMap, int touch_id){
-    Gui::instance()->touchUp(touchMap);
-
-    // Tom added for multitouch
     if(touchMap.size() > 0){
         _bSurfaceDrag = drag_manager::stop_surface_drag(touch_id, active_hits); // TODO: handle this locally
     }
     if(drag_manager::stop_joints_drag(touch_id, active_joints)){
         auto joint = (*Gui::instance()->getProjectionEditorWidget().getJoints())[ active_joints.touches[touch_id] ];
         joint->stopDrag();
-        active_joints.touches.erase( active_joints.touches.find(touch_id) );
+        active_joints.touches.erase(touch_id);
     }
     // End Tom
 #if 0
@@ -282,9 +294,17 @@ void ProjectionMappingMode::onTouchMoved(Application * app, map<int, ofTouchEven
         // TODO: Handle app->getGui()->clickPosition and app->getGui()->bDrag locally.
         if(_bSurfaceDrag){
             ofVec2f touchPosition = ofVec2f(touch.x, touch.y);
-            ofVec2f distance = touchPosition - _clickPosition;
+            // Tom changed
+            auto last_touch = last_touch_positions.find(touch.id);
+            auto last_touch_pos = touchPosition;
+            if(last_touch != last_touch_positions.end()){
+                last_touch_pos = last_touch->second;
+            }
+            
+            ofVec2f distance = touchPosition - last_touch_pos;
             Gui::instance()->getProjectionEditorWidget().moveSelectedSurface(distance);
-            _clickPosition = touchPosition;
+            //Tom changed
+            last_touch_positions[touch.id] = touchPosition;
         }
     }
 }

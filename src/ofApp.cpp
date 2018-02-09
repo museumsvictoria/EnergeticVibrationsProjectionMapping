@@ -150,8 +150,11 @@ void ofApp::mouseMoved(int x, int y ){
 //--------------------------------------------------------------
 void ofApp::mouseDragged(int x, int y, int button){
 #ifdef FAKETOUCH 
-  auto touch = ofTouchEventArgs(ofTouchEventArgs::down, x, y, 1);
-  touchMap[touch.id] = touch;
+    auto touch1 = ofTouchEventArgs(ofTouchEventArgs::move, x, y, 1);
+    auto touch2 = ofTouchEventArgs(ofTouchEventArgs::move, x+5, y+5, 2);
+  touchMap[touch1.id] = touch1;
+    mapper.touchMoved(touchMap);
+    touchMap[touch2.id] = touch2;
   mapper.touchMoved(touchMap);
 #else
     mapper.mouseDragged(x, y, button);
@@ -173,8 +176,11 @@ void ofApp::mousePressed(int x, int y, int button){
             // create a fake touch down event and send it through to
             // text touch when cliked
             // create up when released
-            auto touch = ofTouchEventArgs(ofTouchEventArgs::down, x, y, 1);
-            touchMap[touch.id] = touch;
+            auto touch1 = ofTouchEventArgs(ofTouchEventArgs::down, x, y, 1);
+            auto touch2 = ofTouchEventArgs(ofTouchEventArgs::down, x+5, y+5, 2);
+            touchMap[touch1.id] = touch1;
+            mapper.touchDown(touchMap);
+            touchMap[touch2.id] = touch2;
             mapper.touchDown(touchMap);
 #else
             mapper.mousePressed(x, y, button);
@@ -185,9 +191,16 @@ void ofApp::mousePressed(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button){
-#ifdef FAKETOUCH 
-  mapper.touchUp(touchMap, 1);
+#ifdef FAKETOUCH
+    auto touch1 = ofTouchEventArgs(ofTouchEventArgs::up, x, y, 1);
+    auto touch2 = ofTouchEventArgs(ofTouchEventArgs::up, x+5, y+5, 2);
+    touchMap[touch1.id] = touch1;
+    touchMap[touch2.id] = touch2;
+  mapper.touchUp(touchMap);
+    touchMap.erase(2);
+    mapper.touchUp(touchMap);
     touchMap.erase(1);
+    
 #else
     mapper.mouseReleased(x, y, button);
 #endif
@@ -246,7 +259,7 @@ void ofApp::touchUp(ofTouchEventArgs & touch){
   //TODO this probably needs to be erased after passing in?
     touchMap.erase(touch.id);
 	gui_interface.touchUp(touchMap);
-	mapper.touchUp(touchMap, touch.id);
+	mapper.touchUp(touchMap);
 
 	// This is hear incase we really need to start hacking ImGui
 	// TO enable mouse events to be set from the touch screen. 
