@@ -13,7 +13,7 @@
 #include "Settings.h"
 #include "ofxPiMapper.h"
 
-#include "MultiTouch/MultiTouch.hpp"
+#include "multi_touch.hpp"
 
 //----------------WINDOWS ONLY
 #ifdef WINDOWS_TOUCH
@@ -68,5 +68,5 @@ class ofApp : public ofBaseApp{
 		int clear_touch_in_two_frames;
     
         GuiInterface gui_interface;
-	
+
 };

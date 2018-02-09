@@ -159,8 +159,8 @@ void Application::touchDown(map<int, ofTouchEventArgs> & touchMap) {
 void Application::touchMoved(map<int, ofTouchEventArgs> & touchMap) {
 	_state->onTouchMoved(this, touchMap);
 }
-void Application::touchUp(map<int, ofTouchEventArgs> & touchMap) {
-	_state->onTouchUp(this, touchMap);
+void Application::touchUp(map<int, ofTouchEventArgs> & touchMap, int touch_id) {
+	_state->onTouchUp(this, touchMap, touch_id);
 }
 
 void Application::onMousePressed(ofMouseEventArgs & args){

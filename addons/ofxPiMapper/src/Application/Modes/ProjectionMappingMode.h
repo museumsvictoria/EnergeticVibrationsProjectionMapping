@@ -10,6 +10,8 @@
 #include "PiGui.h"
 #include "ScaleWidget.h"
 
+#include "drag_manager.hpp"
+
 namespace ofx {
 namespace piMapper {
 
@@ -25,6 +27,7 @@ class ProjectionMappingMode : public ApplicationBaseMode {
         void onTouchDown(Application * app, map<int, ofTouchEventArgs> & touchMap);
         void onTouchMoved(Application * app, map<int, ofTouchEventArgs> & touchMap);
         void onTouchUp(Application * app, map<int, ofTouchEventArgs> & touchMap);
+        void onTouchUp(Application * app, map<int, ofTouchEventArgs> & touchMap, int touch_id);
     
 		void onKeyPressed(Application * app, ofKeyEventArgs & args);
 		void onMousePressed(Application * app, ofMouseEventArgs & args);
@@ -47,6 +50,10 @@ class ProjectionMappingMode : public ApplicationBaseMode {
 	
 		bool _bSurfaceDrag;
 		bool _bDrawLayerPanel;
+    
+    // Tom added for multitracking
+    drag_manager::ActiveHits active_hits;
+    drag_manager::ActiveJoints active_joints;
 
 };
 

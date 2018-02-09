@@ -186,7 +186,7 @@ void ofApp::mousePressed(int x, int y, int button){
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button){
 #ifdef FAKETOUCH 
-  mapper.touchUp(touchMap);
+  mapper.touchUp(touchMap, 1);
     touchMap.erase(1);
 #else
     mapper.mouseReleased(x, y, button);
@@ -246,7 +246,7 @@ void ofApp::touchUp(ofTouchEventArgs & touch){
   //TODO this probably needs to be erased after passing in?
     touchMap.erase(touch.id);
 	gui_interface.touchUp(touchMap);
-	mapper.touchUp(touchMap);
+	mapper.touchUp(touchMap, touch.id);
 
 	// This is hear incase we really need to start hacking ImGui
 	// TO enable mouse events to be set from the touch screen. 

@@ -205,6 +205,8 @@ void ProjectionMappingMode::onTouchDown(Application * app, map<int, ofTouchEvent
             for(int i = Gui::instance()->getProjectionEditorWidget().getJoints()->size() - 1; i >= 0 ; --i){
                 if((*Gui::instance()->getProjectionEditorWidget().getJoints())[i] == hitJoint){
                     hitJointIndex = i;
+                    //Tom added multitouch
+                    active_joints.touches.insert( std::pair<int, int>(touch.id, i) );
                     break;
                 }
             }
@@ -212,6 +214,8 @@ void ProjectionMappingMode::onTouchDown(Application * app, map<int, ofTouchEvent
             for(int i = app->getSurfaceManager()->size() - 1; i >= 0; --i){
                 if(app->getSurfaceManager()->getSurface(i)->hitTest(ofVec2f(touch.x, touch.y))){
                     hitSurface = app->getSurfaceManager()->getSurface(i);
+                    //Tom added multitouch
+                    active_hits.touches.insert(touch.id);
                     break;
                 }
             }
@@ -233,11 +237,28 @@ void ProjectionMappingMode::onTouchDown(Application * app, map<int, ofTouchEvent
         }
     }
 }
+    //Tom added this for overload
+    // TODO tidy up
+    void ProjectionMappingMode::onTouchUp(Application * app, map<int, ofTouchEventArgs> & touchMap){
+        onTouchUp(app, touchMap, 1);
+    }
     
-void ProjectionMappingMode::onTouchUp(Application * app, map<int, ofTouchEventArgs> & touchMap){
+void ProjectionMappingMode::onTouchUp(Application * app, map<int, ofTouchEventArgs> & touchMap, int touch_id){
     Gui::instance()->touchUp(touchMap);
-    _bSurfaceDrag = false; // TODO: handle this locally
+
+    // Tom added for multitouch
+    if(touchMap.size() > 0){
+        _bSurfaceDrag = drag_manager::stop_surface_drag(touch_id, active_hits); // TODO: handle this locally
+    }
+    if(drag_manager::stop_joints_drag(touch_id, active_joints)){
+        auto joint = (*Gui::instance()->getProjectionEditorWidget().getJoints())[ active_joints.touches[touch_id] ];
+        joint->stopDrag();
+        active_joints.touches.erase( active_joints.touches.find(touch_id) );
+    }
+    // End Tom
+#if 0
     Gui::instance()->getProjectionEditorWidget().stopDragJoints();
+#endif
 }
     
 void ProjectionMappingMode::onTouchMoved(Application * app, map<int, ofTouchEventArgs> & touchMap){

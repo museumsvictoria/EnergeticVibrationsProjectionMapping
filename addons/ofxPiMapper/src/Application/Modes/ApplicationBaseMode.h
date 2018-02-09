@@ -21,6 +21,7 @@ class ApplicationBaseMode {
 		virtual void onTouchDown(Application * app, map<int, ofTouchEventArgs> & touchMap){}
 		virtual void onTouchMoved(Application * app, map<int, ofTouchEventArgs> & touchMap){}
 		virtual void onTouchUp(Application * app, map<int, ofTouchEventArgs> & touchMap){}
+        virtual void onTouchUp(Application * app, map<int, ofTouchEventArgs> & touchMap, int touch_id){}
 
 		virtual void onKeyPressed(Application * app, ofKeyEventArgs & args){}
         virtual void onMousePressed(Application * app, ofMouseEventArgs & args){}
