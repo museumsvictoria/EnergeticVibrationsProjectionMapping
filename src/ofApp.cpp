@@ -138,7 +138,7 @@ void ofApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
-    mapper.keyReleased(key);
+   // mapper.keyReleased(key);
 }
 
 
@@ -149,16 +149,9 @@ void ofApp::mouseMoved(int x, int y ){
 
 //--------------------------------------------------------------
 void ofApp::mouseDragged(int x, int y, int button){
-#ifdef FAKETOUCH 
-    auto touch1 = ofTouchEventArgs(ofTouchEventArgs::move, x, y, 1);
-    auto touch2 = ofTouchEventArgs(ofTouchEventArgs::move, x+5, y+5, 2);
-  touchMap[touch1.id] = touch1;
-    mapper.touchMoved(touchMap);
-    touchMap[touch2.id] = touch2;
-  mapper.touchMoved(touchMap);
-#else
-    mapper.mouseDragged(x, y, button);
-#endif
+
+    //mapper.mouseDragged(x, y, button);
+	cout << "mouse dragged" << endl;
 }
 
 //--------------------------------------------------------------
@@ -171,39 +164,18 @@ void ofApp::mousePressed(int x, int y, int button){
         // rectangle before registering mouse events so we dont
         // deselect the currently selected layer.
         if(gui_interface.is_mouse_inside_mapping_rect()){
-#ifdef FAKETOUCH 
-            //---- Tom
-            // create a fake touch down event and send it through to
-            // text touch when cliked
-            // create up when released
-            auto touch1 = ofTouchEventArgs(ofTouchEventArgs::down, x, y, 1);
-            auto touch2 = ofTouchEventArgs(ofTouchEventArgs::down, x+5, y+5, 2);
-            touchMap[touch1.id] = touch1;
-            mapper.touchDown(touchMap);
-            touchMap[touch2.id] = touch2;
-            mapper.touchDown(touchMap);
-#else
-            mapper.mousePressed(x, y, button);
-#endif
+
+           // mapper.mousePressed(x, y, button);
+
         }
     }
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button){
-#ifdef FAKETOUCH
-    auto touch1 = ofTouchEventArgs(ofTouchEventArgs::up, x, y, 1);
-    auto touch2 = ofTouchEventArgs(ofTouchEventArgs::up, x+5, y+5, 2);
-    touchMap[touch1.id] = touch1;
-    touchMap[touch2.id] = touch2;
-  mapper.touchUp(touchMap);
-    touchMap.erase(2);
-    mapper.touchUp(touchMap);
-    touchMap.erase(1);
-    
-#else
+
     mapper.mouseReleased(x, y, button);
-#endif
+
 }
 
 //--------------------------------------------------------------
@@ -252,14 +224,16 @@ void ofApp::touchMoved(ofTouchEventArgs & touch){
     touchMap[touch.id] = touch;
 	gui_interface.touchMoved(touchMap);
 	mapper.touchMoved(touchMap);
+	cout << "touchMoved" << endl;
 }
 
 //--------------------------------------------------------------
 void ofApp::touchUp(ofTouchEventArgs & touch){
   //TODO this probably needs to be erased after passing in?
-    touchMap.erase(touch.id);
+	touchMap[touch.id] = touch;
 	gui_interface.touchUp(touchMap);
 	mapper.touchUp(touchMap);
+	touchMap.erase(touch.id);
 
 	// This is hear incase we really need to start hacking ImGui
 	// TO enable mouse events to be set from the touch screen. 

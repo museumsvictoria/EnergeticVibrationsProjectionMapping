@@ -1,4 +1,4 @@
 #pragma once
-#define FAKETOUCH 1
+//#define FAKETOUCH 1
 
 

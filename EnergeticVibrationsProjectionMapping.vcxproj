@@ -1,452 +1,455 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-	<ItemGroup Label="ProjectConfigurations">
-		<ProjectConfiguration Include="Debug|Win32">
-			<Configuration>Debug</Configuration>
-			<Platform>Win32</Platform>
-		</ProjectConfiguration>
-		<ProjectConfiguration Include="Debug|x64">
-			<Configuration>Debug</Configuration>
-			<Platform>x64</Platform>
-		</ProjectConfiguration>
-		<ProjectConfiguration Include="Release|Win32">
-			<Configuration>Release</Configuration>
-			<Platform>Win32</Platform>
-		</ProjectConfiguration>
-		<ProjectConfiguration Include="Release|x64">
-			<Configuration>Release</Configuration>
-			<Platform>x64</Platform>
-		</ProjectConfiguration>
-	</ItemGroup>
-	<PropertyGroup Label="Globals">
-		<ProjectGuid>{7FD42DF7-442E-479A-BA76-D0022F99702A}</ProjectGuid>
-		<Keyword>Win32Proj</Keyword>
-		<RootNamespace>EnergeticVibrationsProjectionMapping</RootNamespace>
-	</PropertyGroup>
-	<Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-		<ConfigurationType>Application</ConfigurationType>
-		<CharacterSet>Unicode</CharacterSet>
-		<PlatformToolset>v140</PlatformToolset>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-		<ConfigurationType>Application</ConfigurationType>
-		<CharacterSet>Unicode</CharacterSet>
-		<PlatformToolset>v140</PlatformToolset>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-		<ConfigurationType>Application</ConfigurationType>
-		<CharacterSet>Unicode</CharacterSet>
-		<WholeProgramOptimization>true</WholeProgramOptimization>
-		<PlatformToolset>v140</PlatformToolset>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-		<ConfigurationType>Application</ConfigurationType>
-		<CharacterSet>Unicode</CharacterSet>
-		<WholeProgramOptimization>true</WholeProgramOptimization>
-		<PlatformToolset>v140</PlatformToolset>
-	</PropertyGroup>
-	<Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
-	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
-		<Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-		<Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksRelease.props" />
-	</ImportGroup>
-	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
-		<Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-		<Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksRelease.props" />
-	</ImportGroup>
-	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
-		<Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-		<Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksDebug.props" />
-	</ImportGroup>
-	<ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
-		<Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-		<Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksDebug.props" />
-	</ImportGroup>
-	<PropertyGroup Label="UserMacros" />
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-		<OutDir>bin\</OutDir>
-		<IntDir>obj\$(Configuration)\</IntDir>
-		<TargetName>$(ProjectName)_debug</TargetName>
-		<LinkIncremental>true</LinkIncremental>
-		<GenerateManifest>true</GenerateManifest>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-		<OutDir>bin\</OutDir>
-		<IntDir>obj\$(Configuration)\</IntDir>
-		<TargetName>$(ProjectName)_debug</TargetName>
-		<LinkIncremental>true</LinkIncremental>
-		<GenerateManifest>true</GenerateManifest>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-		<OutDir>bin\</OutDir>
-		<IntDir>obj\$(Configuration)\</IntDir>
-		<LinkIncremental>false</LinkIncremental>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-		<OutDir>bin\</OutDir>
-		<IntDir>obj\$(Configuration)\</IntDir>
-		<LinkIncremental>false</LinkIncremental>
-	</PropertyGroup>
-	<ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-		<ClCompile>
-			<Optimization>Disabled</Optimization>
-			<BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
-			<PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
-			<RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-			<WarningLevel>Level3</WarningLevel>
-			<AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;src\GUI;src\Graphics_Tools;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxImGui\libs;..\..\..\addons\ofxImGui\libs\imgui;..\..\..\addons\ofxImGui\libs\imgui\src;..\..\..\addons\ofxImGui\src;..\..\..\addons\ofxOsc\libs;..\..\..\addons\ofxOsc\libs\oscpack;..\..\..\addons\ofxOsc\libs\oscpack\src;..\..\..\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\posix;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32;..\..\..\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\addons\ofxOsc\src;..\..\..\addons\ofxPiMapper\src;..\..\..\addons\ofxPiMapper\src\Application;..\..\..\addons\ofxPiMapper\src\Application\Modes;..\..\..\addons\ofxPiMapper\src\Commands;..\..\..\addons\ofxPiMapper\src\Gui;..\..\..\addons\ofxPiMapper\src\Gui\Widgets;..\..\..\addons\ofxPiMapper\src\Info;..\..\..\addons\ofxPiMapper\src\MediaServer;..\..\..\addons\ofxPiMapper\src\Sources;..\..\..\addons\ofxPiMapper\src\Surfaces;..\..\..\addons\ofxPiMapper\src\UserInterface;..\..\..\addons\ofxPiMapper\src\Utils;..\..\..\addons\ofxWinTouchHook\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src</AdditionalIncludeDirectories>
-			<CompileAs>CompileAsCpp</CompileAs>
-		</ClCompile>
-		<Link>
-			<GenerateDebugInformation>true</GenerateDebugInformation>
-			<SubSystem>Console</SubSystem>
-			<RandomizedBaseAddress>false</RandomizedBaseAddress>
-			<AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
-			<AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-		</Link>
-		<PostBuildEvent />
-	</ItemDefinitionGroup>
-	<ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-		<ClCompile>
-			<Optimization>Disabled</Optimization>
-			<BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
-			<PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
-			<RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-			<WarningLevel>Level3</WarningLevel>
-			<AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;src\GUI;src\Graphics_Tools;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxImGui\libs;..\..\..\addons\ofxImGui\libs\imgui;..\..\..\addons\ofxImGui\libs\imgui\src;..\..\..\addons\ofxImGui\src;..\..\..\addons\ofxOsc\libs;..\..\..\addons\ofxOsc\libs\oscpack;..\..\..\addons\ofxOsc\libs\oscpack\src;..\..\..\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\posix;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32;..\..\..\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\addons\ofxOsc\src;..\..\..\addons\ofxPiMapper\src;..\..\..\addons\ofxPiMapper\src\Application;..\..\..\addons\ofxPiMapper\src\Application\Modes;..\..\..\addons\ofxPiMapper\src\Commands;..\..\..\addons\ofxPiMapper\src\Gui;..\..\..\addons\ofxPiMapper\src\Gui\Widgets;..\..\..\addons\ofxPiMapper\src\Info;..\..\..\addons\ofxPiMapper\src\MediaServer;..\..\..\addons\ofxPiMapper\src\Sources;..\..\..\addons\ofxPiMapper\src\Surfaces;..\..\..\addons\ofxPiMapper\src\UserInterface;..\..\..\addons\ofxPiMapper\src\Utils;..\..\..\addons\ofxWinTouchHook\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src</AdditionalIncludeDirectories>
-			<CompileAs>CompileAsCpp</CompileAs>
-			<MultiProcessorCompilation>true</MultiProcessorCompilation>
-		</ClCompile>
-		<Link>
-			<GenerateDebugInformation>true</GenerateDebugInformation>
-			<SubSystem>Console</SubSystem>
-			<RandomizedBaseAddress>false</RandomizedBaseAddress>
-			<AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
-			<AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-		</Link>
-		<PostBuildEvent />
-	</ItemDefinitionGroup>
-	<ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-		<ClCompile>
-			<WholeProgramOptimization>false</WholeProgramOptimization>
-			<PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
-			<RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
-			<WarningLevel>Level3</WarningLevel>
-			<AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;src\GUI;src\Graphics_Tools;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxImGui\libs;..\..\..\addons\ofxImGui\libs\imgui;..\..\..\addons\ofxImGui\libs\imgui\src;..\..\..\addons\ofxImGui\src;..\..\..\addons\ofxOsc\libs;..\..\..\addons\ofxOsc\libs\oscpack;..\..\..\addons\ofxOsc\libs\oscpack\src;..\..\..\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\posix;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32;..\..\..\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\addons\ofxOsc\src;..\..\..\addons\ofxPiMapper\src;..\..\..\addons\ofxPiMapper\src\Application;..\..\..\addons\ofxPiMapper\src\Application\Modes;..\..\..\addons\ofxPiMapper\src\Commands;..\..\..\addons\ofxPiMapper\src\Gui;..\..\..\addons\ofxPiMapper\src\Gui\Widgets;..\..\..\addons\ofxPiMapper\src\Info;..\..\..\addons\ofxPiMapper\src\MediaServer;..\..\..\addons\ofxPiMapper\src\Sources;..\..\..\addons\ofxPiMapper\src\Surfaces;..\..\..\addons\ofxPiMapper\src\UserInterface;..\..\..\addons\ofxPiMapper\src\Utils;..\..\..\addons\ofxWinTouchHook\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src</AdditionalIncludeDirectories>
-			<CompileAs>CompileAsCpp</CompileAs>
-			<MultiProcessorCompilation>true</MultiProcessorCompilation>
-		</ClCompile>
-		<Link>
-			<IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
-			<GenerateDebugInformation>false</GenerateDebugInformation>
-			<SubSystem>Console</SubSystem>
-			<OptimizeReferences>true</OptimizeReferences>
-			<EnableCOMDATFolding>true</EnableCOMDATFolding>
-			<RandomizedBaseAddress>false</RandomizedBaseAddress>
-			<AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
-			<AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-		</Link>
-		<PostBuildEvent />
-	</ItemDefinitionGroup>
-	<ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-		<ClCompile>
-			<WholeProgramOptimization>false</WholeProgramOptimization>
-			<PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
-			<RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
-			<WarningLevel>Level3</WarningLevel>
-			<AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;src\GUI;src\Graphics_Tools;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxImGui\libs;..\..\..\addons\ofxImGui\libs\imgui;..\..\..\addons\ofxImGui\libs\imgui\src;..\..\..\addons\ofxImGui\src;..\..\..\addons\ofxOsc\libs;..\..\..\addons\ofxOsc\libs\oscpack;..\..\..\addons\ofxOsc\libs\oscpack\src;..\..\..\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\posix;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32;..\..\..\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\addons\ofxOsc\src;..\..\..\addons\ofxPiMapper\src;..\..\..\addons\ofxPiMapper\src\Application;..\..\..\addons\ofxPiMapper\src\Application\Modes;..\..\..\addons\ofxPiMapper\src\Commands;..\..\..\addons\ofxPiMapper\src\Gui;..\..\..\addons\ofxPiMapper\src\Gui\Widgets;..\..\..\addons\ofxPiMapper\src\Info;..\..\..\addons\ofxPiMapper\src\MediaServer;..\..\..\addons\ofxPiMapper\src\Sources;..\..\..\addons\ofxPiMapper\src\Surfaces;..\..\..\addons\ofxPiMapper\src\UserInterface;..\..\..\addons\ofxPiMapper\src\Utils;..\..\..\addons\ofxWinTouchHook\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src</AdditionalIncludeDirectories>
-			<CompileAs>CompileAsCpp</CompileAs>
-		</ClCompile>
-		<Link>
-			<IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
-			<GenerateDebugInformation>false</GenerateDebugInformation>
-			<SubSystem>Console</SubSystem>
-			<OptimizeReferences>true</OptimizeReferences>
-			<EnableCOMDATFolding>true</EnableCOMDATFolding>
-			<RandomizedBaseAddress>false</RandomizedBaseAddress>
-			<AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
-			<AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-		</Link>
-		<PostBuildEvent />
-	</ItemDefinitionGroup>
-	<ItemGroup>
-		<ClCompile Include="src\main.cpp" />
-		<ClCompile Include="src\ofApp.cpp" />
-		<ClCompile Include="src\GUI\AudioToggles.cpp" />
-		<ClCompile Include="src\GUI\CustomSlider.cpp" />
-		<ClCompile Include="src\GUI\Gradient.cpp" />
-		<ClCompile Include="src\GUI\GuiInterface.cpp" />
-		<ClCompile Include="src\GUI\PiMapperHelper.cpp" />
-		<ClCompile Include="src\VisualLayer.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxGui\src\ofxBaseGui.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxGui\src\ofxButton.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxGui\src\ofxGuiGroup.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxGui\src\ofxLabel.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxGui\src\ofxPanel.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxGui\src\ofxSlider.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxGui\src\ofxSliderGroup.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxGui\src\ofxToggle.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxImGui\src\BaseEngine.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxImGui\src\BaseTheme.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxImGui\src\EngineGLFW.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxImGui\src\EngineOpenGLES.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxImGui\src\EngineVk.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxImGui\src\Gui.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxImGui\src\Helpers.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxImGui\src\ofxImGuiLoggerChannel.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxImGui\libs\imgui\src\imgui.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxImGui\libs\imgui\src\imgui_demo.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxImGui\libs\imgui\src\imgui_draw.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscBundle.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscMessage.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscParameterSync.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscReceiver.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscSender.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\IpEndpointName.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32\NetworkingUtils.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32\UdpSocket.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscOutboundPacketStream.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscPrintReceivedElements.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscReceivedElements.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Application\Application.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Application\Modes\ApplicationBaseMode.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Application\Modes\PresentationMode.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Application\Modes\ProjectionMappingMode.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Application\Modes\SourceSelectionMode.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Application\Modes\TextureMappingMode.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Application\SettingsLoader.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\AddGridColCmd.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\AddGridRowCmd.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\AddSurfaceCmd.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\ClearSurfacesCmd.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\CmdManager.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\DeselectSurfaceCmd.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\DeselectTexCoordCmd.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\DuplicateSurfaceCmd.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\MvAllTexCoordsCmd.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\MvLayerDnCmd.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\MvLayerUpCmd.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\MvSelectionCmd.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\MvSurfaceVertCmd.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\MvTexCoordCmd.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\RmGridColCmd.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\RmGridRowCmd.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\RmSurfaceCmd.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\SaveTexCoordPosCmd.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\ScaleSurfaceFromToCmd.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\SelNextSurfaceCmd.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\SelNextTexCoordCmd.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\SelNextVertexCmd.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\SelPrevSurfaceCmd.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\SelPrevTexCoordCmd.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\SelPrevVertexCmd.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\SelSurfaceCmd.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\SelTexCoordCmd.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\SelVertexCmd.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\SetApplicationModeCmd.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\SetNextSourceCmd.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\SetPresetCmd.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\SetSourceCmd.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\SetTexMapDrawModeCmd.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\StartDragSurfaceCmd.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\ToggleAnimatedSourceCmd.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\TogglePerspectiveCmd.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\TranslateCanvasCmd.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Gui\PiGui.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Gui\Widgets\LayerPanelWidget.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Gui\Widgets\ProjectionEditorWidget.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Gui\Widgets\ScaleWidget.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Gui\Widgets\SourcesEditorWidget.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Gui\Widgets\SurfaceHighlightWidget.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Gui\Widgets\TextureEditorWidget.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Gui\Widgets\TextureHighlightWidget.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Info\Info.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\MediaServer\DirectoryWatcher.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\MediaServer\MediaServer.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\ofxPiMapper.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Sources\BaseSource.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Sources\FboSource.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Sources\ImageSource.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Sources\OMXPlayerCache.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Sources\VideoSource.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Surfaces\BaseSurface.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Surfaces\GridWarpSurface.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Surfaces\HexagonSurface.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Surfaces\QuadSurface.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Surfaces\SurfaceFactory.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Surfaces\SurfaceManager.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Surfaces\SurfaceStack.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Surfaces\TriangleSurface.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\UserInterface\BaseJoint.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\UserInterface\CircleJoint.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\UserInterface\RadioList.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxPiMapper\src\Utils\HomographyHelper.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxWinTouchHook\src\ofxWinTouchHook.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlerror.cpp" />
-		<ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlparser.cpp" />
-	</ItemGroup>
-	<ItemGroup>
-		<ClInclude Include="src\ofApp.h" />
-		<ClInclude Include="src\Graphics_Tools\FullscreenQuad.h" />
-		<ClInclude Include="src\Graphics_Tools\RenderFbo.h" />
-		<ClInclude Include="src\GUI\AudioToggles.h" />
-		<ClInclude Include="src\GUI\CustomSlider.h" />
-		<ClInclude Include="src\GUI\Gradient.h" />
-		<ClInclude Include="src\GUI\GuiInterface.h" />
-		<ClInclude Include="src\GUI\GuiTheme.h" />
-		<ClInclude Include="src\GUI\PiMapperHelper.h" />
-		<ClInclude Include="src\Settings.h" />
-		<ClInclude Include="src\VisualLayer.h" />
-		<ClInclude Include="..\..\..\addons\ofxGui\src\ofxBaseGui.h" />
-		<ClInclude Include="..\..\..\addons\ofxGui\src\ofxButton.h" />
-		<ClInclude Include="..\..\..\addons\ofxGui\src\ofxGui.h" />
-		<ClInclude Include="..\..\..\addons\ofxGui\src\ofxGuiGroup.h" />
-		<ClInclude Include="..\..\..\addons\ofxGui\src\ofxLabel.h" />
-		<ClInclude Include="..\..\..\addons\ofxGui\src\ofxPanel.h" />
-		<ClInclude Include="..\..\..\addons\ofxGui\src\ofxSlider.h" />
-		<ClInclude Include="..\..\..\addons\ofxGui\src\ofxSliderGroup.h" />
-		<ClInclude Include="..\..\..\addons\ofxGui\src\ofxToggle.h" />
-		<ClInclude Include="..\..\..\addons\ofxImGui\src\BaseEngine.h" />
-		<ClInclude Include="..\..\..\addons\ofxImGui\src\BaseTheme.h" />
-		<ClInclude Include="..\..\..\addons\ofxImGui\src\EngineGLFW.h" />
-		<ClInclude Include="..\..\..\addons\ofxImGui\src\EngineOpenGLES.h" />
-		<ClInclude Include="..\..\..\addons\ofxImGui\src\EngineVk.h" />
-		<ClInclude Include="..\..\..\addons\ofxImGui\src\Gui.h" />
-		<ClInclude Include="..\..\..\addons\ofxImGui\src\Helpers.h" />
-		<ClInclude Include="..\..\..\addons\ofxImGui\src\imconfig.h" />
-		<ClInclude Include="..\..\..\addons\ofxImGui\src\ofxImGui.h" />
-		<ClInclude Include="..\..\..\addons\ofxImGui\src\ofxImGuiLoggerChannel.h" />
-		<ClInclude Include="..\..\..\addons\ofxImGui\src\ThemeTest.h" />
-		<ClInclude Include="..\..\..\addons\ofxImGui\libs\imgui\src\imgui.h" />
-		<ClInclude Include="..\..\..\addons\ofxImGui\libs\imgui\src\imgui_internal.h" />
-		<ClInclude Include="..\..\..\addons\ofxImGui\libs\imgui\src\stb_rect_pack.h" />
-		<ClInclude Include="..\..\..\addons\ofxImGui\libs\imgui\src\stb_textedit.h" />
-		<ClInclude Include="..\..\..\addons\ofxImGui\libs\imgui\src\stb_truetype.h" />
-		<ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOsc.h" />
-		<ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscArg.h" />
-		<ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscBundle.h" />
-		<ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscMessage.h" />
-		<ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscParameterSync.h" />
-		<ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscReceiver.h" />
-		<ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscSender.h" />
-		<ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\IpEndpointName.h" />
-		<ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\NetworkingUtils.h" />
-		<ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\PacketListener.h" />
-		<ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\TimerListener.h" />
-		<ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\UdpSocket.h" />
-		<ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\MessageMappingOscPacketListener.h" />
-		<ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscException.h" />
-		<ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscHostEndianness.h" />
-		<ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscOutboundPacketStream.h" />
-		<ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscPacketListener.h" />
-		<ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscPrintReceivedElements.h" />
-		<ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscReceivedElements.h" />
-		<ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Application\Application.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Application\Modes\ApplicationBaseMode.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Application\Modes\PresentationMode.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Application\Modes\ProjectionMappingMode.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Application\Modes\SourceSelectionMode.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Application\Modes\TextureMappingMode.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Application\SettingsLoader.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\AddGridColCmd.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\AddGridRowCmd.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\AddSurfaceCmd.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\BaseCmd.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\ClearSurfacesCmd.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\CmdManager.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\DeselectSurfaceCmd.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\DeselectTexCoordCmd.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\DuplicateSurfaceCmd.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\MvAllTexCoordsCmd.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\MvLayerDnCmd.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\MvLayerUpCmd.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\MvSelectionCmd.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\MvSurfaceVertCmd.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\MvTexCoordCmd.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\RmGridColCmd.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\RmGridRowCmd.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\RmSurfaceCmd.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\SaveTexCoordPosCmd.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\ScaleSurfaceFromToCmd.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\SelNextSurfaceCmd.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\SelNextTexCoordCmd.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\SelNextVertexCmd.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\SelPrevSurfaceCmd.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\SelPrevTexCoordCmd.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\SelPrevVertexCmd.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\SelSurfaceCmd.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\SelTexCoordCmd.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\SelVertexCmd.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\SetApplicationModeCmd.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\SetNextSourceCmd.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\SetPresetCmd.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\SetSourceCmd.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\SetTexMapDrawModeCmd.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\StartDragSurfaceCmd.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\ToggleAnimatedSourceCmd.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\TogglePerspectiveCmd.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\TranslateCanvasCmd.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Gui\PiGui.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Gui\Widgets\GuiBaseWidget.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Gui\Widgets\LayerPanelWidget.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Gui\Widgets\ProjectionEditorWidget.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Gui\Widgets\ScaleWidget.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Gui\Widgets\SourcesEditorWidget.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Gui\Widgets\SurfaceHighlightWidget.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Gui\Widgets\TextureEditorWidget.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Gui\Widgets\TextureHighlightWidget.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Info\Info.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\MediaServer\DirectoryWatcher.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\MediaServer\MediaServer.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Mode.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\ofxPiMapper.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Sources\BaseSource.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Sources\FboSource.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Sources\ImageSource.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Sources\OMXPlayerCache.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Sources\SourceType.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Sources\SourceTypeHelper.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Sources\VideoSource.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Surfaces\BaseSurface.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Surfaces\GridWarpSurface.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Surfaces\HexagonSurface.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Surfaces\QuadSurface.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Surfaces\SurfaceFactory.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Surfaces\SurfaceManager.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Surfaces\SurfaceStack.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Surfaces\SurfaceType.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Surfaces\TriangleSurface.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\UserInterface\BaseJoint.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\UserInterface\CircleJoint.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\UserInterface\EditorType.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\UserInterface\GuiMode.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\UserInterface\RadioList.h" />
-		<ClInclude Include="..\..\..\addons\ofxPiMapper\src\Utils\HomographyHelper.h" />
-		<ClInclude Include="..\..\..\addons\ofxWinTouchHook\src\ofxWinTouchHook.h" />
-		<ClInclude Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.h" />
-		<ClInclude Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.h" />
-	</ItemGroup>
-	<ItemGroup>
-		<ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">
-			<Project>{5837595d-aca9-485c-8e76-729040ce4b0b}</Project>
-		</ProjectReference>
-	</ItemGroup>
-	<ItemGroup>
-		<ResourceCompile Include="icon.rc">
-			<AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">/D_DEBUG %(AdditionalOptions)</AdditionalOptions>
-			<AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/D_DEBUG %(AdditionalOptions)</AdditionalOptions>
-			<AdditionalIncludeDirectories>$(OF_ROOT)\libs\openFrameworksCompiled\project\vs</AdditionalIncludeDirectories>
-		</ResourceCompile>
-	</ItemGroup>
-	<Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-	<ProjectExtensions>
-		<VisualStudio>
-			<UserProperties RESOURCE_FILE="icon.rc" />
-		</VisualStudio>
-	</ProjectExtensions>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{7FD42DF7-442E-479A-BA76-D0022F99702A}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>EnergeticVibrationsProjectionMapping</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksRelease.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksRelease.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksDebug.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksDebug.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>bin\</OutDir>
+    <IntDir>obj\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)_debug</TargetName>
+    <LinkIncremental>true</LinkIncremental>
+    <GenerateManifest>true</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>bin\</OutDir>
+    <IntDir>obj\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)_debug</TargetName>
+    <LinkIncremental>true</LinkIncremental>
+    <GenerateManifest>true</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>bin\</OutDir>
+    <IntDir>obj\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>bin\</OutDir>
+    <IntDir>obj\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;src\GUI;src\Graphics_Tools;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxImGui\libs;..\..\..\addons\ofxImGui\libs\imgui;..\..\..\addons\ofxImGui\libs\imgui\src;..\..\..\addons\ofxImGui\src;..\..\..\addons\ofxOsc\libs;..\..\..\addons\ofxOsc\libs\oscpack;..\..\..\addons\ofxOsc\libs\oscpack\src;..\..\..\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\posix;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32;..\..\..\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\addons\ofxOsc\src;..\..\..\addons\ofxPiMapper\src;..\..\..\addons\ofxPiMapper\src\Application;..\..\..\addons\ofxPiMapper\src\Application\Modes;..\..\..\addons\ofxPiMapper\src\Commands;..\..\..\addons\ofxPiMapper\src\Gui;..\..\..\addons\ofxPiMapper\src\Gui\Widgets;..\..\..\addons\ofxPiMapper\src\Info;..\..\..\addons\ofxPiMapper\src\MediaServer;..\..\..\addons\ofxPiMapper\src\Sources;..\..\..\addons\ofxPiMapper\src\Surfaces;..\..\..\addons\ofxPiMapper\src\UserInterface;..\..\..\addons\ofxPiMapper\src\Utils;..\..\..\addons\ofxWinTouchHook\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;src\GUI;src\Graphics_Tools;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxImGui\libs;..\..\..\addons\ofxImGui\libs\imgui;..\..\..\addons\ofxImGui\libs\imgui\src;..\..\..\addons\ofxImGui\src;..\..\..\addons\ofxOsc\libs;..\..\..\addons\ofxOsc\libs\oscpack;..\..\..\addons\ofxOsc\libs\oscpack\src;..\..\..\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\posix;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32;..\..\..\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\addons\ofxOsc\src;..\..\..\addons\ofxPiMapper\src;..\..\..\addons\ofxPiMapper\src\Application;..\..\..\addons\ofxPiMapper\src\Application\Modes;..\..\..\addons\ofxPiMapper\src\Commands;..\..\..\addons\ofxPiMapper\src\Gui;..\..\..\addons\ofxPiMapper\src\Gui\Widgets;..\..\..\addons\ofxPiMapper\src\Info;..\..\..\addons\ofxPiMapper\src\MediaServer;..\..\..\addons\ofxPiMapper\src\Sources;..\..\..\addons\ofxPiMapper\src\Surfaces;..\..\..\addons\ofxPiMapper\src\UserInterface;..\..\..\addons\ofxPiMapper\src\Utils;..\..\..\addons\ofxWinTouchHook\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;src\GUI;src\Graphics_Tools;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxImGui\libs;..\..\..\addons\ofxImGui\libs\imgui;..\..\..\addons\ofxImGui\libs\imgui\src;..\..\..\addons\ofxImGui\src;..\..\..\addons\ofxOsc\libs;..\..\..\addons\ofxOsc\libs\oscpack;..\..\..\addons\ofxOsc\libs\oscpack\src;..\..\..\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\posix;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32;..\..\..\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\addons\ofxOsc\src;..\..\..\addons\ofxPiMapper\src;..\..\..\addons\ofxPiMapper\src\Application;..\..\..\addons\ofxPiMapper\src\Application\Modes;..\..\..\addons\ofxPiMapper\src\Commands;..\..\..\addons\ofxPiMapper\src\Gui;..\..\..\addons\ofxPiMapper\src\Gui\Widgets;..\..\..\addons\ofxPiMapper\src\Info;..\..\..\addons\ofxPiMapper\src\MediaServer;..\..\..\addons\ofxPiMapper\src\Sources;..\..\..\addons\ofxPiMapper\src\Surfaces;..\..\..\addons\ofxPiMapper\src\UserInterface;..\..\..\addons\ofxPiMapper\src\Utils;..\..\..\addons\ofxWinTouchHook\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;src\GUI;src\Graphics_Tools;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxImGui\libs;..\..\..\addons\ofxImGui\libs\imgui;..\..\..\addons\ofxImGui\libs\imgui\src;..\..\..\addons\ofxImGui\src;..\..\..\addons\ofxOsc\libs;..\..\..\addons\ofxOsc\libs\oscpack;..\..\..\addons\ofxOsc\libs\oscpack\src;..\..\..\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\posix;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32;..\..\..\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\addons\ofxOsc\src;..\..\..\addons\ofxPiMapper\src;..\..\..\addons\ofxPiMapper\src\Application;..\..\..\addons\ofxPiMapper\src\Application\Modes;..\..\..\addons\ofxPiMapper\src\Commands;..\..\..\addons\ofxPiMapper\src\Gui;..\..\..\addons\ofxPiMapper\src\Gui\Widgets;..\..\..\addons\ofxPiMapper\src\Info;..\..\..\addons\ofxPiMapper\src\MediaServer;..\..\..\addons\ofxPiMapper\src\Sources;..\..\..\addons\ofxPiMapper\src\Surfaces;..\..\..\addons\ofxPiMapper\src\UserInterface;..\..\..\addons\ofxPiMapper\src\Utils;..\..\..\addons\ofxWinTouchHook\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
+    </ClCompile>
+    <Link>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent />
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\drag_manager.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\ofApp.cpp" />
+    <ClCompile Include="src\GUI\AudioToggles.cpp" />
+    <ClCompile Include="src\GUI\CustomSlider.cpp" />
+    <ClCompile Include="src\GUI\Gradient.cpp" />
+    <ClCompile Include="src\GUI\GuiInterface.cpp" />
+    <ClCompile Include="src\GUI\PiMapperHelper.cpp" />
+    <ClCompile Include="src\VisualLayer.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxBaseGui.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxButton.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxGuiGroup.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxLabel.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxPanel.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxSlider.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxSliderGroup.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxToggle.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxImGui\src\BaseEngine.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxImGui\src\BaseTheme.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxImGui\src\EngineGLFW.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxImGui\src\EngineOpenGLES.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxImGui\src\EngineVk.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxImGui\src\Gui.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxImGui\src\Helpers.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxImGui\src\ofxImGuiLoggerChannel.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxImGui\libs\imgui\src\imgui.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxImGui\libs\imgui\src\imgui_demo.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxImGui\libs\imgui\src\imgui_draw.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscBundle.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscMessage.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscParameterSync.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscReceiver.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscSender.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\IpEndpointName.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32\NetworkingUtils.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32\UdpSocket.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscOutboundPacketStream.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscPrintReceivedElements.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscReceivedElements.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Application\Application.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Application\Modes\ApplicationBaseMode.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Application\Modes\PresentationMode.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Application\Modes\ProjectionMappingMode.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Application\Modes\SourceSelectionMode.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Application\Modes\TextureMappingMode.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Application\SettingsLoader.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\AddGridColCmd.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\AddGridRowCmd.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\AddSurfaceCmd.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\ClearSurfacesCmd.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\CmdManager.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\DeselectSurfaceCmd.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\DeselectTexCoordCmd.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\DuplicateSurfaceCmd.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\MvAllTexCoordsCmd.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\MvLayerDnCmd.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\MvLayerUpCmd.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\MvSelectionCmd.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\MvSurfaceVertCmd.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\MvTexCoordCmd.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\RmGridColCmd.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\RmGridRowCmd.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\RmSurfaceCmd.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\SaveTexCoordPosCmd.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\ScaleSurfaceFromToCmd.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\SelNextSurfaceCmd.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\SelNextTexCoordCmd.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\SelNextVertexCmd.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\SelPrevSurfaceCmd.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\SelPrevTexCoordCmd.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\SelPrevVertexCmd.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\SelSurfaceCmd.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\SelTexCoordCmd.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\SelVertexCmd.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\SetApplicationModeCmd.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\SetNextSourceCmd.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\SetPresetCmd.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\SetSourceCmd.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\SetTexMapDrawModeCmd.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\StartDragSurfaceCmd.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\ToggleAnimatedSourceCmd.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\TogglePerspectiveCmd.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Commands\TranslateCanvasCmd.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Gui\PiGui.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Gui\Widgets\LayerPanelWidget.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Gui\Widgets\ProjectionEditorWidget.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Gui\Widgets\ScaleWidget.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Gui\Widgets\SourcesEditorWidget.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Gui\Widgets\SurfaceHighlightWidget.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Gui\Widgets\TextureEditorWidget.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Gui\Widgets\TextureHighlightWidget.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Info\Info.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\MediaServer\DirectoryWatcher.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\MediaServer\MediaServer.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\ofxPiMapper.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Sources\BaseSource.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Sources\FboSource.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Sources\ImageSource.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Sources\OMXPlayerCache.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Sources\VideoSource.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Surfaces\BaseSurface.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Surfaces\GridWarpSurface.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Surfaces\HexagonSurface.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Surfaces\QuadSurface.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Surfaces\SurfaceFactory.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Surfaces\SurfaceManager.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Surfaces\SurfaceStack.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Surfaces\TriangleSurface.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\UserInterface\BaseJoint.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\UserInterface\CircleJoint.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\UserInterface\RadioList.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxPiMapper\src\Utils\HomographyHelper.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxWinTouchHook\src\ofxWinTouchHook.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlerror.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlparser.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\drag_manager.hpp" />
+    <ClInclude Include="src\multi_touch.hpp" />
+    <ClInclude Include="src\ofApp.h" />
+    <ClInclude Include="src\Graphics_Tools\FullscreenQuad.h" />
+    <ClInclude Include="src\Graphics_Tools\RenderFbo.h" />
+    <ClInclude Include="src\GUI\AudioToggles.h" />
+    <ClInclude Include="src\GUI\CustomSlider.h" />
+    <ClInclude Include="src\GUI\Gradient.h" />
+    <ClInclude Include="src\GUI\GuiInterface.h" />
+    <ClInclude Include="src\GUI\GuiTheme.h" />
+    <ClInclude Include="src\GUI\PiMapperHelper.h" />
+    <ClInclude Include="src\Settings.h" />
+    <ClInclude Include="src\VisualLayer.h" />
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxBaseGui.h" />
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxButton.h" />
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxGui.h" />
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxGuiGroup.h" />
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxLabel.h" />
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxPanel.h" />
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxSlider.h" />
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxSliderGroup.h" />
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxToggle.h" />
+    <ClInclude Include="..\..\..\addons\ofxImGui\src\BaseEngine.h" />
+    <ClInclude Include="..\..\..\addons\ofxImGui\src\BaseTheme.h" />
+    <ClInclude Include="..\..\..\addons\ofxImGui\src\EngineGLFW.h" />
+    <ClInclude Include="..\..\..\addons\ofxImGui\src\EngineOpenGLES.h" />
+    <ClInclude Include="..\..\..\addons\ofxImGui\src\EngineVk.h" />
+    <ClInclude Include="..\..\..\addons\ofxImGui\src\Gui.h" />
+    <ClInclude Include="..\..\..\addons\ofxImGui\src\Helpers.h" />
+    <ClInclude Include="..\..\..\addons\ofxImGui\src\imconfig.h" />
+    <ClInclude Include="..\..\..\addons\ofxImGui\src\ofxImGui.h" />
+    <ClInclude Include="..\..\..\addons\ofxImGui\src\ofxImGuiLoggerChannel.h" />
+    <ClInclude Include="..\..\..\addons\ofxImGui\src\ThemeTest.h" />
+    <ClInclude Include="..\..\..\addons\ofxImGui\libs\imgui\src\imgui.h" />
+    <ClInclude Include="..\..\..\addons\ofxImGui\libs\imgui\src\imgui_internal.h" />
+    <ClInclude Include="..\..\..\addons\ofxImGui\libs\imgui\src\stb_rect_pack.h" />
+    <ClInclude Include="..\..\..\addons\ofxImGui\libs\imgui\src\stb_textedit.h" />
+    <ClInclude Include="..\..\..\addons\ofxImGui\libs\imgui\src\stb_truetype.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOsc.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscArg.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscBundle.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscMessage.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscParameterSync.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscReceiver.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscSender.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\IpEndpointName.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\NetworkingUtils.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\PacketListener.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\TimerListener.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\UdpSocket.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\MessageMappingOscPacketListener.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscException.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscHostEndianness.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscOutboundPacketStream.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscPacketListener.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscPrintReceivedElements.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscReceivedElements.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Application\Application.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Application\Modes\ApplicationBaseMode.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Application\Modes\PresentationMode.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Application\Modes\ProjectionMappingMode.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Application\Modes\SourceSelectionMode.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Application\Modes\TextureMappingMode.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Application\SettingsLoader.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\AddGridColCmd.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\AddGridRowCmd.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\AddSurfaceCmd.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\BaseCmd.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\ClearSurfacesCmd.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\CmdManager.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\DeselectSurfaceCmd.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\DeselectTexCoordCmd.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\DuplicateSurfaceCmd.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\MvAllTexCoordsCmd.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\MvLayerDnCmd.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\MvLayerUpCmd.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\MvSelectionCmd.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\MvSurfaceVertCmd.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\MvTexCoordCmd.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\RmGridColCmd.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\RmGridRowCmd.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\RmSurfaceCmd.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\SaveTexCoordPosCmd.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\ScaleSurfaceFromToCmd.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\SelNextSurfaceCmd.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\SelNextTexCoordCmd.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\SelNextVertexCmd.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\SelPrevSurfaceCmd.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\SelPrevTexCoordCmd.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\SelPrevVertexCmd.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\SelSurfaceCmd.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\SelTexCoordCmd.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\SelVertexCmd.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\SetApplicationModeCmd.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\SetNextSourceCmd.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\SetPresetCmd.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\SetSourceCmd.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\SetTexMapDrawModeCmd.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\StartDragSurfaceCmd.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\ToggleAnimatedSourceCmd.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\TogglePerspectiveCmd.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Commands\TranslateCanvasCmd.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Gui\PiGui.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Gui\Widgets\GuiBaseWidget.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Gui\Widgets\LayerPanelWidget.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Gui\Widgets\ProjectionEditorWidget.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Gui\Widgets\ScaleWidget.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Gui\Widgets\SourcesEditorWidget.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Gui\Widgets\SurfaceHighlightWidget.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Gui\Widgets\TextureEditorWidget.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Gui\Widgets\TextureHighlightWidget.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Info\Info.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\MediaServer\DirectoryWatcher.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\MediaServer\MediaServer.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Mode.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\ofxPiMapper.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Sources\BaseSource.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Sources\FboSource.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Sources\ImageSource.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Sources\OMXPlayerCache.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Sources\SourceType.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Sources\SourceTypeHelper.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Sources\VideoSource.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Surfaces\BaseSurface.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Surfaces\GridWarpSurface.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Surfaces\HexagonSurface.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Surfaces\QuadSurface.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Surfaces\SurfaceFactory.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Surfaces\SurfaceManager.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Surfaces\SurfaceStack.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Surfaces\SurfaceType.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Surfaces\TriangleSurface.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\UserInterface\BaseJoint.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\UserInterface\CircleJoint.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\UserInterface\EditorType.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\UserInterface\GuiMode.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\UserInterface\RadioList.h" />
+    <ClInclude Include="..\..\..\addons\ofxPiMapper\src\Utils\HomographyHelper.h" />
+    <ClInclude Include="..\..\..\addons\ofxWinTouchHook\src\ofxWinTouchHook.h" />
+    <ClInclude Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.h" />
+    <ClInclude Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">
+      <Project>{5837595d-aca9-485c-8e76-729040ce4b0b}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="icon.rc">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">/D_DEBUG %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/D_DEBUG %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>$(OF_ROOT)\libs\openFrameworksCompiled\project\vs</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="icon.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>
