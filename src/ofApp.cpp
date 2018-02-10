@@ -174,7 +174,7 @@ void ofApp::mousePressed(int x, int y, int button){
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button){
 
-    mapper.mouseReleased(x, y, button);
+    //mapper.mouseReleased(x, y, button);
 
 }
 
