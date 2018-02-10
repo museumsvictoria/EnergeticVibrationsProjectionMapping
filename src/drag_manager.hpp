@@ -15,5 +15,7 @@ namespace drag_manager{
   bool stop_surface_drag(int, ActiveHits &);
 
   bool stop_joints_drag(int, ActiveJoints &);
+
+  int current_joint_index(int touch_id, const ActiveJoints &);
   
 };

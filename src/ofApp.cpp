@@ -151,7 +151,7 @@ void ofApp::mouseMoved(int x, int y ){
 void ofApp::mouseDragged(int x, int y, int button){
 
     //mapper.mouseDragged(x, y, button);
-	cout << "mouse dragged" << endl;
+	
 }
 
 //--------------------------------------------------------------
@@ -224,7 +224,7 @@ void ofApp::touchMoved(ofTouchEventArgs & touch){
     touchMap[touch.id] = touch;
 	gui_interface.touchMoved(touchMap);
 	mapper.touchMoved(touchMap);
-	cout << "touchMoved" << endl;
+
 }
 
 //--------------------------------------------------------------
