@@ -171,6 +171,7 @@
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\boundary.cpp" />
     <ClCompile Include="src\drag_manager.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
@@ -291,6 +292,7 @@
     <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlparser.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\boundary.hpp" />
     <ClInclude Include="src\drag_manager.hpp" />
     <ClInclude Include="src\multi_touch.hpp" />
     <ClInclude Include="src\ofApp.h" />

@@ -361,6 +361,9 @@
     <ClCompile Include="src\drag_manager.cpp">
       <Filter>src\multi_touch</Filter>
     </ClCompile>
+    <ClCompile Include="src\boundary.cpp">
+      <Filter>src\multi_touch</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -906,6 +909,9 @@
       <Filter>src\multi_touch</Filter>
     </ClInclude>
     <ClInclude Include="src\multi_touch.hpp">
+      <Filter>src\multi_touch</Filter>
+    </ClInclude>
+    <ClInclude Include="src\boundary.hpp">
       <Filter>src\multi_touch</Filter>
     </ClInclude>
   </ItemGroup>

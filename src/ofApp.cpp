@@ -165,7 +165,7 @@ void ofApp::mousePressed(int x, int y, int button){
         // deselect the currently selected layer.
         if(gui_interface.is_mouse_inside_mapping_rect()){
 
-           // mapper.mousePressed(x, y, button);
+            //mapper.mousePressed(x, y, button);
 
         }
     }
