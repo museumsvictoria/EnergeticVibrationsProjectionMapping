@@ -26,7 +26,7 @@ namespace boundary {
 		return move;
 	}
 
-	void test_this() {
+	void test_bounded_move() {
 		//Tests
 		vector<ofVec3f> shape;
 		shape.push_back(ofVec3f(450, 20, 0));

@@ -15,14 +15,6 @@ namespace drag_manager{
     }
   }
 
-  bool stop_joints_drag(int touch_id, ActiveJoints & active_joints){
-	  auto index = current_joint_index(touch_id, active_joints);
-	  if (index == -1) {
-		  return false;
-	  } else {
-		  return true;
-	  }
-  }
 
   // This pocess could be speed up by using a set - map combo
   // but theres only ever a few joints so it will be fast
@@ -33,7 +25,6 @@ namespace drag_manager{
 			  index = aj.first;
 		  }
 	  }
-	  assert(index >= -1 && index <= 4);
 	  return index;
   }
 
