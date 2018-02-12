@@ -908,9 +908,6 @@
     <ClInclude Include="src\drag_manager.hpp">
       <Filter>src\multi_touch</Filter>
     </ClInclude>
-    <ClInclude Include="src\multi_touch.hpp">
-      <Filter>src\multi_touch</Filter>
-    </ClInclude>
     <ClInclude Include="src\boundary.hpp">
       <Filter>src\multi_touch</Filter>
     </ClInclude>

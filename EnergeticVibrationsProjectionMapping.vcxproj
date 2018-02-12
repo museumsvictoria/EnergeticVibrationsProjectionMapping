@@ -294,7 +294,6 @@
   <ItemGroup>
     <ClInclude Include="src\boundary.hpp" />
     <ClInclude Include="src\drag_manager.hpp" />
-    <ClInclude Include="src\multi_touch.hpp" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="src\Graphics_Tools\FullscreenQuad.h" />
     <ClInclude Include="src\Graphics_Tools\RenderFbo.h" />
