@@ -20,6 +20,7 @@ void BaseJoint::touchMoved(ofTouchEventArgs & touch) {
 	if (!bDrag) {
 		return;
 	}
+	// Tom added to keep joints in bounds
 	position = boundary::bounded_position(ofVec2f(touch) + clickDistance);
 }
 void BaseJoint::touchUp(ofTouchEventArgs & touch) {
