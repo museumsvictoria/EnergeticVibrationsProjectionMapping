@@ -13,8 +13,6 @@
 #include "Settings.h"
 #include "ofxPiMapper.h"
 
-#include "multi_touch.hpp"
-
 //----------------WINDOWS ONLY
 #ifdef WINDOWS_TOUCH
 #include "ofxWinTouchHook.h"
