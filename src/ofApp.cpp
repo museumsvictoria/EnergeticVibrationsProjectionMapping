@@ -7,8 +7,10 @@ void ofApp::setup(){
     ofBackground(0);
     ofEnableSmoothing();
 
+	mouse = true;
 	//----------------WINDOWS ONLY
 #ifdef WINDOWS_TOUCH
+	mouse = false;
 	// enable the Windows Touch Hook
 	ofxWinTouchHook::EnableTouch();
 
@@ -133,12 +135,21 @@ void ofApp::draw(){
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
+	if (key == 'm') {
+		mouse = !mouse;
+		if (mouse) {
+			cout << "Mouse mode on" << endl;
+		} else {
+			cout << "Touch mode on" << endl;
+		}
+	}
     mapper.keyPressed(key);
 }
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
-   // mapper.keyReleased(key);
+		//mapper.keyReleased(key);
+
 }
 
 
@@ -149,8 +160,9 @@ void ofApp::mouseMoved(int x, int y ){
 
 //--------------------------------------------------------------
 void ofApp::mouseDragged(int x, int y, int button){
-
-    //mapper.mouseDragged(x, y, button);
+	if (mouse) {
+		mapper.mouseDragged(x, y, button);
+	}
 	
 }
 
@@ -164,17 +176,18 @@ void ofApp::mousePressed(int x, int y, int button){
         // rectangle before registering mouse events so we dont
         // deselect the currently selected layer.
         if(gui_interface.is_mouse_inside_mapping_rect()){
-
-            //mapper.mousePressed(x, y, button);
-
+			if (mouse) {
+				mapper.mousePressed(x, y, button);
+			}
         }
     }
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button){
-
-    //mapper.mouseReleased(x, y, button);
+	if (mouse) {
+		mapper.mouseReleased(x, y, button);
+	}
 
 }
 
@@ -210,7 +223,9 @@ void ofApp::dragEvent(ofDragInfo dragInfo){
 void ofApp::touchDown(ofTouchEventArgs & touch){
     touchMap[touch.id] = touch;
 	gui_interface.touchDown(touchMap);
-	mapper.touchDown(touchMap);
+	if (!mouse) {
+		mapper.touchDown(touchMap);
+	}
 
 	// This is hear incase we really need to start hacking ImGui
 	// TO enable mouse events to be set from the touch screen. 
@@ -223,7 +238,9 @@ void ofApp::touchDown(ofTouchEventArgs & touch){
 void ofApp::touchMoved(ofTouchEventArgs & touch){
     touchMap[touch.id] = touch;
 	gui_interface.touchMoved(touchMap);
-	mapper.touchMoved(touchMap);
+	if (!mouse) {
+		mapper.touchMoved(touchMap);
+	}
 
 }
 
@@ -232,7 +249,9 @@ void ofApp::touchUp(ofTouchEventArgs & touch){
   //TODO this probably needs to be erased after passing in?
 	touchMap[touch.id] = touch;
 	gui_interface.touchUp(touchMap);
-	mapper.touchUp(touchMap);
+	if (!mouse) {
+		mapper.touchUp(touchMap);
+	}
 	touchMap.erase(touch.id);
 
 	// This is hear incase we really need to start hacking ImGui

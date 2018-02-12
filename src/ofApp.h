@@ -67,4 +67,6 @@ class ofApp : public ofBaseApp{
     
         GuiInterface gui_interface;
 
+		// Tom added to turn mouse on / off
+		bool mouse;
 };
