@@ -244,7 +244,9 @@ void ProjectionMappingMode::onTouchDown(Application * app, map<int, ofTouchEvent
             _bSurfaceDrag = true; // TODO: Should be something like `hitSurface->startDrag()`
             Gui::instance()->notifySurfacePressed(touch, hitSurface);
         }else{
-            Gui::instance()->notifyBackgroundPressed(touch);
+			if (active_hits.touches.size() <= 0 && active_joints.touches.size() <= 0) {
+				Gui::instance()->notifyBackgroundPressed(touch);
+			}
         }
     }
 }
@@ -305,6 +307,16 @@ void ProjectionMappingMode::onTouchMoved(Application * app, map<int, ofTouchEven
     
     // I need to make sure the i look up the vertices of the ucrrently selectd object and make sure it doesn't go out of bounds
     //vector <ofVec3f> & vertices = app->getSurfaceManager()->getSelectedSurface()->getVertices();
+	bool touching = true;
+	for (const auto & t : touchMap) {
+		if (active_hits.touches.find(t.first) == active_hits.touches.end() &&
+			drag_manager::current_joint_index(t.first, active_joints) == -1) {
+			touching = false;
+		}
+	}
+	if (!touching) {
+		return;
+	}
     
     Gui::instance()->touchMoved(touchMap);
 	// Tom changed to send active joints to editor
