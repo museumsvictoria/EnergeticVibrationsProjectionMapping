@@ -21,8 +21,7 @@ class ProjectionEditorWidget {
 		void draw();
 	
         //JOSH addition Tom changed to pass in active joints
-        void touchMoved(map<int, ofTouchEventArgs> & touchMap, 
-			const drag_manager::ActiveJoints &);
+        void touchMoved(map<int, ofTouchEventArgs> & active_joint_move_touch);
     
 		void mouseDragged(ofMouseEventArgs & args);
 		void gotMessage(ofMessage & msg);

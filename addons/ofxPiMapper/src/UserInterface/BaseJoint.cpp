@@ -18,10 +18,14 @@ void BaseJoint::touchDown(ofTouchEventArgs & touch) {
 }
 void BaseJoint::touchMoved(ofTouchEventArgs & touch) {
 	if (!bDrag) {
+		cout << "not dragging" << " ptr " << this << endl;
 		return;
 	}
+	
 	// Tom added to keep joints in bounds
 	position = boundary::bounded_position(ofVec2f(touch) + clickDistance);
+	cout << "pos of joint updated on moved x: " << position.x << " y: " << position.y << endl;
+
 }
 void BaseJoint::touchUp(ofTouchEventArgs & touch) {
 	stopDrag();
@@ -49,6 +53,7 @@ void BaseJoint::startDrag(){
 }
 
 void BaseJoint::stopDrag(){
+
 	bDrag = false;
 }
 
@@ -87,6 +92,7 @@ void BaseJoint::setDefaultProperties(){
 	bDrag = false;
 	selected = false;
 	strokeWidth = 4.5f;
+
 }
 
 } // namespace piMapper

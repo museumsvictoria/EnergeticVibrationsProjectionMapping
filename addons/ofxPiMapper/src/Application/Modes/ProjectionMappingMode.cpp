@@ -199,7 +199,7 @@ void ProjectionMappingMode::onTouchDown(Application * app, map<int, ofTouchEvent
 		if (touch.type != ofTouchEventArgs::down) {
 			continue;
 		}
-        
+		cout << "down id: " << touch.id << endl;
         CircleJoint * hitJoint = 0;
         int hitJointIndex = -1;
         BaseSurface * hitSurface = 0;
@@ -212,6 +212,7 @@ void ProjectionMappingMode::onTouchDown(Application * app, map<int, ofTouchEvent
                     hitJointIndex = i;
                     // Tom added multitouch
 					// link hitjoint to current touch
+					cout << "hit joint" << endl;
                     active_joints.touches[i] =  touch.id;
                     break;
                 }
@@ -232,11 +233,12 @@ void ProjectionMappingMode::onTouchDown(Application * app, map<int, ofTouchEvent
         if(Gui::instance()->getScaleWidget().inside(touch.x, touch.y)){
             //
         }else if(hitJoint){
+			cout << "drag started" << endl;
             hitJoint->select();
             hitJoint->startDrag();
             Gui::instance()->notifyJointPressed(touch, hitJointIndex);
         }else if(hitSurface){
-            
+			cout << "surface hit" << endl;
             // TODO: redesign this so we can use a kind of
             //       display stack.
             // Tom changed to link last position to individual touches
@@ -307,33 +309,45 @@ void ProjectionMappingMode::onTouchMoved(Application * app, map<int, ofTouchEven
     
     // I need to make sure the i look up the vertices of the ucrrently selectd object and make sure it doesn't go out of bounds
     //vector <ofVec3f> & vertices = app->getSurfaceManager()->getSelectedSurface()->getVertices();
-	bool touching = true;
-	for (const auto & t : touchMap) {
-		if (active_hits.touches.find(t.first) == active_hits.touches.end() &&
-			drag_manager::current_joint_index(t.first, active_joints) == -1) {
-			touching = false;
+	
+	vector<ofTouchEventArgs> active_hit_move_touch;
+	map<int, ofTouchEventArgs> active_joint_move_touch;
+	auto ah_end = active_hits.touches.end();
+	for (auto const & t : touchMap) {
+		if (t.second.type == ofTouchEventArgs::move){
+			if (active_hits.touches.find(t.first) != ah_end) {
+				active_hit_move_touch.push_back(t.second);
+			}
+			int joint_index = drag_manager::current_joint_index(t.first, active_joints);
+			if (joint_index != -1) {
+				//cout << "added to ajmt: " << joint_index << endl;
+				active_joint_move_touch[joint_index] = (t.second);
+			}
+
 		}
 	}
-	if (!touching) {
+	if (active_hit_move_touch.size() <= 0 && active_joint_move_touch.size() <= 0) {
+		//No active move touch
 		return;
 	}
+
     
     Gui::instance()->touchMoved(touchMap);
 	// Tom changed to send active joints to editor
-    Gui::instance()->getProjectionEditorWidget().touchMoved(touchMap, active_joints);
+    Gui::instance()->getProjectionEditorWidget().touchMoved(active_joint_move_touch);
 
     //JOSH clamp the joints so they stay within the mapping panel rect
     ofRectangle mapping_panel_rect = ofRectangle(422,13,1450,870);
-    for (auto &t : touchMap) {
-        auto &touch = t.second;
+    for (auto &touch : active_hit_move_touch) {
         
-        touch.x = ofClamp(touch.x,mapping_panel_rect.x,mapping_panel_rect.x + mapping_panel_rect.width);
-        touch.y = ofClamp(touch.y,mapping_panel_rect.y,mapping_panel_rect.y+mapping_panel_rect.height);
+
         
-       // Gui::instance()->onMouseDragged(args);
         
         // TODO: Handle app->getGui()->clickPosition and app->getGui()->bDrag locally.
-        if(_bSurfaceDrag){
+        if(_bSurfaceDrag && active_hits.touches.find(touch.id) != ah_end){
+			touch.x = ofClamp(touch.x, mapping_panel_rect.x, mapping_panel_rect.x + mapping_panel_rect.width);
+			touch.y = ofClamp(touch.y, mapping_panel_rect.y, mapping_panel_rect.y + mapping_panel_rect.height);
+
             ofVec2f touchPosition = ofVec2f(touch.x, touch.y);
             // Tom changed to use last position of this touch
 			// defaults to current touch position
