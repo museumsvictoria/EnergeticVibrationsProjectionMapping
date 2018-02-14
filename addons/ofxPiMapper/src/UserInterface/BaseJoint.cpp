@@ -1,5 +1,4 @@
 #include "BaseJoint.h"
-#include "boundary.hpp"
 
 namespace ofx {
 namespace piMapper {
@@ -10,26 +9,6 @@ BaseJoint::BaseJoint(){
 
 }
 
-// JOSH adding in touch events
-void BaseJoint::touchDown(ofTouchEventArgs & touch) {
-	if (hitTest(ofVec2f(touch.x, touch.y))) {
-		clickDistance = position - ofVec2f(touch.x, touch.y);
-	}
-}
-void BaseJoint::touchMoved(ofTouchEventArgs & touch) {
-	if (!bDrag) {
-		cout << "not dragging" << " ptr " << this << endl;
-		return;
-	}
-	
-	// Tom added to keep joints in bounds
-	position = boundary::bounded_position(ofVec2f(touch) + clickDistance);
-	cout << "pos of joint updated on moved x: " << position.x << " y: " << position.y << endl;
-
-}
-void BaseJoint::touchUp(ofTouchEventArgs & touch) {
-	stopDrag();
-}
 
 void BaseJoint::mousePressed(ofMouseEventArgs & args){
 	if(hitTest(ofVec2f(args.x, args.y))){

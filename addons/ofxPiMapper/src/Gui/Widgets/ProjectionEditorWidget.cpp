@@ -12,9 +12,8 @@ ProjectionEditorWidget::ProjectionEditorWidget(){
 }
 
 void ProjectionEditorWidget::update(){
-	// update surface if one of the joints is being dragged
-	
-	// Tom added
+	// Tom changed. Removed logic that was cyclic 
+	// and unnecessary
 
 	if (surfaceManager->getSelectedSurface() == 0) {
 		joints.clear();
@@ -79,23 +78,12 @@ void ProjectionEditorWidget::mouseDragged(ofMouseEventArgs & args){
 void ProjectionEditorWidget::touchMoved(map<int, ofTouchEventArgs> &active_joint_move_touch) {
 	
 	for (auto &joint_touch : active_joint_move_touch) {
-		//removetomcout << "joint touch" << endl;
 
-		// Tom changed to only pass positions to 
-		// joints that are linked to active touches
-		// Pass args to joint mouse events
-		/*
-		for(unsigned int i = 0; i < joints.size(); ++i){
-		joints[i]->touchMoved(touch);
-		}
-		*/
-
-
-		if (joint_touch.first < joints.size()) {
-			if (joints[joint_touch.first]->isDragged()) {
-				surfaceManager->getSelectedSurface()->setVertex(joint_touch.first,
-					boundary::bounded_position(joint_touch.second));
-			}
+		// Tom changed to only set active dragging joints
+		if (joint_touch.first < joints.size() && 
+			joints[joint_touch.first]->isDragged()) {
+			surfaceManager->getSelectedSurface()->setVertex(joint_touch.first,
+				boundary::bounded_position(joint_touch.second));
 		}
 	
 		ofVec2f touchPosition = ofVec2f(joint_touch.second.x, joint_touch.second.y);
@@ -176,21 +164,19 @@ void ProjectionEditorWidget::createJoints(){
 	if (surfaceManager == 0) {
 		return;
 	}
+	/*
+	Save drag and surface settigns
+	*/
 	vector<bool> drags(4);
 	vector<bool> selects(4);
-	
-	{
-		auto joints = getJoints();
-		for (int i = 0; i < joints->size(); ++i) {
-			drags[i] = (*joints)[i]->isDragged();
-			selects[i] = (*joints)[i]->isSelected();
-		}
+
+	for (int i = 0; i < joints.size(); ++i) {
+		drags[i] = joints[i]->isDragged();
+		selects[i] = joints[i]->isSelected();
 	}
 
 	// This clears the old joints before creating
 	// new ones
-	
-	
 	clearJoints();
 
 	if(surfaceManager->getSelectedSurface() == 0){
@@ -206,18 +192,17 @@ void ProjectionEditorWidget::createJoints(){
 		joints.back()->position = ofVec2f(vertices[i].x, vertices[i].y);
 	}
 
-	
-
-
-		for (int i = 0; i < joints.size(); i++) {
-			if (drags[i]) {
-				joints[i]->startDrag();
-
-			}
-			if (selects[i]) {
-				joints[i]->select();
-			}
+	/*
+	relaod saved drag and selected settings
+	*/
+	for (int i = 0; i < joints.size(); i++) {
+		if (drags[i]) {
+			joints[i]->startDrag();
 		}
+		if (selects[i]) {
+			joints[i]->select();
+		}
+	}
 	
 
 }
@@ -249,28 +234,6 @@ void ProjectionEditorWidget::moveSelectedSurface(ofVec2f by){
 	}
 	
 	vector <ofVec3f> & vertices = surfaceManager->getSelectedSurface()->getVertices();
-
-	/* I don't think this is needed anymore
-    // JOSH, check that none of the joints will leave the mapping rect
-    // otherwise cancel the move operation
-    
-    bool is_inside_rect = true;
-    
-    //JOSH clamp the joints so they stay within the mapping panel rect
-    ofRectangle mapping_panel_rect = ofRectangle(422,13,1450,870);
-
-    //cout << "mapping_panel_rect = " << mapping_panel_rect << endl;
-    cout << "move by = " << by << endl;
-    for(int i = 0; i < vertices.size(); i++){
-		cout << vertices[i] << endl;
-        if(mapping_panel_rect.inside(vertices[i].x + by.x, vertices[i].y + by.y) == false){
-            cout << "outside of rect bitch!" << endl;
-            is_inside_rect = false;
-            break;
-        }
-    }
-    cout << "inside rect? = " << is_inside_rect << endl;
-	*/
 
 	/*	Tom
 		This adjusts the "by" vec so
@@ -315,47 +278,7 @@ vector <CircleJoint *> * ProjectionEditorWidget::getJoints(){
 	Because there can now be multiple in a true state.
 */
 void ProjectionEditorWidget::onVertexChanged(int & i) {
-	/* Could delete this now
-	bool isDragged = getJoints()->at(i)->isDragged();
 	createJoints();
-	getJoints()->at(i)->select();
-	if(isDragged){
-		getJoints()->at(i)->startDrag();
-	}else{
-		getJoints()->at(i)->stopDrag();
-	}
-	*/
-	/*
-	vector<bool> drags(4);
-	vector<bool> selects(4);
-
-	{
-		auto joints = getJoints();
-		for (int i = 0; i < joints->size(); ++i) {
-			drags[i] = (*joints)[i]->isDragged();
-			selects[i] = (*joints)[i]->isSelected();
-			cout << "id: " << i << " drag: " << (*joints)[i]->isDragged() << " ptr " << (*joints)[i] << endl;
-
-		}
-	}*/
-	// This clears the old joints before creating
-	// new ones
-	createJoints();
-	/*
-	{
-		auto joints = getJoints();
-		for (int i = 0; i < joints->size(); i++) {
-			if (drags[i]) {
-				(*joints)[i]->startDrag();
-				cout << "drag set on for: " << i << " ptr " << (*joints)[i] << endl;
-			}
-			if (selects[i]) {
-				(*joints)[i]->select();
-			}
-		}
-	}
-	*/
-
 }
 
 void ProjectionEditorWidget::onVerticesChanged(vector<ofVec3f> & vertices){

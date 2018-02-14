@@ -199,7 +199,6 @@ void ProjectionMappingMode::onTouchDown(Application * app, map<int, ofTouchEvent
 		if (touch.type != ofTouchEventArgs::down) {
 			continue;
 		}
-		cout << "down id: " << touch.id << endl;
         CircleJoint * hitJoint = 0;
         int hitJointIndex = -1;
         BaseSurface * hitSurface = 0;
@@ -212,33 +211,36 @@ void ProjectionMappingMode::onTouchDown(Application * app, map<int, ofTouchEvent
                     hitJointIndex = i;
                     // Tom added multitouch
 					// link hitjoint to current touch
-					cout << "hit joint" << endl;
                     active_joints.touches[i] =  touch.id;
                     break;
                 }
             }
         }else{
-            for(int i = app->getSurfaceManager()->size() - 1; i >= 0; --i){
-                if(app->getSurfaceManager()->getSurface(i)->hitTest(ofVec2f(touch.x, touch.y))){
-                    hitSurface = app->getSurfaceManager()->getSurface(i);
-                    // Tom added multitouch
-					// add touch id to set of "currently touching this surface"
-                    active_hits.touches.insert(touch.id);
-                    break;
-                }
-            }
+			if (app->getSurfaceManager()->getSelectedSurface() == 0) {
+				for (int i = app->getSurfaceManager()->size() - 1; i >= 0; --i) {
+					if (app->getSurfaceManager()->getSurface(i)->hitTest(ofVec2f(touch.x, touch.y))) {
+
+						hitSurface = app->getSurfaceManager()->getSurface(i);
+						// Tom added multitouch
+						// add touch id to set of "currently touching this surface"
+						active_hits.touches.insert(touch.id);
+						break;
+					}
+				}
+			} else if (app->getSurfaceManager()->getSelectedSurface()->hitTest(ofVec2f(touch.x, touch.y))) {
+				hitSurface = app->getSurfaceManager()->getSelectedSurface();
+				active_hits.touches.insert(touch.id);
+			}
         }
         
 		int size = active_joints.touches.size();
         if(Gui::instance()->getScaleWidget().inside(touch.x, touch.y)){
             //
         }else if(hitJoint){
-			cout << "drag started" << endl;
             hitJoint->select();
             hitJoint->startDrag();
             Gui::instance()->notifyJointPressed(touch, hitJointIndex);
         }else if(hitSurface){
-			cout << "surface hit" << endl;
             // TODO: redesign this so we can use a kind of
             //       display stack.
             // Tom changed to link last position to individual touches
@@ -246,6 +248,7 @@ void ProjectionMappingMode::onTouchDown(Application * app, map<int, ofTouchEvent
             _bSurfaceDrag = true; // TODO: Should be something like `hitSurface->startDrag()`
             Gui::instance()->notifySurfacePressed(touch, hitSurface);
         }else{
+			// Tom changed. Only deselect if there are no active touches or joints
 			if (active_hits.touches.size() <= 0 && active_joints.touches.size() <= 0) {
 				Gui::instance()->notifyBackgroundPressed(touch);
 			}
@@ -310,6 +313,12 @@ void ProjectionMappingMode::onTouchMoved(Application * app, map<int, ofTouchEven
     // I need to make sure the i look up the vertices of the ucrrently selectd object and make sure it doesn't go out of bounds
     //vector <ofVec3f> & vertices = app->getSurfaceManager()->getSelectedSurface()->getVertices();
 	
+	/*
+	Tom added
+	This block checks that we are only using
+	active hits or joints.
+	It seperates them out into lists for use later
+	*/
 	vector<ofTouchEventArgs> active_hit_move_touch;
 	map<int, ofTouchEventArgs> active_joint_move_touch;
 	auto ah_end = active_hits.touches.end();
@@ -320,7 +329,6 @@ void ProjectionMappingMode::onTouchMoved(Application * app, map<int, ofTouchEven
 			}
 			int joint_index = drag_manager::current_joint_index(t.first, active_joints);
 			if (joint_index != -1) {
-				//cout << "added to ajmt: " << joint_index << endl;
 				active_joint_move_touch[joint_index] = (t.second);
 			}
 
