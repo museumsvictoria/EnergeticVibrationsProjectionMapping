@@ -66,7 +66,7 @@ void VisualLayer::setup(string name, int scene_num){
 //--------------------------------------------------------------
 void VisualLayer::load_movie(string file){
     player.load(file);
-	use_shader = false;
+	player.play();
 }
 
 //--------------------------------------------------------------
@@ -97,6 +97,8 @@ void VisualLayer::update(){
 			scene_shader.setUniform1f("hue_offset", shader_params[scene_select].params[3] * PI);
 			ofDrawRectangle(0, 0, render_fbo.fbo.getWidth(), render_fbo.fbo.getHeight());
 			scene_shader.end();
+		} else {
+			player.update();
 		}
     render_fbo.fbo.end();
 }
@@ -105,4 +107,7 @@ void VisualLayer::update(){
 void VisualLayer::draw(){
     ofClear(0,0,0,0);
     render_fbo.fbo.draw(0,0,fbo->getWidth(),fbo->getHeight());
+	if (!use_shader) {
+			player.draw(0, 0);
+	}
 }

@@ -41,6 +41,7 @@ public:
     void draw();
     
 	void toggle_shader() { use_shader = !use_shader; }
+	bool is_shader() { return use_shader; }
 
     vector<ShaderParams> shader_params;
 

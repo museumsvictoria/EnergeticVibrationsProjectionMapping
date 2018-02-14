@@ -136,6 +136,9 @@ void ofApp::draw(){
 void ofApp::toggle_shaders() {
 	for (auto l : layers) {
 		l->toggle_shader();
+		if (!l->is_shader()) {
+			l->load_movie("sources/videos/control-panel-and-operation.mp4");
+		}
 	}
 }
 
