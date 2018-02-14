@@ -67,6 +67,8 @@ class ofApp : public ofBaseApp{
     
         GuiInterface gui_interface;
 
+private:
 		// Tom added to turn mouse on / off
 		bool mouse;
+		void toggle_shaders();
 };

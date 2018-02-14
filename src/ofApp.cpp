@@ -133,17 +133,30 @@ void ofApp::draw(){
 //    ofx::piMapper::Gui::getSourcesEditorWidget().getLoadedTexCount();
 }
 
+void ofApp::toggle_shaders() {
+	for (auto l : layers) {
+		l->toggle_shader();
+	}
+}
+
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-	if (key == 'm') {
+	switch (key) {
+	case 'm': 
 		mouse = !mouse;
 		if (mouse) {
 			cout << "Mouse mode on" << endl;
-		} else {
+		}
+		else {
 			cout << "Touch mode on" << endl;
 		}
+			  break;
+	case 'v':
+		toggle_shaders();
+		cout << "toggle shadders" << endl;
+			  break;
 	}
-    mapper.keyPressed(key);
+	mapper.keyPressed(key);
 }
 
 //--------------------------------------------------------------

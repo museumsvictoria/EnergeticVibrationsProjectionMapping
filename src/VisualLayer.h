@@ -40,6 +40,8 @@ public:
     void update();
     void draw();
     
+	void toggle_shader() { use_shader = !use_shader; }
+
     vector<ShaderParams> shader_params;
 
     RenderFbo render_fbo;
@@ -48,6 +50,7 @@ private:
     ofShader scene_shader;
     ofVideoPlayer player;
     FullscreenQuad quad;
+	bool use_shader;
     
     int scene_select;
     

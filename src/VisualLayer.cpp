@@ -30,7 +30,7 @@ void VisualLayer::init_params(){
     
     shader_params[ESCHER_LIKE].params = {0.5f,0.0f,1.0f,0.0f};
     shader_params[ESCHER_LIKE].names = {"circle_offset", "circle_iter", "grid_iter", "HUESHIFT"};
-    
+ 
     shader_params[FLOWER_OF_LIFE].params = {1.0f,0.0f,0.3f,0.0f};
     shader_params[FLOWER_OF_LIFE].names = {"brightness","time_scale","grid_size", "HUESHIFT"};
 
@@ -57,6 +57,8 @@ void VisualLayer::setup(string name, int scene_num){
     render_fbo.init(LAYER_RENDER_SIZE_X, LAYER_RENDER_SIZE_Y);
     
     scene_shader.load("shaders/passthrough.vert","shaders/shader_selector.frag");
+
+	use_shader = true;
     
     init_params();
 }
@@ -64,6 +66,7 @@ void VisualLayer::setup(string name, int scene_num){
 //--------------------------------------------------------------
 void VisualLayer::load_movie(string file){
     player.load(file);
+	use_shader = false;
 }
 
 //--------------------------------------------------------------
@@ -82,18 +85,19 @@ void VisualLayer::update(){
 
     render_fbo.fbo.begin();
         ofClear(0,0,0,0);
-        scene_shader.begin();
-        scene_shader.setUniform3f("resolution", LAYER_RENDER_SIZE_X, LAYER_RENDER_SIZE_Y, 1);
-        scene_shader.setUniform1f("time", ofGetElapsedTimef());
-        scene_shader.setUniform1i("iFrame", ofGetFrameNum());
-        scene_shader.setUniform1i("scene_select", scene_select);
-        scene_shader.setUniform1f("param1", shader_params[scene_select].params[0]);
-        scene_shader.setUniform1f("param2", shader_params[scene_select].params[1]);
-        scene_shader.setUniform1f("param3", shader_params[scene_select].params[2]);
-        scene_shader.setUniform1f("hue_offset", shader_params[scene_select].params[3] * PI);
-        ofDrawRectangle(0, 0, render_fbo.fbo.getWidth(), render_fbo.fbo.getHeight());
-
-        scene_shader.end();
+		if (use_shader) {
+			scene_shader.begin();
+			scene_shader.setUniform3f("resolution", LAYER_RENDER_SIZE_X, LAYER_RENDER_SIZE_Y, 1);
+			scene_shader.setUniform1f("time", ofGetElapsedTimef());
+			scene_shader.setUniform1i("iFrame", ofGetFrameNum());
+			scene_shader.setUniform1i("scene_select", scene_select);
+			scene_shader.setUniform1f("param1", shader_params[scene_select].params[0]);
+			scene_shader.setUniform1f("param2", shader_params[scene_select].params[1]);
+			scene_shader.setUniform1f("param3", shader_params[scene_select].params[2]);
+			scene_shader.setUniform1f("hue_offset", shader_params[scene_select].params[3] * PI);
+			ofDrawRectangle(0, 0, render_fbo.fbo.getWidth(), render_fbo.fbo.getHeight());
+			scene_shader.end();
+		}
     render_fbo.fbo.end();
 }
 
