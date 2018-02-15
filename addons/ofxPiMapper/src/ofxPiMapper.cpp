@@ -227,6 +227,10 @@ void ofxPiMapper::deselect(){
 	_application.deselect();
 }
 
+void ofxPiMapper::clear_all() {
+	_application.clear_all();
+}
+
 void ofxPiMapper::setMode(ofx::piMapper::Mode m){
 	if(m == ofx::piMapper::PRESENTATION_MODE){
 		_application.setPresentationMode();

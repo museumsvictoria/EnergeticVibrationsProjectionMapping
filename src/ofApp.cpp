@@ -163,7 +163,16 @@ void ofApp::keyPressed(int key){
 		toggle_shaders();
 		cout << "toggle shadders" << endl;
 			  break;
+	case 'c': 
+		mapper.clear_all();
+		cout << "Clear all" << endl;
+		break;
+	case 'z':
+		mapper.loadProject("presets/test_p.xml");
+		cout << "Preset Loaded" << endl;
+		break;
 	}
+
 	mapper.keyPressed(key);
 }
 
