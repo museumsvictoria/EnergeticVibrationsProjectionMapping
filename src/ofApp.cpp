@@ -1,4 +1,5 @@
 #include "ofApp.h"
+#include "video/video_controller.h"
 //changed
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -134,10 +135,14 @@ void ofApp::draw(){
 }
 
 void ofApp::toggle_shaders() {
-	for (auto l : layers) {
+	auto loader = video_controller::load();
+	for(int i = 0; i < layers.size(); i++){
+		auto l = layers[i];
 		l->toggle_shader();
 		if (!l->is_shader()) {
-			l->load_movie("sources/videos/control-panel-and-operation.mp4");
+			if (loader.has_next()) {
+				l->load_movie(loader.next());
+			}
 		}
 	}
 }

@@ -99,6 +99,7 @@ void VisualLayer::update(){
 			scene_shader.end();
 		} else {
 			player.update();
+			player.draw(0, 0);
 		}
     render_fbo.fbo.end();
 }
@@ -107,7 +108,4 @@ void VisualLayer::update(){
 void VisualLayer::draw(){
     ofClear(0,0,0,0);
     render_fbo.fbo.draw(0,0,fbo->getWidth(),fbo->getHeight());
-	if (!use_shader) {
-			player.draw(0, 0);
-	}
 }
