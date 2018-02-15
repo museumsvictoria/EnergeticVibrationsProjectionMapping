@@ -1,6 +1,6 @@
 #pragma once
 
-//#define WINDOWS_TOUCH
+#define WINDOWS_TOUCH
 #define OSC_PORT 9002
 
 #include "ofMain.h"
@@ -66,5 +66,9 @@ class ofApp : public ofBaseApp{
 		int clear_touch_in_two_frames;
     
         GuiInterface gui_interface;
-	
+
+private:
+		// Tom added to turn mouse on / off
+		bool mouse;
+		void toggle_shaders();
 };

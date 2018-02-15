@@ -68,7 +68,6 @@ void TriangleSurface::setVertex(int index, ofVec2f p){
 		ofLog() << "Vertex with this index does not exist: " << index << endl;
 		return;
 	}
-	
 	mesh.setVertex(index, p);
 	ofVec3f v = mesh.getVertex(index);
 	ofNotifyEvent(vertexChangedEvent, index, this);

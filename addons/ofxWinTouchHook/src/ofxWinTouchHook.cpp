@@ -43,14 +43,18 @@ LRESULT __stdcall HookCallback(int nCode, WPARAM wParam, LPARAM lParam)
 					touchEventArgs.x = p.x;
 					touchEventArgs.y = p.y;
 					touchEventArgs.id = pointerInfo.pointerId;
-
+					
+					// Tom modified to send touch type
 					if (pointerInfo.pointerFlags & POINTER_FLAG_DOWN) {
+						touchEventArgs.type = ofTouchEventArgs::down;
 						ofNotifyEvent(ofxWinTouchHook::touchDown, touchEventArgs);
 					}
 					else if (pointerInfo.pointerFlags & POINTER_FLAG_UPDATE) {
+						touchEventArgs.type = ofTouchEventArgs::move;
 						ofNotifyEvent(ofxWinTouchHook::touchMoved, touchEventArgs);
 					}
 					else if (pointerInfo.pointerFlags & POINTER_FLAG_UP) {
+						touchEventArgs.type = ofTouchEventArgs::up;
 						ofNotifyEvent(ofxWinTouchHook::touchUp, touchEventArgs);
 					}
 				}

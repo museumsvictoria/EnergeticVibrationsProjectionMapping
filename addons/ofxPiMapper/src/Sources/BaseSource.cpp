@@ -4,7 +4,6 @@ namespace ofx {
 namespace piMapper {
 
 BaseSource::BaseSource(){
-	//cout << "BaseSource" << endl;
 	init();
 }
 

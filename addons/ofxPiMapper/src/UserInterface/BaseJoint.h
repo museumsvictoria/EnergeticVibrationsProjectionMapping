@@ -15,10 +15,6 @@ class BaseJoint {
 		bool visible;
 		bool selected;
 
-		void touchDown(ofTouchEventArgs & touch);
-		void touchMoved(ofTouchEventArgs & touch);
-		void touchUp(ofTouchEventArgs & touch);
-
 		void mousePressed(ofMouseEventArgs & args);
 		void mouseReleased(int x, int y, int button);
 		void mouseDragged(ofMouseEventArgs & args);
@@ -47,6 +43,8 @@ class BaseJoint {
 	private:
 		void setDefaultColors();
 		void setDefaultProperties();
+
+    
 
 };
 
