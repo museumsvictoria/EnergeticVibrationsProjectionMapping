@@ -82,6 +82,8 @@ class Application {
 
 		//Tom adding to clear all
 		void clear_all();
+		void save_with_name(string filename);
+		void save_temp();
 	
 		// Then we catch GUI events with this one and create commands
 		void onJointPressed(GuiJointEvent & e);

@@ -568,5 +568,13 @@ void Application::clear_all() {
 	}
 }
 
+void Application::save_with_name(string filename) {
+	_surfaceManager.saveXmlSettings(filename);
+}
+
+void Application::save_temp() {
+	_surfaceManager.saveXmlSettings(PIMAPPER_SETTINGS_FILE);
+}
+
 } // namespace piMapper
 } // namespace ofx
