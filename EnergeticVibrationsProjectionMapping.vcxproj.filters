@@ -367,6 +367,12 @@
     <ClCompile Include="src\video\video_controller.cpp">
       <Filter>src\video</Filter>
     </ClCompile>
+    <ClCompile Include="src\nodel\commands_evpm.cpp">
+      <Filter>src\nodel</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nodel\nodel_interpreter.cpp">
+      <Filter>src\nodel</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -482,6 +488,9 @@
     </Filter>
     <Filter Include="src\video">
       <UniqueIdentifier>{23fe9ae0-3da3-4d45-aff6-d9a56237f977}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\nodel">
+      <UniqueIdentifier>{0ec18733-4b8c-4cef-8a30-58d17de4b625}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -916,6 +925,18 @@
     </ClInclude>
     <ClInclude Include="src\video\video_controller.h">
       <Filter>src\video</Filter>
+    </ClInclude>
+    <ClInclude Include="src\nodel\commands.hpp">
+      <Filter>src\nodel</Filter>
+    </ClInclude>
+    <ClInclude Include="src\nodel\commands_evpm.hpp">
+      <Filter>src\nodel</Filter>
+    </ClInclude>
+    <ClInclude Include="src\nodel\json.hpp">
+      <Filter>src\nodel</Filter>
+    </ClInclude>
+    <ClInclude Include="src\nodel\nodel_interpreter.hpp">
+      <Filter>src\nodel</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

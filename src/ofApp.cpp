@@ -56,13 +56,27 @@ void ofApp::setup(){
     // OSC
     volumes = {1.0f,1.0f,1.0f};
     receiver.setup(OSC_PORT);
+	setup_nodel();
 }
 
+void ofApp::setup_nodel() {
+	namespace ip = boost::asio::ip;
+	namespace ni = nodel_interpreter;
+	ip::udp::endpoint remote_endpoint;
+
+	remote_endpoint = ip::udp::endpoint(ip::address::from_string("127.0.0.1"), 34254);
+	boost::system::error_code err;
+
+	nodel_socket = std::make_shared<ni::Socket>(my_io_service, remote_endpoint, err);
+	nodel_socket->socket.non_blocking(true);
+	
+}
 
 //--------------------------------------------------------------
 void ofApp::setupProjectionWindow(){
    ofSetBackgroundColor(0);
    mapper._application.getSurfaceManager()->assign_projection_fbo(&projection_fbo);
+
 }
 
 //--------------------------------------------------------------
@@ -90,6 +104,8 @@ void ofApp::update(){
     mapper.update();
 	gui_interface.update_volumes(volumes);
     gui_interface.update_audio_reactivity(layers);
+		
+	
 }
 
 //--------------------------------------------------------------
@@ -165,7 +181,7 @@ void ofApp::keyPressed(int key){
 			  break;
 	case 'c': 
 		mapper.clear_all();
-		//mapper.saveProject();
+		mapper.save_temp();
 		cout << "Clear all" << endl;
 		break;
 	case 'y':
@@ -184,6 +200,13 @@ void ofApp::keyPressed(int key){
 		mapper.loadProject("presets/test_p2.xml");
 		mapper.save_temp();
 		cout << "Preset Loaded" << endl;
+		break;
+	case 'u':
+		cout << "checking udp" << endl;
+		nodel_result.set(nodel_interpreter::decode_recv(nodel_socket));
+
+		std::cout << "Type: " << nodel_result.get_type() << std::endl;
+		nodel_result.run(mapper);
 		break;
 	}
 

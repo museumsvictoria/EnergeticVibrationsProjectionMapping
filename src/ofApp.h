@@ -13,6 +13,8 @@
 #include "Settings.h"
 #include "ofxPiMapper.h"
 
+#include "nodel\nodel_interpreter.hpp"
+
 //----------------WINDOWS ONLY
 #ifdef WINDOWS_TOUCH
 #include "ofxWinTouchHook.h"
@@ -71,4 +73,8 @@ private:
 		// Tom added to turn mouse on / off
 		bool mouse;
 		void toggle_shaders();
+		void setup_nodel();
+		nodel_interpreter::Nodel nodel_result;
+		std::shared_ptr<nodel_interpreter::Socket> nodel_socket;
+		boost::asio::io_service my_io_service;
 };
