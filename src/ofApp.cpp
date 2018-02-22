@@ -158,32 +158,6 @@ void ofApp::keyPressed(int key){
 			cout << "Touch mode on" << endl;
 		}
 			  break;
-	case 'v':
-		toggle_shaders();
-		cout << "toggle shadders" << endl;
-			  break;
-	case 'c': 
-		mapper.clear_all();
-		mapper.save_temp();
-		cout << "Clear all" << endl;
-		break;
-	case 'y':
-		mapper.clear_all();
-		mapper.loadProject("presets/test_p.xml");
-		mapper.save_temp();
-		cout << "Preset Loaded" << endl;
-		break;
-	case 'r':
-		mapper.save_with_name("presets/test_p2.xml");
-		mapper.save_temp();
-		cout << "Preset Loaded" << endl;
-		break;
-	case 'w':
-		mapper.clear_all();
-		mapper.loadProject("presets/test_p2.xml");
-		mapper.save_temp();
-		cout << "Preset Loaded" << endl;
-		break;
 	}
 
 	mapper.keyPressed(key);

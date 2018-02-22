@@ -75,6 +75,9 @@ namespace op {
 			else if (auto it = j.find("ToggleShaders") != j.end()) {
 				my_op = std::make_unique<op::ToggleShaders>( ToggleShadersCmd(deps->layers) );
 			}
+			else {
+				std::cout << "Wrong message format or not found. Use {\"Command\": [\"arg\"] } or {\"Command\": [] }" << std::endl;
+			}
 		}
 		catch (json::parse_error & e) {
 			std::cout << "Bad message: " << e.what() << std::endl;
