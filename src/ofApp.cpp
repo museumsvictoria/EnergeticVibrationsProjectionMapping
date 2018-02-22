@@ -56,20 +56,7 @@ void ofApp::setup(){
     // OSC
     volumes = {1.0f,1.0f,1.0f};
     receiver.setup(OSC_PORT);
-	setup_nodel();
-}
-
-void ofApp::setup_nodel() {
-	namespace ip = boost::asio::ip;
-	namespace ni = nodel_interpreter;
-	ip::udp::endpoint remote_endpoint;
-
-	remote_endpoint = ip::udp::endpoint(ip::address::from_string("127.0.0.1"), 34254);
-	boost::system::error_code err;
-
-	nodel_socket = std::make_shared<ni::Socket>(my_io_service, remote_endpoint, err);
-	nodel_socket->socket.non_blocking(true);
-	
+	nodel_socket.setup();
 }
 
 //--------------------------------------------------------------

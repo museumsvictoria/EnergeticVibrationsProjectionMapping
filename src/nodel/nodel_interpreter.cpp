@@ -11,13 +11,29 @@
 #include <iostream>
 
 namespace nodel_interpreter {
+	void Socket::setup() {
+		socket = make_shared<ofxUDPManager>();
+		socket->Create();
+		//socket.Connect(RECV_IP, PORT);
+		std::cout << "Bound? " << socket->Bind(PORT) << std::endl;
+		socket->SetNonBlocking(true);
+
+	}
+
+	int Socket::read(char * data) {
+
+		return socket->Receive(data, READ_LEN);
+
+	}
+
 	Nodel::Nodel() : my_op(std::make_unique<op::None>()) {}
-  std::unique_ptr<op::Operation> decode_recv(std::shared_ptr<Socket> my_socket){
-    char data[READ_LEN];
-    auto length = my_socket->socket.receive(boost::asio::buffer(data, READ_LEN), 0, my_socket->err);
-    std::string msg(data, length);
-    std::cout << "msg: " << msg << std::endl;
-    return op::run_commands(msg);
-  }
+
+	std::unique_ptr<op::Operation> decode_recv(Socket my_socket) {
+		char data[READ_LEN];
+		my_socket.read(data);
+		std::string msg(data);
+		std::cout << "msg: " << msg << std::endl;
+		return op::run_commands(msg);
+	}
 
 };

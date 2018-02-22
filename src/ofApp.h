@@ -75,6 +75,5 @@ private:
 		void toggle_shaders();
 		void setup_nodel();
 		nodel_interpreter::Nodel nodel_result;
-		std::shared_ptr<nodel_interpreter::Socket> nodel_socket;
-		boost::asio::io_service my_io_service;
+		nodel_interpreter::Socket nodel_socket;
 };
