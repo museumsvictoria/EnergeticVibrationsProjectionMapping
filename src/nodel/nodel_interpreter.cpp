@@ -14,8 +14,7 @@ namespace nodel_interpreter {
 	void Socket::setup() {
 		socket = make_shared<ofxUDPManager>();
 		socket->Create();
-		//socket.Connect(RECV_IP, PORT);
-		std::cout << "Bound? " << socket->Bind(PORT) << std::endl;
+		socket->Bind(PORT);
 		socket->SetNonBlocking(true);
 
 	}
@@ -32,8 +31,12 @@ namespace nodel_interpreter {
 		char data[READ_LEN];
 		my_socket.read(data);
 		std::string msg(data);
-		std::cout << "msg: " << msg << std::endl;
-		return op::runnable_command(msg, deps);
+		if (msg.size() <= 0) {
+			return std::make_unique<op::None>();
+		}
+		else {
+			return op::runnable_command(msg, deps);
+		}
 	}
 
 	void Nodel::setup(NodelDep nd) {
@@ -43,10 +46,8 @@ namespace nodel_interpreter {
 	}
 
 	void Nodel::try_run() {
-		cout << "checking udp" << endl;
 		nodel_message.set(decode_recv(my_socket));
 
-		std::cout << "Type: " << nodel_message.get_type() << std::endl;
 		nodel_message.run();
 
 	}

@@ -11,13 +11,13 @@ namespace op {
 
 	void LoadPresetCmd::run(string name) {
 		mapper.clear_all();
-		mapper.loadProject(name + ".xml");
+		mapper.loadProject("presets/" + name + ".xml");
 		mapper.save_temp();
 		cout << "Preset Loaded as: " << name << endl;
 	}
 
 	void SavePresetCmd::run(string name) {
-		mapper.save_with_name(name + ".xml");
+		mapper.save_with_name("presets/" + name + ".xml");
 		mapper.save_temp();
 		cout << "Preset Saved as: " << name << endl;
 	}

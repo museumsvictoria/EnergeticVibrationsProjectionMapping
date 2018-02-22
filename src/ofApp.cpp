@@ -95,6 +95,8 @@ void ofApp::update(){
     mapper.update();
 	gui_interface.update_volumes(volumes);
     gui_interface.update_audio_reactivity(layers);
+	
+	nodel.try_run();
 		
 	
 }
@@ -181,16 +183,6 @@ void ofApp::keyPressed(int key){
 		mapper.loadProject("presets/test_p2.xml");
 		mapper.save_temp();
 		cout << "Preset Loaded" << endl;
-		break;
-	case 'u':
-		nodel.try_run();
-		/*
-		cout << "checking udp" << endl;
-		nodel_result.set(nodel_interpreter::decode_recv(nodel_socket));
-
-		std::cout << "Type: " << nodel_result.get_type() << std::endl;
-		nodel_result.run(mapper);
-		*/
 		break;
 	}
 
