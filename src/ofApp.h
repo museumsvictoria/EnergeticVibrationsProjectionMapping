@@ -73,7 +73,5 @@ private:
 		// Tom added to turn mouse on / off
 		bool mouse;
 		void toggle_shaders();
-		void setup_nodel();
-		nodel_interpreter::Nodel nodel_result;
-		nodel_interpreter::Socket nodel_socket;
+		nodel_interpreter::Nodel nodel;
 };

@@ -26,14 +26,28 @@ namespace nodel_interpreter {
 
 	}
 
-	Nodel::Nodel() : my_op(std::make_unique<op::None>()) {}
+	NodelMessage::NodelMessage() : my_op(std::make_unique<op::None>()) {}
 
-	std::unique_ptr<op::Operation> decode_recv(Socket my_socket) {
+	std::unique_ptr<op::Operation> Nodel::decode_recv(Socket my_socket) {
 		char data[READ_LEN];
 		my_socket.read(data);
 		std::string msg(data);
 		std::cout << "msg: " << msg << std::endl;
-		return op::run_commands(msg);
+		return op::runnable_command(msg, deps);
 	}
 
+	void Nodel::setup(NodelDep nd) {
+		my_socket.setup();
+		deps = make_shared<NodelDep>(nd);
+
+	}
+
+	void Nodel::try_run() {
+		cout << "checking udp" << endl;
+		nodel_message.set(decode_recv(my_socket));
+
+		std::cout << "Type: " << nodel_message.get_type() << std::endl;
+		nodel_message.run();
+
+	}
 };

@@ -974,6 +974,9 @@
     <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxUDPManager.h">
       <Filter>addons\ofxNetwork\src</Filter>
     </ClInclude>
+    <ClInclude Include="src\nodel\nodel_dep.hpp">
+      <Filter>src\nodel</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

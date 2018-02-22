@@ -10,6 +10,7 @@
 #include "commands_evpm.hpp"
 #include <iostream>
 #include "ofxNetwork.h"
+#include "nodel_dep.hpp"
 
 
 namespace nodel_interpreter {
@@ -23,15 +24,23 @@ namespace nodel_interpreter {
 	int read(char *);
   };
 
-
-  class Nodel{
+  class NodelMessage{
     std::unique_ptr<op::Operation> my_op;
     public:
-		Nodel();
+		NodelMessage();
     std::string get_type(){ return my_op->get_type(); }
     void set(std::unique_ptr<op::Operation> _op){ my_op = std::move(_op); }
-    void run(ofxPiMapper & m){ my_op->run(m); };
+    void run(){ my_op->run(); };
   };
 
-  std::unique_ptr<op::Operation> decode_recv(Socket socket);
+  class Nodel {
+	  NodelMessage nodel_message;
+	  std::shared_ptr<NodelDep> deps;
+	  Socket my_socket;
+	  std::unique_ptr<op::Operation> decode_recv(Socket socket);
+  public: 
+	  void setup(NodelDep);
+	  void try_run();
+  };
+
 };

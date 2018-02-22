@@ -1,5 +1,6 @@
 #include "ofApp.h"
-#include "video/video_controller.h"
+#include "nodel/nodel_dep.hpp"
+
 //changed
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -56,8 +57,11 @@ void ofApp::setup(){
     // OSC
     volumes = {1.0f,1.0f,1.0f};
     receiver.setup(OSC_PORT);
-	nodel_socket.setup();
+	nodel_interpreter::NodelDep nodel_dep(mapper, layers);
+	nodel.setup(nodel_dep);
 }
+
+
 
 //--------------------------------------------------------------
 void ofApp::setupProjectionWindow(){
@@ -138,16 +142,6 @@ void ofApp::draw(){
 }
 
 void ofApp::toggle_shaders() {
-	auto loader = video_controller::load();
-	for(int i = 0; i < layers.size(); i++){
-		auto l = layers[i];
-		l->toggle_shader();
-		if (!l->is_shader()) {
-			if (loader.has_next()) {
-				l->load_movie(loader.next());
-			}
-		}
-	}
 }
 
 //--------------------------------------------------------------
@@ -189,11 +183,14 @@ void ofApp::keyPressed(int key){
 		cout << "Preset Loaded" << endl;
 		break;
 	case 'u':
+		nodel.try_run();
+		/*
 		cout << "checking udp" << endl;
 		nodel_result.set(nodel_interpreter::decode_recv(nodel_socket));
 
 		std::cout << "Type: " << nodel_result.get_type() << std::endl;
 		nodel_result.run(mapper);
+		*/
 		break;
 	}
 

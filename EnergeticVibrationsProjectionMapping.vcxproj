@@ -308,6 +308,7 @@
     <ClInclude Include="src\nodel\commands.hpp" />
     <ClInclude Include="src\nodel\commands_evpm.hpp" />
     <ClInclude Include="src\nodel\json.hpp" />
+    <ClInclude Include="src\nodel\nodel_dep.hpp" />
     <ClInclude Include="src\nodel\nodel_interpreter.hpp" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="src\boundary.hpp" />
