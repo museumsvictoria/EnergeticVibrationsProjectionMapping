@@ -19,4 +19,6 @@ namespace boundary {
 	ofVec2f bounded_move(const vector<ofVec3f> &, ofVec2f);
 	// run this to test bounded_move
 	void test_bounded_move();
+
+	bool inside_mapping(ofVec3f);
 };

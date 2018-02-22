@@ -62,4 +62,8 @@ namespace boundary {
 		assert(test_move.x == 0);
 		assert(test_move.y == 83);
 	}
+
+	bool inside_mapping(ofVec3f p) {
+		return BOUNDARY_RECT.inside(p);
+	}
 }

@@ -1,4 +1,5 @@
 #include "ProjectionMappingMode.h"
+#include "boundary.hpp"
 
 namespace ofx {
 namespace piMapper {
@@ -249,7 +250,7 @@ void ProjectionMappingMode::onTouchDown(Application * app, map<int, ofTouchEvent
             Gui::instance()->notifySurfacePressed(touch, hitSurface);
         }else{
 			// Tom changed. Only deselect if there are no active touches or joints
-			if (active_hits.touches.size() <= 0 && active_joints.touches.size() <= 0) {
+			if (active_hits.touches.size() <= 0 && active_joints.touches.size() <= 0 && boundary::inside_mapping( ofVec2f(touch.x, touch.y) ) ) {
 				Gui::instance()->notifyBackgroundPressed(touch);
 			}
         }
