@@ -1,5 +1,6 @@
 #include "boundary.hpp"
 
+
 namespace boundary {
 	ofVec2f bounded_position(ofVec2f position) {
 		position.x = ofClamp(position.x, BOUNDARY_RECT.x, BOUNDARY_RECT.x + BOUNDARY_RECT.width);
@@ -65,5 +66,19 @@ namespace boundary {
 
 	bool inside_mapping(ofVec3f p) {
 		return BOUNDARY_RECT.inside(p);
+	}
+
+
+	using ofx::piMapper::CircleJoint;
+	bool is_collided_joint(const ofVec2f & touch_pos, ofx::piMapper::CircleJoint * j, std::vector<ofx::piMapper::CircleJoint *> & joints){
+		for (auto oj : joints) {
+			if (j == oj) {
+				continue;
+			}
+			if (oj->hitTestJoint(touch_pos) ) {
+				return true;
+			}
+		}
+		return false;
 	}
 }

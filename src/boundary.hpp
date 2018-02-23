@@ -1,6 +1,7 @@
 #pragma once
 #include "ofVec2f.h"
 #include "ofRectangle.h"
+#include "CircleJoint.h"
 
 namespace boundary {
 	// hardcoded boundary coordinates
@@ -21,4 +22,6 @@ namespace boundary {
 	void test_bounded_move();
 
 	bool inside_mapping(ofVec3f);
+
+	bool is_collided_joint(const ofVec2f &, ofx::piMapper::CircleJoint * j, std::vector<ofx::piMapper::CircleJoint *> & joints);
 };

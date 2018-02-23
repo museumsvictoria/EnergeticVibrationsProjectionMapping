@@ -68,5 +68,15 @@ bool CircleJoint::hitTest(ofVec2f pos){
 	}
 }
 
+bool CircleJoint::hitTestJoint(const ofVec2f & pos) {
+	float distance = position.distance(pos);
+	if (distance < radius + radius) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
 } // namespace piMapper
 } // namespace ofx
