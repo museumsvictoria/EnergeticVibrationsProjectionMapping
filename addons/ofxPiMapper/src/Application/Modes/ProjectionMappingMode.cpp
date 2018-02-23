@@ -217,7 +217,7 @@ void ProjectionMappingMode::onTouchDown(Application * app, map<int, ofTouchEvent
                 }
             }
         }else{
-			if (app->getSurfaceManager()->getSelectedSurface() == 0) {
+			if (app->getSurfaceManager()->getSelectedSurface() == 0 || (active_hits.touches.size() <= 0 && active_joints.touches.size() <= 0) ) {
 				for (int i = app->getSurfaceManager()->size() - 1; i >= 0; --i) {
 					if (app->getSurfaceManager()->getSurface(i)->hitTest(ofVec2f(touch.x, touch.y))) {
 
