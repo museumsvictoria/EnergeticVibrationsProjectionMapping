@@ -1,4 +1,4 @@
-#include "video/video_controller.h"
+#include "video_controller.h"
 
 namespace video_controller {
 	bool Loader::has_next() {

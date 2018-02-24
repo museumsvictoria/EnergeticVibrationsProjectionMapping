@@ -2,7 +2,7 @@
 #include "json.hpp"
 #include <iostream>
 #include "ofxPiMapper.h"
-#include "video/video_controller.h"
+#include "video_controller.h"
 #include "VisualLayer.h"
 #include "SurfaceManager.h"
 

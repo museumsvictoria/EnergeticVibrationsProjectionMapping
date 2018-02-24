@@ -13,7 +13,7 @@
 #include "Settings.h"
 #include "ofxPiMapper.h"
 
-#include "nodel\nodel_interpreter.hpp"
+#include "nodel/nodel_interpreter.hpp"
 
 //----------------WINDOWS ONLY
 #ifdef WINDOWS_TOUCH
