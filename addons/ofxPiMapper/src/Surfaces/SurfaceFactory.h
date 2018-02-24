@@ -23,9 +23,13 @@ class SurfaceFactory {
         void init_defaults();
         float default_scale;
         ofVec2f default_pos;
+
+		
     
 	private:
 		static SurfaceFactory * _instance;
+
+		
 	
 		TriangleSurface * createTriangleSurface();
 		QuadSurface * createQuadSurface();

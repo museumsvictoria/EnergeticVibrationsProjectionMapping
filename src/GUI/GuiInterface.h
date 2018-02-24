@@ -125,5 +125,4 @@ private:
 	static constexpr float REMOVE_POS_X = 165.0;
 	static constexpr float REMOVE_POS_Y = 82.0;
 
-
 };

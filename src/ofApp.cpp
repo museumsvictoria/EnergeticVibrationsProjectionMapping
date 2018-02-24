@@ -248,7 +248,6 @@ void ofApp::touchDown(ofTouchEventArgs & touch){
 			if (!mouse) {
 				mapper.touchDown(touchMap);
 			}
-		
 	}
 
 	// This is hear incase we really need to start hacking ImGui

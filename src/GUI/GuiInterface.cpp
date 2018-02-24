@@ -251,11 +251,15 @@ void GuiInterface::draw_add_shape(ofRectangle rect){
         ImTextureID triangleID = (ImTextureID)(uintptr_t)triangle_buttonID;
 
         if(ImGui::ImageButton(quadID, ImVec2(100,100))){
-            map_helper.add_quad_surface();
+			if (BaseSurface::count < SurfaceManager::getMaxSurfaces()) {
+				map_helper.add_quad_surface();
+			}
         }
         ImGui::SameLine(0,50);
         if(ImGui::ImageButton(triangleID, ImVec2(100,100))){
-            map_helper.add_triangle_surface();
+			if (BaseSurface::count < SurfaceManager::getMaxSurfaces()) {
+				map_helper.add_triangle_surface();
+			}
         }
     }
     ofxImGui::EndWindow(mainSettings);
@@ -371,7 +375,9 @@ void GuiInterface::draw_mapping_panel(ofRectangle rect){
         mouse_over_duplicate_toggle = ImGui::IsMouseHoveringWindow();
         ImTextureID duplicate_texID = (ImTextureID)(uintptr_t)(duplicate_button_ID);
         if(ImGui::ImageButton(duplicate_texID, ImVec2(TOGGLE_WIDTH, TOGGLE_HEIGHT))){
-            map_helper.duplicate_surface();
+			if (BaseSurface::count < SurfaceManager::getMaxSurfaces() ) {
+				map_helper.duplicate_surface();
+			}
         }
     }
     ofxImGui::EndWindow(mainSettings);
@@ -400,13 +406,15 @@ bool GuiInterface::is_mouse_over_mapping_toggles(){
 }
 
 bool GuiInterface::is_touch_over_mapping_toggles(ofVec2f t_pos) {
+	float PAD = 20;
 	ofRectangle duplicate_area(
-		(mapping_panel_rect.x + mapping_panel_rect.width) - DUPLICATE_POS_X, mapping_panel_rect.y + DUPLICATE_POS_Y,
+		(mapping_panel_rect.x + mapping_panel_rect.width) - DUPLICATE_POS_X + PAD, mapping_panel_rect.y + DUPLICATE_POS_Y + PAD,
 		TOGGLE_WIDTH, TOGGLE_HEIGHT);
 	ofRectangle remove_area(
-		(mapping_panel_rect.x + mapping_panel_rect.width) - REMOVE_POS_X, mapping_panel_rect.y + REMOVE_POS_Y,
+		(mapping_panel_rect.x + mapping_panel_rect.width) - REMOVE_POS_X + PAD, mapping_panel_rect.y + REMOVE_POS_Y + PAD,
 		TOGGLE_WIDTH, TOGGLE_HEIGHT
 	);
+	
 	if (duplicate_area.inside(t_pos) || remove_area.inside(t_pos)) {
 		return true;
 	}

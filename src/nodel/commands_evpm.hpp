@@ -79,6 +79,14 @@ namespace op {
 		std::string get_type();
 	};
 
+	struct SetMaxSurfaces : public Operation {
+		ofxPiMapper & mapper;
+		int num;
+		SetMaxSurfaces(ofxPiMapper & _m, int _n) : mapper(_m), num(_n)  {}
+		void run();
+		std::string get_type();
+	};
+
 	struct None : public Operation {
 		void run();
 		std::string get_type() { return "None"; }

@@ -12,6 +12,7 @@ ClearSurfacesCmd::ClearSurfacesCmd(SurfaceManager * sm){
 void ClearSurfacesCmd::exec(){
 	_surfaceManager->deselectSurface();
 	_surfaceManager->getActivePreset()->clear();
+	BaseSurface::count = 0;
 }
 
 void ClearSurfacesCmd::undo(){

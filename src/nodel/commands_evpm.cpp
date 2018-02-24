@@ -4,6 +4,7 @@
 #include "ofxPiMapper.h"
 #include "video/video_controller.h"
 #include "VisualLayer.h"
+#include "SurfaceManager.h"
 
 namespace op {
 
@@ -50,6 +51,13 @@ namespace op {
 	}
 	std::string ToggleShaders::get_type() { return "ToggleShaders"; }
 
+	void SetMaxSurfaces::run() {
+		ofx::piMapper::SurfaceManager::setMaxSurfaces(num);
+		mapper.save_temp();
+			cout << "Set max surfaces to: " << num << endl;
+	}
+	std::string SetMaxSurfaces::get_type() { return "ToggleShaders"; }
+
 	void None::run() {}
 
 	std::unique_ptr<Operation> runnable_command(std::string msg, std::shared_ptr<nodel_interpreter::NodelDep> deps) {
@@ -75,11 +83,23 @@ namespace op {
 			else if (auto it = j.find("ToggleShaders") != j.end()) {
 				my_op = std::make_unique<op::ToggleShaders>( ToggleShadersCmd(deps->layers) );
 			}
+			else if (auto it = j.find("SetMaxSurfaces") != j.end()) {
+				std::vector<std::string> data = j["SetMaxSurfaces"];
+				try {
+					my_op = std::make_unique<op::SetMaxSurfaces>(deps->mapper, std::stoi(data[0]));
+				}
+				catch (std::invalid_argument &e) {
+					std::cout << "Not a number: " << e.what() << std::endl;
+				}
+			}
 			else {
 				std::cout << "Wrong message format or not found. Use {\"Command\": [\"arg\"] } or {\"Command\": [] }" << std::endl;
 			}
 		}
 		catch (json::parse_error & e) {
+			std::cout << "Bad message: " << e.what() << std::endl;
+		}
+		catch (json::type_error & e) {
 			std::cout << "Bad message: " << e.what() << std::endl;
 		}
 		return my_op;

@@ -52,6 +52,7 @@ class BaseSurface {
 		ofEvent <vector<ofVec3f>> verticesChangedEvent;
 		ofEvent <int> vertexChangedEvent;
 
+		static unsigned int count;
 	protected:
 		ofMesh mesh;
 	
