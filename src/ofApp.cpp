@@ -238,10 +238,17 @@ void ofApp::dragEvent(ofDragInfo dragInfo){
 //----------------WINDOWS ONLY
 //--------------------------------------------------------------
 void ofApp::touchDown(ofTouchEventArgs & touch){
-    touchMap[touch.id] = touch;
-	gui_interface.touchDown(touchMap);
-	if (!mouse) {
-		mapper.touchDown(touchMap);
+	if (!gui_interface.is_touch_over_mapping_toggles(touch)) {
+		// Make sure that the mouse is actually within the mapping
+		// rectangle before registering mouse events so we dont
+		// deselect the currently selected layer.
+
+			touchMap[touch.id] = touch;
+			gui_interface.touchDown(touchMap);
+			if (!mouse) {
+				mapper.touchDown(touchMap);
+			}
+		
 	}
 
 	// This is hear incase we really need to start hacking ImGui
