@@ -10,34 +10,34 @@ namespace op {
 
 	std::string LoadPreset::get_type() { return "LoadPreset"; }
 
-	void LoadPresetCmd::run(string name) {
+	void LoadPreset::run() {
 		mapper.clear_all();
 		mapper.loadProject("presets/" + name + ".xml");
 		mapper.save_temp();
 		cout << "Preset Loaded as: " << name << endl;
 	}
 
-	void SavePresetCmd::run(string name) {
+	void SavePreset::run() {
 		mapper.save_with_name("presets/" + name + ".xml");
 		mapper.save_temp();
 		cout << "Preset Saved as: " << name << endl;
 	}
 	std::string SavePreset::get_type() { return "SavePreset"; }
 
-	void SaveCmd::run() {
+	void Save::run() {
 		mapper.save_temp();
 		cout << "Preset Saved" << endl;
 	}
 	std::string Save::get_type() { return "Save"; }
 
-	void ClearAllCmd::run() {
+	void ClearAll::run() {
 		mapper.clear_all();
 		mapper.save_temp();
 		cout << "Clear all" << endl;
 	}
 	std::string ClearAll::get_type() { return "ClearAll"; }
 
-	void ToggleShadersCmd::run() {
+	void ToggleShaders::run() {
 		auto loader = video_controller::load();
 		for (int i = 0; i < layers.size(); i++) {
 			auto l = layers[i];
@@ -68,20 +68,20 @@ namespace op {
 
 			if (auto it = j.find("LoadPreset") != j.end()) {
 				std::vector<std::string> data = j["LoadPreset"];
-				my_op = std::make_unique<op::LoadPreset>(LoadPresetCmd(deps->mapper), data[0]);
+				my_op = std::make_unique<op::LoadPreset>(deps->mapper, data[0]);
 			}
 			else if (auto it = j.find("SavePreset") != j.end()) {
 				std::vector<std::string> data = j["SavePreset"];
-				my_op = std::make_unique<op::SavePreset>(SavePresetCmd(deps->mapper), data[0]);
+				my_op = std::make_unique<op::SavePreset>(deps->mapper, data[0]);
 			}
 			else if (auto it = j.find("Save") != j.end()) {
-				my_op = std::make_unique<op::Save>( SaveCmd(deps->mapper) );
+				my_op = std::make_unique<op::Save>(deps->mapper);
 			}
 			else if (auto it = j.find("ClearAll") != j.end()) {
-				my_op = std::make_unique<op::ClearAll>( ClearAllCmd(deps->mapper) );
+				my_op = std::make_unique<op::ClearAll>(deps->mapper);
 			}
 			else if (auto it = j.find("ToggleShaders") != j.end()) {
-				my_op = std::make_unique<op::ToggleShaders>( ToggleShadersCmd(deps->layers) );
+				my_op = std::make_unique<op::ToggleShaders>(deps->layers);
 			}
 			else if (auto it = j.find("SetMaxSurfaces") != j.end()) {
 				std::vector<std::string> data = j["SetMaxSurfaces"];
