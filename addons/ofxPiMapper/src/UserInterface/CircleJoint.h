@@ -13,6 +13,7 @@ class CircleJoint : public BaseJoint {
 		void update();
 		void draw();
 		bool hitTest(ofVec2f position);
+		bool hitTestJoint(const ofVec2f & position);
 
 	private:
 		float radius;

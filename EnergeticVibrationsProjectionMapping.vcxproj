@@ -95,7 +95,7 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;src\GUI;src\Graphics_Tools;..\..\..\addons\ofxGui\src;addons\ofxImGui\libs;addons\ofxImGui\libs\imgui;addons\ofxImGui\libs\imgui\src;addons\ofxImGui\src;..\..\..\addons\ofxOsc\libs;..\..\..\addons\ofxOsc\libs\oscpack;..\..\..\addons\ofxOsc\libs\oscpack\src;..\..\..\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\posix;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32;..\..\..\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\addons\ofxOsc\src;addons\ofxPiMapper\src;addons\ofxPiMapper\src\Application;addons\ofxPiMapper\src\Application\Modes;addons\ofxPiMapper\src\Commands;addons\ofxPiMapper\src\Gui;addons\ofxPiMapper\src\Gui\Widgets;addons\ofxPiMapper\src\Info;addons\ofxPiMapper\src\MediaServer;addons\ofxPiMapper\src\Sources;addons\ofxPiMapper\src\Surfaces;addons\ofxPiMapper\src\UserInterface;addons\ofxPiMapper\src\Utils;addons\ofxWinTouchHook\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;src\GUI;src\Graphics_Tools;..\..\..\addons\ofxGui\src;addons\ofxImGui\libs;addons\ofxImGui\libs\imgui;addons\ofxImGui\libs\imgui\src;addons\ofxImGui\src;..\..\..\addons\ofxOsc\libs;..\..\..\addons\ofxOsc\libs\oscpack;..\..\..\addons\ofxOsc\libs\oscpack\src;..\..\..\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\posix;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32;..\..\..\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\addons\ofxOsc\src;addons\ofxPiMapper\src;addons\ofxPiMapper\src\Application;addons\ofxPiMapper\src\Application\Modes;addons\ofxPiMapper\src\Commands;addons\ofxPiMapper\src\Gui;addons\ofxPiMapper\src\Gui\Widgets;addons\ofxPiMapper\src\Info;addons\ofxPiMapper\src\MediaServer;addons\ofxPiMapper\src\Sources;addons\ofxPiMapper\src\Surfaces;addons\ofxPiMapper\src\UserInterface;addons\ofxPiMapper\src\Utils;addons\ofxWinTouchHook\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src;..\..\..\addons\ofxNetwork\src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>
@@ -114,7 +114,7 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;src\GUI;src\Graphics_Tools;..\..\..\addons\ofxGui\src;addons\ofxImGui\libs;addons\ofxImGui\libs\imgui;addons\ofxImGui\libs\imgui\src;addons\ofxImGui\src;..\..\..\addons\ofxOsc\libs;..\..\..\addons\ofxOsc\libs\oscpack;..\..\..\addons\ofxOsc\libs\oscpack\src;..\..\..\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\posix;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32;..\..\..\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\addons\ofxOsc\src;addons\ofxPiMapper\src;addons\ofxPiMapper\src\Application;addons\ofxPiMapper\src\Application\Modes;addons\ofxPiMapper\src\Commands;addons\ofxPiMapper\src\Gui;addons\ofxPiMapper\src\Gui\Widgets;addons\ofxPiMapper\src\Info;addons\ofxPiMapper\src\MediaServer;addons\ofxPiMapper\src\Sources;addons\ofxPiMapper\src\Surfaces;addons\ofxPiMapper\src\UserInterface;addons\ofxPiMapper\src\Utils;addons\ofxWinTouchHook\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src\video;C:\Program Files\boost\boost_1_66_0;%(AdditionalIncludeDirectories);src;src\GUI;src\Graphics_Tools;..\..\..\addons\ofxGui\src;addons\ofxImGui\libs;addons\ofxImGui\libs\imgui;addons\ofxImGui\libs\imgui\src;addons\ofxImGui\src;..\..\..\addons\ofxOsc\libs;..\..\..\addons\ofxOsc\libs\oscpack;..\..\..\addons\ofxOsc\libs\oscpack\src;..\..\..\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\posix;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32;..\..\..\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\addons\ofxOsc\src;addons\ofxPiMapper\src;addons\ofxPiMapper\src\Application;addons\ofxPiMapper\src\Application\Modes;addons\ofxPiMapper\src\Commands;addons\ofxPiMapper\src\Gui;addons\ofxPiMapper\src\Gui\Widgets;addons\ofxPiMapper\src\Info;addons\ofxPiMapper\src\MediaServer;addons\ofxPiMapper\src\Sources;addons\ofxPiMapper\src\Surfaces;addons\ofxPiMapper\src\UserInterface;addons\ofxPiMapper\src\Utils;addons\ofxWinTouchHook\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src;..\..\..\addons\ofxNetwork\src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -123,7 +123,7 @@
       <SubSystem>Console</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Program Files\boost\boost_1_66_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent />
   </ItemDefinitionGroup>
@@ -133,7 +133,7 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;src\GUI;src\Graphics_Tools;..\..\..\addons\ofxGui\src;addons\ofxImGui\libs;addons\ofxImGui\libs\imgui;addons\ofxImGui\libs\imgui\src;addons\ofxImGui\src;..\..\..\addons\ofxOsc\libs;..\..\..\addons\ofxOsc\libs\oscpack;..\..\..\addons\ofxOsc\libs\oscpack\src;..\..\..\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\posix;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32;..\..\..\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\addons\ofxOsc\src;addons\ofxPiMapper\src;addons\ofxPiMapper\src\Application;addons\ofxPiMapper\src\Application\Modes;addons\ofxPiMapper\src\Commands;addons\ofxPiMapper\src\Gui;addons\ofxPiMapper\src\Gui\Widgets;addons\ofxPiMapper\src\Info;addons\ofxPiMapper\src\MediaServer;addons\ofxPiMapper\src\Sources;addons\ofxPiMapper\src\Surfaces;addons\ofxPiMapper\src\UserInterface;addons\ofxPiMapper\src\Utils;addons\ofxWinTouchHook\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;src\GUI;src\Graphics_Tools;..\..\..\addons\ofxGui\src;addons\ofxImGui\libs;addons\ofxImGui\libs\imgui;addons\ofxImGui\libs\imgui\src;addons\ofxImGui\src;..\..\..\addons\ofxOsc\libs;..\..\..\addons\ofxOsc\libs\oscpack;..\..\..\addons\ofxOsc\libs\oscpack\src;..\..\..\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\posix;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32;..\..\..\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\addons\ofxOsc\src;addons\ofxPiMapper\src;addons\ofxPiMapper\src\Application;addons\ofxPiMapper\src\Application\Modes;addons\ofxPiMapper\src\Commands;addons\ofxPiMapper\src\Gui;addons\ofxPiMapper\src\Gui\Widgets;addons\ofxPiMapper\src\Info;addons\ofxPiMapper\src\MediaServer;addons\ofxPiMapper\src\Sources;addons\ofxPiMapper\src\Surfaces;addons\ofxPiMapper\src\UserInterface;addons\ofxPiMapper\src\Utils;addons\ofxWinTouchHook\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src;..\..\..\addons\ofxNetwork\src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -155,7 +155,7 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;src\GUI;src\Graphics_Tools;..\..\..\addons\ofxGui\src;addons\ofxImGui\libs;addons\ofxImGui\libs\imgui;addons\ofxImGui\libs\imgui\src;addons\ofxImGui\src;..\..\..\addons\ofxOsc\libs;..\..\..\addons\ofxOsc\libs\oscpack;..\..\..\addons\ofxOsc\libs\oscpack\src;..\..\..\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\posix;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32;..\..\..\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\addons\ofxOsc\src;addons\ofxPiMapper\src;addons\ofxPiMapper\src\Application;addons\ofxPiMapper\src\Application\Modes;addons\ofxPiMapper\src\Commands;addons\ofxPiMapper\src\Gui;addons\ofxPiMapper\src\Gui\Widgets;addons\ofxPiMapper\src\Info;addons\ofxPiMapper\src\MediaServer;addons\ofxPiMapper\src\Sources;addons\ofxPiMapper\src\Surfaces;addons\ofxPiMapper\src\UserInterface;addons\ofxPiMapper\src\Utils;addons\ofxWinTouchHook\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>c:\Program Files\boost\boost_1_66_0;%(AdditionalIncludeDirectories);src;src\GUI;src\Graphics_Tools;..\..\..\addons\ofxGui\src;addons\ofxImGui\libs;addons\ofxImGui\libs\imgui;addons\ofxImGui\libs\imgui\src;addons\ofxImGui\src;..\..\..\addons\ofxOsc\libs;..\..\..\addons\ofxOsc\libs\oscpack;..\..\..\addons\ofxOsc\libs\oscpack\src;..\..\..\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\posix;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32;..\..\..\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\addons\ofxOsc\src;addons\ofxPiMapper\src;addons\ofxPiMapper\src\Application;addons\ofxPiMapper\src\Application\Modes;addons\ofxPiMapper\src\Commands;addons\ofxPiMapper\src\Gui;addons\ofxPiMapper\src\Gui\Widgets;addons\ofxPiMapper\src\Info;addons\ofxPiMapper\src\MediaServer;addons\ofxPiMapper\src\Sources;addons\ofxPiMapper\src\Surfaces;addons\ofxPiMapper\src\UserInterface;addons\ofxPiMapper\src\Utils;addons\ofxWinTouchHook\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src;..\..\..\addons\ofxNetwork\src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>
@@ -166,12 +166,18 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Program Files\boost\boost_1_66_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxTCPClient.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxTCPManager.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxTCPServer.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxUDPManager.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\nodel\commands_evpm.cpp" />
+    <ClCompile Include="src\nodel\nodel_interpreter.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="src\boundary.cpp" />
     <ClCompile Include="src\drag_manager.cpp" />
@@ -293,6 +299,17 @@
     <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlparser.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxNetwork.h" />
+    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxNetworkUtils.h" />
+    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxTCPClient.h" />
+    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxTCPManager.h" />
+    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxTCPServer.h" />
+    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxUDPManager.h" />
+    <ClInclude Include="src\nodel\commands.hpp" />
+    <ClInclude Include="src\nodel\commands_evpm.hpp" />
+    <ClInclude Include="src\nodel\json.hpp" />
+    <ClInclude Include="src\nodel\nodel_dep.hpp" />
+    <ClInclude Include="src\nodel\nodel_interpreter.hpp" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="src\boundary.hpp" />
     <ClInclude Include="src\drag_manager.hpp" />

@@ -3,6 +3,8 @@
 namespace ofx {
 namespace piMapper {
 
+unsigned int  SurfaceManager::MAX_SURFACES = 1000;
+
 SurfaceManager::SurfaceManager(){
 	mediaServer = 0;
 	selectedSurface = 0;
@@ -79,6 +81,8 @@ void SurfaceManager::removeSurface(int i){
 	if(_presets[_activePresetIndex]->size() <= 0){
 		return;
 	}
+
+	BaseSurface::count--;
 	
 	//_presets[_activePresetIndex]->erase(i);
 	_presets[_activePresetIndex]->swap(i, _presets[_activePresetIndex]->size() - 1);

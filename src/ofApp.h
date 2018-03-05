@@ -13,6 +13,8 @@
 #include "Settings.h"
 #include "ofxPiMapper.h"
 
+#include "nodel/nodel_interpreter.hpp"
+
 //----------------WINDOWS ONLY
 #ifdef WINDOWS_TOUCH
 #include "ofxWinTouchHook.h"
@@ -71,4 +73,5 @@ private:
 		// Tom added to turn mouse on / off
 		bool mouse;
 		void toggle_shaders();
+		nodel_interpreter::Nodel nodel;
 };

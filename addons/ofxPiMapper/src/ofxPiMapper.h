@@ -26,6 +26,11 @@ class ofxPiMapper {
 		void touchDown(map<int, ofTouchEventArgs> & touchMap);
 		void touchMoved(map<int, ofTouchEventArgs> & touchMap);
 		void touchUp(map<int, ofTouchEventArgs> & touchMap);
+		
+		//Tom adding for presets
+		void clear_all();
+		void save_with_name(string filename);
+		void save_temp();
 
 		void registerFboSource(ofx::piMapper::FboSource & fboSource);
 		void registerFboSource(ofx::piMapper::FboSource * fboSource);

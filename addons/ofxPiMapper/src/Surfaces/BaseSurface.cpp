@@ -3,16 +3,20 @@
 namespace ofx {
 namespace piMapper {
 
+unsigned int BaseSurface::count = 0;
+
 BaseSurface::BaseSurface(){
 	_moved = false;
 	_scale = 0.1f;
 	createDefaultTexture();
+	count++;
 }
 
 BaseSurface::~BaseSurface(){
 	delete defaultSource;
 	defaultSource = 0;
 	defaultTexture.clear();
+	count--;
 }
 
 void BaseSurface::createDefaultTexture(){

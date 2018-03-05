@@ -1,5 +1,6 @@
 #include "ofApp.h"
-#include "video/video_controller.h"
+#include "nodel/nodel_dep.hpp"
+
 //changed
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -56,13 +57,17 @@ void ofApp::setup(){
     // OSC
     volumes = {1.0f,1.0f,1.0f};
     receiver.setup(OSC_PORT);
+	nodel_interpreter::NodelDep nodel_dep(mapper, layers);
+	nodel.setup(nodel_dep);
 }
+
 
 
 //--------------------------------------------------------------
 void ofApp::setupProjectionWindow(){
    ofSetBackgroundColor(0);
    mapper._application.getSurfaceManager()->assign_projection_fbo(&projection_fbo);
+
 }
 
 //--------------------------------------------------------------
@@ -90,6 +95,10 @@ void ofApp::update(){
     mapper.update();
 	gui_interface.update_volumes(volumes);
     gui_interface.update_audio_reactivity(layers);
+	
+	nodel.try_run();
+		
+	
 }
 
 //--------------------------------------------------------------
@@ -135,16 +144,6 @@ void ofApp::draw(){
 }
 
 void ofApp::toggle_shaders() {
-	auto loader = video_controller::load();
-	for(int i = 0; i < layers.size(); i++){
-		auto l = layers[i];
-		l->toggle_shader();
-		if (!l->is_shader()) {
-			if (loader.has_next()) {
-				l->load_movie(loader.next());
-			}
-		}
-	}
 }
 
 //--------------------------------------------------------------
@@ -159,11 +158,8 @@ void ofApp::keyPressed(int key){
 			cout << "Touch mode on" << endl;
 		}
 			  break;
-	case 'v':
-		toggle_shaders();
-		cout << "toggle shadders" << endl;
-			  break;
 	}
+
 	mapper.keyPressed(key);
 }
 
@@ -242,10 +238,16 @@ void ofApp::dragEvent(ofDragInfo dragInfo){
 //----------------WINDOWS ONLY
 //--------------------------------------------------------------
 void ofApp::touchDown(ofTouchEventArgs & touch){
-    touchMap[touch.id] = touch;
-	gui_interface.touchDown(touchMap);
-	if (!mouse) {
-		mapper.touchDown(touchMap);
+	if (!gui_interface.is_touch_over_mapping_toggles(touch)) {
+		// Make sure that the mouse is actually within the mapping
+		// rectangle before registering mouse events so we dont
+		// deselect the currently selected layer.
+
+			touchMap[touch.id] = touch;
+			gui_interface.touchDown(touchMap);
+			if (!mouse) {
+				mapper.touchDown(touchMap);
+			}
 	}
 
 	// This is hear incase we really need to start hacking ImGui

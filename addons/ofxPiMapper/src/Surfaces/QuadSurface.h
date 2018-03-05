@@ -20,6 +20,7 @@ class QuadSurface : public BaseSurface {
 		void draw();
 	
 		void setVertex(int index, ofVec2f p);
+		void setNewVertex(int index, ofVec2f p);
 		void setVertices(vector<ofVec2f> v);
 		void setVertices(vector<ofVec3f> v);
 	
@@ -44,8 +45,11 @@ class QuadSurface : public BaseSurface {
 	
 		BaseSurface * clone();
 
+		bool is_concave();
+
 	private:
 		void calculateHomography();
+		int GetAngleABC(ofVec2f a, ofVec2f b, ofVec2f c);
 	
 		float _matrix[16];
 		bool _perspectiveWarping;

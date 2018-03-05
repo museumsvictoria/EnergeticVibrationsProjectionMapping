@@ -10,6 +10,7 @@ int main( ){
     settings.height = 1080;
     settings.setPosition(ofVec2f(600,0));
     settings.resizable = true;
+	settings.windowMode = ofWindowMode::OF_FULLSCREEN;
     shared_ptr<ofAppBaseWindow> mainWindow = ofCreateWindow(settings);
     
     settings.width = 1920;

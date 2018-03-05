@@ -78,7 +78,7 @@ QuadSurface * SurfaceFactory::createQuadSurface(){
 	quadSurface->setPerspectiveWarping(true);
 	
 	for(int i = 0; i < 4; i++){
-		quadSurface->setVertex(i, default_pos + (vertices[i] * default_scale));
+		quadSurface->setNewVertex(i, default_pos + (vertices[i] * default_scale));
 		quadSurface->setTexCoord(i, texCoords[i]);
 	}
 	
