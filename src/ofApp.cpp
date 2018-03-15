@@ -1,5 +1,7 @@
 #include "ofApp.h"
+#include "nodel/nodel_dep.hpp"
 
+//changed
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofSetFrameRate(60);
@@ -7,8 +9,10 @@ void ofApp::setup(){
     ofBackground(0);
     ofEnableSmoothing();
 
+	mouse = true;
 	//----------------WINDOWS ONLY
 #ifdef WINDOWS_TOUCH
+	mouse = false;
 	// enable the Windows Touch Hook
 	ofxWinTouchHook::EnableTouch();
 
@@ -53,13 +57,17 @@ void ofApp::setup(){
     // OSC
     volumes = {1.0f,1.0f,1.0f};
     receiver.setup(OSC_PORT);
+	nodel_interpreter::NodelDep nodel_dep(mapper, layers);
+	nodel.setup(nodel_dep);
 }
+
 
 
 //--------------------------------------------------------------
 void ofApp::setupProjectionWindow(){
    ofSetBackgroundColor(0);
    mapper._application.getSurfaceManager()->assign_projection_fbo(&projection_fbo);
+
 }
 
 //--------------------------------------------------------------
@@ -87,6 +95,10 @@ void ofApp::update(){
     mapper.update();
 	gui_interface.update_volumes(volumes);
     gui_interface.update_audio_reactivity(layers);
+	
+	nodel.try_run();
+		
+	
 }
 
 //--------------------------------------------------------------
@@ -131,14 +143,30 @@ void ofApp::draw(){
 //    ofx::piMapper::Gui::getSourcesEditorWidget().getLoadedTexCount();
 }
 
+void ofApp::toggle_shaders() {
+}
+
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-    mapper.keyPressed(key);
+	switch (key) {
+	case 'm': 
+		mouse = !mouse;
+		if (mouse) {
+			cout << "Mouse mode on" << endl;
+		}
+		else {
+			cout << "Touch mode on" << endl;
+		}
+			  break;
+	}
+
+	mapper.keyPressed(key);
 }
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
-    mapper.keyReleased(key);
+		//mapper.keyReleased(key);
+
 }
 
 
@@ -149,16 +177,10 @@ void ofApp::mouseMoved(int x, int y ){
 
 //--------------------------------------------------------------
 void ofApp::mouseDragged(int x, int y, int button){
-#ifdef FAKETOUCH 
-    auto touch1 = ofTouchEventArgs(ofTouchEventArgs::move, x, y, 1);
-    auto touch2 = ofTouchEventArgs(ofTouchEventArgs::move, x+5, y+5, 2);
-  touchMap[touch1.id] = touch1;
-    mapper.touchMoved(touchMap);
-    touchMap[touch2.id] = touch2;
-  mapper.touchMoved(touchMap);
-#else
-    mapper.mouseDragged(x, y, button);
-#endif
+	if (mouse) {
+		mapper.mouseDragged(x, y, button);
+	}
+	
 }
 
 //--------------------------------------------------------------
@@ -171,39 +193,19 @@ void ofApp::mousePressed(int x, int y, int button){
         // rectangle before registering mouse events so we dont
         // deselect the currently selected layer.
         if(gui_interface.is_mouse_inside_mapping_rect()){
-#ifdef FAKETOUCH 
-            //---- Tom
-            // create a fake touch down event and send it through to
-            // text touch when cliked
-            // create up when released
-            auto touch1 = ofTouchEventArgs(ofTouchEventArgs::down, x, y, 1);
-            auto touch2 = ofTouchEventArgs(ofTouchEventArgs::down, x+5, y+5, 2);
-            touchMap[touch1.id] = touch1;
-            mapper.touchDown(touchMap);
-            touchMap[touch2.id] = touch2;
-            mapper.touchDown(touchMap);
-#else
-            mapper.mousePressed(x, y, button);
-#endif
+			if (mouse) {
+				mapper.mousePressed(x, y, button);
+			}
         }
     }
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button){
-#ifdef FAKETOUCH
-    auto touch1 = ofTouchEventArgs(ofTouchEventArgs::up, x, y, 1);
-    auto touch2 = ofTouchEventArgs(ofTouchEventArgs::up, x+5, y+5, 2);
-    touchMap[touch1.id] = touch1;
-    touchMap[touch2.id] = touch2;
-  mapper.touchUp(touchMap);
-    touchMap.erase(2);
-    mapper.touchUp(touchMap);
-    touchMap.erase(1);
-    
-#else
-    mapper.mouseReleased(x, y, button);
-#endif
+	if (mouse) {
+		mapper.mouseReleased(x, y, button);
+	}
+
 }
 
 //--------------------------------------------------------------
@@ -236,9 +238,17 @@ void ofApp::dragEvent(ofDragInfo dragInfo){
 //----------------WINDOWS ONLY
 //--------------------------------------------------------------
 void ofApp::touchDown(ofTouchEventArgs & touch){
-    touchMap[touch.id] = touch;
-	gui_interface.touchDown(touchMap);
-	mapper.touchDown(touchMap);
+	if (!gui_interface.is_touch_over_mapping_toggles(touch)) {
+		// Make sure that the mouse is actually within the mapping
+		// rectangle before registering mouse events so we dont
+		// deselect the currently selected layer.
+
+			touchMap[touch.id] = touch;
+			gui_interface.touchDown(touchMap);
+			if (!mouse) {
+				mapper.touchDown(touchMap);
+			}
+	}
 
 	// This is hear incase we really need to start hacking ImGui
 	// TO enable mouse events to be set from the touch screen. 
@@ -251,15 +261,21 @@ void ofApp::touchDown(ofTouchEventArgs & touch){
 void ofApp::touchMoved(ofTouchEventArgs & touch){
     touchMap[touch.id] = touch;
 	gui_interface.touchMoved(touchMap);
-	mapper.touchMoved(touchMap);
+	if (!mouse) {
+		mapper.touchMoved(touchMap);
+	}
+
 }
 
 //--------------------------------------------------------------
 void ofApp::touchUp(ofTouchEventArgs & touch){
   //TODO this probably needs to be erased after passing in?
-    touchMap.erase(touch.id);
+	touchMap[touch.id] = touch;
 	gui_interface.touchUp(touchMap);
-	mapper.touchUp(touchMap);
+	if (!mouse) {
+		mapper.touchUp(touchMap);
+	}
+	touchMap.erase(touch.id);
 
 	// This is hear incase we really need to start hacking ImGui
 	// TO enable mouse events to be set from the touch screen. 

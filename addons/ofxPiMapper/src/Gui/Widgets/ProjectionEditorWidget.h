@@ -3,6 +3,12 @@
 #include "SurfaceManager.h"
 #include "CircleJoint.h"
 
+//Tom added for multitouch forward dec
+namespace drag_manager {
+	struct ActiveJoints;
+}
+
+
 namespace ofx {
 namespace piMapper {
 
@@ -14,8 +20,8 @@ class ProjectionEditorWidget {
 		void update();
 		void draw();
 	
-        //JOSH addition
-        void touchMoved(map<int, ofTouchEventArgs> & touchMap);
+        //JOSH addition Tom changed to pass in active joints
+        void touchMoved(map<int, ofTouchEventArgs> & active_joint_move_touch);
     
 		void mouseDragged(ofMouseEventArgs & args);
 		void gotMessage(ofMessage & msg);

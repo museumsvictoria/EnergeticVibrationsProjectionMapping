@@ -152,6 +152,7 @@ void Application::onKeyReleased(ofKeyEventArgs & args){
 	}
 }
 
+
 // Josh adding in touch events
 void Application::touchDown(map<int, ofTouchEventArgs> & touchMap) {
 	_state->onTouchDown(this, touchMap);
@@ -559,6 +560,20 @@ void Application::deselect(){
 	if(getSurfaceManager()->getSelectedSurface() != 0){
 		getCmdManager()->exec(new DeselectSurfaceCmd(getSurfaceManager()));
 	}
+}
+
+void Application::clear_all() {
+	if (_surfaceManager.getActivePreset()->size()) {
+		_cmdManager.exec(new ClearSurfacesCmd(getSurfaceManager()));
+	}
+}
+
+void Application::save_with_name(string filename) {
+	_surfaceManager.saveXmlSettings(filename);
+}
+
+void Application::save_temp() {
+	_surfaceManager.saveXmlSettings(PIMAPPER_SETTINGS_FILE);
 }
 
 } // namespace piMapper

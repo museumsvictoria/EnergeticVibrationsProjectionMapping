@@ -6,23 +6,9 @@ namespace piMapper {
 BaseJoint::BaseJoint(){
 	setDefaultColors();
 	setDefaultProperties();
+
 }
 
-// JOSH adding in touch events
-void BaseJoint::touchDown(ofTouchEventArgs & touch) {
-	if (hitTest(ofVec2f(touch.x, touch.y))) {
-		clickDistance = position - ofVec2f(touch.x, touch.y);
-	}
-}
-void BaseJoint::touchMoved(ofTouchEventArgs & touch) {
-	if (!bDrag) {
-		return;
-	}
-	position = ofVec2f(touch) + clickDistance;
-}
-void BaseJoint::touchUp(ofTouchEventArgs & touch) {
-	stopDrag();
-}
 
 void BaseJoint::mousePressed(ofMouseEventArgs & args){
 	if(hitTest(ofVec2f(args.x, args.y))){
@@ -46,6 +32,7 @@ void BaseJoint::startDrag(){
 }
 
 void BaseJoint::stopDrag(){
+
 	bDrag = false;
 }
 
@@ -84,6 +71,7 @@ void BaseJoint::setDefaultProperties(){
 	bDrag = false;
 	selected = false;
 	strokeWidth = 4.5f;
+
 }
 
 } // namespace piMapper

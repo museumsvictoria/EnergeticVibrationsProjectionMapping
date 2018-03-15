@@ -141,7 +141,12 @@ bool SettingsLoader::load(
 		}
 
 		xmlSettings->popTag(); // surfaces
-		
+		if (!xmlSettings->tagExists("maxsurfaces")) {
+			xmlSettings->addTag("maxsurfaces");
+		}
+		xmlSettings->pushTag("maxsurfaces");
+		SurfaceManager::setMaxSurfaces( xmlSettings->getValue("amount", 1000) );
+		xmlSettings->popTag();
 	} // for
 	
 	_lastLoadedFilename = fileName;
@@ -232,6 +237,11 @@ bool SettingsLoader::save(SurfaceManager & surfaceManager, string fileName){
 	}
 	xmlSettings->popTag(); // surfaces
 	
+	xmlSettings->addTag("maxsurfaces");
+	xmlSettings->pushTag("maxsurfaces");
+	xmlSettings->addValue("amount", (int) SurfaceManager::getMaxSurfaces());
+	xmlSettings->popTag();
+
 	} // for
 	
 	xmlSettings->save(fileName);

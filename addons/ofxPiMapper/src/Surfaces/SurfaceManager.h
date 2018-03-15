@@ -81,6 +81,9 @@ class SurfaceManager {
 		void setPreset(unsigned int i);
 		void cloneActivePreset();
 		void eraseActivePreset();
+
+		static unsigned int getMaxSurfaces() { return MAX_SURFACES; }
+		static void setMaxSurfaces(unsigned int ms) { MAX_SURFACES = ms; }
 	
 	private:
 		BaseSurface * selectedSurface;
@@ -91,6 +94,8 @@ class SurfaceManager {
 		int _activePresetIndex;
 	
 		vector <SurfaceStack *> _presets;
+
+		static unsigned int MAX_SURFACES;
 
 };
 

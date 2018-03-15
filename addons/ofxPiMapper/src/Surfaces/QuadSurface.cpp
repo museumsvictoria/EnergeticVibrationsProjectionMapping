@@ -116,7 +116,27 @@ void QuadSurface::setVertex(int index, ofVec2f p){
 		return;
 	}
 
+
+	ofVec2f p_s = mesh.getVertex(index);
 	mesh.setVertex(index, p);
+	
+	if (is_concave()) {
+		cout << "concave" << endl;
+		mesh.setVertex(index, p_s);
+	}
+	ofVec3f v = mesh.getVertex(index);
+	ofNotifyEvent(vertexChangedEvent, index, this);
+}
+
+void QuadSurface::setNewVertex(int index, ofVec2f p) {
+	if (index > 3) {
+		ofLog() << "Vertex with this index does not exist: " << index << endl;
+		return;
+	}
+
+
+	mesh.setVertex(index, p);
+
 	ofVec3f v = mesh.getVertex(index);
 	ofNotifyEvent(vertexChangedEvent, index, this);
 }
@@ -317,6 +337,69 @@ BaseSurface * QuadSurface::clone(){
     src->referenceCount++;
 	s->setSource(src);
 	return s;
+}
+
+
+int QuadSurface::GetAngleABC(ofVec2f a, ofVec2f b, ofVec2f c) {
+	ofVec2f ab = { b.x - a.x, b.y - a.y };
+	ofVec2f cb = { b.x - c.x, b.y - c.y };
+
+	float dot = (ab.x * cb.x + ab.y * cb.y); // dot product
+	float cross = (ab.x * cb.y - ab.y * cb.x); // cross product
+
+	float alpha = atan2(cross, dot);
+
+	int deg = (int)floor(alpha * 180. / PI + 0.5);
+
+	//   180|180
+	//      |
+	//    90|270
+	//--------------
+	//    90|270
+	//      |
+	//     0|360
+	if (a.x >= b.x && a.y <= b.y) {
+		return 180 + (-deg);
+	}
+	else if (a.x <= b.x && a.y <= b.y) {
+		return 180 - deg;
+	}
+	else if (a.x <= b.x && a.y >= b.y) {
+		return -deg;
+	}
+	else if (a.x >= b.x && a.y >= b.y) {
+		return 360 - deg;
+	}
+	else return 0;
+}
+bool QuadSurface::is_concave() {
+
+	ofVec2f p0(mesh.getVertex(0));
+	ofVec2f p1(mesh.getVertex(1));
+	ofVec2f p2(mesh.getVertex(2));
+	ofVec2f p3(mesh.getVertex(3));
+
+	auto a1 = (p1 - p0).angle(p3 - p0);
+	auto a2 = (p2 - p1).angle(p0 - p1);
+	auto a3 = (p3 - p2).angle(p1 - p2);
+	auto a4 = (p0 - p3).angle(p2 - p3);
+
+
+	if (a1 >= 180.0 || a1 < 0.0) {
+		return true;
+	}
+	else if (a2 >= 180.0 || a2 < 0.0) {
+		return true;
+	}
+	else if (a3 >= 180.0 || a3 < 0.0) {
+		return true;
+	}
+	else if (a4 >= 180.0 || a4 < 0.0) {
+		return true;
+	}
+	else {
+		return false;
+	}
 }
 
 } // namespace piMapper

@@ -105,6 +105,14 @@
 		13F4B397200D7D9E00D48D3A /* CustomSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13F4B395200D7D9E00D48D3A /* CustomSlider.cpp */; };
 		13F4B39A200D7E9D00D48D3A /* Gradient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13F4B398200D7E9D00D48D3A /* Gradient.cpp */; };
 		1CD33E884D9E3358252E82A1 /* ofxToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 907C5B5E104864A2D3A25745 /* ofxToggle.cpp */; };
+		455951CE20411E6600FC4ED0 /* boundary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 455951CB20411E6500FC4ED0 /* boundary.cpp */; };
+		455951CF20411E6600FC4ED0 /* commands_evpm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 455951CC20411E6500FC4ED0 /* commands_evpm.cpp */; };
+		455951D020411E6600FC4ED0 /* nodel_interpreter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 455951CD20411E6500FC4ED0 /* nodel_interpreter.cpp */; };
+		455951D32041203000FC4ED0 /* video_controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 455951D22041203000FC4ED0 /* video_controller.cpp */; };
+		455951D82041212500FC4ED0 /* ofxUDPManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 455951D42041212500FC4ED0 /* ofxUDPManager.cpp */; };
+		455951D92041212500FC4ED0 /* ofxTCPClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 455951D52041212500FC4ED0 /* ofxTCPClient.cpp */; };
+		455951DA2041212500FC4ED0 /* ofxTCPManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 455951D62041212500FC4ED0 /* ofxTCPManager.cpp */; };
+		455951DB2041212500FC4ED0 /* ofxTCPServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 455951D72041212500FC4ED0 /* ofxTCPServer.cpp */; };
 		455D6C1C202D353800D91A43 /* drag_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 455D6C1B202D353800D91A43 /* drag_manager.cpp */; };
 		455D6C31202D6E6500D91A43 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 455D6C30202D6E6500D91A43 /* main.cpp */; };
 		455D6C37202D70F700D91A43 /* multi_touch_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 455D6C36202D70F700D91A43 /* multi_touch_test.cpp */; };
@@ -419,6 +427,16 @@
 		2FD4B0329909D3527F003494 /* UdpSocket.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = UdpSocket.h; path = ../../../addons/ofxOsc/libs/oscpack/src/ip/UdpSocket.h; sourceTree = SOURCE_ROOT; };
 		3B361208CD4107E479F04E7B /* NetworkingUtils.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = NetworkingUtils.cpp; path = ../../../addons/ofxOsc/libs/oscpack/src/ip/posix/NetworkingUtils.cpp; sourceTree = SOURCE_ROOT; };
 		444657A12E59D0ED86981498 /* TimerListener.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = TimerListener.h; path = ../../../addons/ofxOsc/libs/oscpack/src/ip/TimerListener.h; sourceTree = SOURCE_ROOT; };
+		455951CA20411CFF00FC4ED0 /* nodel */ = {isa = PBXFileReference; lastKnownFileType = folder; path = nodel; sourceTree = "<group>"; };
+		455951CB20411E6500FC4ED0 /* boundary.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = boundary.cpp; path = src/boundary.cpp; sourceTree = "<group>"; };
+		455951CC20411E6500FC4ED0 /* commands_evpm.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = commands_evpm.cpp; path = src/nodel/commands_evpm.cpp; sourceTree = "<group>"; };
+		455951CD20411E6500FC4ED0 /* nodel_interpreter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = nodel_interpreter.cpp; path = src/nodel/nodel_interpreter.cpp; sourceTree = "<group>"; };
+		455951D120411E8600FC4ED0 /* video */ = {isa = PBXFileReference; lastKnownFileType = folder; path = video; sourceTree = "<group>"; };
+		455951D22041203000FC4ED0 /* video_controller.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = video_controller.cpp; path = src/video/video_controller.cpp; sourceTree = "<group>"; };
+		455951D42041212500FC4ED0 /* ofxUDPManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ofxUDPManager.cpp; path = ../../../addons/ofxNetwork/src/ofxUDPManager.cpp; sourceTree = "<group>"; };
+		455951D52041212500FC4ED0 /* ofxTCPClient.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ofxTCPClient.cpp; path = ../../../addons/ofxNetwork/src/ofxTCPClient.cpp; sourceTree = "<group>"; };
+		455951D62041212500FC4ED0 /* ofxTCPManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ofxTCPManager.cpp; path = ../../../addons/ofxNetwork/src/ofxTCPManager.cpp; sourceTree = "<group>"; };
+		455951D72041212500FC4ED0 /* ofxTCPServer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ofxTCPServer.cpp; path = ../../../addons/ofxNetwork/src/ofxTCPServer.cpp; sourceTree = "<group>"; };
 		455D6C15202D307100D91A43 /* drag_manager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = drag_manager.hpp; sourceTree = "<group>"; };
 		455D6C16202D309000D91A43 /* multi_touch.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = multi_touch.hpp; sourceTree = "<group>"; };
 		455D6C1B202D353800D91A43 /* drag_manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = drag_manager.cpp; sourceTree = "<group>"; };
@@ -1136,6 +1154,14 @@
 		E4B69B4A0A3A1720003C02F2 = {
 			isa = PBXGroup;
 			children = (
+				455951D52041212500FC4ED0 /* ofxTCPClient.cpp */,
+				455951D62041212500FC4ED0 /* ofxTCPManager.cpp */,
+				455951D72041212500FC4ED0 /* ofxTCPServer.cpp */,
+				455951D42041212500FC4ED0 /* ofxUDPManager.cpp */,
+				455951D22041203000FC4ED0 /* video_controller.cpp */,
+				455951CB20411E6500FC4ED0 /* boundary.cpp */,
+				455951CC20411E6500FC4ED0 /* commands_evpm.cpp */,
+				455951CD20411E6500FC4ED0 /* nodel_interpreter.cpp */,
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
 				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
@@ -1152,6 +1178,8 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				455951D120411E8600FC4ED0 /* video */,
+				455951CA20411CFF00FC4ED0 /* nodel */,
 				455D6C1A202D329000D91A43 /* multi_touch */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				13903B331FA9642400C60C92 /* Settings.h */,
@@ -1319,6 +1347,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				455951D82041212500FC4ED0 /* ofxUDPManager.cpp in Sources */,
+				455951D92041212500FC4ED0 /* ofxTCPClient.cpp in Sources */,
+				455951DA2041212500FC4ED0 /* ofxTCPManager.cpp in Sources */,
+				455951DB2041212500FC4ED0 /* ofxTCPServer.cpp in Sources */,
+				455951D32041203000FC4ED0 /* video_controller.cpp in Sources */,
+				455951CE20411E6600FC4ED0 /* boundary.cpp in Sources */,
+				455951CF20411E6600FC4ED0 /* commands_evpm.cpp in Sources */,
+				455951D020411E6600FC4ED0 /* nodel_interpreter.cpp in Sources */,
 				13BB99402011A888002E9CD6 /* Info.cpp in Sources */,
 				13BB99432011A888002E9CD6 /* ofxPiMapper.cpp in Sources */,
 				13BB99152011A888002E9CD6 /* AddSurfaceCmd.cpp in Sources */,
@@ -1719,6 +1755,7 @@
 					../../../addons/ofxPiMapper/src/Utils,
 					../../../addons/ofxXmlSettings/libs,
 					../../../addons/ofxXmlSettings/src,
+					../../../addons/ofxNetwork/src,
 				);
 				ICON = "$(ICON_NAME_DEBUG)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
@@ -1775,6 +1812,7 @@
 					../../../addons/ofxPiMapper/src/Utils,
 					../../../addons/ofxXmlSettings/libs,
 					../../../addons/ofxXmlSettings/src,
+					../../../addons/ofxNetwork/src,
 				);
 				ICON = "$(ICON_NAME_RELEASE)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";

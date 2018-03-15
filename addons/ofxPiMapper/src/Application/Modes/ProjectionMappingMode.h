@@ -51,10 +51,15 @@ class ProjectionMappingMode : public ApplicationBaseMode {
 		bool _bSurfaceDrag;
 		bool _bDrawLayerPanel;
     
-    // Tom added for multitracking
-    drag_manager::ActiveHits active_hits;
-    drag_manager::ActiveJoints active_joints;
-    map<int, ofVec2f> last_touch_positions;
+		// Tom added for multitracking
+
+		// links current touches to surface
+		drag_manager::ActiveHits active_hits;
+		// links joints to a current touch
+		drag_manager::ActiveJoints active_joints;
+		// Keeps the last touch position for
+		// each current touch
+		map<int, ofVec2f> last_touch_positions;
 
 };
 

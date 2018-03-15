@@ -13,7 +13,7 @@
 #include "Settings.h"
 #include "ofxPiMapper.h"
 
-#include "multi_touch.hpp"
+#include "nodel/nodel_interpreter.hpp"
 
 //----------------WINDOWS ONLY
 #ifdef WINDOWS_TOUCH
@@ -69,4 +69,9 @@ class ofApp : public ofBaseApp{
     
         GuiInterface gui_interface;
 
+private:
+		// Tom added to turn mouse on / off
+		bool mouse;
+		void toggle_shaders();
+		nodel_interpreter::Nodel nodel;
 };

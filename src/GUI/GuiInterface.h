@@ -59,6 +59,7 @@ class GuiInterface{
     vector<float> volumes;
 
     bool is_mouse_over_mapping_toggles();
+	bool is_touch_over_mapping_toggles(ofVec2f);
     bool is_mouse_inside_mapping_rect();
     
     int get_selected_shader();
@@ -114,4 +115,14 @@ private:
     //Shader Selection Buttons
     vector<ShaderToggle> shader_toggles;
     int selected_shader;
+
+	static constexpr float DUPLICATE_POS_X = 165.0;
+	static constexpr float DUPLICATE_POS_Y = 10.0;
+	static constexpr float TOGGLE_WIDTH = 111.0;
+	static constexpr float TOGGLE_HEIGHT = 51.0;
+	static constexpr float TOGGLE_WINDOW_HEIGHT = 75.0;
+
+	static constexpr float REMOVE_POS_X = 165.0;
+	static constexpr float REMOVE_POS_Y = 82.0;
+
 };

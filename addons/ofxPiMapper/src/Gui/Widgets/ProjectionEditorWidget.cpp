@@ -1,4 +1,6 @@
 #include "ProjectionEditorWidget.h"
+#include "drag_manager.hpp"
+#include "boundary.hpp"
 
 namespace ofx {
 namespace piMapper {
@@ -10,21 +12,14 @@ ProjectionEditorWidget::ProjectionEditorWidget(){
 }
 
 void ProjectionEditorWidget::update(){
-	// update surface if one of the joints is being dragged
-	for(int i = 0; i < joints.size(); i++){
-		if(joints[i]->isDragged() || joints[i]->isSelected()){
-			if(surfaceManager->getSelectedSurface() != 0){
-				// update vertex to new location
-				surfaceManager->getSelectedSurface()->setVertex(i, joints[i]->position);
-			}else{
-				// clear joints if there is no surface selected
-				// as the remove selected surface in the surface manager
-				// is not supposed to access joints here
-				joints.clear();
-			}
-			break;
-		}
+	// Tom changed. Removed logic that was cyclic 
+	// and unnecessary
+
+	if (surfaceManager->getSelectedSurface() == 0) {
+		joints.clear();
 	}
+	
+	
 }
 
 void ProjectionEditorWidget::draw(){
@@ -44,7 +39,10 @@ void ProjectionEditorWidget::mouseDragged(ofMouseEventArgs & args){
 	
 	// Pass args to joint mouse events
 	for(unsigned int i = 0; i < joints.size(); ++i){
-		joints[i]->mouseDragged(args);
+		if (joints[i]->isDragged()) {
+			surfaceManager->getSelectedSurface()->setVertex(i,
+				boundary::bounded_position(args));
+		}
 	}
 	
 	ofVec2f mousePosition = ofVec2f(args.x, args.y);
@@ -77,45 +75,48 @@ void ProjectionEditorWidget::mouseDragged(ofMouseEventArgs & args){
 	}
 }
     
-void ProjectionEditorWidget::touchMoved(map<int, ofTouchEventArgs> &touchMap){
-    
-    for (auto &t : touchMap) {
-        auto &touch = t.second;
-        
-        // Pass args to joint mouse events
-        for(unsigned int i = 0; i < joints.size(); ++i){
-            joints[i]->touchMoved(touch);
-        }
-        
-        ofVec2f touchPosition = ofVec2f(touch.x, touch.y);
-        
-        // Collect all vertices of the projection surfaces
-        vector <ofVec3f *> allVertices;
-        for(int i = 0; i < surfaceManager->size(); i++){
-            BaseSurface * surface = surfaceManager->getSurface(i);
-            if(surface == surfaceManager->getSelectedSurface()){
-                continue; // Don't add vertices of selected surface
-            }
-            for(int j = 0; j < surface->getVertices().size(); j++){
-                allVertices.push_back(&surface->getVertices()[j]);
-            }
-        }
-        
-        // Snap currently dragged joint to nearest vertex
-        for(int i = 0; i < joints.size(); i++){
-            if(joints[i]->isDragged()){
-                for(int j = 0; j < allVertices.size(); j++){
-                    float distance = touchPosition.distance(*allVertices[j]);
-                    if(distance < fSnapDistance){
-                        joints[i]->position = *allVertices[j];
-                        ofVec2f clickDistance = joints[i]->position - ofVec2f(touch.x, touch.y);
-                        joints[i]->setClickDistance(clickDistance);
-                        break;
-                    }
-                }
-            }
-        }
-    }
+void ProjectionEditorWidget::touchMoved(map<int, ofTouchEventArgs> &active_joint_move_touch) {
+
+	for (auto &joint_touch : active_joint_move_touch) {
+
+		// Tom changed to only set active dragging joints
+		if (joint_touch.first < joints.size() && 
+			joints[joint_touch.first]->isDragged()) {
+			if (!boundary::is_collided_joint(joint_touch.second, joints[joint_touch.first], joints) ) {
+				surfaceManager->getSelectedSurface()->setVertex(joint_touch.first,
+					boundary::bounded_position(joint_touch.second));
+			}
+		}
+	
+		ofVec2f touchPosition = ofVec2f(joint_touch.second.x, joint_touch.second.y);
+
+		// Collect all vertices of the projection surfaces
+		vector <ofVec3f *> allVertices;
+		for (int i = 0; i < surfaceManager->size(); i++) {
+			BaseSurface * surface = surfaceManager->getSurface(i);
+			if (surface == surfaceManager->getSelectedSurface()) {
+				continue; // Don't add vertices of selected surface
+			}
+			for (int j = 0; j < surface->getVertices().size(); j++) {
+				allVertices.push_back(&surface->getVertices()[j]);
+			}
+		}
+
+		// Snap currently dragged joint to nearest vertex
+		for (int i = 0; i < joints.size(); i++) {
+			if (joints[i]->isDragged()) {
+				for (int j = 0; j < allVertices.size(); j++) {
+					float distance = touchPosition.distance(*allVertices[j]);
+					if (distance < fSnapDistance) {
+						joints[i]->position = *allVertices[j];
+						ofVec2f clickDistance = joints[i]->position - ofVec2f(joint_touch.second.x, joint_touch.second.y);
+						joints[i]->setClickDistance(clickDistance);
+						break;
+					}
+				}
+			}
+		}
+	}
 }
 
 
@@ -162,9 +163,22 @@ void ProjectionEditorWidget::clearJoints(){
 }
 
 void ProjectionEditorWidget::createJoints(){
-	if(surfaceManager == 0){
+	if (surfaceManager == 0) {
 		return;
 	}
+	/*
+	Save drag and surface settigns
+	*/
+	vector<bool> drags(4);
+	vector<bool> selects(4);
+
+	for (int i = 0; i < joints.size(); ++i) {
+		drags[i] = joints[i]->isDragged();
+		selects[i] = joints[i]->isSelected();
+	}
+
+	// This clears the old joints before creating
+	// new ones
 	clearJoints();
 
 	if(surfaceManager->getSelectedSurface() == 0){
@@ -174,11 +188,25 @@ void ProjectionEditorWidget::createJoints(){
 
 	vector <ofVec3f> & vertices =
 		surfaceManager->getSelectedSurface()->getVertices();
-
+	
 	for(int i = 0; i < vertices.size(); i++){
 		joints.push_back(new CircleJoint());
 		joints.back()->position = ofVec2f(vertices[i].x, vertices[i].y);
 	}
+
+	/*
+	relaod saved drag and selected settings
+	*/
+	for (int i = 0; i < joints.size(); i++) {
+		if (drags[i]) {
+			joints[i]->startDrag();
+		}
+		if (selects[i]) {
+			joints[i]->select();
+		}
+	}
+	
+
 }
 
 void ProjectionEditorWidget::updateJoints(){
@@ -206,29 +234,18 @@ void ProjectionEditorWidget::moveSelectedSurface(ofVec2f by){
 	if(surfaceManager->getSelectedSurface() == 0){
 		return;
 	}
-    
-    // JOSH, check that none of the joints will leave the mapping rect
-    // otherwise cancel the move operation
-    vector <ofVec3f> & vertices = surfaceManager->getSelectedSurface()->getVertices();
-    bool is_inside_rect = true;
-    
-    //JOSH clamp the joints so they stay within the mapping panel rect
-    ofRectangle mapping_panel_rect = ofRectangle(422,13,1450,870);
+	
+	vector <ofVec3f> & vertices = surfaceManager->getSelectedSurface()->getVertices();
 
-    cout << "mapping_panel_rect = " << mapping_panel_rect << endl;
-    cout << "move by = " << by << endl;
-    for(int i = 0; i < vertices.size(); i++){
-        if(mapping_panel_rect.inside(vertices[i].x + by.x, vertices[i].y + by.y) == false){
-            cout << "outside of rect bitch!" << endl;
-            is_inside_rect = false;
-            break;
-        }
-    }
-    cout << "inside rect? = " << is_inside_rect << endl;
-    //if(is_inside_rect){
-        surfaceManager->getSelectedSurface()->moveBy(by);
-        updateJoints();
-    //}
+	/*	Tom
+		This adjusts the "by" vec so
+		that it can't move the surface outside
+		the boundary
+	*/
+	by = boundary::bounded_move(vertices, by);
+    surfaceManager->getSelectedSurface()->moveBy(by);
+    updateJoints();
+
 }
 
 void ProjectionEditorWidget::stopDragJoints(){
@@ -257,15 +274,13 @@ vector <CircleJoint *> * ProjectionEditorWidget::getJoints(){
 	return &joints;
 }
 
-void ProjectionEditorWidget::onVertexChanged(int & i){
-	bool isDragged = getJoints()->at(i)->isDragged();
+/*	Tom changed to pass through all current drags
+	This passes along the selected
+	and dragged states to joints when they are recreated.
+	Because there can now be multiple in a true state.
+*/
+void ProjectionEditorWidget::onVertexChanged(int & i) {
 	createJoints();
-	getJoints()->at(i)->select();
-	if(isDragged){
-		getJoints()->at(i)->startDrag();
-	}else{
-		getJoints()->at(i)->stopDrag();
-	}
 }
 
 void ProjectionEditorWidget::onVerticesChanged(vector<ofVec3f> & vertices){
@@ -296,6 +311,7 @@ void ProjectionEditorWidget::onVertexUnselected(int & vertexIndex){
 void ProjectionEditorWidget::drawJoints(){
 	for(int i = 0; i < joints.size(); i++){
 		joints[i]->draw();
+		
 	}
 }
 

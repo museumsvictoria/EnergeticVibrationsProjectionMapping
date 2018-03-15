@@ -227,6 +227,18 @@ void ofxPiMapper::deselect(){
 	_application.deselect();
 }
 
+void ofxPiMapper::clear_all() {
+	_application.clear_all();
+}
+
+void ofxPiMapper::save_with_name(string filename) {
+	_application.save_with_name(filename);
+}
+
+void ofxPiMapper::save_temp() {
+	_application.save_temp();
+}
+
 void ofxPiMapper::setMode(ofx::piMapper::Mode m){
 	if(m == ofx::piMapper::PRESENTATION_MODE){
 		_application.setPresentationMode();
