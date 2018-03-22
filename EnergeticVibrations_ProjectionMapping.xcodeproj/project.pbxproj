@@ -10,6 +10,15 @@
 		0546D1A38E13BD319CC9755B /* OscReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9BF3AA0D4FAA89D0F8A0E545 /* OscReceivedElements.cpp */; };
 		1303CF9C200D9E550010EC63 /* AudioToggles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1303CF9A200D9E550010EC63 /* AudioToggles.cpp */; };
 		13067A861FA6B61600ECD1B1 /* VisualLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13067A841FA6B61600ECD1B1 /* VisualLayer.cpp */; };
+		13125AB8206391B400664DFC /* ofxTCPClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13125AB0206391B400664DFC /* ofxTCPClient.cpp */; };
+		13125AB9206391B400664DFC /* ofxTCPManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13125AB2206391B400664DFC /* ofxTCPManager.cpp */; };
+		13125ABA206391B400664DFC /* ofxTCPServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13125AB4206391B400664DFC /* ofxTCPServer.cpp */; };
+		13125ABB206391B400664DFC /* ofxUDPManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13125AB6206391B400664DFC /* ofxUDPManager.cpp */; };
+		13125AC0206391C900664DFC /* boundary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13125ABC206391C900664DFC /* boundary.cpp */; };
+		13125AC1206391C900664DFC /* drag_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13125ABE206391C900664DFC /* drag_manager.cpp */; };
+		133F1531204D2F4600BABE2E /* commands_evpm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 133F1528204D2F4600BABE2E /* commands_evpm.cpp */; };
+		133F1532204D2F4600BABE2E /* nodel_interpreter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 133F152C204D2F4600BABE2E /* nodel_interpreter.cpp */; };
+		133F1533204D2F4600BABE2E /* video_controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 133F152F204D2F4600BABE2E /* video_controller.cpp */; };
 		1366084B2006E8CD00ABDCA8 /* GuiInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 136608492006E8CD00ABDCA8 /* GuiInterface.cpp */; };
 		13BB98FD2011A888002E9CD6 /* imgui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13BB982F2011A888002E9CD6 /* imgui.cpp */; };
 		13BB98FE2011A888002E9CD6 /* imgui_demo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13BB98312011A888002E9CD6 /* imgui_demo.cpp */; };
@@ -105,14 +114,6 @@
 		13F4B397200D7D9E00D48D3A /* CustomSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13F4B395200D7D9E00D48D3A /* CustomSlider.cpp */; };
 		13F4B39A200D7E9D00D48D3A /* Gradient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13F4B398200D7E9D00D48D3A /* Gradient.cpp */; };
 		1CD33E884D9E3358252E82A1 /* ofxToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 907C5B5E104864A2D3A25745 /* ofxToggle.cpp */; };
-		455951CE20411E6600FC4ED0 /* boundary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 455951CB20411E6500FC4ED0 /* boundary.cpp */; };
-		455951CF20411E6600FC4ED0 /* commands_evpm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 455951CC20411E6500FC4ED0 /* commands_evpm.cpp */; };
-		455951D020411E6600FC4ED0 /* nodel_interpreter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 455951CD20411E6500FC4ED0 /* nodel_interpreter.cpp */; };
-		455951D32041203000FC4ED0 /* video_controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 455951D22041203000FC4ED0 /* video_controller.cpp */; };
-		455951D82041212500FC4ED0 /* ofxUDPManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 455951D42041212500FC4ED0 /* ofxUDPManager.cpp */; };
-		455951D92041212500FC4ED0 /* ofxTCPClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 455951D52041212500FC4ED0 /* ofxTCPClient.cpp */; };
-		455951DA2041212500FC4ED0 /* ofxTCPManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 455951D62041212500FC4ED0 /* ofxTCPManager.cpp */; };
-		455951DB2041212500FC4ED0 /* ofxTCPServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 455951D72041212500FC4ED0 /* ofxTCPServer.cpp */; };
 		455D6C1C202D353800D91A43 /* drag_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 455D6C1B202D353800D91A43 /* drag_manager.cpp */; };
 		455D6C31202D6E6500D91A43 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 455D6C30202D6E6500D91A43 /* main.cpp */; };
 		455D6C37202D70F700D91A43 /* multi_touch_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 455D6C36202D70F700D91A43 /* multi_touch_test.cpp */; };
@@ -192,6 +193,30 @@
 		1303CF9B200D9E550010EC63 /* AudioToggles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioToggles.h; path = src/GUI/AudioToggles.h; sourceTree = SOURCE_ROOT; };
 		13067A841FA6B61600ECD1B1 /* VisualLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VisualLayer.cpp; sourceTree = "<group>"; };
 		13067A851FA6B61600ECD1B1 /* VisualLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisualLayer.h; sourceTree = "<group>"; };
+		13125AAC206391B400664DFC /* Instructions.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Instructions.txt; sourceTree = "<group>"; };
+		13125AAE206391B400664DFC /* ofxNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxNetwork.h; sourceTree = "<group>"; };
+		13125AAF206391B400664DFC /* ofxNetworkUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxNetworkUtils.h; sourceTree = "<group>"; };
+		13125AB0206391B400664DFC /* ofxTCPClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTCPClient.cpp; sourceTree = "<group>"; };
+		13125AB1206391B400664DFC /* ofxTCPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTCPClient.h; sourceTree = "<group>"; };
+		13125AB2206391B400664DFC /* ofxTCPManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTCPManager.cpp; sourceTree = "<group>"; };
+		13125AB3206391B400664DFC /* ofxTCPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTCPManager.h; sourceTree = "<group>"; };
+		13125AB4206391B400664DFC /* ofxTCPServer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTCPServer.cpp; sourceTree = "<group>"; };
+		13125AB5206391B400664DFC /* ofxTCPServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTCPServer.h; sourceTree = "<group>"; };
+		13125AB6206391B400664DFC /* ofxUDPManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxUDPManager.cpp; sourceTree = "<group>"; };
+		13125AB7206391B400664DFC /* ofxUDPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUDPManager.h; sourceTree = "<group>"; };
+		13125ABC206391C900664DFC /* boundary.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = boundary.cpp; sourceTree = "<group>"; };
+		13125ABD206391C900664DFC /* boundary.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = boundary.hpp; sourceTree = "<group>"; };
+		13125ABE206391C900664DFC /* drag_manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = drag_manager.cpp; sourceTree = "<group>"; };
+		13125ABF206391C900664DFC /* drag_manager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = drag_manager.hpp; sourceTree = "<group>"; };
+		133F1527204D2F4600BABE2E /* commands.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = commands.hpp; sourceTree = "<group>"; };
+		133F1528204D2F4600BABE2E /* commands_evpm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = commands_evpm.cpp; sourceTree = "<group>"; };
+		133F1529204D2F4600BABE2E /* commands_evpm.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = commands_evpm.hpp; sourceTree = "<group>"; };
+		133F152A204D2F4600BABE2E /* json.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = json.hpp; sourceTree = "<group>"; };
+		133F152B204D2F4600BABE2E /* nodel_dep.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = nodel_dep.hpp; sourceTree = "<group>"; };
+		133F152C204D2F4600BABE2E /* nodel_interpreter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = nodel_interpreter.cpp; sourceTree = "<group>"; };
+		133F152D204D2F4600BABE2E /* nodel_interpreter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = nodel_interpreter.hpp; sourceTree = "<group>"; };
+		133F152F204D2F4600BABE2E /* video_controller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = video_controller.cpp; sourceTree = "<group>"; };
+		133F1530204D2F4600BABE2E /* video_controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = video_controller.h; sourceTree = "<group>"; };
 		1351A1791FC7D2F400A7ED94 /* RadialHexagon.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = RadialHexagon.frag; sourceTree = "<group>"; };
 		136608492006E8CD00ABDCA8 /* GuiInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GuiInterface.cpp; sourceTree = "<group>"; };
 		1366084A2006E8CD00ABDCA8 /* GuiInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuiInterface.h; sourceTree = "<group>"; };
@@ -427,16 +452,6 @@
 		2FD4B0329909D3527F003494 /* UdpSocket.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = UdpSocket.h; path = ../../../addons/ofxOsc/libs/oscpack/src/ip/UdpSocket.h; sourceTree = SOURCE_ROOT; };
 		3B361208CD4107E479F04E7B /* NetworkingUtils.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = NetworkingUtils.cpp; path = ../../../addons/ofxOsc/libs/oscpack/src/ip/posix/NetworkingUtils.cpp; sourceTree = SOURCE_ROOT; };
 		444657A12E59D0ED86981498 /* TimerListener.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = TimerListener.h; path = ../../../addons/ofxOsc/libs/oscpack/src/ip/TimerListener.h; sourceTree = SOURCE_ROOT; };
-		455951CA20411CFF00FC4ED0 /* nodel */ = {isa = PBXFileReference; lastKnownFileType = folder; path = nodel; sourceTree = "<group>"; };
-		455951CB20411E6500FC4ED0 /* boundary.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = boundary.cpp; path = src/boundary.cpp; sourceTree = "<group>"; };
-		455951CC20411E6500FC4ED0 /* commands_evpm.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = commands_evpm.cpp; path = src/nodel/commands_evpm.cpp; sourceTree = "<group>"; };
-		455951CD20411E6500FC4ED0 /* nodel_interpreter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = nodel_interpreter.cpp; path = src/nodel/nodel_interpreter.cpp; sourceTree = "<group>"; };
-		455951D120411E8600FC4ED0 /* video */ = {isa = PBXFileReference; lastKnownFileType = folder; path = video; sourceTree = "<group>"; };
-		455951D22041203000FC4ED0 /* video_controller.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = video_controller.cpp; path = src/video/video_controller.cpp; sourceTree = "<group>"; };
-		455951D42041212500FC4ED0 /* ofxUDPManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ofxUDPManager.cpp; path = ../../../addons/ofxNetwork/src/ofxUDPManager.cpp; sourceTree = "<group>"; };
-		455951D52041212500FC4ED0 /* ofxTCPClient.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ofxTCPClient.cpp; path = ../../../addons/ofxNetwork/src/ofxTCPClient.cpp; sourceTree = "<group>"; };
-		455951D62041212500FC4ED0 /* ofxTCPManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ofxTCPManager.cpp; path = ../../../addons/ofxNetwork/src/ofxTCPManager.cpp; sourceTree = "<group>"; };
-		455951D72041212500FC4ED0 /* ofxTCPServer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ofxTCPServer.cpp; path = ../../../addons/ofxNetwork/src/ofxTCPServer.cpp; sourceTree = "<group>"; };
 		455D6C15202D307100D91A43 /* drag_manager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = drag_manager.hpp; sourceTree = "<group>"; };
 		455D6C16202D309000D91A43 /* multi_touch.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = multi_touch.hpp; sourceTree = "<group>"; };
 		455D6C1B202D353800D91A43 /* drag_manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = drag_manager.cpp; sourceTree = "<group>"; };
@@ -514,6 +529,64 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		13125AAA206391B400664DFC /* ofxNetwork */ = {
+			isa = PBXGroup;
+			children = (
+				13125AAB206391B400664DFC /* docs */,
+				13125AAD206391B400664DFC /* src */,
+			);
+			name = ofxNetwork;
+			path = ../../../addons/ofxNetwork;
+			sourceTree = "<group>";
+		};
+		13125AAB206391B400664DFC /* docs */ = {
+			isa = PBXGroup;
+			children = (
+				13125AAC206391B400664DFC /* Instructions.txt */,
+			);
+			path = docs;
+			sourceTree = "<group>";
+		};
+		13125AAD206391B400664DFC /* src */ = {
+			isa = PBXGroup;
+			children = (
+				13125AAE206391B400664DFC /* ofxNetwork.h */,
+				13125AAF206391B400664DFC /* ofxNetworkUtils.h */,
+				13125AB0206391B400664DFC /* ofxTCPClient.cpp */,
+				13125AB1206391B400664DFC /* ofxTCPClient.h */,
+				13125AB2206391B400664DFC /* ofxTCPManager.cpp */,
+				13125AB3206391B400664DFC /* ofxTCPManager.h */,
+				13125AB4206391B400664DFC /* ofxTCPServer.cpp */,
+				13125AB5206391B400664DFC /* ofxTCPServer.h */,
+				13125AB6206391B400664DFC /* ofxUDPManager.cpp */,
+				13125AB7206391B400664DFC /* ofxUDPManager.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		133F1526204D2F4600BABE2E /* nodel */ = {
+			isa = PBXGroup;
+			children = (
+				133F1527204D2F4600BABE2E /* commands.hpp */,
+				133F1528204D2F4600BABE2E /* commands_evpm.cpp */,
+				133F1529204D2F4600BABE2E /* commands_evpm.hpp */,
+				133F152A204D2F4600BABE2E /* json.hpp */,
+				133F152B204D2F4600BABE2E /* nodel_dep.hpp */,
+				133F152C204D2F4600BABE2E /* nodel_interpreter.cpp */,
+				133F152D204D2F4600BABE2E /* nodel_interpreter.hpp */,
+			);
+			path = nodel;
+			sourceTree = "<group>";
+		};
+		133F152E204D2F4600BABE2E /* video */ = {
+			isa = PBXGroup;
+			children = (
+				133F152F204D2F4600BABE2E /* video_controller.cpp */,
+				133F1530204D2F4600BABE2E /* video_controller.h */,
+			);
+			path = video;
+			sourceTree = "<group>";
+		};
 		1366084D2007037700ABDCA8 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
@@ -1105,6 +1178,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				13125AAA206391B400664DFC /* ofxNetwork */,
 				13CDDC5320296EF200BF5112 /* ofxWinTouchHook */,
 				13BB98262011A888002E9CD6 /* ofxImGui */,
 				13BB984E2011A888002E9CD6 /* ofxPiMapper */,
@@ -1154,14 +1228,6 @@
 		E4B69B4A0A3A1720003C02F2 = {
 			isa = PBXGroup;
 			children = (
-				455951D52041212500FC4ED0 /* ofxTCPClient.cpp */,
-				455951D62041212500FC4ED0 /* ofxTCPManager.cpp */,
-				455951D72041212500FC4ED0 /* ofxTCPServer.cpp */,
-				455951D42041212500FC4ED0 /* ofxUDPManager.cpp */,
-				455951D22041203000FC4ED0 /* video_controller.cpp */,
-				455951CB20411E6500FC4ED0 /* boundary.cpp */,
-				455951CC20411E6500FC4ED0 /* commands_evpm.cpp */,
-				455951CD20411E6500FC4ED0 /* nodel_interpreter.cpp */,
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
 				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
@@ -1178,8 +1244,8 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				455951D120411E8600FC4ED0 /* video */,
-				455951CA20411CFF00FC4ED0 /* nodel */,
+				133F1526204D2F4600BABE2E /* nodel */,
+				133F152E204D2F4600BABE2E /* video */,
 				455D6C1A202D329000D91A43 /* multi_touch */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				13903B331FA9642400C60C92 /* Settings.h */,
@@ -1187,6 +1253,10 @@
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
 				13067A841FA6B61600ECD1B1 /* VisualLayer.cpp */,
 				13067A851FA6B61600ECD1B1 /* VisualLayer.h */,
+				13125ABC206391C900664DFC /* boundary.cpp */,
+				13125ABD206391C900664DFC /* boundary.hpp */,
+				13125ABE206391C900664DFC /* drag_manager.cpp */,
+				13125ABF206391C900664DFC /* drag_manager.hpp */,
 				13903AA11FA959B900C60C92 /* GUI */,
 				13903A9B1FA9555500C60C92 /* Graphics_Tools */,
 				13903A981FA954E400C60C92 /* shaders */,
@@ -1347,15 +1417,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				455951D82041212500FC4ED0 /* ofxUDPManager.cpp in Sources */,
-				455951D92041212500FC4ED0 /* ofxTCPClient.cpp in Sources */,
-				455951DA2041212500FC4ED0 /* ofxTCPManager.cpp in Sources */,
-				455951DB2041212500FC4ED0 /* ofxTCPServer.cpp in Sources */,
-				455951D32041203000FC4ED0 /* video_controller.cpp in Sources */,
-				455951CE20411E6600FC4ED0 /* boundary.cpp in Sources */,
-				455951CF20411E6600FC4ED0 /* commands_evpm.cpp in Sources */,
-				455951D020411E6600FC4ED0 /* nodel_interpreter.cpp in Sources */,
 				13BB99402011A888002E9CD6 /* Info.cpp in Sources */,
+				13125AB9206391B400664DFC /* ofxTCPManager.cpp in Sources */,
 				13BB99432011A888002E9CD6 /* ofxPiMapper.cpp in Sources */,
 				13BB99152011A888002E9CD6 /* AddSurfaceCmd.cpp in Sources */,
 				13BB99192011A888002E9CD6 /* DeselectTexCoordCmd.cpp in Sources */,
@@ -1375,6 +1438,7 @@
 				13BB994F2011A888002E9CD6 /* SurfaceStack.cpp in Sources */,
 				13BB99262011A888002E9CD6 /* SelNextSurfaceCmd.cpp in Sources */,
 				13BB992F2011A888002E9CD6 /* SetApplicationModeCmd.cpp in Sources */,
+				13125AC1206391C900664DFC /* drag_manager.cpp in Sources */,
 				13BB99222011A888002E9CD6 /* RmGridRowCmd.cpp in Sources */,
 				13BB991A2011A888002E9CD6 /* DuplicateSurfaceCmd.cpp in Sources */,
 				13BB993D2011A888002E9CD6 /* SurfaceHighlightWidget.cpp in Sources */,
@@ -1386,6 +1450,7 @@
 				13BB994E2011A888002E9CD6 /* SurfaceManager.cpp in Sources */,
 				13BB99232011A888002E9CD6 /* RmSurfaceCmd.cpp in Sources */,
 				13BB991E2011A888002E9CD6 /* MvSelectionCmd.cpp in Sources */,
+				133F1532204D2F4600BABE2E /* nodel_interpreter.cpp in Sources */,
 				13BB99472011A888002E9CD6 /* OMXPlayerCache.cpp in Sources */,
 				13BB99102011A888002E9CD6 /* SourceSelectionMode.cpp in Sources */,
 				483908258D00B98B4BE69F07 /* ofxLabel.cpp in Sources */,
@@ -1425,6 +1490,7 @@
 				13BB99042011A888002E9CD6 /* EngineGLFW.cpp in Sources */,
 				13BB99362011A888002E9CD6 /* TogglePerspectiveCmd.cpp in Sources */,
 				13BB99282011A888002E9CD6 /* SelNextVertexCmd.cpp in Sources */,
+				13125ABA206391B400664DFC /* ofxTCPServer.cpp in Sources */,
 				13BB990E2011A888002E9CD6 /* PresentationMode.cpp in Sources */,
 				ADE367465D2A8EBAD4C7A8D9 /* IpEndpointName.cpp in Sources */,
 				13BB993B2011A888002E9CD6 /* ScaleWidget.cpp in Sources */,
@@ -1449,6 +1515,7 @@
 				13BB99022011A888002E9CD6 /* BaseEngine.cpp in Sources */,
 				13BB9957201207EA002E9CD6 /* PiMapperHelper.cpp in Sources */,
 				13BB98FD2011A888002E9CD6 /* imgui.cpp in Sources */,
+				13125AC0206391C900664DFC /* boundary.cpp in Sources */,
 				13BB99112011A888002E9CD6 /* TextureMappingMode.cpp in Sources */,
 				13BB99512011A888002E9CD6 /* BaseJoint.cpp in Sources */,
 				13BB99172011A888002E9CD6 /* CmdManager.cpp in Sources */,
@@ -1461,7 +1528,9 @@
 				13BB99452011A888002E9CD6 /* FboSource.cpp in Sources */,
 				1303CF9C200D9E550010EC63 /* AudioToggles.cpp in Sources */,
 				13BB99272011A888002E9CD6 /* SelNextTexCoordCmd.cpp in Sources */,
+				13125ABB206391B400664DFC /* ofxUDPManager.cpp in Sources */,
 				13BB99162011A888002E9CD6 /* ClearSurfacesCmd.cpp in Sources */,
+				13125AB8206391B400664DFC /* ofxTCPClient.cpp in Sources */,
 				13BB99522011A888002E9CD6 /* CircleJoint.cpp in Sources */,
 				13BB99182011A888002E9CD6 /* DeselectSurfaceCmd.cpp in Sources */,
 				13BB99332011A888002E9CD6 /* SetTexMapDrawModeCmd.cpp in Sources */,
@@ -1477,7 +1546,9 @@
 				933A2227713C720CEFF80FD9 /* tinyxml.cpp in Sources */,
 				9D44DC88EF9E7991B4A09951 /* tinyxmlerror.cpp in Sources */,
 				13BB992B2011A888002E9CD6 /* SelPrevVertexCmd.cpp in Sources */,
+				133F1533204D2F4600BABE2E /* video_controller.cpp in Sources */,
 				5A4349E9754D6FA14C0F2A3A /* tinyxmlparser.cpp in Sources */,
+				133F1531204D2F4600BABE2E /* commands_evpm.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1765,6 +1836,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/addons/ofxWinTouchHook/winTouchHookExample/bin",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_NAME = "$(TARGET_NAME)Debug";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1822,6 +1894,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/addons/ofxWinTouchHook/winTouchHookExample/bin",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 				baseConfigurationReference = E4EB6923138AFD0F00A09F29;

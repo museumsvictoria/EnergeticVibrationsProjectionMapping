@@ -54,11 +54,13 @@ void GuiInterface::setup(ofxImGui::Gui &gui, ofxPiMapper& mapper){
     
     img.load("BP_PROJECTION_INTERFACE.png");
     
-    font_large.load("fonts/ArialRoundedBold.ttf", 15);
-    font_mid.load("fonts/ArialRoundedBold.ttf", 12);
-    
+//    font_large.load("fonts/ArialRoundedBold.ttf", 15);
+//    font_mid.load("fonts/ArialRoundedBold.ttf", 12);
+    font_large.load("fonts/DINOffc-CondMedi.ttf", 24);
+    font_mid.load("fonts/DINOffc-CondMedi.ttf", 24);
+  
     padding.x = 10;
-    padding.y = 26;
+    padding.y = 32;
     
     param_gui_offset = 177;
     
@@ -70,7 +72,7 @@ void GuiInterface::setup(ofxImGui::Gui &gui, ofxPiMapper& mapper){
     
     init_window_flags();
     
-    setup_add_shape();
+    setup_add_shape(gui);
     setup_selected_layer(gui);
     setup_mapping_panel(gui);
     
@@ -135,37 +137,20 @@ void GuiInterface::setup_mapping_panel(ofxImGui::Gui &gui){
     
     ofImage remove_image;
     ofImage duplicate_image;
-    remove_image.load("buttons/remove.png");
-    duplicate_image.load("buttons/duplicate.png");
+    remove_image.load("buttons/remove_off.png");
+    duplicate_image.load("buttons/duplicate_off.png");
     remove_button_ID = gui.loadImage(remove_image);
     duplicate_button_ID = gui.loadImage(duplicate_image);
 }
 
 //------------------------------------
-void GuiInterface::setup_add_shape(){
-    int size = 100;
-    int line_width = 10;
-    quad_fbo.allocate(size+line_width, size+line_width, GL_RGBA);
-    tri_fbo.allocate(size+line_width, size+line_width, GL_RGBA);
-    
-    ofPushStyle();
-    ofNoFill();
-    ofSetLineWidth(line_width);
-    ofSetColor(255, 26, 34);
-    
-    quad_fbo.begin();
-    ofClear(0,0,0,255);
-    ofDrawRectangle(line_width, line_width, size - line_width, size - line_width);
-    quad_fbo.end();
-    
-    tri_fbo.begin();
-    ofClear(0,0,0,255);
-    ofDrawTriangle(tri_fbo.getWidth()/2, line_width, size, size, line_width, size);
-    tri_fbo.end();
-    ofPopStyle();
-    
-    quad_buttonID = (ImTextureID)quad_fbo.getTexture().texData.textureID;
-    triangle_buttonID = (ImTextureID)tri_fbo.getTexture().texData.textureID;
+void GuiInterface::setup_add_shape(ofxImGui::Gui &gui){
+    ofImage quad_image;
+    ofImage triangle_image;
+    quad_image.load("buttons/rectangle.png");
+    triangle_image.load("buttons/triangle.png");
+    quad_buttonID = gui.loadImage(quad_image);
+    triangle_buttonID = gui.loadImage(triangle_image);
 }
 
 //------------------------------------
@@ -250,13 +235,13 @@ void GuiInterface::draw_add_shape(ofRectangle rect){
         ImTextureID quadID = (ImTextureID)(uintptr_t)quad_buttonID;
         ImTextureID triangleID = (ImTextureID)(uintptr_t)triangle_buttonID;
 
-        if(ImGui::ImageButton(quadID, ImVec2(100,100))){
+        if(ImGui::ImageButton(quadID, ImVec2(122,90))){
 			if (BaseSurface::count < SurfaceManager::getMaxSurfaces()) {
 				map_helper.add_quad_surface();
 			}
         }
-        ImGui::SameLine(0,50);
-        if(ImGui::ImageButton(triangleID, ImVec2(100,100))){
+        ImGui::SameLine(0,20);
+        if(ImGui::ImageButton(triangleID, ImVec2(105,95))){
 			if (BaseSurface::count < SurfaceManager::getMaxSurfaces()) {
 				map_helper.add_triangle_surface();
 			}

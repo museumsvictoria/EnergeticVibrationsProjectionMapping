@@ -36,7 +36,7 @@ class GuiInterface{
     ~GuiInterface();
     void init_window_flags();
     void setup(ofxImGui::Gui &gui, ofxPiMapper& mapper);
-    void setup_add_shape();
+    void setup_add_shape(ofxImGui::Gui &gui);
     void setup_shader_toggles(vector<VisualLayer*> &layers);
     void setup_mapping_panel(ofxImGui::Gui &gui);
     void setup_selected_layer(ofxImGui::Gui &gui);
@@ -92,10 +92,8 @@ private:
     
     
     /// Add Shape Panel
-    ofFbo quad_fbo;
-    ofFbo tri_fbo;
-    ImTextureID quad_buttonID;
-    ImTextureID triangle_buttonID;
+    GLuint quad_buttonID;
+    GLuint triangle_buttonID;
     
     /// Mapping Panel
     ofFbo mp_fbo;

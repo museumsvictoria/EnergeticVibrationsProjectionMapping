@@ -1,6 +1,6 @@
 #pragma once
 
-#define WINDOWS_TOUCH
+//#define WINDOWS_TOUCH
 #define OSC_PORT 9002
 
 #include "ofMain.h"

@@ -1,6 +1,4 @@
 ofxGui
-ofxImGui
+ofxNetwork
 ofxOsc
-ofxPiMapper
-ofxWinTouchHook
 ofxXmlSettings
