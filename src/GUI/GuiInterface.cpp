@@ -53,22 +53,24 @@ void GuiInterface::setup(ofxImGui::Gui &gui, ofxPiMapper& mapper){
     map_helper.setup(mapper);
     
     img.load("BP_PROJECTION_INTERFACE.png");
+    img_background.load("images/background.png");
     
 //    font_large.load("fonts/ArialRoundedBold.ttf", 15);
 //    font_mid.load("fonts/ArialRoundedBold.ttf", 12);
-    font_large.load("fonts/DINOffc-CondMedi.ttf", 24);
-    font_mid.load("fonts/DINOffc-CondMedi.ttf", 24);
+    font_large.load("fonts/DINOffc-CondMedi.ttf", 18);
+    font_mid.load("fonts/DINOffc-CondMedi.ttf", 16);
   
     padding.x = 10;
-    padding.y = 32;
+    padding.y = 25;
     
-    param_gui_offset = 177;
+    param_gui_offset = 150;
     
-    add_shape_rect = ofRectangle(50,13,360,175);
-    selected_layer_rect = ofRectangle(50,200,360,683);
-    audio_analysis_rect = ofRectangle(50,892,360,175);
+    add_shape_rect = ofRectangle(118,95,306,149);
+    selected_layer_rect = ofRectangle(118,252,306,580);
+    audio_analysis_rect = ofRectangle(118,843,306,151);
     shader_toggles_rect = ofRectangle(422,892,1450,175);
     mapping_panel_rect = ofRectangle(422,13,1450,870);
+    duplicate_remove_rect = ofRectangle(1442,95,228,46);
     
     init_window_flags();
     
@@ -120,8 +122,8 @@ void GuiInterface::setup_selected_layer(ofxImGui::Gui &gui){
         }
         for(int y = 0; y < 4; y++){
             CustomSlider* slider = new CustomSlider();
-            slider->setup(selected_layer_rect.x + padding.x + 10, (param_gui_offset * y) + (selected_layer_rect.y + 80),
-                          selected_layer_rect.width - (padding.x*2) - 20, 40,0.0,1.0,20,false, false);
+            slider->setup(selected_layer_rect.x + padding.x + 10, (param_gui_offset * y) + (selected_layer_rect.y + 63),
+                          selected_layer_rect.width - (padding.x*2) - 16, 40,0.0,1.0,20,false, false);
             
             shader_states[i].sliders.push_back(slider);
         }
@@ -132,8 +134,8 @@ void GuiInterface::setup_selected_layer(ofxImGui::Gui &gui){
 
 //------------------------------------
 void GuiInterface::setup_mapping_panel(ofxImGui::Gui &gui){
-    mp_grid.load("shaders/passthrough.vert","shaders/Interface/grid.frag");
-    mp_fbo.allocate(mapping_panel_rect.width, mapping_panel_rect.height,GL_RGBA);
+//    mp_grid.load("shaders/passthrough.vert","shaders/Interface/grid.frag");
+//    mp_fbo.allocate(mapping_panel_rect.width, mapping_panel_rect.height,GL_RGBA);
     
     ofImage remove_image;
     ofImage duplicate_image;
@@ -200,15 +202,22 @@ void GuiInterface::update_audio_reactivity(vector<VisualLayer *> &layers){
 
 //------------------------------------
 void GuiInterface::draw(ShaderParams &params){
+    
+    ofSetColor(255);
+    img_background.draw(0,0,ofGetWidth(),ofGetHeight());
+
     if(ofGetMousePressed()){
         img.draw(0,0,ofGetWidth(), ofGetHeight());
     }
 
+    cout << "x = " << ofGetMouseX() << " -- y = " << ofGetMouseY() << endl;
+    
     draw_add_shape(add_shape_rect);
 	draw_selected_layer(selected_layer_rect, params);
 	draw_audio_analysis(audio_analysis_rect);
-    draw_shader_toggles(shader_toggles_rect);
-    draw_mapping_panel(mapping_panel_rect);
+    draw_duplicate_and_remove(duplicate_remove_rect);
+    //draw_shader_toggles(shader_toggles_rect);
+    //draw_mapping_panel(mapping_panel_rect);
 }
 
 //------------------------------------
@@ -222,12 +231,23 @@ void GuiInterface::draw_border(ofRectangle rect){
 }
 
 //------------------------------------
+void GuiInterface::draw_border_background(ofRectangle rect){
+    ofPushStyle();
+    ofFill();
+    ofSetColor(0);
+    ofDrawRectangle(rect);
+    ofPopStyle();
+}
+
+//------------------------------------
 void GuiInterface::draw_add_shape(ofRectangle rect){
+    draw_border_background(rect);
     draw_border(rect);
+    
     font_large.drawString("ADD SHAPE", rect.x + padding.x, rect.y + padding.y);
     
     auto mainSettings = ofxImGui::Settings();
-    mainSettings.windowPos = ofVec2f(rect.x+30, rect.y+30);
+    mainSettings.windowPos = ofVec2f(rect.x+18, rect.y+20);
     mainSettings.windowSize = ofVec2f(rect.width+30, rect.height+30);
     
     if (ofxImGui::BeginWindow("add shape", mainSettings, window_flags))
@@ -240,7 +260,7 @@ void GuiInterface::draw_add_shape(ofRectangle rect){
 				map_helper.add_quad_surface();
 			}
         }
-        ImGui::SameLine(0,20);
+        ImGui::SameLine(0,5);
         if(ImGui::ImageButton(triangleID, ImVec2(105,95))){
 			if (BaseSurface::count < SurfaceManager::getMaxSurfaces()) {
 				map_helper.add_triangle_surface();
@@ -252,19 +272,21 @@ void GuiInterface::draw_add_shape(ofRectangle rect){
 
 //------------------------------------
 void GuiInterface::draw_selected_layer(ofRectangle rect, ShaderParams &params){
+    draw_border_background(rect);
     draw_border(rect);
+    
     font_large.drawString("SELECTED LAYER", rect.x + padding.x, rect.y + padding.y);
     
     //--- PARAMS
     for(int i = 0; i < shader_states[selected_shader].sliders.size(); i++){
         ofSetColor(236, 60, 53);
-        font_mid.drawString(params.names[i], rect.x + padding.x, (param_gui_offset * i) + (rect.y+62));
+        font_mid.drawString(params.names[i], rect.x + padding.x, (param_gui_offset * i) + (rect.y+52));
         
         float slider_val = shader_states[selected_shader].sliders[i]->getValue();
         
         if(i < shader_states[selected_shader].toggles.size()){
             
-            shader_states[selected_shader].toggles[i].draw(params.names[i] + ofToString(i), ofVec2f(rect.x + padding.x, (param_gui_offset * i) + (rect.y+140)), ofVec2f(rect.width+10, 80), window_flags);
+            shader_states[selected_shader].toggles[i].draw(params.names[i] + ofToString(i), ofVec2f(rect.x + padding.x, (param_gui_offset * i) + (rect.y+120)), ofVec2f(rect.width+10, 80), window_flags);
             
             if(shader_states[selected_shader].toggles[i].get_selected_toggle() == 0){
                 shader_states[selected_shader].sliders[i]->update_gradient_percent(slider_val);
@@ -287,15 +309,17 @@ void GuiInterface::draw_selected_layer(ofRectangle rect, ShaderParams &params){
 
 //------------------------------------
 void GuiInterface::draw_audio_analysis(ofRectangle rect){
+    draw_border_background(rect);
     draw_border(rect);
     
-    red_gradient.draw(1, volumes[0],rect.x + 10, rect.y + 10, 100, rect.height - 20);
-    red_gradient.draw(1, volumes[1],rect.x + 130, rect.y + 10, 100, rect.height - 20);
-    red_gradient.draw(1, volumes[2],rect.x + 250, rect.y + 10, 100, rect.height - 20);
+    int width = 85;
+    red_gradient.draw(1, volumes[0],rect.x + 10, rect.y + 10, width, rect.height - 20);
+    red_gradient.draw(1, volumes[1],rect.x + 110, rect.y + 10, width, rect.height - 20);
+    red_gradient.draw(1, volumes[2],rect.x + 210, rect.y + 10, width, rect.height - 20);
     
     font_large.drawString("BASS", rect.x + 10, rect.y + padding.y);
-    font_large.drawString("MID", rect.x + 130, rect.y + padding.y);
-    font_large.drawString("HIGH", rect.x + 250, rect.y + padding.y);
+    font_large.drawString("MID", rect.x + 110, rect.y + padding.y);
+    font_large.drawString("HIGH", rect.x + 210, rect.y + padding.y);
 
 }
 
@@ -336,24 +360,11 @@ void GuiInterface::draw_shader_toggles(ofRectangle rect){
 }
 
 //------------------------------------
-void GuiInterface::draw_mapping_panel(ofRectangle rect){
-    draw_border(rect);
-    
-    ofFill();
-    ofSetColor(255,125);
-    mp_fbo.begin();
-    ofClear(0,0,0,0);
-        mp_grid.begin();
-        mp_grid.setUniform3f("resolution", mapping_panel_rect.width, mapping_panel_rect.height, 1);
-        ofDrawRectangle(0, 0, mapping_panel_rect.width, mapping_panel_rect.height);
-        mp_grid.end();
-    mp_fbo.end();
-    mp_fbo.draw(rect);
-    
+void GuiInterface::draw_duplicate_and_remove(ofRectangle rect){
     
     auto mainSettings = ofxImGui::Settings();
-    mainSettings.windowPos = ofVec2f((rect.x + rect.width) - DUPLICATE_POS_X, rect.y + DUPLICATE_POS_Y);
-    mainSettings.windowSize = ofVec2f(TOGGLE_WIDTH,TOGGLE_WINDOW_HEIGHT);
+    mainSettings.windowPos = ofVec2f(rect.x - IMGUI_PADDING, rect.y - IMGUI_PADDING);
+    mainSettings.windowSize = ofVec2f(TOGGLE_WIDTH,TOGGLE_HEIGHT + 25);
     
     if (ofxImGui::BeginWindow("duplicate panel", mainSettings, window_flags))
     {
@@ -367,7 +378,7 @@ void GuiInterface::draw_mapping_panel(ofRectangle rect){
     }
     ofxImGui::EndWindow(mainSettings);
     
-    mainSettings.windowPos = ofVec2f((rect.x + rect.width) - REMOVE_POS_X, rect.y + REMOVE_POS_Y);
+    mainSettings.windowPos = ofVec2f((rect.x + TOGGLE_WIDTH) - 10, rect.y - IMGUI_PADDING);
     if (ofxImGui::BeginWindow("remove panel", mainSettings, window_flags))
     {
         mouse_over_remove_toggle = ImGui::IsMouseHoveringWindow();
@@ -377,8 +388,6 @@ void GuiInterface::draw_mapping_panel(ofRectangle rect){
         }
     }
     ofxImGui::EndWindow(mainSettings);
-    
-
 }
 
 //------------------------------------
@@ -391,12 +400,11 @@ bool GuiInterface::is_mouse_over_mapping_toggles(){
 }
 
 bool GuiInterface::is_touch_over_mapping_toggles(ofVec2f t_pos) {
-	float PAD = 20;
 	ofRectangle duplicate_area(
-		(mapping_panel_rect.x + mapping_panel_rect.width) - DUPLICATE_POS_X + PAD, mapping_panel_rect.y + DUPLICATE_POS_Y + PAD,
+		duplicate_remove_rect.x - IMGUI_PADDING, duplicate_remove_rect.y - IMGUI_PADDING,
 		TOGGLE_WIDTH, TOGGLE_HEIGHT);
 	ofRectangle remove_area(
-		(mapping_panel_rect.x + mapping_panel_rect.width) - REMOVE_POS_X + PAD, mapping_panel_rect.y + REMOVE_POS_Y + PAD,
+		(duplicate_remove_rect.x + TOGGLE_WIDTH) - 10, duplicate_remove_rect.y - IMGUI_PADDING,
 		TOGGLE_WIDTH, TOGGLE_HEIGHT
 	);
 	

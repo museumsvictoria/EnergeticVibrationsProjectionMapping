@@ -56,7 +56,7 @@ void AudioToggles::draw(string name, ofVec2f pos, ofVec2f size, ImGuiWindowFlags
         for(int i = 0; i < toggles.size(); i++){
             ImTextureID texID = (ImTextureID)(uintptr_t) (toggles[i].b ? toggles[i].buttonOnID : toggles[i].buttonOffID);
 			
-            if(ImGui::ImageButton(texID, ImVec2(73,52))){
+            if(ImGui::ImageButton(texID, ImVec2(60,44))){
                 toggles[i].b = true;
                 selected = i;
             }ImGui::SameLine(0,3); // squish the toggles closer togther

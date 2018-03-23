@@ -48,11 +48,13 @@ class GuiInterface{
     void draw(ShaderParams &params);
     
     void draw_border(ofRectangle rect);
+    void draw_border_background(ofRectangle rect);
     
     void draw_add_shape(ofRectangle rect);
     void draw_selected_layer(ofRectangle rect, ShaderParams &params);
     void draw_audio_analysis(ofRectangle rect);
     void draw_shader_toggles(ofRectangle rect);
+    void draw_duplicate_and_remove(ofRectangle rect);
     void draw_mapping_panel(ofRectangle rect);
     
     void update_volumes(vector<float> volumes);
@@ -83,6 +85,7 @@ private:
     ofRectangle audio_analysis_rect;
     ofRectangle shader_toggles_rect;
     ofRectangle mapping_panel_rect;
+    ofRectangle duplicate_remove_rect;
   
     ofTrueTypeFont font_large;
     ofTrueTypeFont font_mid;
@@ -96,8 +99,8 @@ private:
     GLuint triangle_buttonID;
     
     /// Mapping Panel
-    ofFbo mp_fbo;
-    ofShader mp_grid;
+//    ofFbo mp_fbo;
+//    ofShader mp_grid;
     GLuint remove_button_ID;
     GLuint duplicate_button_ID;
     bool mouse_over_remove_toggle;
@@ -115,11 +118,9 @@ private:
     vector<ShaderToggle> shader_toggles;
     int selected_shader;
 
-	static constexpr float DUPLICATE_POS_X = 165.0;
-	static constexpr float DUPLICATE_POS_Y = 10.0;
-	static constexpr float TOGGLE_WIDTH = 111.0;
-	static constexpr float TOGGLE_HEIGHT = 51.0;
-	static constexpr float TOGGLE_WINDOW_HEIGHT = 75.0;
+    static constexpr float IMGUI_PADDING = 20;
+	static constexpr float TOGGLE_WIDTH = 110.0;
+	static constexpr float TOGGLE_HEIGHT = 45.0;
 
 	static constexpr float REMOVE_POS_X = 165.0;
 	static constexpr float REMOVE_POS_Y = 82.0;
