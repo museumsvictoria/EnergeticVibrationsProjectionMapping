@@ -201,7 +201,7 @@ void GuiInterface::update_audio_reactivity(vector<VisualLayer *> &layers){
 //------------------------------------
 void GuiInterface::draw(ShaderParams &params){
     if(ofGetMousePressed()){
-        //img.draw(0,0);
+        img.draw(0,0,ofGetWidth(), ofGetHeight());
     }
 
     draw_add_shape(add_shape_rect);

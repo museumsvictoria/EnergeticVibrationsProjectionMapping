@@ -1,0 +1,37 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "3B0D36513453A666A188F5E0EE99B24C8F794C85",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "3B0D36513453A666A188F5E0EE99B24C8F794C85" : 9223372036854775807,
+    "D7B37588BD493FB6C16572F25CA0740EC5EAFCA4" : 9223372036854775807,
+    "23B38C2BDFF72B78BCAC931421EA53B9A460BECC" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "40CC3727-8DB1-4E30-AD71-D7225BC2182C",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "3B0D36513453A666A188F5E0EE99B24C8F794C85" : "EnergeticVibrationsProjectionMapping\/",
+    "D7B37588BD493FB6C16572F25CA0740EC5EAFCA4" : "..\/..\/addons\/ofxLayerMask",
+    "23B38C2BDFF72B78BCAC931421EA53B9A460BECC" : "..\/..\/addons\/ofxProjectionMask"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "EnergeticVibrationsProjectionMapping",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "EnergeticVibrationsProjectionMapping.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/microcosm\/ofxProjectionMask",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "23B38C2BDFF72B78BCAC931421EA53B9A460BECC"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/JoshuaBatty\/EnergeticVibrationsProjectionMapping",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3B0D36513453A666A188F5E0EE99B24C8F794C85"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/microcosm\/ofxLayerMask",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "D7B37588BD493FB6C16572F25CA0740EC5EAFCA4"
+    }
+  ]
+}

@@ -103,6 +103,7 @@ private:
     bool mouse_over_remove_toggle;
     bool mouse_over_duplicate_toggle;
     
+    ofImage img_background;
     ofImage img; // background template ref
 
     //Red Gradient Shader
