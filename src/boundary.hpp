@@ -5,7 +5,7 @@
 
 namespace boundary {
 	// hardcoded boundary coordinates
-	static const ofRectangle BOUNDARY_RECT = ofRectangle(422, 13, 1450, 870);
+	static const ofRectangle BOUNDARY_RECT = ofRectangle(434,95,998,899);
 	// Takes a position and returns that position clamped
 	// to BOUNDARY_RECT
 	ofVec2f bounded_position(ofVec2f);

@@ -346,7 +346,8 @@ void ProjectionMappingMode::onTouchMoved(Application * app, map<int, ofTouchEven
     Gui::instance()->getProjectionEditorWidget().touchMoved(active_joint_move_touch);
 
     //JOSH clamp the joints so they stay within the mapping panel rect
-    ofRectangle mapping_panel_rect = ofRectangle(422,13,1450,870);
+//    ofRectangle mapping_panel_rect = ofRectangle(422,13,1450,870);
+    ofRectangle mapping_panel_rect = ofRectangle(434,95,998,899);
     for (auto &touch : active_hit_move_touch) {
         
 
@@ -428,7 +429,7 @@ void ProjectionMappingMode::onMouseDragged(Application * app, ofMouseEventArgs &
     //vector <ofVec3f> & vertices = app->getSurfaceManager()->getSelectedSurface()->getVertices();
     
     //JOSH clamp the joints so they stay within the mapping panel rect
-    ofRectangle mapping_panel_rect = ofRectangle(422,13,1450,870);
+    ofRectangle mapping_panel_rect = ofRectangle(434,95,998,899);
     args.x = ofClamp(args.x,mapping_panel_rect.x,mapping_panel_rect.x + mapping_panel_rect.width);
     args.y = ofClamp(args.y,mapping_panel_rect.y,mapping_panel_rect.y+mapping_panel_rect.height);
     

@@ -52,7 +52,7 @@ void ofApp::setup(){
     
 	clear_touch_in_two_frames = 0;
 
-    projection_fbo.allocate(1450,870,GL_RGBA);
+    projection_fbo.allocate(998,899,GL_RGBA);
     
     // OSC
     volumes = {1.0f,1.0f,1.0f};

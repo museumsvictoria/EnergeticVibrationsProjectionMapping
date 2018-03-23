@@ -31,14 +31,14 @@ void SurfaceManager::draw(){
     projection_fbo->begin();
     ofClear(0,0,0,0);
     ofPushMatrix();
-    ofTranslate(-422,-13); // Offset the matrix to account for the GUI
+    ofTranslate(-434,-95); // Offset the matrix to account for the GUI
 	_presets[_activePresetIndex]->draw();
     ofPopMatrix();
     projection_fbo->end();
 
     // Need to call draw here instead of fbo->getTexture().draw(0,0) to avoid double calls to the draw buffer
     // Re position the layers to their correct position on the GUI
-    projection_fbo->draw(422,13);
+    projection_fbo->draw(434,95);
 }
 
 void SurfaceManager::addSurface(BaseSurface * surface){

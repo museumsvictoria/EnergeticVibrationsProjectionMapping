@@ -69,7 +69,8 @@ void GuiInterface::setup(ofxImGui::Gui &gui, ofxPiMapper& mapper){
     selected_layer_rect = ofRectangle(118,252,306,580);
     audio_analysis_rect = ofRectangle(118,843,306,151);
     shader_toggles_rect = ofRectangle(422,892,1450,175);
-    mapping_panel_rect = ofRectangle(422,13,1450,870);
+//    mapping_panel_rect = ofRectangle(422,13,1450,870);
+    mapping_panel_rect = ofRectangle(434,95,998,899);
     duplicate_remove_rect = ofRectangle(1442,95,228,46);
     
     init_window_flags();
@@ -134,9 +135,7 @@ void GuiInterface::setup_selected_layer(ofxImGui::Gui &gui){
 
 //------------------------------------
 void GuiInterface::setup_mapping_panel(ofxImGui::Gui &gui){
-//    mp_grid.load("shaders/passthrough.vert","shaders/Interface/grid.frag");
-//    mp_fbo.allocate(mapping_panel_rect.width, mapping_panel_rect.height,GL_RGBA);
-    
+
     ofImage remove_image;
     ofImage duplicate_image;
     remove_image.load("buttons/remove_off.png");
@@ -217,7 +216,7 @@ void GuiInterface::draw(ShaderParams &params){
 	draw_audio_analysis(audio_analysis_rect);
     draw_duplicate_and_remove(duplicate_remove_rect);
     //draw_shader_toggles(shader_toggles_rect);
-    //draw_mapping_panel(mapping_panel_rect);
+    draw_mapping_panel(mapping_panel_rect);
 }
 
 //------------------------------------
@@ -321,6 +320,11 @@ void GuiInterface::draw_audio_analysis(ofRectangle rect){
     font_large.drawString("MID", rect.x + 110, rect.y + padding.y);
     font_large.drawString("HIGH", rect.x + 210, rect.y + padding.y);
 
+}
+
+//------------------------------------
+void GuiInterface::draw_mapping_panel(ofRectangle rect){
+    draw_border(rect);
 }
 
 //------------------------------------
