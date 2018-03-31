@@ -66,6 +66,8 @@ void GuiInterface::setup(ofxImGui::Gui &gui, ofxPiMapper& mapper, int num_layes)
     
     param_gui_offset = 150;
     
+    theme_colour = ofVec3f(0.0,1.0,0.0);
+    
     add_shape_rect = ofRectangle(118,95,306,149);
     selected_layer_rect = ofRectangle(118,252,306,580);
     audio_analysis_rect = ofRectangle(118,843,306,151);
@@ -109,6 +111,9 @@ void GuiInterface::setup_shader_toggles(vector<VisualLayer*> &layers){
     
     sb_slider.setup(shader_toggles_rect.x + shader_toggles_rect.width + 20, shader_toggles_rect.y + 2, 40, shader_toggles_rect.height - 8, 0.0, 1.0, 20, true, true, false);
     sb_slider.set_is_active(true);
+    
+    sb_slider.red_gradient.set_colour(theme_colour.x, theme_colour.y, theme_colour.z);
+
 }
 
 //------------------------------------
@@ -129,6 +134,7 @@ void GuiInterface::setup_selected_layer(ofxImGui::Gui &gui){
             CustomSlider* slider = new CustomSlider();
             slider->setup(selected_layer_rect.x + padding.x + 10, (param_gui_offset * y) + (selected_layer_rect.y + 63),
                           selected_layer_rect.width - (padding.x*2) - 16, 40,0.0,1.0,20,false, true, false);
+            slider->red_gradient.set_colour(theme_colour.x, theme_colour.y, theme_colour.z);
             
             shader_states[i].sliders.push_back(slider);
         }
@@ -313,10 +319,12 @@ void GuiInterface::draw_audio_analysis(ofRectangle rect){
     draw_border_background(rect);
     draw_border(rect);
     
+    slider_gradient.set_colour(theme_colour.x, theme_colour.y, theme_colour.z);
+    
     int width = 85;
-    red_gradient.draw(0,1, volumes[0],rect.x + 10, rect.y + 10, width, rect.height - 20);
-    red_gradient.draw(0,1, volumes[1],rect.x + 110, rect.y + 10, width, rect.height - 20);
-    red_gradient.draw(0,1, volumes[2],rect.x + 210, rect.y + 10, width, rect.height - 20);
+    slider_gradient.draw(0,1, volumes[0],rect.x + 10, rect.y + 10, width, rect.height - 20);
+    slider_gradient.draw(0,1, volumes[1],rect.x + 110, rect.y + 10, width, rect.height - 20);
+    slider_gradient.draw(0,1, volumes[2],rect.x + 210, rect.y + 10, width, rect.height - 20);
     
     font_large.drawString("BASS", rect.x + 10, rect.y + padding.y);
     font_large.drawString("MID", rect.x + 110, rect.y + padding.y);

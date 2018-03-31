@@ -1,4 +1,5 @@
 uniform vec3  resolution;
+uniform vec3  base_colour;
 uniform int verticle_or_horizontal; // 0 = horizontal, 1 = vertical
 uniform int is_slider; //0 = volume meter, 1 = slider
 uniform float perc;
@@ -115,10 +116,10 @@ void main(void)
             gradient *= 1.0-perc;
         }
     } else if(is_slider == 0){
-        uv.y = gl_FragCoord.y / (perc*resolution.y);
+        uv.y = gl_FragCoord.y / ((perc*1.6)*resolution.y);
         uv.x = gl_FragCoord.x / resolution.x;
         gradient = quadraticPoint(1.0-uv.y, 0.233, 0.340);
     }
     
-    gl_FragColor = vec4(gradient,0.,0., 1.0);
+    gl_FragColor = vec4(base_colour * gradient, 1.0);
 }

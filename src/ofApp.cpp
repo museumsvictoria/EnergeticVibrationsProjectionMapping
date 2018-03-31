@@ -115,9 +115,14 @@ void ofApp::update_osc(){
         receiver.getNextMessage(m);
         
         if(m.getAddress() == "/caco/0"){
-            volumes[0] = m.getArgAsFloat(0);
-            volumes[1] = m.getArgAsFloat(1);
-            volumes[2] = m.getArgAsFloat(2);
+            //cout << "m.getArgAsFloat(0) = " << m.getArgAsFloat(0) << endl;
+            float bass = ofClamp(m.getArgAsFloat(2), 0.0, 1.0);
+            float mid = ofClamp(m.getArgAsFloat(3), 0.0, 1.0);
+            float high = ofClamp(m.getArgAsFloat(4), 0.0, 1.0);
+            float shape = 18.0;
+            volumes[0] = ofMap(powf(bass - 1.0, shape), 1.0, 0.0, 0.0, 1.0);
+            volumes[1] = ofMap(powf(mid - 1.0, shape), 1.0, 0.0, 0.0, 1.0);;
+            volumes[2] = ofMap(powf(high - 1.0, shape), 1.0, 0.0, 0.0, 1.0);;
         }
     }
 }

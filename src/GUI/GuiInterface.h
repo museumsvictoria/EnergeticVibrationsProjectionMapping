@@ -95,6 +95,9 @@ private:
     
     int num_layers;
     
+    // Gui Themes Colour
+    ofVec3f theme_colour;
+    
     /// Add Shape Panel
     GLuint quad_buttonID;
     GLuint triangle_buttonID;
@@ -111,7 +114,7 @@ private:
     ofImage img; // background template ref
 
     //Red Gradient Shader
-    Gradient red_gradient;
+    Gradient slider_gradient;
         
 	vector<ShaderState> shader_states;
 

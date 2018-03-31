@@ -15,6 +15,13 @@ Gradient::Gradient(){
 }
 
 //------------------------------------
+void Gradient::set_colour(float r, float g, float b){
+    gradient.begin();
+    gradient.setUniform3f("base_colour",r,g,b);
+    gradient.end();
+}
+
+//------------------------------------
 void Gradient::draw(int is_slider, int verticle_or_horizontal, float perc, int x, int y, int w, int h){
     ofFill();
     ofSetColor(255);

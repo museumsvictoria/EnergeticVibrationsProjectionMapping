@@ -15,6 +15,7 @@ public:
     
     Gradient();
     
+    void set_colour(float r, float g, float b);
     void draw(int is_slider, int verticle_or_horizontal, float perc, int x, int y, int w, int h);
 
 private:

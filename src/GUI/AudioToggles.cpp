@@ -50,7 +50,7 @@ void AudioToggles::draw(string name, ofVec2f pos, ofVec2f size, ImGuiWindowFlags
     auto mainSettings = ofxImGui::Settings();
     mainSettings.windowPos = ofVec2f(pos.x-15, pos.y-15);
     mainSettings.windowSize = ofVec2f(size.x, size.y);
-    
+
     if (ofxImGui::BeginWindow(name, mainSettings, window_flags))
     {
         for(int i = 0; i < toggles.size(); i++){
@@ -59,7 +59,7 @@ void AudioToggles::draw(string name, ofVec2f pos, ofVec2f size, ImGuiWindowFlags
             if(ImGui::ImageButton(texID, ImVec2(60,44))){
                 toggles[i].b = true;
                 selected = i;
-            }ImGui::SameLine(0,3); // squish the toggles closer togther
+            }ImGui::SameLine(0,11); // squish the toggles closer togther
         }
     }
     ofxImGui::EndWindow(mainSettings);
