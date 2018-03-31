@@ -118,6 +118,7 @@
 		13125CB22063A62D00664DFC /* ofxProjectionMask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13125C902063A62D00664DFC /* ofxProjectionMask.cpp */; };
 		13125CB32063A62D00664DFC /* Presets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13125C922063A62D00664DFC /* Presets.cpp */; };
 		13125CB42063A62D00664DFC /* Xml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13125C952063A62D00664DFC /* Xml.cpp */; };
+		13125CE3206F984800664DFC /* ofxSimpleSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13125CE1206F984800664DFC /* ofxSimpleSlider.cpp */; };
 		1CD33E884D9E3358252E82A1 /* ofxToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 907C5B5E104864A2D3A25745 /* ofxToggle.cpp */; };
 		3963162316D531866896ED74 /* CustomSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9369DDE181D0D7457A54A062 /* CustomSlider.cpp */; };
 		483908258D00B98B4BE69F07 /* ofxLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78D67A00EB899FAC09430597 /* ofxLabel.cpp */; };
@@ -460,6 +461,8 @@
 		13125CDE206F852000664DFC /* SnubQuadrille.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = SnubQuadrille.frag; sourceTree = "<group>"; };
 		13125CDF206F869F00664DFC /* shared_functions.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = shared_functions.glsl; sourceTree = "<group>"; };
 		13125CE0206F877200664DFC /* PentagonTessellations.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = PentagonTessellations.frag; sourceTree = "<group>"; };
+		13125CE1206F984800664DFC /* ofxSimpleSlider.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxSimpleSlider.cpp; path = ../../../../examples/math/periodicSignalsExample/src/ofxSimpleSlider.cpp; sourceTree = "<group>"; };
+		13125CE2206F984800664DFC /* ofxSimpleSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxSimpleSlider.h; path = ../../../../examples/math/periodicSignalsExample/src/ofxSimpleSlider.h; sourceTree = "<group>"; };
 		15F2C6477A769C03A56D1401 /* ofxSlider.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxSlider.cpp; path = ../../../addons/ofxGui/src/ofxSlider.cpp; sourceTree = SOURCE_ROOT; };
 		17E65988300FBD9AAA2CD0CA /* ofxGui.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxGui.h; path = ../../../addons/ofxGui/src/ofxGui.h; sourceTree = SOURCE_ROOT; };
 		1A5AD3623882B15542BEEE7D /* drag_manager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = drag_manager.cpp; path = src/drag_manager.cpp; sourceTree = SOURCE_ROOT; };
@@ -1258,6 +1261,8 @@
 			children = (
 				45E5DA8A2F1B827B70B402CD /* AudioToggles.cpp */,
 				5703966E4354FED90D55944B /* AudioToggles.h */,
+				13125CE1206F984800664DFC /* ofxSimpleSlider.cpp */,
+				13125CE2206F984800664DFC /* ofxSimpleSlider.h */,
 				9369DDE181D0D7457A54A062 /* CustomSlider.cpp */,
 				4013DAD89967D27D75FF0D38 /* CustomSlider.h */,
 				C896E8236787F9927E01D5FD /* Gradient.cpp */,
@@ -1618,6 +1623,7 @@
 				66CA411C5A9664E27326BF36 /* ofxTCPServer.cpp in Sources */,
 				E2564CF7DDB3713772BB682E /* ofxUDPManager.cpp in Sources */,
 				13125BED2063953000664DFC /* StartDragSurfaceCmd.cpp in Sources */,
+				13125CE3206F984800664DFC /* ofxSimpleSlider.cpp in Sources */,
 				13125CA22063A62D00664DFC /* ofxLayerMask.cpp in Sources */,
 				13125C0E2063953000664DFC /* README.md in Sources */,
 				13125CB02063A62D00664DFC /* PointObject.cpp in Sources */,

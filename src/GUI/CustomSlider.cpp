@@ -17,7 +17,7 @@ CustomSlider::~CustomSlider(){
 }
 
 //-----------------------------------------------------------------------------------------------------------------------
-void CustomSlider::setup(float inx, float iny, float inw, float inh, float loVal, float hiVal, float initialValue, bool bVert, bool bDrawNum){
+void CustomSlider::setup(float inx, float iny, float inw, float inh, float loVal, float hiVal, float initialValue, bool bVert, bool bIsSlider, bool bDrawNum){
 	x = inx;
 	y = iny; 
 	width = inw; 
@@ -25,6 +25,7 @@ void CustomSlider::setup(float inx, float iny, float inw, float inh, float loVal
 	box.set(x,y, width, height); 
 	numberDisplayPrecision = 2;
 	
+    this->bIsSlider = bIsSlider;
 	bVertical = bVert;
 	bDrawNumber = bDrawNum;
 	bHasFocus = false;
@@ -84,28 +85,54 @@ void CustomSlider::draw(){
 	// Use different alphas if we're actively maniupulating me. 
 	float spineAlpha  = (bHasFocus) ? 192:128;
 	
-	// draw box outline
-	ofNoFill();
-	ofSetLineWidth(18.0);
-	ofSetColor(25,25,25, 255);
-    ofDrawLine(-10, 0, width+10, 0);
-	ofDrawLine(-10,height, width+10,height);
-    ofSetLineWidth(10.0);
-    ofDrawLine(-5, 0, -5, height);
-    ofDrawLine(width+5, 0, width+5, height);
-	
-    red_gradient.draw(0, gradient_perc, 0, 9, width, height - 18);
 
 	// draw thumb
     ofSetCircleResolution(160);
-    float thumbX = ofMap(percent, 0,1, 0 + thumb_radius,width - thumb_radius, true);
-	ofSetLineWidth(3.0);
-	ofSetColor(25, 25, 25, 255);
-    ofDrawCircle(thumbX, height/2, 22);
-    ofSetColor(255, 26, 34, 255);
-    ofFill();
-    ofDrawCircle(thumbX, height/2, thumb_radius);
-	
+    if (bVertical){
+        if(bIsSlider){
+            red_gradient.draw(1, 1, gradient_perc, 0, 0, width, height );
+        } else {
+            red_gradient.draw(0, 1, gradient_perc, 0, 0, width, height );
+        }
+        // draw box outline
+        ofNoFill();
+        ofSetLineWidth(10.0);
+        ofSetColor(25,25,25, 255);
+        ofDrawLine(-10, 0, width+10, 0);
+        ofDrawLine(-10,height, width+10,height);
+        ofSetLineWidth(18.0);
+        ofDrawLine(0, 0, 0, height);
+        ofDrawLine(width, 0, width, height);
+        
+        float thumbY = ofMap(percent, 0,1, height - thumb_radius, 0 + thumb_radius, true);
+        ofSetLineWidth(3.0);
+        ofSetColor(25, 25, 25, 255);
+        ofDrawCircle(width/2, thumbY, 22);
+        ofSetColor(255, 26, 34, 255);
+        ofFill();
+        ofDrawCircle(width/2, thumbY, thumb_radius);
+    } else {
+        red_gradient.draw(1, 0, gradient_perc, 0, 9, width, height - 18);
+
+        // draw box outline
+        ofNoFill();
+        ofSetLineWidth(18.0);
+        ofSetColor(25,25,25, 255);
+        ofDrawLine(-10, 0, width+10, 0);
+        ofDrawLine(-10,height, width+10,height);
+        ofSetLineWidth(10.0);
+        ofDrawLine(-5, 0, -5, height);
+        ofDrawLine(width+5, 0, width+5, height);
+        
+        float thumbX = ofMap(percent, 0,1, 0 + thumb_radius,width - thumb_radius, true);
+        ofSetLineWidth(3.0);
+        ofSetColor(25, 25, 25, 255);
+        ofDrawCircle(thumbX, height/2, 22);
+        ofSetColor(255, 26, 34, 255);
+        ofFill();
+        ofDrawCircle(thumbX, height/2, thumb_radius);
+    }
+    
 	ofPopMatrix();
 	ofPopStyle();
 }
@@ -188,7 +215,12 @@ void CustomSlider::mouseReleased(ofMouseEventArgs& event){
 
 //----------------------------------------------------
 void CustomSlider::updatePercentFromMouse (int mx, int my){
-    percent = ofMap(mx, x + thumb_radius, (x+width) - thumb_radius,  0,1, true);
+    if (bVertical){
+        percent = ofMap(my, y + thumb_radius, (y+height) - thumb_radius,  1,0, true);
+    }
+    else {
+        percent = ofMap(mx, x + thumb_radius, (x+width) - thumb_radius,  0,1, true);
+    }
 }
 
 

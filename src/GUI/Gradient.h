@@ -15,7 +15,7 @@ public:
     
     Gradient();
     
-    void draw(int verticle_or_horizontal, float perc, int x, int y, int w, int h);
+    void draw(int is_slider, int verticle_or_horizontal, float perc, int x, int y, int w, int h);
 
 private:
     /// Red Shader Gradient

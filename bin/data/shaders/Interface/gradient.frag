@@ -1,5 +1,6 @@
 uniform vec3  resolution;
 uniform int verticle_or_horizontal; // 0 = horizontal, 1 = vertical
+uniform int is_slider; //0 = volume meter, 1 = slider
 uniform float perc;
 
 
@@ -100,12 +101,20 @@ void main(void)
     
     float gradient = 0.0;
     
-    if(verticle_or_horizontal == 0){
-        uv.x = (gl_FragCoord.x / (resolution.x * (.25+perc)));
-        uv.y = gl_FragCoord.y / resolution.y;
-        gradient = quadraticPoint(1.0-uv.x, 0.233, 0.340);
-    }
-    else if(verticle_or_horizontal == 1){
+    if(is_slider == 1){
+        if(verticle_or_horizontal == 0){
+            uv.x = (gl_FragCoord.x / (resolution.x * (.25+perc)));
+            uv.y = gl_FragCoord.y / resolution.y;
+            gradient = quadraticPoint(1.0-uv.x, 0.233, 0.340);
+        }
+        else if(verticle_or_horizontal == 1){
+            uv.y = (gl_FragCoord.y / (resolution.y * (1.75+perc)));
+            gradient = quadraticPoint(1.0-uv.y, 0.233, 0.340);
+            gradient *= -1.;
+            gradient += .95;
+            gradient *= 1.0-perc;
+        }
+    } else if(is_slider == 0){
         uv.y = gl_FragCoord.y / (perc*resolution.y);
         uv.x = gl_FragCoord.x / resolution.x;
         gradient = quadraticPoint(1.0-uv.y, 0.233, 0.340);

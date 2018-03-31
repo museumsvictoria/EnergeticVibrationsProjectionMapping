@@ -17,7 +17,7 @@ class CustomSlider {
 		CustomSlider();
 		~CustomSlider();
 
-		void	setup (float inx, float iny, float inw, float inh, float loVal, float hiVal, float initialPercent, bool bVert, bool bDrawNum);
+		void	setup (float inx, float iny, float inw, float inh, float loVal, float hiVal, float initialPercent, bool bVert, bool bIsSlider, bool bDrawNum);
 		void	clear();
 
 		void	draw();
@@ -59,6 +59,7 @@ class CustomSlider {
 		float	height;
 		int		numberDisplayPrecision;
 	
+        bool    bIsSlider;
 		bool	bVertical;
 		bool	bDrawNumber;
 		bool	bHasFocus; 

@@ -106,6 +106,9 @@ void GuiInterface::setup_shader_toggles(vector<VisualLayer*> &layers){
             shader_states[i].sliders[x]->setPercent(layers[i]->shader_params[i].params[x]);
         }
     }
+    
+    sb_slider.setup(shader_toggles_rect.x + shader_toggles_rect.width + 20, shader_toggles_rect.y + 2, 40, shader_toggles_rect.height - 8, 0.0, 1.0, 20, true, true, false);
+    sb_slider.set_is_active(true);
 }
 
 //------------------------------------
@@ -125,7 +128,7 @@ void GuiInterface::setup_selected_layer(ofxImGui::Gui &gui){
         for(int y = 0; y < 4; y++){
             CustomSlider* slider = new CustomSlider();
             slider->setup(selected_layer_rect.x + padding.x + 10, (param_gui_offset * y) + (selected_layer_rect.y + 63),
-                          selected_layer_rect.width - (padding.x*2) - 16, 40,0.0,1.0,20,false, false);
+                          selected_layer_rect.width - (padding.x*2) - 16, 40,0.0,1.0,20,false, true, false);
             
             shader_states[i].sliders.push_back(slider);
         }
@@ -206,9 +209,9 @@ void GuiInterface::draw(ShaderParams &params){
     ofSetColor(255);
     img_background.draw(0,0,ofGetWidth(),ofGetHeight());
 
-    if(ofGetMousePressed()){
-        img.draw(0,0,ofGetWidth(), ofGetHeight());
-    }
+//    if(ofGetMousePressed()){
+//        img.draw(0,0,ofGetWidth(), ofGetHeight());
+//    }
     
     draw_add_shape(add_shape_rect);
 	draw_selected_layer(selected_layer_rect, params);
@@ -274,7 +277,7 @@ void GuiInterface::draw_selected_layer(ofRectangle rect, ShaderParams &params){
     draw_border(rect);
     
     font_large.drawString("SELECTED LAYER", rect.x + padding.x, rect.y + padding.y);
-    
+
     //--- PARAMS
     for(int i = 0; i < shader_states[selected_shader].sliders.size(); i++){
         ofSetColor(236, 60, 53);
@@ -311,9 +314,9 @@ void GuiInterface::draw_audio_analysis(ofRectangle rect){
     draw_border(rect);
     
     int width = 85;
-    red_gradient.draw(1, volumes[0],rect.x + 10, rect.y + 10, width, rect.height - 20);
-    red_gradient.draw(1, volumes[1],rect.x + 110, rect.y + 10, width, rect.height - 20);
-    red_gradient.draw(1, volumes[2],rect.x + 210, rect.y + 10, width, rect.height - 20);
+    red_gradient.draw(0,1, volumes[0],rect.x + 10, rect.y + 10, width, rect.height - 20);
+    red_gradient.draw(0,1, volumes[1],rect.x + 110, rect.y + 10, width, rect.height - 20);
+    red_gradient.draw(0,1, volumes[2],rect.x + 210, rect.y + 10, width, rect.height - 20);
     
     font_large.drawString("BASS", rect.x + 10, rect.y + padding.y);
     font_large.drawString("MID", rect.x + 110, rect.y + padding.y);
@@ -323,7 +326,7 @@ void GuiInterface::draw_audio_analysis(ofRectangle rect){
 
 //------------------------------------
 void GuiInterface::draw_mapping_panel(ofRectangle rect){
-    draw_border(rect);
+    //draw_border(rect);
 }
 
 //------------------------------------
@@ -333,9 +336,13 @@ void GuiInterface::draw_shader_toggles(ofRectangle rect){
     mainSettings.windowSize = ofVec2f(rect.width, rect.height+2);
     ImVec4 c1 = ImColor(1.f, 0.1f, 0.13f, 1.00f);
     ImVec4 c2 = ImColor(1.0f, 1.0f, 1.0f, 1.00f);
-        
-    ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0,0));
     
+    int y_padding = 22;
+    int toggle_height = 147;
+    int sb_multiplier = (toggle_height + y_padding);
+    int excess_rows = 0;
+    
+    ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0,0));
     if (ofxImGui::BeginWindow("shader_toggles", mainSettings, window_flags))
     {
         for(int i = 0; i < shader_toggles.size(); i++){
@@ -354,9 +361,16 @@ void GuiInterface::draw_shader_toggles(ofRectangle rect){
             } else if( i % 2 == 1){
                 ImGui::Dummy(ImVec2(0.0,3.0));
             }
-            
+
+            if(i > 7 && i % 2 == 1){
+                excess_rows++;
+            }
         }
     }
+
+    float slider_val = sb_slider.getValue();
+    ImGui::SetScrollY((1.0-slider_val) * (sb_multiplier * excess_rows));
+
     ofxImGui::EndWindow(mainSettings);
     ImGui::PopStyleVar();
     
@@ -367,6 +381,8 @@ void GuiInterface::draw_shader_toggles(ofRectangle rect){
         }
     }
     
+    sb_slider.update_gradient_percent(slider_val);
+    sb_slider.draw();
 }
 
 //------------------------------------
@@ -456,6 +472,14 @@ void GuiInterface::touchDown(map<int, ofTouchEventArgs> touchMap) {
 		}
 	}
 
+    for (auto &t : touchMap) {
+        auto &touch = t.second;
+        if (sb_slider.box.inside(touch.x, touch.y)) {
+            sb_slider.active_touch_idx = touch.id;
+            sb_slider.updatePercentFromMouse(touch.x, touch.y);
+        }
+    }
+
 
 }
 
@@ -473,6 +497,15 @@ void GuiInterface::touchMoved(map<int, ofTouchEventArgs> touchMap) {
 			}
 		}
 	}
+    
+    for (auto &t : touchMap) {
+        auto &touch = t.second;
+        if (sb_slider.active_touch_idx == touch.id) {
+            if (sb_slider.get_is_active()) {
+                sb_slider.updatePercentFromMouse(touch.x, touch.y);
+            }
+        }
+    }
 }
 
 //--------------------------------------------------------------

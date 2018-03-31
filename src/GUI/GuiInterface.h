@@ -115,6 +115,8 @@ private:
         
 	vector<ShaderState> shader_states;
 
+    CustomSlider sb_slider;
+
     //Shader Selection Buttons
     vector<ShaderToggle> shader_toggles;
     int selected_shader;
