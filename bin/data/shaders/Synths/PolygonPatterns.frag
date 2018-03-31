@@ -1,10 +1,3 @@
-float segment(vec2 p, vec2 a, vec2 b) {
-    vec2 ab = b - a;
-    vec2 ap = p - a;
-    float k = clamp(dot(ap, ab)/dot(ab, ab), 0.0, 1.0);
-    return smoothstep(0.0, 5.0/resolution.y, length(ap - k*ab) - remap(param2,0.0,1.0,0.001,0.0201));
-}
-
 float shape(vec2 p, float angle) {
     float d = 100.0;
     vec2 a = vec2(1.0, 0.0), b;

@@ -15,6 +15,7 @@ uniform float param3;
 #pragma include "Util/easings.glsl"
 #pragma include "Util/hue_shift.frag"
 #pragma include "Util/remap.glsl"
+#pragma include "Util/shared_functions.glsl"
 #pragma include "Util/colourise.frag"
 #pragma include "Synths/2DPatternMesh.frag"   // shader 1
 #pragma include "Synths/ColourGradient.frag"  // shader 2
@@ -25,6 +26,8 @@ uniform float param3;
 #pragma include "Synths/OpArtTwister.frag"    // shader 7
 #pragma include "Synths/HexagonGradient.frag" // shader 8
 #pragma include "Synths/PolygonPatterns.frag" // shader 9
+#pragma include "Synths/SnubQuadrille.frag" // shader 10
+#pragma include "Synths/PentagonTessellations.frag" // shader 11
 
 void main(void)
 {
@@ -56,6 +59,12 @@ void main(void)
     }
     else if(scene_select == 8){
         final_out = PolygonPatterns() * MixColour();
+    }
+    else if (scene_select == 9){
+        final_out = hue(SnubQuadrille(), hue_offset);
+    }
+    else if (scene_select == 10){
+        final_out = hue(PentagonTessellations(), hue_offset);
     }
 
     gl_FragColor = vec4(final_out,1.0);

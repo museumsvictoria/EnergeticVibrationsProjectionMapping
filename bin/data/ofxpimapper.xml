@@ -38,7 +38,7 @@
         </texCoords>
         <source>
             <source-type>fbo</source-type>
-            <source-name>Shader8</source-name>
+            <source-name>Shader1</source-name>
         </source>
         <properties>
             <perspectiveWarping>1</perspectiveWarping>
@@ -83,7 +83,7 @@
         </texCoords>
         <source>
             <source-type>fbo</source-type>
-            <source-name>Shader8</source-name>
+            <source-name>Shader3</source-name>
         </source>
         <properties>
             <perspectiveWarping>1</perspectiveWarping>
@@ -120,7 +120,7 @@
         </texCoords>
         <source>
             <source-type>fbo</source-type>
-            <source-name>Shader8</source-name>
+            <source-name>Shader3</source-name>
         </source>
     </surface>
 </surfaces>

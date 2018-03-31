@@ -18,7 +18,7 @@ VisualLayer::VisualLayer(){
 void VisualLayer::init_params(){
     shader_params.clear();
     
-    for(int i = 0; i < 9; i++){
+    for(int i = 0; i < 11; i++){
         shader_params.push_back(ShaderParams());
     }
    
@@ -48,6 +48,12 @@ void VisualLayer::init_params(){
     
     shader_params[POLYGON_PATTERNS].params = {0.5,0.2,0.0};
     shader_params[POLYGON_PATTERNS].names = {"speed","circle_iter","iter", "HUESHIFT"};
+
+    shader_params[SNUB_QUADRILLE].params = {0.5,0.2,0.0};
+    shader_params[SNUB_QUADRILLE].names = {"speed","circle_iter","iter", "HUESHIFT"};
+
+    shader_params[PENTAGON_TESSELLATIONS].params = {0.5,0.2,0.0};
+    shader_params[PENTAGON_TESSELLATIONS].names = {"speed","circle_iter","iter", "HUESHIFT"};
 }
 
 //--------------------------------------------------------------

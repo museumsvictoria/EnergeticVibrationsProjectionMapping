@@ -23,6 +23,8 @@ const int RADIAL_HEXAGON = 5;
 const int OP_ART_TWISTER = 6;
 const int HEXAGON_GRADIENT = 7;
 const int POLYGON_PATTERNS = 8;
+const int SNUB_QUADRILLE = 9;
+const int PENTAGON_TESSELLATIONS = 10;
 
 struct ShaderParams{
     vector<float> params = {0.0,0.0,0.0,0.0};

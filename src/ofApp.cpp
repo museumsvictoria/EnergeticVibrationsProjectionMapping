@@ -28,7 +28,7 @@ void ofApp::setup(){
     
     cout << "dir size = " << shader_dir.size() << endl;
     
-    static int num_layers = 9;// shader_dir.size()-1;
+    static int num_layers = 11;// shader_dir.size()-1;
     
     for(int i = 0; i < num_layers; i++){
         VisualLayer *layer = new VisualLayer();

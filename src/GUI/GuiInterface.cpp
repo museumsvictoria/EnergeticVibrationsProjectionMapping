@@ -329,14 +329,12 @@ void GuiInterface::draw_mapping_panel(ofRectangle rect){
 //------------------------------------
 void GuiInterface::draw_shader_toggles(ofRectangle rect){
     auto mainSettings = ofxImGui::Settings();
-    mainSettings.windowPos = ofVec2f(rect.x-20, rect.y-20);
-    mainSettings.windowSize = ofVec2f(rect.width+40, rect.height+40);
-
+    mainSettings.windowPos = ofVec2f(rect.x, rect.y-2);
+    mainSettings.windowSize = ofVec2f(rect.width, rect.height+2);
     ImVec4 c1 = ImColor(1.f, 0.1f, 0.13f, 1.00f);
     ImVec4 c2 = ImColor(1.0f, 1.0f, 1.0f, 1.00f);
-    
-    
-    ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(20,19));
+        
+    ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0,0));
     
     if (ofxImGui::BeginWindow("shader_toggles", mainSettings, window_flags))
     {
