@@ -35,7 +35,7 @@ class GuiInterface{
     GuiInterface();
     ~GuiInterface();
     void init_window_flags();
-    void setup(ofxImGui::Gui &gui, ofxPiMapper& mapper);
+    void setup(ofxImGui::Gui &gui, ofxPiMapper& mapper, int num_layes);
     void setup_add_shape(ofxImGui::Gui &gui);
     void setup_shader_toggles(vector<VisualLayer*> &layers);
     void setup_mapping_panel(ofxImGui::Gui &gui);
@@ -93,6 +93,7 @@ private:
     int param_gui_offset;
     ofVec2f padding; // used to offset the titles from their containing rectangle pos
     
+    int num_layers;
     
     /// Add Shape Panel
     GLuint quad_buttonID;

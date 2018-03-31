@@ -33,7 +33,7 @@ public:
         
         style->WindowPadding = ImVec2(15, 15);
         style->WindowRounding = 5.0f;
-        style->FramePadding = ImVec2(5, 5);
+        style->FramePadding = ImVec2(2, 2);
         style->FrameRounding = 4.0f;
         style->ItemSpacing = ImVec2(12, 8);
         style->ItemInnerSpacing = ImVec2(8, 6);

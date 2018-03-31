@@ -48,7 +48,8 @@ void GuiInterface::init_window_flags(){
 }
 
 //------------------------------------
-void GuiInterface::setup(ofxImGui::Gui &gui, ofxPiMapper& mapper){
+void GuiInterface::setup(ofxImGui::Gui &gui, ofxPiMapper& mapper, int num_layes){
+    this->num_layers = num_layes;
     
     map_helper.setup(mapper);
     
@@ -68,7 +69,7 @@ void GuiInterface::setup(ofxImGui::Gui &gui, ofxPiMapper& mapper){
     add_shape_rect = ofRectangle(118,95,306,149);
     selected_layer_rect = ofRectangle(118,252,306,580);
     audio_analysis_rect = ofRectangle(118,843,306,151);
-    shader_toggles_rect = ofRectangle(422,892,1450,175);
+    shader_toggles_rect = ofRectangle(1442,164,350,830);
 //    mapping_panel_rect = ofRectangle(422,13,1450,870);
     mapping_panel_rect = ofRectangle(434,95,998,899);
     duplicate_remove_rect = ofRectangle(1442,95,228,46);
@@ -93,7 +94,7 @@ void GuiInterface::onSurfaceSelected(int & surfaceIndex){
 
 //------------------------------------
 void GuiInterface::setup_shader_toggles(vector<VisualLayer*> &layers){
-    for(int i = 0; i < 7; i++){
+    for(int i = 0; i < num_layers; i++){
         ShaderToggle t;
         t.b = false;
         if(i==0) t.b = true;
@@ -110,7 +111,7 @@ void GuiInterface::setup_shader_toggles(vector<VisualLayer*> &layers){
 //------------------------------------
 void GuiInterface::setup_selected_layer(ofxImGui::Gui &gui){
     
-    for(int i = 0; i < 7; i++){
+    for(int i = 0; i < num_layers; i++){
         ShaderState state;
         shader_states.push_back(state);
     }
@@ -208,14 +209,12 @@ void GuiInterface::draw(ShaderParams &params){
     if(ofGetMousePressed()){
         img.draw(0,0,ofGetWidth(), ofGetHeight());
     }
-
-    cout << "x = " << ofGetMouseX() << " -- y = " << ofGetMouseY() << endl;
     
     draw_add_shape(add_shape_rect);
 	draw_selected_layer(selected_layer_rect, params);
 	draw_audio_analysis(audio_analysis_rect);
     draw_duplicate_and_remove(duplicate_remove_rect);
-    //draw_shader_toggles(shader_toggles_rect);
+    draw_shader_toggles(shader_toggles_rect);
     draw_mapping_panel(mapping_panel_rect);
 }
 
@@ -330,11 +329,14 @@ void GuiInterface::draw_mapping_panel(ofRectangle rect){
 //------------------------------------
 void GuiInterface::draw_shader_toggles(ofRectangle rect){
     auto mainSettings = ofxImGui::Settings();
-    mainSettings.windowPos = ofVec2f(rect.x-15, rect.y-15);
-    mainSettings.windowSize = ofVec2f(rect.width+30, rect.height+30);
+    mainSettings.windowPos = ofVec2f(rect.x-20, rect.y-20);
+    mainSettings.windowSize = ofVec2f(rect.width+40, rect.height+40);
 
     ImVec4 c1 = ImColor(1.f, 0.1f, 0.13f, 1.00f);
-    ImVec4 c2 = ImColor(0.10f, 0.09f, 0.12f, 1.00f);
+    ImVec4 c2 = ImColor(1.0f, 1.0f, 1.0f, 1.00f);
+    
+    
+    ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(20,19));
     
     if (ofxImGui::BeginWindow("shader_toggles", mainSettings, window_flags))
     {
@@ -345,14 +347,20 @@ void GuiInterface::draw_shader_toggles(ofRectangle rect){
             if (selected_shader == i) ImGui::PushStyleColor(ImGuiCol_Button, c1);
             else ImGui::PushStyleColor(ImGuiCol_Button, c2);
             
-            if(ImGui::ImageButton(shader_toggles[i].buttonID, ImVec2(196,167))){
+            if(ImGui::ImageButton(shader_toggles[i].buttonID, ImVec2(161, 147))){
                 update_active_shader(i);
             }
             ImGui::PopStyleColor();
-            ImGui::SameLine(0,2); // squish the toggles closer togther
+            if( i % 2 == 0) {
+                ImGui::SameLine(0,20);
+            } else if( i % 2 == 1){
+                ImGui::Dummy(ImVec2(0.0,3.0));
+            }
+            
         }
     }
     ofxImGui::EndWindow(mainSettings);
+    ImGui::PopStyleVar();
     
     // Make sure only the selected shaders toggle is active.
     for(int i = 0; i < shader_toggles.size(); i++){
@@ -369,6 +377,8 @@ void GuiInterface::draw_duplicate_and_remove(ofRectangle rect){
     auto mainSettings = ofxImGui::Settings();
     mainSettings.windowPos = ofVec2f(rect.x - IMGUI_PADDING, rect.y - IMGUI_PADDING);
     mainSettings.windowSize = ofVec2f(TOGGLE_WIDTH,TOGGLE_HEIGHT + 25);
+    
+    ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(18,18));
     
     if (ofxImGui::BeginWindow("duplicate panel", mainSettings, window_flags))
     {
@@ -392,6 +402,8 @@ void GuiInterface::draw_duplicate_and_remove(ofRectangle rect){
         }
     }
     ofxImGui::EndWindow(mainSettings);
+    ImGui::PopStyleVar();
+
 }
 
 //------------------------------------

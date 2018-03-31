@@ -22,8 +22,13 @@ void ofApp::setup(){
 	ofAddListener(ofxWinTouchHook::touchUp, this, &ofApp::touchUp);
 #endif
 
-
-    static int num_layers = 7;
+    ofDirectory shader_dir;
+    shader_dir.listDir("shaders/Synths/");
+    shader_dir.sort();
+    
+    cout << "dir size = " << shader_dir.size() << endl;
+    
+    static int num_layers = 9;// shader_dir.size()-1;
     
     for(int i = 0; i < num_layers; i++){
         VisualLayer *layer = new VisualLayer();
@@ -47,7 +52,7 @@ void ofApp::setup(){
     //load theme
     gui_theme.init_theme();
     
-    gui_interface.setup(gui, mapper);
+    gui_interface.setup(gui, mapper, num_layers);
     gui_interface.setup_shader_toggles(layers);
     
 	clear_touch_in_two_frames = 0;

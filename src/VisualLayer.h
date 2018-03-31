@@ -22,6 +22,7 @@ const int TRI_LATTICE = 4;
 const int RADIAL_HEXAGON = 5;
 const int OP_ART_TWISTER = 6;
 const int HEXAGON_GRADIENT = 7;
+const int POLYGON_PATTERNS = 8;
 
 struct ShaderParams{
     vector<float> params = {0.0,0.0,0.0,0.0};

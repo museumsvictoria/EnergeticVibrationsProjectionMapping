@@ -438,6 +438,25 @@
 		13125C952063A62D00664DFC /* Xml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Xml.cpp; sourceTree = "<group>"; };
 		13125C962063A62D00664DFC /* Xml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Xml.h; sourceTree = "<group>"; };
 		13125C972063A62D00664DFC /* vimeo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vimeo.png; sourceTree = "<group>"; };
+		13125CC9206F6ABF00664DFC /* gradient.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = gradient.frag; sourceTree = "<group>"; };
+		13125CCA206F6ABF00664DFC /* grid.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = grid.frag; sourceTree = "<group>"; };
+		13125CCB206F6ABF00664DFC /* passthrough.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = passthrough.vert; sourceTree = "<group>"; };
+		13125CCC206F6ABF00664DFC /* shader1.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader1.frag; sourceTree = "<group>"; };
+		13125CCD206F6ABF00664DFC /* shader_selector.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader_selector.frag; sourceTree = "<group>"; };
+		13125CCF206F6ABF00664DFC /* 2DPatternMesh.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = 2DPatternMesh.frag; sourceTree = "<group>"; };
+		13125CD0206F6ABF00664DFC /* ColourGradient.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = ColourGradient.frag; sourceTree = "<group>"; };
+		13125CD1206F6ABF00664DFC /* EscherLike.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = EscherLike.frag; sourceTree = "<group>"; };
+		13125CD2206F6ABF00664DFC /* FlowerOfLife.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = FlowerOfLife.frag; sourceTree = "<group>"; };
+		13125CD3206F6ABF00664DFC /* HexagonGradient.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = HexagonGradient.frag; sourceTree = "<group>"; };
+		13125CD4206F6ABF00664DFC /* OpArtTwister.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = OpArtTwister.frag; sourceTree = "<group>"; };
+		13125CD5206F6ABF00664DFC /* PolygonPatterns.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = PolygonPatterns.frag; sourceTree = "<group>"; };
+		13125CD6206F6ABF00664DFC /* RadialHexagon.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = RadialHexagon.frag; sourceTree = "<group>"; };
+		13125CD7206F6ABF00664DFC /* TriLattice.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = TriLattice.frag; sourceTree = "<group>"; };
+		13125CD9206F6ABF00664DFC /* colourise.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = colourise.frag; sourceTree = "<group>"; };
+		13125CDA206F6ABF00664DFC /* easings.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = easings.glsl; sourceTree = "<group>"; };
+		13125CDB206F6ABF00664DFC /* hue_shift.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = hue_shift.frag; sourceTree = "<group>"; };
+		13125CDC206F6ABF00664DFC /* pi.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = pi.glsl; sourceTree = "<group>"; };
+		13125CDD206F6ABF00664DFC /* remap.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = remap.glsl; sourceTree = "<group>"; };
 		15F2C6477A769C03A56D1401 /* ofxSlider.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxSlider.cpp; path = ../../../addons/ofxGui/src/ofxSlider.cpp; sourceTree = SOURCE_ROOT; };
 		17E65988300FBD9AAA2CD0CA /* ofxGui.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxGui.h; path = ../../../addons/ofxGui/src/ofxGui.h; sourceTree = SOURCE_ROOT; };
 		1A5AD3623882B15542BEEE7D /* drag_manager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = drag_manager.cpp; path = src/drag_manager.cpp; sourceTree = SOURCE_ROOT; };
@@ -1055,6 +1074,57 @@
 			path = Storage;
 			sourceTree = "<group>";
 		};
+		13125CC7206F6ABF00664DFC /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				13125CC8206F6ABF00664DFC /* Interface */,
+				13125CCB206F6ABF00664DFC /* passthrough.vert */,
+				13125CCC206F6ABF00664DFC /* shader1.frag */,
+				13125CCD206F6ABF00664DFC /* shader_selector.frag */,
+				13125CCE206F6ABF00664DFC /* Synths */,
+				13125CD8206F6ABF00664DFC /* Util */,
+			);
+			name = shaders;
+			path = bin/data/shaders;
+			sourceTree = SOURCE_ROOT;
+		};
+		13125CC8206F6ABF00664DFC /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				13125CC9206F6ABF00664DFC /* gradient.frag */,
+				13125CCA206F6ABF00664DFC /* grid.frag */,
+			);
+			path = Interface;
+			sourceTree = "<group>";
+		};
+		13125CCE206F6ABF00664DFC /* Synths */ = {
+			isa = PBXGroup;
+			children = (
+				13125CCF206F6ABF00664DFC /* 2DPatternMesh.frag */,
+				13125CD0206F6ABF00664DFC /* ColourGradient.frag */,
+				13125CD1206F6ABF00664DFC /* EscherLike.frag */,
+				13125CD2206F6ABF00664DFC /* FlowerOfLife.frag */,
+				13125CD3206F6ABF00664DFC /* HexagonGradient.frag */,
+				13125CD4206F6ABF00664DFC /* OpArtTwister.frag */,
+				13125CD5206F6ABF00664DFC /* PolygonPatterns.frag */,
+				13125CD6206F6ABF00664DFC /* RadialHexagon.frag */,
+				13125CD7206F6ABF00664DFC /* TriLattice.frag */,
+			);
+			path = Synths;
+			sourceTree = "<group>";
+		};
+		13125CD8206F6ABF00664DFC /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				13125CD9206F6ABF00664DFC /* colourise.frag */,
+				13125CDA206F6ABF00664DFC /* easings.glsl */,
+				13125CDB206F6ABF00664DFC /* hue_shift.frag */,
+				13125CDC206F6ABF00664DFC /* pi.glsl */,
+				13125CDD206F6ABF00664DFC /* remap.glsl */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		18240ECCE4076FB0833A8578 /* ofxNetwork */ = {
 			isa = PBXGroup;
 			children = (
@@ -1305,6 +1375,7 @@
 				97669C0B9B6B3C077F8169C3 /* boundary.hpp */,
 				1A5AD3623882B15542BEEE7D /* drag_manager.cpp */,
 				F7C6BF08019304DBB4C5028F /* drag_manager.hpp */,
+				13125CC7206F6ABF00664DFC /* shaders */,
 				DDCA4A4DE4C83FE3079DC700 /* Graphics_Tools */,
 				9C1E03ED636188A91CB83CA1 /* GUI */,
 				FC8354AB460B2D74388B8D53 /* nodel */,

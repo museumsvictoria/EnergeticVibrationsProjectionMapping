@@ -18,10 +18,12 @@ VisualLayer::VisualLayer(){
 void VisualLayer::init_params(){
     shader_params.clear();
     
-    for(int i = 0; i < 7; i++){
+    for(int i = 0; i < 9; i++){
         shader_params.push_back(ShaderParams());
     }
-    
+   
+    shader_params[PATTERN_MESH_2D].params = {0.0f,0.0f,0.0f,0.0f};
+    shader_params[PATTERN_MESH_2D].names = {"SPEED","SHAPE_ITER","GRID_ITER", "HUESHIFT"};
     
     shader_params[COLOUR_GRADIENT].params = {0.1f,0.02f,0.0f,0.0f};
     shader_params[COLOUR_GRADIENT].names = {"COL_ITER_X", "COL_ITER_Y", "SPEED", "HUESHIFT"};
@@ -41,11 +43,11 @@ void VisualLayer::init_params(){
     shader_params[OP_ART_TWISTER].params = {1.0f,1.0f,0.0f,0.0f};
     shader_params[OP_ART_TWISTER].names = {"iter_size","grid_size","speed", "HUESHIFT"};
 
-    shader_params[PATTERN_MESH_2D].params = {0.0f,0.0f,0.0f,0.0f};
-    shader_params[PATTERN_MESH_2D].names = {"SPEED","SHAPE_ITER","GRID_ITER", "HUESHIFT"};
+    shader_params[HEXAGON_GRADIENT].params = {0.5,0.2,0.0};
+    shader_params[HEXAGON_GRADIENT].names = {"speed","circle_iter","iter", "HUESHIFT"};
     
-    //    shader_params[HEXAGON_GRADIENT].params = {0.5,0.2,0.0};
-    //    shader_params[HEXAGON_GRADIENT].names = {"speed","circle_iter","iter"};
+    shader_params[POLYGON_PATTERNS].params = {0.5,0.2,0.0};
+    shader_params[POLYGON_PATTERNS].names = {"speed","circle_iter","iter", "HUESHIFT"};
 }
 
 //--------------------------------------------------------------
@@ -72,18 +74,6 @@ void VisualLayer::load_movie(string file){
 
 //--------------------------------------------------------------
 void VisualLayer::update(){
-    //hue_offset = ofGetElapsedTimef() * 0.1;
-    
-/*
-    if(ofGetFrameNum() % 120 == 0){
-        scene_select = (int)ofRandom(8);
-        hue_offset = ofRandom(PI*2);
-        for(int i = 0; i < 8; i++){
-            shader_params[i].params = {ofRandomuf(),ofRandomuf(),ofRandomuf()};
-        }
-    }
-*/
-
     render_fbo.fbo.begin();
         ofClear(0,0,0,0);
 		if (use_shader) {
