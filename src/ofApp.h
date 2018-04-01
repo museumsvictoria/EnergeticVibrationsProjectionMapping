@@ -61,9 +61,11 @@ class ofApp : public ofBaseApp{
         ofFbo projection_fbo;
         SurfaceMask surface_mask;
     
-        ///------------- GUI
+        ///------------- LAYERS
         vector<VisualLayer*> layers;
-    
+        shared_ptr<ofShader> scene_shader;
+        bool isShaderDirty;
+
         ///------------- GUI
         ofxImGui::Gui gui;
         GuiTheme gui_theme;

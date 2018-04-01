@@ -22,6 +22,8 @@ void ofApp::setup(){
 	ofAddListener(ofxWinTouchHook::touchUp, this, &ofApp::touchUp);
 #endif
 
+    isShaderDirty = true; // initialise dirty shader
+
     ofDirectory shader_dir;
     shader_dir.listDir("shaders/Synths/");
     shader_dir.sort();
@@ -33,10 +35,11 @@ void ofApp::setup(){
     for(int i = 0; i < num_layers; i++){
         VisualLayer *layer = new VisualLayer();
         layers.push_back(layer);
-        layers[i]->setup("Shader" + ofToString(1+i), i);
-        
+        layers[i]->setup("Shader" + ofToString(1+i), i);        
         mapper.registerFboSource(layers[i]);
     }
+    
+
     
     ofx::piMapper::VideoSource::enableAudio = false;
     ofx::piMapper::VideoSource::useHDMIForAudio = false;
@@ -92,6 +95,28 @@ void ofApp::drawProjections(ofEventArgs & args){
 
 //--------------------------------------------------------------
 void ofApp::update(){
+    if (isShaderDirty){
+        // dirty shader pattern:
+        shared_ptr<ofShader> tmpShader = shared_ptr<ofShader>(new ofShader);
+        tmpShader->setGeometryInputType(GL_TRIANGLES);
+        tmpShader->setGeometryOutputType(GL_TRIANGLE_STRIP);
+        tmpShader->setGeometryOutputCount(4);
+        
+        if (tmpShader->load("shaders/passthrough.vert","shaders/shader_selector.frag")){
+            scene_shader = tmpShader;
+            
+            for(int i = 0; i < layers.size(); i++){
+                layers[i]->set_scene_shader(scene_shader);                
+            }
+            
+            ofLogNotice() << ofGetTimestampString() << " reloaded Shader.";
+        } else {
+            ofLogError() << "Shader did not load successfully.";
+        }
+        isShaderDirty = false;
+    }
+    
+    
 	// This is hear incase we really need to start hacking ImGui
 	// TO enable mouse events to be set from the touch screen. 
 	// We need to call this function 2 frames after the last touch event happened 
@@ -193,15 +218,20 @@ void ofApp::toggle_shaders() {
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
 	switch (key) {
-	case 'm': 
-		mouse = !mouse;
-		if (mouse) {
-			cout << "Mouse mode on" << endl;
-		}
-		else {
-			cout << "Touch mode on" << endl;
-		}
-			  break;
+        case ' ':
+            isShaderDirty = true;
+            break;
+        case 'm':
+            mouse = !mouse;
+            if (mouse) {
+                cout << "Mouse mode on" << endl;
+            }
+            else {
+                cout << "Touch mode on" << endl;
+            }
+            break;
+        default:
+            break;
 	}
 
 	mapper.keyPressed(key);

@@ -65,8 +65,6 @@ void VisualLayer::setup(string name, int scene_num){
     
     render_fbo.init(LAYER_RENDER_SIZE_X, LAYER_RENDER_SIZE_Y);
     
-    scene_shader.load("shaders/passthrough.vert","shaders/shader_selector.frag");
-
 	use_shader = true;
     
     init_params();
@@ -79,21 +77,27 @@ void VisualLayer::load_movie(string file){
 }
 
 //--------------------------------------------------------------
+void VisualLayer::set_scene_shader(shared_ptr<ofShader> scene_shader){
+    this->scene_shader = scene_shader;
+}
+
+//--------------------------------------------------------------
 void VisualLayer::update(){
+
     render_fbo.fbo.begin();
         ofClear(0,0,0,0);
 		if (use_shader) {
-			scene_shader.begin();
-			scene_shader.setUniform3f("resolution", LAYER_RENDER_SIZE_X, LAYER_RENDER_SIZE_Y, 1);
-			scene_shader.setUniform1f("time", ofGetElapsedTimef());
-			scene_shader.setUniform1i("iFrame", ofGetFrameNum());
-			scene_shader.setUniform1i("scene_select", scene_select);
-			scene_shader.setUniform1f("param1", shader_params[scene_select].params[0]);
-			scene_shader.setUniform1f("param2", shader_params[scene_select].params[1]);
-			scene_shader.setUniform1f("param3", shader_params[scene_select].params[2]);
-			scene_shader.setUniform1f("hue_offset", shader_params[scene_select].params[3] * PI);
+			scene_shader->begin();
+			scene_shader->setUniform3f("resolution", LAYER_RENDER_SIZE_X, LAYER_RENDER_SIZE_Y, 1);
+			scene_shader->setUniform1f("time", ofGetElapsedTimef());
+			scene_shader->setUniform1i("iFrame", ofGetFrameNum());
+			scene_shader->setUniform1i("scene_select", scene_select);
+			scene_shader->setUniform1f("param1", shader_params[scene_select].params[0]);
+			scene_shader->setUniform1f("param2", shader_params[scene_select].params[1]);
+			scene_shader->setUniform1f("param3", shader_params[scene_select].params[2]);
+			scene_shader->setUniform1f("hue_offset", shader_params[scene_select].params[3] * PI);
 			ofDrawRectangle(0, 0, render_fbo.fbo.getWidth(), render_fbo.fbo.getHeight());
-			scene_shader.end();
+			scene_shader->end();
 		} else {
 			player.update();
 			player.draw(0, 0);
