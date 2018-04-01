@@ -23,6 +23,14 @@ void PiMapperHelper::setup(ofxPiMapper& mapper){
 }
 
 //----------------------------------------
+void PiMapperHelper::set_theme_colour(ofVec3f theme_colour){
+    Gui::instance()->getSurfaceHighlightWidget().set_surface_colour(theme_colour);
+
+//    ProjectionEditorWidget* projectionEditorWidget = &Gui::instance()->getProjectionEditorWidget();
+//    projectionEditorWidget->getJoints()[0][0]->set_joint_colour(theme_colour);
+}
+
+//----------------------------------------
 SurfaceManager* PiMapperHelper::get_surface_manager(){
     return surfaceManager;
 }

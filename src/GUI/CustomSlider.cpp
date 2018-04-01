@@ -73,6 +73,12 @@ void CustomSlider::update_gradient_percent(float perc){
     gradient_perc = perc;
 }
 
+//------------------------------------
+void CustomSlider::set_theme_colour(ofVec4f theme_colour){
+    this->theme_colour = theme_colour;
+    colour_gradient.set_colour(theme_colour.x, theme_colour.y, theme_colour.z);
+}
+
 //----------------------------------------------------
 void CustomSlider::draw(){
 	
@@ -90,9 +96,9 @@ void CustomSlider::draw(){
     ofSetCircleResolution(160);
     if (bVertical){
         if(bIsSlider){
-            red_gradient.draw(1, 1, gradient_perc, 0, 0, width, height );
+            colour_gradient.draw(1, 1, gradient_perc, 0, 0, width, height );
         } else {
-            red_gradient.draw(0, 1, gradient_perc, 0, 0, width, height );
+            colour_gradient.draw(0, 1, gradient_perc, 0, 0, width, height );
         }
         // draw box outline
         ofNoFill();
@@ -108,11 +114,12 @@ void CustomSlider::draw(){
         ofSetLineWidth(3.0);
         ofSetColor(25, 25, 25, 255);
         ofDrawCircle(width/2, thumbY, 22);
-        ofSetColor(255, 26, 34, 255);
+        //ofSetColor(255, 26, 34, 255);
+        ofSetColor(theme_colour.x,theme_colour.y,theme_colour.z,theme_colour.w);
         ofFill();
         ofDrawCircle(width/2, thumbY, thumb_radius);
     } else {
-        red_gradient.draw(1, 0, gradient_perc, 0, 9, width, height - 18);
+        colour_gradient.draw(1, 0, gradient_perc, 0, 9, width, height - 18);
 
         // draw box outline
         ofNoFill();
@@ -128,7 +135,8 @@ void CustomSlider::draw(){
         ofSetLineWidth(3.0);
         ofSetColor(25, 25, 25, 255);
         ofDrawCircle(thumbX, height/2, 22);
-        ofSetColor(255, 26, 34, 255);
+        //ofSetColor(255, 26, 34, 255);
+        ofSetColor(theme_colour.x,theme_colour.y,theme_colour.z,theme_colour.w);
         ofFill();
         ofDrawCircle(thumbX, height/2, thumb_radius);
     }

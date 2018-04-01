@@ -28,7 +28,7 @@ void ofApp::setup(){
     
     cout << "dir size = " << shader_dir.size() << endl;
     
-    static int num_layers = 11;// shader_dir.size()-1;
+    static int num_layers = shader_dir.size();
     
     for(int i = 0; i < num_layers; i++){
         VisualLayer *layer = new VisualLayer();
@@ -70,17 +70,23 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::setupProjectionWindow(){
-   ofSetBackgroundColor(0);
-   mapper._application.getSurfaceManager()->assign_projection_fbo(&projection_fbo);
-
+    ofSetBackgroundColor(0);
+    mapper._application.getSurfaceManager()->assign_projection_fbo(&projection_fbo);
+    
+    surface_mask.setup();
 }
 
 //--------------------------------------------------------------
 void ofApp::drawProjections(ofEventArgs & args){
-   ofShowCursor();
+    ofShowCursor();
+    
  
    if(projection_fbo.isAllocated()){
         projection_fbo.getTexture().draw(0,0,ofGetWidth(), ofGetHeight());
+       
+       surface_mask.set_source_texture(projection_fbo);
+       surface_mask.update();
+       surface_mask.draw();
     }
 }
 
@@ -102,8 +108,7 @@ void ofApp::update(){
     gui_interface.update_audio_reactivity(layers);
 	
 	nodel.try_run();
-		
-	
+			
 }
 
 //--------------------------------------------------------------

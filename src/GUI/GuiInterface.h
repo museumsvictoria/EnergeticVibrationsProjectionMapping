@@ -57,6 +57,8 @@ class GuiInterface{
     void draw_duplicate_and_remove(ofRectangle rect);
     void draw_mapping_panel(ofRectangle rect);
     
+    void set_theme_colour(ofVec4f theme_colour);
+    
     void update_volumes(vector<float> volumes);
     vector<float> volumes;
 
@@ -96,7 +98,8 @@ private:
     int num_layers;
     
     // Gui Themes Colour
-    ofVec3f theme_colour;
+    ofVec4f theme_colour;
+    ofVec4f font_colour;
     
     /// Add Shape Panel
     GLuint quad_buttonID;

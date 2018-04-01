@@ -17,7 +17,7 @@ Gradient::Gradient(){
 //------------------------------------
 void Gradient::set_colour(float r, float g, float b){
     gradient.begin();
-    gradient.setUniform3f("base_colour",r,g,b);
+    gradient.setUniform3f("base_colour", r / 255.0, g / 255.0, b / 255.0);
     gradient.end();
 }
 

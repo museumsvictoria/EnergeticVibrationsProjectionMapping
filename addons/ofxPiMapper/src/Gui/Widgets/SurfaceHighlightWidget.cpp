@@ -5,6 +5,7 @@ namespace piMapper {
 
 SurfaceHighlightWidget::SurfaceHighlightWidget(){
 	_sm = 0;
+    surface_colour = ofVec3f(255,26,34);
 }
 
 void SurfaceHighlightWidget::draw(){
@@ -20,11 +21,15 @@ void SurfaceHighlightWidget::draw(){
 	
 	ofPushStyle();
 	ofSetLineWidth(4);
-	ofSetColor(255, 26, 34);
+	ofSetColor(surface_colour.x,surface_colour.y,surface_colour.z);
 	
 	drawSurfaceOutlines(_sm->getSelectedSurface());
 	
 	ofPopStyle();
+}
+    
+void SurfaceHighlightWidget::set_surface_colour(ofVec3f surface_colour){
+    this->surface_colour = surface_colour;
 }
 
 void SurfaceHighlightWidget::drawAllSurfaceOutlines(){

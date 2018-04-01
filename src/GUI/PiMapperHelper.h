@@ -20,6 +20,8 @@ public:
     void setup(ofxPiMapper& mapper);
     bool check_if_source_sxists();
     
+    void set_theme_colour(ofVec3f theme_colour);
+    
     void add_triangle_surface();
     void add_quad_surface();
     

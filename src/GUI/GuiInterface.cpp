@@ -65,8 +65,15 @@ void GuiInterface::setup(ofxImGui::Gui &gui, ofxPiMapper& mapper, int num_layes)
     padding.y = 25;
     
     param_gui_offset = 150;
-    
-    theme_colour = ofVec3f(0.0,1.0,0.0);
+
+    // Originals
+    theme_colour = ofVec4f(255, 26, 34, 255);
+    font_colour = ofVec4f(236, 60, 53, 255);
+
+    // Custom
+    theme_colour = ofVec4f(ofRandom(255), ofRandom(255), ofRandom(255), 255);
+    font_colour = ofVec4f(ofRandom(255), ofRandom(255), ofRandom(255), 255);
+    map_helper.set_theme_colour(theme_colour);
     
     add_shape_rect = ofRectangle(118,95,306,149);
     selected_layer_rect = ofRectangle(118,252,306,580);
@@ -111,9 +118,6 @@ void GuiInterface::setup_shader_toggles(vector<VisualLayer*> &layers){
     
     sb_slider.setup(shader_toggles_rect.x + shader_toggles_rect.width + 20, shader_toggles_rect.y + 2, 40, shader_toggles_rect.height - 8, 0.0, 1.0, 20, true, true, false);
     sb_slider.set_is_active(true);
-    
-    sb_slider.red_gradient.set_colour(theme_colour.x, theme_colour.y, theme_colour.z);
-
 }
 
 //------------------------------------
@@ -134,8 +138,6 @@ void GuiInterface::setup_selected_layer(ofxImGui::Gui &gui){
             CustomSlider* slider = new CustomSlider();
             slider->setup(selected_layer_rect.x + padding.x + 10, (param_gui_offset * y) + (selected_layer_rect.y + 63),
                           selected_layer_rect.width - (padding.x*2) - 16, 40,0.0,1.0,20,false, true, false);
-            slider->red_gradient.set_colour(theme_colour.x, theme_colour.y, theme_colour.z);
-            
             shader_states[i].sliders.push_back(slider);
         }
     }
@@ -207,6 +209,11 @@ void GuiInterface::update_audio_reactivity(vector<VisualLayer *> &layers){
             }
         }
     }
+}
+
+//------------------------------------
+void GuiInterface::set_theme_colour(ofVec4f theme_colour){
+    this->theme_colour = theme_colour;
 }
 
 //------------------------------------
@@ -286,11 +293,13 @@ void GuiInterface::draw_selected_layer(ofRectangle rect, ShaderParams &params){
 
     //--- PARAMS
     for(int i = 0; i < shader_states[selected_shader].sliders.size(); i++){
-        ofSetColor(236, 60, 53);
+
+        ofSetColor(font_colour.x,font_colour.y,font_colour.z);
         font_mid.drawString(params.names[i], rect.x + padding.x, (param_gui_offset * i) + (rect.y+52));
         
         float slider_val = shader_states[selected_shader].sliders[i]->getValue();
-        
+        shader_states[selected_shader].sliders[i]->set_theme_colour(theme_colour);
+
         if(i < shader_states[selected_shader].toggles.size()){
             
             shader_states[selected_shader].toggles[i].draw(params.names[i] + ofToString(i), ofVec2f(rect.x + padding.x, (param_gui_offset * i) + (rect.y+120)), ofVec2f(rect.width+10, 80), window_flags);
@@ -342,7 +351,9 @@ void GuiInterface::draw_shader_toggles(ofRectangle rect){
     auto mainSettings = ofxImGui::Settings();
     mainSettings.windowPos = ofVec2f(rect.x, rect.y-2);
     mainSettings.windowSize = ofVec2f(rect.width, rect.height+2);
-    ImVec4 c1 = ImColor(1.f, 0.1f, 0.13f, 1.00f);
+//    ImVec4 c1 = ImColor(1.f, 0.1f, 0.13f, 1.00f);
+    ImVec4 c1 = ImColor(theme_colour.x / 255.0f, theme_colour.y / 255.0f, theme_colour.z / 255.0f, theme_colour.w / 255.0f);
+    
     ImVec4 c2 = ImColor(1.0f, 1.0f, 1.0f, 1.00f);
     
     int y_padding = 22;
@@ -390,6 +401,7 @@ void GuiInterface::draw_shader_toggles(ofRectangle rect){
     }
     
     sb_slider.update_gradient_percent(slider_val);
+    sb_slider.set_theme_colour(theme_colour);
     sb_slider.draw();
 }
 

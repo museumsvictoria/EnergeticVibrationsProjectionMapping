@@ -9,6 +9,7 @@
 #include "GuiTheme.h"
 #include "GuiInterface.h"
 
+#include "SurfaceMask.h"
 #include "VisualLayer.h"
 #include "Settings.h"
 #include "ofxPiMapper.h"
@@ -58,6 +59,7 @@ class ofApp : public ofBaseApp{
         ///------------- MAPPING
         ofxPiMapper mapper;
         ofFbo projection_fbo;
+        SurfaceMask surface_mask;
     
         ///------------- GUI
         vector<VisualLayer*> layers;

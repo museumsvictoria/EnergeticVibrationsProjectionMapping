@@ -24,8 +24,11 @@ class SurfaceHighlightWidget : public GuiBaseWidget {
 		void drawAllSurfaceOutlines();
 		void drawSurfaceOutlines(BaseSurface * s);
 	
+        void set_surface_colour(ofVec3f surface_colour);
 	private:
 		SurfaceManager * _sm;
+    
+        ofVec3f surface_colour;
 };
 
 } // namespace piMappe

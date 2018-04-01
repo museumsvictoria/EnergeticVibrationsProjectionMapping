@@ -27,6 +27,8 @@ class CustomSlider {
 		void	mousePressed(ofMouseEventArgs& event);
 		void	mouseReleased(ofMouseEventArgs& event);
 	
+        void    set_theme_colour(ofVec4f theme_colour);
+
 		float	getValue();
 		float	getLowValue();
 		float	getHighValue();
@@ -40,7 +42,7 @@ class CustomSlider {
 		void	updatePercentFromMouse(int mx, int my); 
 		
         //Red Gradient Shader
-        Gradient red_gradient;
+        Gradient colour_gradient;
         void update_gradient_percent(float perc);
         float gradient_perc;
     
@@ -50,6 +52,9 @@ class CustomSlider {
 		ofRectangle box;
 		bool get_is_active();
 
+        // Gui Themes Colour
+        ofVec4f theme_colour;
+    
 	protected:
 		
         float   thumb_radius;

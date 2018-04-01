@@ -25,6 +25,8 @@ class BaseJoint {
 		void setClickDistance(ofVec2f newClickDistance);
 		bool isDragged();
 		bool isSelected();
+    
+        void set_joint_colour(ofVec3f theme_colour);
 
 		virtual void update(){}
 		virtual void draw(){}
