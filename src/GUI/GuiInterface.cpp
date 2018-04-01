@@ -223,7 +223,7 @@ void GuiInterface::draw(ShaderParams &params){
     img_background.draw(0,0,ofGetWidth(),ofGetHeight());
 
 //    if(ofGetMousePressed()){
-//        img.draw(0,0,ofGetWidth(), ofGetHeight());
+        img.draw(0,0,ofGetWidth(), ofGetHeight());
 //    }
     
     draw_add_shape(add_shape_rect);
