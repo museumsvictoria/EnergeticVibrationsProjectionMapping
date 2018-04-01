@@ -32,7 +32,7 @@ void SurfaceMask::init_fbos(){
     
     // setup FBOs
     m_fbos[ 0 ].begin();
-    ofClear( 0, 0, 0, 255 );
+    ofClear( 0, 0, 0, 0 );
     m_fbos[ 0 ].end();
     m_fbos[ 0 ].getTexture().bind( 1 );
     
@@ -69,7 +69,6 @@ void SurfaceMask::setup(){
     shader_image.setUniform1i( "iChannel0", 1);
     shader_image.end();
     
-    createFullScreenQuad();
     init_fbos();
     
 }
@@ -77,6 +76,7 @@ void SurfaceMask::setup(){
 //--------------------------------------------------------------
 void SurfaceMask::set_source_texture(ofFbo& tex){
     m_fbos[ 0 ].begin();
+    ofClear( 0, 0, 0, 0 );
     tex.draw(0,0,ofGetWidth(),ofGetHeight());
     m_fbos[ 0 ].end();
 }
@@ -106,7 +106,8 @@ void SurfaceMask::update(){
         shader_image.setUniformTexture( "iChannel0", m_src_fbo.getTexture(), 1);
         shader_image.setUniformTexture( "iChannel1",  m_fbos[ 0 ].getTexture(), 2 );
 
-        m_fsQuadVbo.draw();
+        ofSetColor(255,255);
+        ofDrawRectangle(0,0,ofGetWidth(),ofGetHeight());
         shader_image.end();
     }
     m_renderFbo.end();
@@ -121,8 +122,6 @@ void SurfaceMask::draw(){
     ////////////////////
     ofSetColor(ofColor::white);
     m_renderFbo.draw(0,0,ofGetWidth(),ofGetHeight());
-    mask_image.draw(0,0,ofGetWidth(),ofGetHeight());
-
 }
 
 ofFbo& SurfaceMask::getFbo(){
