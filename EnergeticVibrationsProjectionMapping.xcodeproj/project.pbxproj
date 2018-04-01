@@ -100,24 +100,6 @@
 		13125C0D2063953000664DFC /* HomographyHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13125B942063953000664DFC /* HomographyHelper.cpp */; };
 		13125C0E2063953000664DFC /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 13125B982063953000664DFC /* README.md */; };
 		13125C0F2063953000664DFC /* ofxWinTouchHook.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13125B9A2063953000664DFC /* ofxWinTouchHook.cpp */; };
-		13125C172063A56D00664DFC /* MaskApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13125C152063A56D00664DFC /* MaskApp.cpp */; };
-		13125CA12063A62D00664DFC /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 13125C532063A62C00664DFC /* README.md */; };
-		13125CA22063A62D00664DFC /* ofxLayerMask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13125C552063A62C00664DFC /* ofxLayerMask.cpp */; };
-		13125CA62063A62D00664DFC /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 13125C732063A62D00664DFC /* README.md */; };
-		13125CA72063A62D00664DFC /* Canvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13125C782063A62D00664DFC /* Canvas.cpp */; };
-		13125CA82063A62D00664DFC /* MaskFrame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13125C7A2063A62D00664DFC /* MaskFrame.cpp */; };
-		13125CA92063A62D00664DFC /* TextArea.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13125C7C2063A62D00664DFC /* TextArea.cpp */; };
-		13125CAA2063A62D00664DFC /* CanvasContents.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13125C7F2063A62D00664DFC /* CanvasContents.cpp */; };
-		13125CAB2063A62D00664DFC /* SafeDeque.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13125C812063A62D00664DFC /* SafeDeque.cpp */; };
-		13125CAC2063A62D00664DFC /* Homography.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13125C832063A62D00664DFC /* Homography.cpp */; };
-		13125CAD2063A62D00664DFC /* Mouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13125C852063A62D00664DFC /* Mouse.cpp */; };
-		13125CAE2063A62D00664DFC /* DragHandle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13125C882063A62D00664DFC /* DragHandle.cpp */; };
-		13125CAF2063A62D00664DFC /* MaskPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13125C8A2063A62D00664DFC /* MaskPoint.cpp */; };
-		13125CB02063A62D00664DFC /* PointObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13125C8C2063A62D00664DFC /* PointObject.cpp */; };
-		13125CB12063A62D00664DFC /* ofExtensions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13125C8E2063A62D00664DFC /* ofExtensions.cpp */; };
-		13125CB22063A62D00664DFC /* ofxProjectionMask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13125C902063A62D00664DFC /* ofxProjectionMask.cpp */; };
-		13125CB32063A62D00664DFC /* Presets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13125C922063A62D00664DFC /* Presets.cpp */; };
-		13125CB42063A62D00664DFC /* Xml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13125C952063A62D00664DFC /* Xml.cpp */; };
 		135D45222070CA78006086DF /* PingPong.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 135D451E2070CA78006086DF /* PingPong.cpp */; };
 		135D45232070CA78006086DF /* SurfaceMask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 135D45202070CA78006086DF /* SurfaceMask.cpp */; };
 		1CD33E884D9E3358252E82A1 /* ofxToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 907C5B5E104864A2D3A25745 /* ofxToggle.cpp */; };
@@ -391,55 +373,6 @@
 		13125B982063953000664DFC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		13125B9A2063953000664DFC /* ofxWinTouchHook.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxWinTouchHook.cpp; sourceTree = "<group>"; };
 		13125B9B2063953000664DFC /* ofxWinTouchHook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxWinTouchHook.h; sourceTree = "<group>"; };
-		13125C152063A56D00664DFC /* MaskApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MaskApp.cpp; sourceTree = "<group>"; };
-		13125C162063A56D00664DFC /* MaskApp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MaskApp.hpp; sourceTree = "<group>"; };
-		13125C4F2063A62C00664DFC /* example-more.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "example-more.gif"; sourceTree = "<group>"; };
-		13125C502063A62C00664DFC /* example-overlay.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "example-overlay.gif"; sourceTree = "<group>"; };
-		13125C512063A62C00664DFC /* example-simple.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "example-simple.gif"; sourceTree = "<group>"; };
-		13125C522063A62C00664DFC /* ofxaddons_thumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ofxaddons_thumbnail.png; sourceTree = "<group>"; };
-		13125C532063A62C00664DFC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		13125C552063A62C00664DFC /* ofxLayerMask.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxLayerMask.cpp; sourceTree = "<group>"; };
-		13125C562063A62C00664DFC /* ofxLayerMask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxLayerMask.h; sourceTree = "<group>"; };
-		13125C582063A62C00664DFC /* alphaMask_ES2.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = alphaMask_ES2.frag; sourceTree = "<group>"; };
-		13125C592063A62C00664DFC /* alphaMask_ES2.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = alphaMask_ES2.vert; sourceTree = "<group>"; };
-		13125C5A2063A62C00664DFC /* alphaMask_GL2.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = alphaMask_GL2.frag; sourceTree = "<group>"; };
-		13125C5B2063A62C00664DFC /* alphaMask_GL2.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = alphaMask_GL2.vert; sourceTree = "<group>"; };
-		13125C5C2063A62C00664DFC /* alphaMask_GL3.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = alphaMask_GL3.frag; sourceTree = "<group>"; };
-		13125C5D2063A62C00664DFC /* alphaMask_GL3.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = alphaMask_GL3.vert; sourceTree = "<group>"; };
-		13125C5F2063A62C00664DFC /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		13125C602063A62C00664DFC /* addon_config.mk */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = addon_config.mk; sourceTree = "<group>"; };
-		13125C722063A62D00664DFC /* ofxaddons_thumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ofxaddons_thumbnail.png; sourceTree = "<group>"; };
-		13125C732063A62D00664DFC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		13125C742063A62D00664DFC /* screenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot.png; sourceTree = "<group>"; };
-		13125C782063A62D00664DFC /* Canvas.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Canvas.cpp; sourceTree = "<group>"; };
-		13125C792063A62D00664DFC /* Canvas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Canvas.h; sourceTree = "<group>"; };
-		13125C7A2063A62D00664DFC /* MaskFrame.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MaskFrame.cpp; sourceTree = "<group>"; };
-		13125C7B2063A62D00664DFC /* MaskFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaskFrame.h; sourceTree = "<group>"; };
-		13125C7C2063A62D00664DFC /* TextArea.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextArea.cpp; sourceTree = "<group>"; };
-		13125C7D2063A62D00664DFC /* TextArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextArea.h; sourceTree = "<group>"; };
-		13125C7F2063A62D00664DFC /* CanvasContents.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CanvasContents.cpp; sourceTree = "<group>"; };
-		13125C802063A62D00664DFC /* CanvasContents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CanvasContents.h; sourceTree = "<group>"; };
-		13125C812063A62D00664DFC /* SafeDeque.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SafeDeque.cpp; sourceTree = "<group>"; };
-		13125C822063A62D00664DFC /* SafeDeque.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SafeDeque.h; sourceTree = "<group>"; };
-		13125C832063A62D00664DFC /* Homography.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Homography.cpp; sourceTree = "<group>"; };
-		13125C842063A62D00664DFC /* Homography.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Homography.h; sourceTree = "<group>"; };
-		13125C852063A62D00664DFC /* Mouse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mouse.cpp; sourceTree = "<group>"; };
-		13125C862063A62D00664DFC /* Mouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mouse.h; sourceTree = "<group>"; };
-		13125C882063A62D00664DFC /* DragHandle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DragHandle.cpp; sourceTree = "<group>"; };
-		13125C892063A62D00664DFC /* DragHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragHandle.h; sourceTree = "<group>"; };
-		13125C8A2063A62D00664DFC /* MaskPoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MaskPoint.cpp; sourceTree = "<group>"; };
-		13125C8B2063A62D00664DFC /* MaskPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaskPoint.h; sourceTree = "<group>"; };
-		13125C8C2063A62D00664DFC /* PointObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PointObject.cpp; sourceTree = "<group>"; };
-		13125C8D2063A62D00664DFC /* PointObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointObject.h; sourceTree = "<group>"; };
-		13125C8E2063A62D00664DFC /* ofExtensions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofExtensions.cpp; sourceTree = "<group>"; };
-		13125C8F2063A62D00664DFC /* ofExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofExtensions.h; sourceTree = "<group>"; };
-		13125C902063A62D00664DFC /* ofxProjectionMask.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxProjectionMask.cpp; sourceTree = "<group>"; };
-		13125C912063A62D00664DFC /* ofxProjectionMask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxProjectionMask.h; sourceTree = "<group>"; };
-		13125C922063A62D00664DFC /* Presets.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Presets.cpp; sourceTree = "<group>"; };
-		13125C932063A62D00664DFC /* Presets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Presets.h; sourceTree = "<group>"; };
-		13125C952063A62D00664DFC /* Xml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Xml.cpp; sourceTree = "<group>"; };
-		13125C962063A62D00664DFC /* Xml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Xml.h; sourceTree = "<group>"; };
-		13125C972063A62D00664DFC /* vimeo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vimeo.png; sourceTree = "<group>"; };
 		13125CC9206F6ABF00664DFC /* gradient.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = gradient.frag; sourceTree = "<group>"; };
 		13125CCA206F6ABF00664DFC /* grid.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = grid.frag; sourceTree = "<group>"; };
 		13125CCB206F6ABF00664DFC /* passthrough.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = passthrough.vert; sourceTree = "<group>"; };
@@ -949,141 +882,6 @@
 			path = src;
 			sourceTree = "<group>";
 		};
-		13125C182063A62C00664DFC /* ofxLayerMask */ = {
-			isa = PBXGroup;
-			children = (
-				13125C4E2063A62C00664DFC /* images */,
-				13125C522063A62C00664DFC /* ofxaddons_thumbnail.png */,
-				13125C532063A62C00664DFC /* README.md */,
-				13125C542063A62C00664DFC /* src */,
-			);
-			name = ofxLayerMask;
-			path = ../../../addons/ofxLayerMask;
-			sourceTree = "<group>";
-		};
-		13125C4E2063A62C00664DFC /* images */ = {
-			isa = PBXGroup;
-			children = (
-				13125C4F2063A62C00664DFC /* example-more.gif */,
-				13125C502063A62C00664DFC /* example-overlay.gif */,
-				13125C512063A62C00664DFC /* example-simple.gif */,
-			);
-			path = images;
-			sourceTree = "<group>";
-		};
-		13125C542063A62C00664DFC /* src */ = {
-			isa = PBXGroup;
-			children = (
-				13125C552063A62C00664DFC /* ofxLayerMask.cpp */,
-				13125C562063A62C00664DFC /* ofxLayerMask.h */,
-				13125C572063A62C00664DFC /* shader */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
-		13125C572063A62C00664DFC /* shader */ = {
-			isa = PBXGroup;
-			children = (
-				13125C582063A62C00664DFC /* alphaMask_ES2.frag */,
-				13125C592063A62C00664DFC /* alphaMask_ES2.vert */,
-				13125C5A2063A62C00664DFC /* alphaMask_GL2.frag */,
-				13125C5B2063A62C00664DFC /* alphaMask_GL2.vert */,
-				13125C5C2063A62C00664DFC /* alphaMask_GL3.frag */,
-				13125C5D2063A62C00664DFC /* alphaMask_GL3.vert */,
-			);
-			path = shader;
-			sourceTree = "<group>";
-		};
-		13125C5E2063A62C00664DFC /* ofxProjectionMask */ = {
-			isa = PBXGroup;
-			children = (
-				13125C5F2063A62C00664DFC /* .gitignore */,
-				13125C602063A62C00664DFC /* addon_config.mk */,
-				13125C722063A62D00664DFC /* ofxaddons_thumbnail.png */,
-				13125C732063A62D00664DFC /* README.md */,
-				13125C742063A62D00664DFC /* screenshot.png */,
-				13125C752063A62D00664DFC /* src */,
-				13125C972063A62D00664DFC /* vimeo.png */,
-			);
-			name = ofxProjectionMask;
-			path = ../../../addons/ofxProjectionMask;
-			sourceTree = "<group>";
-		};
-		13125C752063A62D00664DFC /* src */ = {
-			isa = PBXGroup;
-			children = (
-				13125C762063A62D00664DFC /* Drawing */,
-				13125C8E2063A62D00664DFC /* ofExtensions.cpp */,
-				13125C8F2063A62D00664DFC /* ofExtensions.h */,
-				13125C902063A62D00664DFC /* ofxProjectionMask.cpp */,
-				13125C912063A62D00664DFC /* ofxProjectionMask.h */,
-				13125C922063A62D00664DFC /* Presets.cpp */,
-				13125C932063A62D00664DFC /* Presets.h */,
-				13125C942063A62D00664DFC /* Storage */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
-		13125C762063A62D00664DFC /* Drawing */ = {
-			isa = PBXGroup;
-			children = (
-				13125C772063A62D00664DFC /* Areas */,
-				13125C7E2063A62D00664DFC /* Collections */,
-				13125C832063A62D00664DFC /* Homography.cpp */,
-				13125C842063A62D00664DFC /* Homography.h */,
-				13125C852063A62D00664DFC /* Mouse.cpp */,
-				13125C862063A62D00664DFC /* Mouse.h */,
-				13125C872063A62D00664DFC /* Points */,
-			);
-			path = Drawing;
-			sourceTree = "<group>";
-		};
-		13125C772063A62D00664DFC /* Areas */ = {
-			isa = PBXGroup;
-			children = (
-				13125C782063A62D00664DFC /* Canvas.cpp */,
-				13125C792063A62D00664DFC /* Canvas.h */,
-				13125C7A2063A62D00664DFC /* MaskFrame.cpp */,
-				13125C7B2063A62D00664DFC /* MaskFrame.h */,
-				13125C7C2063A62D00664DFC /* TextArea.cpp */,
-				13125C7D2063A62D00664DFC /* TextArea.h */,
-			);
-			path = Areas;
-			sourceTree = "<group>";
-		};
-		13125C7E2063A62D00664DFC /* Collections */ = {
-			isa = PBXGroup;
-			children = (
-				13125C7F2063A62D00664DFC /* CanvasContents.cpp */,
-				13125C802063A62D00664DFC /* CanvasContents.h */,
-				13125C812063A62D00664DFC /* SafeDeque.cpp */,
-				13125C822063A62D00664DFC /* SafeDeque.h */,
-			);
-			path = Collections;
-			sourceTree = "<group>";
-		};
-		13125C872063A62D00664DFC /* Points */ = {
-			isa = PBXGroup;
-			children = (
-				13125C882063A62D00664DFC /* DragHandle.cpp */,
-				13125C892063A62D00664DFC /* DragHandle.h */,
-				13125C8A2063A62D00664DFC /* MaskPoint.cpp */,
-				13125C8B2063A62D00664DFC /* MaskPoint.h */,
-				13125C8C2063A62D00664DFC /* PointObject.cpp */,
-				13125C8D2063A62D00664DFC /* PointObject.h */,
-			);
-			path = Points;
-			sourceTree = "<group>";
-		};
-		13125C942063A62D00664DFC /* Storage */ = {
-			isa = PBXGroup;
-			children = (
-				13125C952063A62D00664DFC /* Xml.cpp */,
-				13125C962063A62D00664DFC /* Xml.h */,
-			);
-			path = Storage;
-			sourceTree = "<group>";
-		};
 		13125CC7206F6ABF00664DFC /* shaders */ = {
 			isa = PBXGroup;
 			children = (
@@ -1325,8 +1123,6 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
-				13125C182063A62C00664DFC /* ofxLayerMask */,
-				13125C5E2063A62C00664DFC /* ofxProjectionMask */,
 				13125AC32063952F00664DFC /* ofxImGui */,
 				13125AEA2063952F00664DFC /* ofxPiMapper */,
 				13125B962063953000664DFC /* ofxWinTouchHook */,
@@ -1403,8 +1199,6 @@
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
 				135D451D2070CA78006086DF /* Masking */,
-				13125C152063A56D00664DFC /* MaskApp.cpp */,
-				13125C162063A56D00664DFC /* MaskApp.hpp */,
 				31019C4C6E0A5B35F8B5F58E /* boundary.cpp */,
 				97669C0B9B6B3C077F8169C3 /* boundary.hpp */,
 				1A5AD3623882B15542BEEE7D /* drag_manager.cpp */,
@@ -1554,10 +1348,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13125CAA2063A62D00664DFC /* CanvasContents.cpp in Sources */,
 				13125BD92063953000664DFC /* MvTexCoordCmd.cpp in Sources */,
 				13125BFF2063953000664DFC /* ImageSource.cpp in Sources */,
-				13125CAD2063A62D00664DFC /* Mouse.cpp in Sources */,
 				13125C0B2063953000664DFC /* CircleJoint.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				13125BD22063953000664DFC /* DeselectTexCoordCmd.cpp in Sources */,
@@ -1585,10 +1377,7 @@
 				13125C082063953000664DFC /* SurfaceStack.cpp in Sources */,
 				13125BE72063953000664DFC /* SelVertexCmd.cpp in Sources */,
 				E7D2C23738308D9DB9F5C282 /* nodel_interpreter.cpp in Sources */,
-				13125CB32063A62D00664DFC /* Presets.cpp in Sources */,
-				13125CAB2063A62D00664DFC /* SafeDeque.cpp in Sources */,
 				13125BF72063953000664DFC /* TextureEditorWidget.cpp in Sources */,
-				13125CAE2063A62D00664DFC /* DragHandle.cpp in Sources */,
 				F53A446A7F50A13B76EB2325 /* video_controller.cpp in Sources */,
 				8956C7E56302CBCDBE6B128E /* VisualLayer.cpp in Sources */,
 				13125BE22063953000664DFC /* SelPrevSurfaceCmd.cpp in Sources */,
@@ -1610,7 +1399,6 @@
 				13125C022063953000664DFC /* BaseSurface.cpp in Sources */,
 				13125BD72063953000664DFC /* MvSelectionCmd.cpp in Sources */,
 				B56FE57CC35806596D38118C /* ofxSliderGroup.cpp in Sources */,
-				13125CA12063A62D00664DFC /* README.md in Sources */,
 				13125BB72063953000664DFC /* imgui_demo.cpp in Sources */,
 				13125BCD2063953000664DFC /* AddGridRowCmd.cpp in Sources */,
 				13125C002063953000664DFC /* OMXPlayerCache.cpp in Sources */,
@@ -1619,8 +1407,6 @@
 				13125BD82063953000664DFC /* MvSurfaceVertCmd.cpp in Sources */,
 				13125BE82063953000664DFC /* SetApplicationModeCmd.cpp in Sources */,
 				13125BF32063953000664DFC /* ProjectionEditorWidget.cpp in Sources */,
-				13125CA82063A62D00664DFC /* MaskFrame.cpp in Sources */,
-				13125CA62063A62D00664DFC /* README.md in Sources */,
 				13125C0D2063953000664DFC /* HomographyHelper.cpp in Sources */,
 				13125BEE2063953000664DFC /* ToggleAnimatedSourceCmd.cpp in Sources */,
 				13125BEF2063953000664DFC /* TogglePerspectiveCmd.cpp in Sources */,
@@ -1632,7 +1418,6 @@
 				13125C092063953000664DFC /* TriangleSurface.cpp in Sources */,
 				13125BC72063953000664DFC /* PresentationMode.cpp in Sources */,
 				13125BD52063953000664DFC /* MvLayerDnCmd.cpp in Sources */,
-				13125CA92063A62D00664DFC /* TextArea.cpp in Sources */,
 				13125BDE2063953000664DFC /* ScaleSurfaceFromToCmd.cpp in Sources */,
 				960D20B191346612D5C05A6A /* ofxTCPClient.cpp in Sources */,
 				13125BE42063953000664DFC /* SelPrevVertexCmd.cpp in Sources */,
@@ -1646,9 +1431,7 @@
 				66CA411C5A9664E27326BF36 /* ofxTCPServer.cpp in Sources */,
 				E2564CF7DDB3713772BB682E /* ofxUDPManager.cpp in Sources */,
 				13125BED2063953000664DFC /* StartDragSurfaceCmd.cpp in Sources */,
-				13125CA22063A62D00664DFC /* ofxLayerMask.cpp in Sources */,
 				13125C0E2063953000664DFC /* README.md in Sources */,
-				13125CB02063A62D00664DFC /* PointObject.cpp in Sources */,
 				13125BF02063953000664DFC /* TranslateCanvasCmd.cpp in Sources */,
 				13125C042063953000664DFC /* HexagonSurface.cpp in Sources */,
 				13125BF12063953000664DFC /* PiGui.cpp in Sources */,
@@ -1657,18 +1440,14 @@
 				13125BE02063953000664DFC /* SelNextTexCoordCmd.cpp in Sources */,
 				13125BD02063953000664DFC /* CmdManager.cpp in Sources */,
 				135D45232070CA78006086DF /* SurfaceMask.cpp in Sources */,
-				13125CA72063A62D00664DFC /* Canvas.cpp in Sources */,
 				13125BF52063953000664DFC /* SourcesEditorWidget.cpp in Sources */,
-				13125CAC2063A62D00664DFC /* Homography.cpp in Sources */,
 				5864AD82E20F15536D054EA3 /* ofxOscMessage.cpp in Sources */,
-				13125CB12063A62D00664DFC /* ofExtensions.cpp in Sources */,
 				13125C072063953000664DFC /* SurfaceManager.cpp in Sources */,
 				4ADB88E2FB52E76A471065DE /* ofxOscParameterSync.cpp in Sources */,
 				13125BC92063953000664DFC /* SourceSelectionMode.cpp in Sources */,
 				13125C062063953000664DFC /* SurfaceFactory.cpp in Sources */,
 				640279EE111671BD026CB013 /* ofxOscReceiver.cpp in Sources */,
 				13125BF42063953000664DFC /* ScaleWidget.cpp in Sources */,
-				13125CB42063A62D00664DFC /* Xml.cpp in Sources */,
 				13125BE92063953000664DFC /* SetNextSourceCmd.cpp in Sources */,
 				13125C052063953000664DFC /* QuadSurface.cpp in Sources */,
 				13125BC42063953000664DFC /* README.md in Sources */,
@@ -1687,9 +1466,7 @@
 				13125BBF2063953000664DFC /* EngineVk.cpp in Sources */,
 				0546D1A38E13BD319CC9755B /* OscReceivedElements.cpp in Sources */,
 				13125BFB2063953000664DFC /* MediaServer.cpp in Sources */,
-				13125CB22063A62D00664DFC /* ofxProjectionMask.cpp in Sources */,
 				879A251454401BC0B6E4F238 /* OscTypes.cpp in Sources */,
-				13125CAF2063A62D00664DFC /* MaskPoint.cpp in Sources */,
 				13125BEB2063953000664DFC /* SetSourceCmd.cpp in Sources */,
 				13125BCA2063953000664DFC /* TextureMappingMode.cpp in Sources */,
 				13125BB82063953000664DFC /* imgui_draw.cpp in Sources */,
@@ -1697,7 +1474,6 @@
 				933A2227713C720CEFF80FD9 /* tinyxml.cpp in Sources */,
 				13125BF22063953000664DFC /* LayerPanelWidget.cpp in Sources */,
 				13125BBC2063953000664DFC /* BaseTheme.cpp in Sources */,
-				13125C172063A56D00664DFC /* MaskApp.cpp in Sources */,
 				13125BDD2063953000664DFC /* SaveTexCoordPosCmd.cpp in Sources */,
 				13125BC62063953000664DFC /* ApplicationBaseMode.cpp in Sources */,
 				13125BB92063953000664DFC /* README.md in Sources */,

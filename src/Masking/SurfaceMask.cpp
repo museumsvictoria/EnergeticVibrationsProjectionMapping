@@ -18,7 +18,7 @@ void SurfaceMask::init_fbos(){
     fboSettings.width = ofGetWidth();
     fboSettings.height = ofGetHeight();
     fboSettings.internalformat = GL_RGBA;
-    fboSettings.numSamples = 8;//1
+    fboSettings.numSamples = 8;
     fboSettings.useDepth = false;
     fboSettings.useStencil = false;
     fboSettings.textureTarget = GL_TEXTURE_2D;
@@ -44,7 +44,7 @@ void SurfaceMask::init_fbos(){
     renderFboSettings.width = ofGetWidth();
     renderFboSettings.height = ofGetHeight();
     renderFboSettings.internalformat = GL_RGBA;
-    renderFboSettings.numSamples = 4;
+    renderFboSettings.numSamples = 8;
     renderFboSettings.useDepth = false;
     renderFboSettings.useStencil = false;
     renderFboSettings.textureTarget = GL_TEXTURE_2D;
@@ -59,9 +59,6 @@ void SurfaceMask::init_fbos(){
 
 //--------------------------------------------------------------
 void SurfaceMask::setup(){
-    // Use GL_TEXTURE_2D Textures (normalized texture coordinates 0..1)
-    //ofDisableArbTex();
-    
     shader_image.load("shaders/passthrough.vert","shaders/Masking/blend_mask.frag");
     mask_image.load("images/mask.png");
 
@@ -70,7 +67,6 @@ void SurfaceMask::setup(){
     shader_image.end();
     
     init_fbos();
-    
 }
 
 //--------------------------------------------------------------
@@ -83,17 +79,11 @@ void SurfaceMask::set_source_texture(ofFbo& tex){
 
 //--------------------------------------------------------------
 void SurfaceMask::update(){
-    // clear to green as grayScott runs in red and green channels
-    ofClear( 0, 255, 0, 255 );
-    ofDisableDepthTest();
-    
-
     m_src_fbo.begin();
     ofClear(0,0,0,0);
     ofSetColor(255,255);
     mask_image.draw(0,0,ofGetWidth(),ofGetHeight());
     m_src_fbo.end();
-
     
     /// Final Render
     ////////////////
@@ -111,8 +101,6 @@ void SurfaceMask::update(){
         shader_image.end();
     }
     m_renderFbo.end();
-    
-    glDisable( GL_CULL_FACE );
 }
 
 //--------------------------------------------------------------
