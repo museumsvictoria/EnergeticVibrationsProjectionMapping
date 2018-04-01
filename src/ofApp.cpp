@@ -124,10 +124,39 @@ void ofApp::update_osc(){
             float bass = ofClamp(m.getArgAsFloat(2), 0.0, 1.0);
             float mid = ofClamp(m.getArgAsFloat(3), 0.0, 1.0);
             float high = ofClamp(m.getArgAsFloat(4), 0.0, 1.0);
-            float shape = 18.0;
-            volumes[0] = ofMap(powf(bass - 1.0, shape), 1.0, 0.0, 0.0, 1.0);
-            volumes[1] = ofMap(powf(mid - 1.0, shape), 1.0, 0.0, 0.0, 1.0);;
-            volumes[2] = ofMap(powf(high - 1.0, shape), 1.0, 0.0, 0.0, 1.0);;
+            float b_shape = 4.0;
+            float m_shape = 18.0;
+            float h_shape = 18.0;
+            float b_amp = ofMap(powf(bass - 1.0, b_shape), 1.0, 0.0, 0.0, 1.5);
+            float m_amp = ofMap(powf(mid - 1.0, m_shape), 1.0, 0.0, 0.0, 3.0);
+            float h_amp = ofMap(powf(high - 1.0, h_shape), 1.0, 0.0, 0.0, 10.0);
+
+            float b_smooth = 0.1; // Make smaller for smoother
+            float m_smooth = 0.1; // Make smaller for smoother
+            float h_smooth = 0.05; // Make smaller for smoother
+
+            //-------- Bass
+            if (b_amp > volumes[0]) {
+                volumes[0] = b_amp;
+            } else {
+                float diff = b_amp - volumes[0];
+                volumes[0] += diff * b_smooth;
+            }
+            //-------- Mid
+            if (m_amp > volumes[1]) {
+                volumes[1] = m_amp;
+            } else {
+                float diff = m_amp - volumes[1];
+                volumes[1] += diff * m_smooth;
+            }
+            //-------- High
+            if (h_amp > volumes[2]) {
+                volumes[2] = h_amp;
+            } else {
+                float diff = h_amp - volumes[2];
+                volumes[2] += diff * h_smooth;
+            }
+        
         }
     }
 }

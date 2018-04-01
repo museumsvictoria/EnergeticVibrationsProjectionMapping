@@ -38,7 +38,7 @@
         </texCoords>
         <source>
             <source-type>fbo</source-type>
-            <source-name>Shader8</source-name>
+            <source-name>Shader6</source-name>
         </source>
         <properties>
             <perspectiveWarping>1</perspectiveWarping>
@@ -83,7 +83,7 @@
         </texCoords>
         <source>
             <source-type>fbo</source-type>
-            <source-name>Shader5</source-name>
+            <source-name>Shader6</source-name>
         </source>
         <properties>
             <perspectiveWarping>1</perspectiveWarping>
@@ -92,16 +92,16 @@
     <surface type="0">
         <vertices>
             <vertex>
-                <x>696.000000000</x>
-                <y>796.000000000</y>
+                <x>678.000000000</x>
+                <y>776.000000000</y>
             </vertex>
             <vertex>
-                <x>693.000000000</x>
-                <y>667.000000000</y>
+                <x>675.000000000</x>
+                <y>647.000000000</y>
             </vertex>
             <vertex>
-                <x>1132.000000000</x>
-                <y>582.000000000</y>
+                <x>1114.000000000</x>
+                <y>562.000000000</y>
             </vertex>
         </vertices>
         <texCoords>
@@ -120,7 +120,7 @@
         </texCoords>
         <source>
             <source-type>fbo</source-type>
-            <source-name>Shader2</source-name>
+            <source-name>Shader6</source-name>
         </source>
     </surface>
 </surfaces>
