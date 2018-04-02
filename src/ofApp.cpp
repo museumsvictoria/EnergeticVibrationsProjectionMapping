@@ -1,7 +1,108 @@
 #include "ofApp.h"
 #include "nodel/nodel_dep.hpp"
 
-//changed
+#define STRINGIFY(A) #A
+
+//--------------------------------------------------------------
+void ofApp::build_shader_src(){
+    
+    ofDirectory util_dir;
+    ofDirectory shader_dir;
+    util_dir.listDir("shaders/Util/");
+    shader_dir.listDir("shaders/Synths/");
+    shader_dir.sort();
+    util_dir.sort();
+    
+    string fragShaderSrc;
+    
+    for(int i = 0; i < util_dir.size(); i++){
+        ifstream fin (ofToDataPath(util_dir.getPath(i)).c_str()); //declare a file stream
+        
+        if(fin.is_open()){
+            vector<string> data; //declare a vector of strings to store data
+            
+            string str; //declare a string for storage
+            //as long as theres still text to be read
+            while(getline(fin, str)) //get a line from the file, put it in the string
+            {
+                data.push_back(str); //push the string onto a vector of strings
+                
+                fragShaderSrc += str + "\n";
+                //cout << str << endl;
+            }
+            fin.close();
+        }
+    }
+    
+    
+    for(int i = 0; i < shader_dir.size(); i++){
+        ifstream fin (ofToDataPath(shader_dir.getPath(i)).c_str()); //declare a file stream
+        
+        if(fin.is_open()){
+            vector<string> data; //declare a vector of strings to store data
+            
+            string str; //declare a string for storage
+            //as long as theres still text to be read
+            while(getline(fin, str)) //get a line from the file, put it in the string
+            {
+                data.push_back(str); //push the string onto a vector of strings
+                
+                fragShaderSrc += str + "\n";
+                //cout << str << endl;
+            }
+            fin.close();
+        }
+    }
+    
+    fragShaderSrc += STRINGIFY(
+                               
+                                void main(void) {
+                                    vec3 final_out = vec3(0.0);
+
+                                    if(scene_select == 0){
+                                        final_out = HexagonGradient();
+                                    }
+                                    else if(scene_select == 1){
+                                        final_out = ColourGradient();
+                                    }
+                                    else if(scene_select == 2){
+                                        final_out = EscherLike();
+                                    }
+                                    else if(scene_select == 3){
+                                        final_out = FlowerOfLife();
+                                    }
+                                    else if(scene_select == 4){
+                                        final_out = TriLattice();
+                                    }
+                                    else if(scene_select == 5){
+                                        final_out = RadialHexagon();
+                                    }
+                                    else if(scene_select == 6){
+                                        final_out = OpArtTwister();
+                                    }
+                                    else if(scene_select == 7){
+                                        final_out = PatternMesh2D();
+                                    }
+                                    else if(scene_select == 8){
+                                        final_out = PolygonPatterns();
+                                    }
+                                    else if (scene_select == 9){
+                                        final_out = SnubQuadrille();
+                                    }
+                                    else if (scene_select == 10){
+                                        final_out = PentagonTessellations();
+                                    }
+
+                                    gl_FragColor = vec4(final_out,1.0);
+                                }
+    );
+    
+    cout << fragShaderSrc << endl;
+
+    s.setupShaderFromSource(GL_FRAGMENT_SHADER, fragShaderSrc);
+    s.linkProgram();
+
+}
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofSetFrameRate(60);
@@ -39,7 +140,7 @@ void ofApp::setup(){
         mapper.registerFboSource(layers[i]);
     }
     
-
+    build_shader_src();
     
     ofx::piMapper::VideoSource::enableAudio = false;
     ofx::piMapper::VideoSource::useHDMIForAudio = false;
@@ -117,7 +218,7 @@ void ofApp::update(){
         tmpShader->setGeometryOutputCount(4);
         
         if (tmpShader->load("shaders/passthrough.vert","shaders/shader_selector.frag")){
-            scene_shader = tmpShader;
+            scene_shader = s;// tmpShader;
             
             for(int i = 0; i < layers.size(); i++){
                 layers[i]->set_scene_shader(scene_shader);                

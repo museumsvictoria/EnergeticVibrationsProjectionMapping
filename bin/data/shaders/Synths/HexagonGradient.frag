@@ -21,5 +21,5 @@ vec3 HexagonGradient()
     O.r *= sin(iter*length(res-g2-1.0)-1.5*(t*2.0)) +O.r-O.r;
     O.b += (sin(iter*length(res-g2-1.0)-1.55*(t*2.0)) +O.b-O.b)*0.1;
     
-    return O.rgb;
+    return hue(O.rgb,hue_offset);
 }

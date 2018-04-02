@@ -28,5 +28,5 @@ vec3 RadialHexagon()
     float iter = remap(param1,0.0,1.0,0.0,10.0);
     O = pow(.5+.5*s*sin(iter*log(r)+a),1.) * exp(-.03*r*r) * sin(r+vec4(1,1.,1.,0));
     
-    return O.rgb;
+    return O.rgb * MixColour();
 }

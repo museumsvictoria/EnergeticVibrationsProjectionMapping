@@ -41,5 +41,5 @@ vec3 FlowerOfLife()
         rgb[i] += pow(formula(tx, time2), 6.0);
     }
     vec3 final = vec3(rgb * remap(param1,0.0,1.0,1.0,12.0));
-    return final;
+    return hue(final,hue_offset);
 }

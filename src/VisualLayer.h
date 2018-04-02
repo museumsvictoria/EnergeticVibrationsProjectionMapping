@@ -39,7 +39,8 @@ public:
     void setup(string name, int scene_num);
     
     void load_movie(string file);
-    void set_scene_shader(shared_ptr<ofShader> scene_shader);
+  //  void set_scene_shader(shared_ptr<ofShader> scene_shader);
+    void set_scene_shader(ofShader scene_shader);
     void update();
     void draw();
     
@@ -51,7 +52,8 @@ public:
     RenderFbo render_fbo;
 
 private:
-    shared_ptr<ofShader> scene_shader;
+///    shared_ptr<ofShader> scene_shader;
+    ofShader scene_shader;
     ofVideoPlayer player;
     FullscreenQuad quad;
 	bool use_shader;

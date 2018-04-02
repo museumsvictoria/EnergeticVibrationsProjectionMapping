@@ -37,5 +37,5 @@ vec3 OpArtTwister()
     
     vec3 final = vec3(col,col*v,col*v);
     
-    return final*2.0;
+    return hue(final*2.0,hue_offset);
 }

@@ -37,6 +37,6 @@ vec3 TriLattice()
     vec3 rgb = mix(vec3(.760, 0., 0), vec3(1, .5, .5), cb);
     vec3 rgb2 = mix(vec3(.90, 1.5, 1.5), vec3(1, 0.95, 1.5), cb);
     vec3 final_rgb = mix(rgb, rgb2, param3);
-    return final_rgb * c;
+    return hue(final_rgb * c,hue_offset);
 }
 

@@ -1,22 +1,12 @@
-uniform vec3      resolution;
-uniform float     time;
-uniform float     iFrame;
-uniform float     iChannelTime[4];
-uniform vec4      iMouse;
-uniform sampler2D iChannel0;
 
-uniform int scene_select;
-uniform float hue_offset;
-uniform float param1;
-uniform float param2;
-uniform float param3;
 
-#pragma include "Util/PI.glsl"
-#pragma include "Util/easings.glsl"
-#pragma include "Util/hue_shift.frag"
-#pragma include "Util/remap.glsl"
-#pragma include "Util/shared_functions.glsl"
-#pragma include "Util/colourise.frag"
+#pragma include "Util/1_uniforms.glsl"
+#pragma include "Util/2_PI.glsl"
+#pragma include "Util/3_remap.glsl"
+#pragma include "Util/4_easings.glsl"
+#pragma include "Util/5_hue_shift.frag"
+#pragma include "Util/6_colourise.frag"
+#pragma include "Util/7_shared_functions.glsl"
 #pragma include "Synths/2DPatternMesh.frag"   // shader 1
 #pragma include "Synths/ColourGradient.frag"  // shader 2
 #pragma include "Synths/EscherLike.frag"      // shader 3
@@ -26,7 +16,7 @@ uniform float param3;
 #pragma include "Synths/OpArtTwister.frag"    // shader 7
 #pragma include "Synths/HexagonGradient.frag" // shader 8
 #pragma include "Synths/PolygonPatterns.frag" // shader 9
-#pragma include "Synths/SnubQuadrille.frag" // shader 10
+#pragma include "Synths/SnubQuadrille.frag"   // shader 10
 #pragma include "Synths/PentagonTessellations.frag" // shader 11
 
 void main(void)

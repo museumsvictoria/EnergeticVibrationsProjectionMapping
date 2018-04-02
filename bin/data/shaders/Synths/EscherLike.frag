@@ -18,5 +18,5 @@ vec3 EscherLike()
     
     if (b>0.) output_tex = 1.-output_tex; // try also without :-)
     
-    return output_tex.rgb;
+    return output_tex.rgb * MixColour();
 }

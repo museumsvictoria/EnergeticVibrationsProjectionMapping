@@ -27,5 +27,5 @@ vec3 PolygonPatterns()
     vec4 col1 = vec4(vec3(pow(1.0-col, 1.945)),1.0);
     vec4 col2 = vec4(vec3(pow(col, 1.945)),1.0);
 
-    return mix(col1,col2,param3).rgb;
+    return mix(col1,col2,param3).rgb * MixColour();
 }

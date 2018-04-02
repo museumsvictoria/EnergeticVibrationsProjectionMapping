@@ -30,5 +30,5 @@ vec3 PatternMesh2D()
   //o = .5+.5*sin(10.*o + vec4(0,2.1,-2.1,0) * s(time*.4));  
   //  o = mix(o,  s(10.*o + vec4(0,2.1,-2.1,0)), s(time*.4));
 
-    return o.xyz;
+    return o.xyz * MixColour();
 }

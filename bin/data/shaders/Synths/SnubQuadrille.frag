@@ -71,6 +71,6 @@ vec3 SnubQuadrille()
         d = min(d,segment(p,q1,q2));
         col = mix(vec3(0),col,smoothstep(lwidth-awidth,lwidth+awidth,d));
     }
-    return sqrt(col);
+    return hue(sqrt(col), hue_offset);
 }
 

@@ -22,12 +22,16 @@
 #include "ofxWinTouchHook.h"
 #endif
 
+#include <fstream>
+
 class ofApp : public ofBaseApp{
 
 	public:
 		void setup();
 		void update();
 		void draw();
+    
+        void build_shader_src();
     
         void setupProjectionWindow();
         void drawProjections(ofEventArgs & args);
@@ -64,8 +68,12 @@ class ofApp : public ofBaseApp{
     
         ///------------- LAYERS
         vector<VisualLayer*> layers;
-        shared_ptr<ofShader> scene_shader;
+//    shared_ptr<ofShader> scene_shader;
+        ofShader scene_shader;
         bool isShaderDirty;
+    
+    ofShader s;
+
 
         ///------------- GUI
         ofxImGui::Gui gui;

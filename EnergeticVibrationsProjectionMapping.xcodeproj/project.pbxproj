@@ -417,6 +417,7 @@
 		135D453E2072326C006086DF /* ofxJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxJSON.h; sourceTree = "<group>"; };
 		135D453F2072326C006086DF /* ofxJSONElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxJSONElement.cpp; sourceTree = "<group>"; };
 		135D45402072326C006086DF /* ofxJSONElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxJSONElement.h; sourceTree = "<group>"; };
+		135D45452072492A006086DF /* uniforms.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = uniforms.glsl; sourceTree = "<group>"; };
 		15F2C6477A769C03A56D1401 /* ofxSlider.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxSlider.cpp; path = ../../../addons/ofxGui/src/ofxSlider.cpp; sourceTree = SOURCE_ROOT; };
 		17E65988300FBD9AAA2CD0CA /* ofxGui.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxGui.h; path = ../../../addons/ofxGui/src/ofxGui.h; sourceTree = SOURCE_ROOT; };
 		1A5AD3623882B15542BEEE7D /* drag_manager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = drag_manager.cpp; path = src/drag_manager.cpp; sourceTree = SOURCE_ROOT; };
@@ -945,6 +946,7 @@
 		13125CD8206F6ABF00664DFC /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				135D45452072492A006086DF /* uniforms.glsl */,
 				13125CDF206F869F00664DFC /* shared_functions.glsl */,
 				13125CD9206F6ABF00664DFC /* colourise.frag */,
 				13125CDA206F6ABF00664DFC /* easings.glsl */,
