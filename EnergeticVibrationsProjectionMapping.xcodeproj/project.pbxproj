@@ -400,6 +400,8 @@
 		135D451F2070CA78006086DF /* PingPong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PingPong.h; sourceTree = "<group>"; };
 		135D45202070CA78006086DF /* SurfaceMask.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SurfaceMask.cpp; sourceTree = "<group>"; };
 		135D45212070CA78006086DF /* SurfaceMask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurfaceMask.h; sourceTree = "<group>"; };
+		135D4529207209CA006086DF /* asset_colour_changer.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = asset_colour_changer.frag; sourceTree = "<group>"; };
+		135D452D207227EA006086DF /* ConvertAssetColour.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ConvertAssetColour.h; path = GUI/ConvertAssetColour.h; sourceTree = "<group>"; };
 		15F2C6477A769C03A56D1401 /* ofxSlider.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxSlider.cpp; path = ../../../addons/ofxGui/src/ofxSlider.cpp; sourceTree = SOURCE_ROOT; };
 		17E65988300FBD9AAA2CD0CA /* ofxGui.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxGui.h; path = ../../../addons/ofxGui/src/ofxGui.h; sourceTree = SOURCE_ROOT; };
 		1A5AD3623882B15542BEEE7D /* drag_manager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = drag_manager.cpp; path = src/drag_manager.cpp; sourceTree = SOURCE_ROOT; };
@@ -900,6 +902,7 @@
 		13125CC8206F6ABF00664DFC /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				135D4529207209CA006086DF /* asset_colour_changer.frag */,
 				13125CC9206F6ABF00664DFC /* gradient.frag */,
 				13125CCA206F6ABF00664DFC /* grid.frag */,
 			);
@@ -1089,6 +1092,7 @@
 				5E9CE0E9934157F867A13A82 /* Gradient.h */,
 				207C2802654A526C24E6DA1A /* GuiInterface.cpp */,
 				2AEED4A3EBE51D53DEE3DC2E /* GuiInterface.h */,
+				135D452D207227EA006086DF /* ConvertAssetColour.h */,
 				6527AE4CB68844FB0EC6E9B7 /* GuiTheme.h */,
 				B1EFFC04AD662DC1A5ED921E /* PiMapperHelper.cpp */,
 				292418BA06D63D367D7E8E92 /* PiMapperHelper.h */,

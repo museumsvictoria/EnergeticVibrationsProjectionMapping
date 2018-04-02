@@ -66,13 +66,13 @@ void GuiInterface::setup(ofxImGui::Gui &gui, ofxPiMapper& mapper, int num_layes)
     
     param_gui_offset = 150;
 
+    
+    
     // Originals
-    theme_colour = ofVec4f(255, 26, 34, 255);
-    font_colour = ofVec4f(236, 60, 53, 255);
+    theme_colour = ofVec4f(237, 60, 52, 255);
 
     // Custom
     theme_colour = ofVec4f(ofRandom(255), ofRandom(255), ofRandom(255), 255);
-    font_colour = ofVec4f(ofRandom(255), ofRandom(255), ofRandom(255), 255);
     map_helper.set_theme_colour(theme_colour);
     
     add_shape_rect = ofRectangle(118,95,306,149);
@@ -131,7 +131,7 @@ void GuiInterface::setup_selected_layer(ofxImGui::Gui &gui){
     for(int i = 0; i < shader_states.size(); i++){
         for(int x = 0; x < 3; x++){
             AudioToggles toggle;
-            toggle.setup(gui);
+            toggle.setup(gui, theme_colour);
             shader_states[i].toggles.push_back(toggle);
         }
         for(int y = 0; y < 4; y++){
@@ -162,6 +162,11 @@ void GuiInterface::setup_add_shape(ofxImGui::Gui &gui){
     ofImage triangle_image;
     quad_image.load("buttons/rectangle.png");
     triangle_image.load("buttons/triangle.png");
+    
+    quad_image = asset_colour.convert_asset_colour(quad_image.getWidth(), quad_image.getHeight(), quad_image, theme_colour);
+    
+    triangle_image = asset_colour.convert_asset_colour(triangle_image.getWidth(), triangle_image.getHeight(), triangle_image, theme_colour);
+    
     quad_buttonID = gui.loadImage(quad_image);
     triangle_buttonID = gui.loadImage(triangle_image);
 }
@@ -294,7 +299,7 @@ void GuiInterface::draw_selected_layer(ofRectangle rect, ShaderParams &params){
     //--- PARAMS
     for(int i = 0; i < shader_states[selected_shader].sliders.size(); i++){
 
-        ofSetColor(font_colour.x,font_colour.y,font_colour.z);
+        ofSetColor(theme_colour.x,theme_colour.y,theme_colour.z);
         font_mid.drawString(params.names[i], rect.x + padding.x, (param_gui_offset * i) + (rect.y+52));
         
         float slider_val = shader_states[selected_shader].sliders[i]->getValue();

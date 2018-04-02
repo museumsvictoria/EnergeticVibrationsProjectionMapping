@@ -11,7 +11,6 @@ uniform sampler2D iChannel2;          // input channel. XX = 2D/Cube
 uniform vec4      iDate;                 // (year, month, day, time in seconds)
 uniform float     iSampleRate;
 
-
 void main( void )
 {
     // The screen coordinates.

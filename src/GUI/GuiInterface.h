@@ -15,6 +15,7 @@
 #include "ofxImGui.h"
 #include "VisualLayer.h"
 #include "PiMapperHelper.h"
+#include "ConvertAssetColour.h"
 
 struct ShaderToggle{
     bool b;
@@ -99,8 +100,9 @@ private:
     
     // Gui Themes Colour
     ofVec4f theme_colour;
-    ofVec4f font_colour;
     
+    ConvertAssetColour asset_colour;
+
     /// Add Shape Panel
     GLuint quad_buttonID;
     GLuint triangle_buttonID;

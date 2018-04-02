@@ -9,7 +9,7 @@
 #include "AudioToggles.h"
 
 //------------------------------------
-void AudioToggles::setup(ofxImGui::Gui &gui){
+void AudioToggles::setup(ofxImGui::Gui &gui, ofVec4f theme_colour){
     selected = 0;
     
     vector<string> names = {"off_", "bass_", "mid_", "high_"};
@@ -23,6 +23,11 @@ void AudioToggles::setup(ofxImGui::Gui &gui){
         ofImage image_off;
         image_on.load("buttons/" + names[i] + "on.png");
         image_off.load("buttons/" + names[i] + "off.png");
+        
+        image_on = asset_colour.convert_asset_colour(image_on.getWidth(), image_on.getHeight(), image_on, theme_colour);
+
+        image_off = asset_colour.convert_asset_colour(image_off.getWidth(), image_off.getHeight(), image_off, theme_colour);
+        
         t.buttonOnID = gui.loadImage(image_on);
         t.buttonOffID = gui.loadImage(image_off);
         
