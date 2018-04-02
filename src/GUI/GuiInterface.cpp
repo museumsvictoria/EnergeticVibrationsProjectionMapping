@@ -48,8 +48,9 @@ void GuiInterface::init_window_flags(){
 }
 
 //------------------------------------
-void GuiInterface::setup(ofxImGui::Gui &gui, ofxPiMapper& mapper, int num_layes){
+void GuiInterface::setup(ofxImGui::Gui &gui, ofxPiMapper& mapper, int num_layes, ofVec4f theme_colour){
     this->num_layers = num_layes;
+    this->theme_colour = theme_colour;
     
     map_helper.setup(mapper);
     
@@ -68,11 +69,7 @@ void GuiInterface::setup(ofxImGui::Gui &gui, ofxPiMapper& mapper, int num_layes)
 
     
     
-    // Originals
-    theme_colour = ofVec4f(237, 60, 52, 255);
 
-    // Custom
-    theme_colour = ofVec4f(ofRandom(255), ofRandom(255), ofRandom(255), 255);
     map_helper.set_theme_colour(theme_colour);
     
     add_shape_rect = ofRectangle(118,95,306,149);
@@ -223,12 +220,13 @@ void GuiInterface::set_theme_colour(ofVec4f theme_colour){
 
 //------------------------------------
 void GuiInterface::draw(ShaderParams &params){
-    
+    map_helper.set_theme_colour(theme_colour);
+
     ofSetColor(255);
     img_background.draw(0,0,ofGetWidth(),ofGetHeight());
 
 //    if(ofGetMousePressed()){
-        img.draw(0,0,ofGetWidth(), ofGetHeight());
+//        img.draw(0,0,ofGetWidth(), ofGetHeight());
 //    }
     
     draw_add_shape(add_shape_rect);

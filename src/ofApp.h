@@ -8,6 +8,7 @@
 #include "ofxImGui.h"
 #include "GuiTheme.h"
 #include "GuiInterface.h"
+#include "ofxJSON.h"
 
 #include "SurfaceMask.h"
 #include "VisualLayer.h"
@@ -70,6 +71,9 @@ class ofApp : public ofBaseApp{
         ofxImGui::Gui gui;
         GuiTheme gui_theme;
 		int clear_touch_in_two_frames;
+    
+        // Gui Themes Colour
+        ofVec4f theme_colour;
     
         GuiInterface gui_interface;
 

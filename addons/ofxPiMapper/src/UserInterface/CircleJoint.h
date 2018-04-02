@@ -15,6 +15,8 @@ class CircleJoint : public BaseJoint {
 		bool hitTest(ofVec2f position);
 		bool hitTestJoint(const ofVec2f & position);
 
+        void set_joint_colour(ofVec3f theme_colour);
+
 	private:
 		float radius;
 

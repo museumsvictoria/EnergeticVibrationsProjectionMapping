@@ -28,7 +28,7 @@ public:
     }
     
     //--------------------------------------------------------------
-    void init_theme(){
+    void init_theme(ofVec4f theme_colour){
         ImGuiStyle * style = &ImGui::GetStyle();
         
         style->WindowPadding = ImVec2(15, 15);
@@ -68,8 +68,10 @@ public:
         style->Colors[ImGuiCol_SliderGrabActive] = ImVec4(0.25f, 0.67f, 0.85f, 1.00f);
         style->Colors[ImGuiCol_Button] = ImVec4(0.10f, 0.09f, 0.12f, 1.00f);
 //        style->Colors[ImGuiCol_ButtonHovered] = ImVec4(0.24f, 0.23f, 0.29f, 1.00f);
-        style->Colors[ImGuiCol_ButtonHovered] = ImVec4(1.f, 0.1f, 0.13f, 0.70f);
-        style->Colors[ImGuiCol_ButtonActive] = ImVec4(1.f, 0.1f, 0.13f, 1.00f);
+//        style->Colors[ImGuiCol_ButtonHovered] = ImVec4(1.f, 0.1f, 0.13f, 0.70f);
+        style->Colors[ImGuiCol_ButtonHovered] = ImVec4(theme_colour.x / 255.0f, theme_colour.y / 255.0f, theme_colour.z / 255.0f, 0.70f);
+        style->Colors[ImGuiCol_ButtonActive] = ImVec4(theme_colour.x / 255.0f, theme_colour.y / 255.0f, theme_colour.z / 255.0f, 1.00f);
+//        style->Colors[ImGuiCol_ButtonActive] = ImVec4(1.f, 0.1f, 0.13f, 1.00f);
         style->Colors[ImGuiCol_Header] = ImVec4(0.10f, 0.09f, 0.12f, 1.00f);
         style->Colors[ImGuiCol_HeaderHovered] = ImVec4(0.56f, 0.56f, 0.58f, 1.00f);
         style->Colors[ImGuiCol_HeaderActive] = ImVec4(0.06f, 0.05f, 0.07f, 1.00f);

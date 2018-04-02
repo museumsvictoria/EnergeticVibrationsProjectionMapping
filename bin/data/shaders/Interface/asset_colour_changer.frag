@@ -50,17 +50,17 @@ void main( void )
     vec3 o_hsv = rgb2hsl(tex.rgb);
     vec3 t_hsv = rgb2hsl(base_colour);
     
-    float b = 0.0;
+    float s = 0.0;
     float diff = 0.0;
-    if(o_hsv.b > t_hsv.b) {
-        diff = o_hsv.b - t_hsv.b;
-        b = o_hsv.b - diff;
+    if(o_hsv.g < t_hsv.g) {
+        diff = o_hsv.g - t_hsv.g;
+        s = o_hsv.g - diff;
     } else {
-        diff = t_hsv.b - o_hsv.b;
-        b = o_hsv.b + diff;
+        diff = t_hsv.g - o_hsv.g;
+        s = t_hsv.g + diff;
     }
     
-    vec3 f_hsv = vec3(t_hsv.r, b, o_hsv.b);
+    vec3 f_hsv = vec3(t_hsv.r, o_hsv.g * t_hsv.g, o_hsv.b);
     tex.rgb = hsl2rgb(f_hsv);
     
     gl_FragColor = tex;

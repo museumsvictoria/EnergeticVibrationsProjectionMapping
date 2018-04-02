@@ -45,7 +45,21 @@ void ofApp::setup(){
     ofx::piMapper::VideoSource::useHDMIForAudio = false;
     mapper.setup();
     
-  
+    // Load Laser Colour Data
+    ofxJSONElement json;
+    json.open("theme/theme_colour.json");
+    
+    theme_colour.x = json["theme_colour"]["r"].asFloat();
+    theme_colour.y = json["theme_colour"]["g"].asFloat();
+    theme_colour.z = json["theme_colour"]["b"].asFloat();
+    theme_colour.w = 255;
+    
+    // Originals
+    //theme_colour = ofVec4f(237, 60, 52, 255);
+    
+    // Custom
+    //theme_colour = ofVec4f(ofRandom(255), ofRandom(255), ofRandom(255), 255);
+    
     //load fonts first
     gui_theme.load_font();
     
@@ -53,9 +67,9 @@ void ofApp::setup(){
     gui.setup();
     
     //load theme
-    gui_theme.init_theme();
+    gui_theme.init_theme(theme_colour);
     
-    gui_interface.setup(gui, mapper, num_layers);
+    gui_interface.setup(gui, mapper, num_layers, theme_colour);
     gui_interface.setup_shader_toggles(layers);
     
 	clear_touch_in_two_frames = 0;

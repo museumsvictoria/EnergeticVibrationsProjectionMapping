@@ -102,6 +102,10 @@
 		13125C0F2063953000664DFC /* ofxWinTouchHook.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13125B9A2063953000664DFC /* ofxWinTouchHook.cpp */; };
 		135D45222070CA78006086DF /* PingPong.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 135D451E2070CA78006086DF /* PingPong.cpp */; };
 		135D45232070CA78006086DF /* SurfaceMask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 135D45202070CA78006086DF /* SurfaceMask.cpp */; };
+		135D45412072326C006086DF /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 135D453A2072326C006086DF /* jsoncpp.cpp */; };
+		135D45422072326C006086DF /* license.md in Sources */ = {isa = PBXBuildFile; fileRef = 135D453B2072326C006086DF /* license.md */; };
+		135D45432072326C006086DF /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 135D453C2072326C006086DF /* README.md */; };
+		135D45442072326C006086DF /* ofxJSONElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 135D453F2072326C006086DF /* ofxJSONElement.cpp */; };
 		1CD33E884D9E3358252E82A1 /* ofxToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 907C5B5E104864A2D3A25745 /* ofxToggle.cpp */; };
 		3963162316D531866896ED74 /* CustomSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9369DDE181D0D7457A54A062 /* CustomSlider.cpp */; };
 		483908258D00B98B4BE69F07 /* ofxLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78D67A00EB899FAC09430597 /* ofxLabel.cpp */; };
@@ -402,6 +406,17 @@
 		135D45212070CA78006086DF /* SurfaceMask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurfaceMask.h; sourceTree = "<group>"; };
 		135D4529207209CA006086DF /* asset_colour_changer.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = asset_colour_changer.frag; sourceTree = "<group>"; };
 		135D452D207227EA006086DF /* ConvertAssetColour.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ConvertAssetColour.h; path = GUI/ConvertAssetColour.h; sourceTree = "<group>"; };
+		135D45302072326C006086DF /* .gitattributes */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitattributes; sourceTree = "<group>"; };
+		135D45312072326C006086DF /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		135D45322072326C006086DF /* addon_config.mk */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = addon_config.mk; sourceTree = "<group>"; };
+		135D45372072326C006086DF /* json-forwards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "json-forwards.h"; sourceTree = "<group>"; };
+		135D45382072326C006086DF /* json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json.h; sourceTree = "<group>"; };
+		135D453A2072326C006086DF /* jsoncpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jsoncpp.cpp; sourceTree = "<group>"; };
+		135D453B2072326C006086DF /* license.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = license.md; sourceTree = "<group>"; };
+		135D453C2072326C006086DF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		135D453E2072326C006086DF /* ofxJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxJSON.h; sourceTree = "<group>"; };
+		135D453F2072326C006086DF /* ofxJSONElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxJSONElement.cpp; sourceTree = "<group>"; };
+		135D45402072326C006086DF /* ofxJSONElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxJSONElement.h; sourceTree = "<group>"; };
 		15F2C6477A769C03A56D1401 /* ofxSlider.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxSlider.cpp; path = ../../../addons/ofxGui/src/ofxSlider.cpp; sourceTree = SOURCE_ROOT; };
 		17E65988300FBD9AAA2CD0CA /* ofxGui.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxGui.h; path = ../../../addons/ofxGui/src/ofxGui.h; sourceTree = SOURCE_ROOT; };
 		1A5AD3623882B15542BEEE7D /* drag_manager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = drag_manager.cpp; path = src/drag_manager.cpp; sourceTree = SOURCE_ROOT; };
@@ -959,6 +974,73 @@
 			path = Masking;
 			sourceTree = "<group>";
 		};
+		135D452F2072326C006086DF /* ofxJSON */ = {
+			isa = PBXGroup;
+			children = (
+				135D45302072326C006086DF /* .gitattributes */,
+				135D45312072326C006086DF /* .gitignore */,
+				135D45322072326C006086DF /* addon_config.mk */,
+				135D45332072326C006086DF /* libs */,
+				135D453B2072326C006086DF /* license.md */,
+				135D453C2072326C006086DF /* README.md */,
+				135D453D2072326C006086DF /* src */,
+			);
+			name = ofxJSON;
+			path = ../../../addons/ofxJSON;
+			sourceTree = "<group>";
+		};
+		135D45332072326C006086DF /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				135D45342072326C006086DF /* jsoncpp */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		135D45342072326C006086DF /* jsoncpp */ = {
+			isa = PBXGroup;
+			children = (
+				135D45352072326C006086DF /* include */,
+				135D45392072326C006086DF /* src */,
+			);
+			path = jsoncpp;
+			sourceTree = "<group>";
+		};
+		135D45352072326C006086DF /* include */ = {
+			isa = PBXGroup;
+			children = (
+				135D45362072326C006086DF /* json */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		135D45362072326C006086DF /* json */ = {
+			isa = PBXGroup;
+			children = (
+				135D45372072326C006086DF /* json-forwards.h */,
+				135D45382072326C006086DF /* json.h */,
+			);
+			path = json;
+			sourceTree = "<group>";
+		};
+		135D45392072326C006086DF /* src */ = {
+			isa = PBXGroup;
+			children = (
+				135D453A2072326C006086DF /* jsoncpp.cpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		135D453D2072326C006086DF /* src */ = {
+			isa = PBXGroup;
+			children = (
+				135D453E2072326C006086DF /* ofxJSON.h */,
+				135D453F2072326C006086DF /* ofxJSONElement.cpp */,
+				135D45402072326C006086DF /* ofxJSONElement.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		18240ECCE4076FB0833A8578 /* ofxNetwork */ = {
 			isa = PBXGroup;
 			children = (
@@ -1127,6 +1209,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				135D452F2072326C006086DF /* ofxJSON */,
 				13125AC32063952F00664DFC /* ofxImGui */,
 				13125AEA2063952F00664DFC /* ofxPiMapper */,
 				13125B962063953000664DFC /* ofxWinTouchHook */,
@@ -1371,6 +1454,7 @@
 				13125BEA2063953000664DFC /* SetPresetCmd.cpp in Sources */,
 				13125BFE2063953000664DFC /* FboSource.cpp in Sources */,
 				13125BC22063953000664DFC /* ofxImGuiLoggerChannel.cpp in Sources */,
+				135D45412072326C006086DF /* jsoncpp.cpp in Sources */,
 				C5DF37358F5928A68A2CB5BE /* Gradient.cpp in Sources */,
 				13125BBA2063953000664DFC /* README.md in Sources */,
 				13125BC32063953000664DFC /* LICENSE.md in Sources */,
@@ -1407,11 +1491,13 @@
 				13125BCD2063953000664DFC /* AddGridRowCmd.cpp in Sources */,
 				13125C002063953000664DFC /* OMXPlayerCache.cpp in Sources */,
 				13125BC52063953000664DFC /* Application.cpp in Sources */,
+				135D45422072326C006086DF /* license.md in Sources */,
 				13125BEC2063953000664DFC /* SetTexMapDrawModeCmd.cpp in Sources */,
 				13125BD82063953000664DFC /* MvSurfaceVertCmd.cpp in Sources */,
 				13125BE82063953000664DFC /* SetApplicationModeCmd.cpp in Sources */,
 				13125BF32063953000664DFC /* ProjectionEditorWidget.cpp in Sources */,
 				13125C0D2063953000664DFC /* HomographyHelper.cpp in Sources */,
+				135D45432072326C006086DF /* README.md in Sources */,
 				13125BEE2063953000664DFC /* ToggleAnimatedSourceCmd.cpp in Sources */,
 				13125BEF2063953000664DFC /* TogglePerspectiveCmd.cpp in Sources */,
 				13125BE52063953000664DFC /* SelSurfaceCmd.cpp in Sources */,
@@ -1462,6 +1548,7 @@
 				510CAFE035E576A4E1502D52 /* UdpSocket.cpp in Sources */,
 				13125BC12063953000664DFC /* Helpers.cpp in Sources */,
 				13125C0A2063953000664DFC /* BaseJoint.cpp in Sources */,
+				135D45442072326C006086DF /* ofxJSONElement.cpp in Sources */,
 				62545D179C94265CA1389D4A /* OscOutboundPacketStream.cpp in Sources */,
 				13125BFC2063953000664DFC /* ofxPiMapper.cpp in Sources */,
 				C4782ECC372420ACE0615B74 /* OscPrintReceivedElements.cpp in Sources */,

@@ -74,10 +74,6 @@ void BaseJoint::setDefaultProperties(){
 
 }
     
-void BaseJoint::set_joint_colour(ofVec3f theme_colour){
-    strokeColor = ofColor(theme_colour.x,theme_colour.y,theme_colour.z);
-    strokeColorSelected = ofColor(theme_colour.x, theme_colour.y, theme_colour.z);
-}
 
 } // namespace piMapper
 } // namespace ofx

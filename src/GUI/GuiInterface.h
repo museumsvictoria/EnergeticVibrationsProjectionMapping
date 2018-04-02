@@ -36,7 +36,7 @@ class GuiInterface{
     GuiInterface();
     ~GuiInterface();
     void init_window_flags();
-    void setup(ofxImGui::Gui &gui, ofxPiMapper& mapper, int num_layes);
+    void setup(ofxImGui::Gui &gui, ofxPiMapper& mapper, int num_layes, ofVec4f theme_colour);
     void setup_add_shape(ofxImGui::Gui &gui);
     void setup_shader_toggles(vector<VisualLayer*> &layers);
     void setup_mapping_panel(ofxImGui::Gui &gui);
@@ -98,9 +98,7 @@ private:
     
     int num_layers;
     
-    // Gui Themes Colour
     ofVec4f theme_colour;
-    
     ConvertAssetColour asset_colour;
 
     /// Add Shape Panel

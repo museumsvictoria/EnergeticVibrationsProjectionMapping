@@ -26,8 +26,6 @@ class BaseJoint {
 		bool isDragged();
 		bool isSelected();
     
-        void set_joint_colour(ofVec3f theme_colour);
-
 		virtual void update(){}
 		virtual void draw(){}
 		virtual bool hitTest(ofVec2f position){ return false; }

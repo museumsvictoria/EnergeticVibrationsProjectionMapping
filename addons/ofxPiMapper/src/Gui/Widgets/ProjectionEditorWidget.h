@@ -22,6 +22,8 @@ class ProjectionEditorWidget {
 	
         //JOSH addition Tom changed to pass in active joints
         void touchMoved(map<int, ofTouchEventArgs> & active_joint_move_touch);
+        void set_joint_colour(ofVec3f theme_colour);
+        ofVec3f theme_colour;
     
 		void mouseDragged(ofMouseEventArgs & args);
 		void gotMessage(ofMessage & msg);

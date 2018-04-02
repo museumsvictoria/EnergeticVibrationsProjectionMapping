@@ -161,12 +161,17 @@ void ProjectionEditorWidget::clearJoints(){
 		joints.pop_back();
 	}
 }
-
+    
+void ProjectionEditorWidget::set_joint_colour(ofVec3f theme_colour){
+    this->theme_colour = theme_colour;
+}
+    
 void ProjectionEditorWidget::createJoints(){
 	if (surfaceManager == 0) {
 		return;
 	}
-	/*
+
+    /*
 	Save drag and surface settigns
 	*/
 	vector<bool> drags(4);
@@ -310,8 +315,8 @@ void ProjectionEditorWidget::onVertexUnselected(int & vertexIndex){
 
 void ProjectionEditorWidget::drawJoints(){
 	for(int i = 0; i < joints.size(); i++){
+        joints[i]->set_joint_colour(theme_colour);
 		joints[i]->draw();
-		
 	}
 }
 
