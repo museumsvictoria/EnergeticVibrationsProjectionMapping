@@ -34,10 +34,16 @@ void ofApp::build_shader_src(){
         }
     }
     
+    vector<string> shader_names;
     
     for(int i = 0; i < shader_dir.size(); i++){
-        ifstream fin (ofToDataPath(shader_dir.getPath(i)).c_str()); //declare a file stream
         
+        size_t lastindex = shader_dir.getName(i).find_last_of(".");
+        string rawname = shader_dir.getName(i).substr(0, lastindex);
+        shader_names.push_back(rawname);
+        
+        ifstream fin (ofToDataPath(shader_dir.getPath(i)).c_str()); //declare a file stream
+        shader_dir.getName(i);
         if(fin.is_open()){
             vector<string> data; //declare a vector of strings to store data
             
@@ -54,50 +60,62 @@ void ofApp::build_shader_src(){
         }
     }
     
-    fragShaderSrc += STRINGIFY(
-                               
-                                void main(void) {
-                                    vec3 final_out = vec3(0.0);
 
-                                    if(scene_select == 0){
-                                        final_out = HexagonGradient();
-                                    }
-                                    else if(scene_select == 1){
-                                        final_out = ColourGradient();
-                                    }
-                                    else if(scene_select == 2){
-                                        final_out = EscherLike();
-                                    }
-                                    else if(scene_select == 3){
-                                        final_out = FlowerOfLife();
-                                    }
-                                    else if(scene_select == 4){
-                                        final_out = TriLattice();
-                                    }
-                                    else if(scene_select == 5){
-                                        final_out = RadialHexagon();
-                                    }
-                                    else if(scene_select == 6){
-                                        final_out = OpArtTwister();
-                                    }
-                                    else if(scene_select == 7){
-                                        final_out = PatternMesh2D();
-                                    }
-                                    else if(scene_select == 8){
-                                        final_out = PolygonPatterns();
-                                    }
-                                    else if (scene_select == 9){
-                                        final_out = SnubQuadrille();
-                                    }
-                                    else if (scene_select == 10){
-                                        final_out = PentagonTessellations();
-                                    }
+                                   
+    fragShaderSrc += "void main(void) { \n \t vec3 final_out = vec3(0.0); \n";
+    for(int i = 0; i < shader_dir.size(); i++){
+       fragShaderSrc += "if(scene_select == " + ofToString(i) + "){" + "\n"
+                    + "\t final_out = " + shader_names[i] + "();" + "\n"
+                    + "}" + "\n";
+    }
 
-                                    gl_FragColor = vec4(final_out,1.0);
-                                }
-    );
+    fragShaderSrc += "gl_FragColor = vec4(final_out,1.0); \n }";
     
-    cout << fragShaderSrc << endl;
+    
+//    fragShaderSrc += STRINGIFY(
+//                               
+//                                void main(void) {
+//                                    vec3 final_out = vec3(0.0);
+//
+//                                    if(scene_select == 0){
+//                                        final_out = HexagonGradient();
+//                                    }
+//                                    else if(scene_select == 1){
+//                                        final_out = ColourGradient();
+//                                    }
+//                                    else if(scene_select == 2){
+//                                        final_out = EscherLike();
+//                                    }
+//                                    else if(scene_select == 3){
+//                                        final_out = FlowerOfLife();
+//                                    }
+//                                    else if(scene_select == 4){
+//                                        final_out = TriLattice();
+//                                    }
+//                                    else if(scene_select == 5){
+//                                        final_out = RadialHexagon();
+//                                    }
+//                                    else if(scene_select == 6){
+//                                        final_out = OpArtTwister();
+//                                    }
+//                                    else if(scene_select == 7){
+//                                        final_out = PatternMesh2D();
+//                                    }
+//                                    else if(scene_select == 8){
+//                                        final_out = PolygonPatterns();
+//                                    }
+//                                    else if (scene_select == 9){
+//                                        final_out = SnubQuadrille();
+//                                    }
+//                                    else if (scene_select == 10){
+//                                        final_out = PentagonTessellations();
+//                                    }
+//
+//                                    gl_FragColor = vec4(final_out,1.0);
+//                                }
+//    );
+    
+//    cout << fragShaderSrc << endl;
 
     s.setupShaderFromSource(GL_FRAGMENT_SHADER, fragShaderSrc);
     s.linkProgram();
