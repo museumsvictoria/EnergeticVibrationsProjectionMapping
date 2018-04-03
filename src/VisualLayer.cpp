@@ -54,9 +54,9 @@ void VisualLayer::update(){
 			scene_shader.setUniform1f("time", ofGetElapsedTimef());
 			scene_shader.setUniform1i("iFrame", ofGetFrameNum());
 			scene_shader.setUniform1i("scene_select", scene_select);
-			scene_shader.setUniform1f("param1", shader_variables[0].value);
-			scene_shader.setUniform1f("param2", shader_variables[1].value);
-			scene_shader.setUniform1f("param3", shader_variables[2].value);
+			scene_shader.setUniform1f("param1", ofClamp(shader_variables[0].value,0.0,1.0));
+			scene_shader.setUniform1f("param2", ofClamp(shader_variables[1].value,0.0,1.0));
+			scene_shader.setUniform1f("param3", ofClamp(shader_variables[2].value,0.0,1.0));
 			scene_shader.setUniform1f("hue_offset", shader_variables[3].value * PI);
 			ofDrawRectangle(0, 0, render_fbo.fbo.getWidth(), render_fbo.fbo.getHeight());
 			scene_shader.end();

@@ -1,7 +1,7 @@
 //------------CONTROLABLE PARAMETERS -----------//
 //# CIRCLE_OFFSET = (0.0) #  <--- SLIDER_1
 //# CIRCLE_ITER = (0.5) #    <--- SLIDER 2
-//# GRID_ITER = (1.0) #      <--- SLIDER_3
+//# GRID_ITER = (0.0) #      <--- SLIDER_3
 
 vec3 EscherLike()
 {
@@ -23,5 +23,5 @@ vec3 EscherLike()
     
     if (b>0.) output_tex = 1.-output_tex; // try also without :-)
     
-    return output_tex.rgb * MixColour();
+    return output_tex.rgb * pow(MixColour(),vec3(2.0));
 }
