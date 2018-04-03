@@ -46,13 +46,13 @@ class GuiInterface{
     void update_active_shader(int selected);
     void update_active_sliders();
     
-    void draw(ShaderParams &params);
+    void draw(vector<ShaderVariable> &shader_variables);
     
     void draw_border(ofRectangle rect);
     void draw_border_background(ofRectangle rect);
     
     void draw_add_shape(ofRectangle rect);
-    void draw_selected_layer(ofRectangle rect, ShaderParams &params);
+    void draw_selected_layer(ofRectangle rect, vector<ShaderVariable> &shader_variables);
     void draw_audio_analysis(ofRectangle rect);
     void draw_shader_toggles(ofRectangle rect);
     void draw_duplicate_and_remove(ofRectangle rect);

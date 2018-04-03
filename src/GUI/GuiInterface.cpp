@@ -108,8 +108,8 @@ void GuiInterface::setup_shader_toggles(vector<VisualLayer*> &layers){
         shader_toggles.push_back(t);
         
         // Init the slider positions to the shader param defaluts
-        for(int x = 0; x < layers[i]->shader_params[i].params.size(); x++){
-            shader_states[i].sliders[x]->setPercent(layers[i]->shader_params[i].params[x]);
+        for(int x = 0; x < layers[i]->shader_variables.size(); x++){
+            shader_states[i].sliders[x]->setPercent(layers[i]->shader_variables[x].value);
         }
     }
     
@@ -201,13 +201,13 @@ void GuiInterface::update_volumes(vector<float> volumes){
 void GuiInterface::update_audio_reactivity(vector<VisualLayer *> &layers){
     for(int x = 0; x < shader_states.size(); x++){
 
-        ShaderParams& params = layers[x]->shader_params[x];
+        ShaderVariable& variable = layers[x]->shader_variables[x];
         for(int i = 0; i < shader_states[x].toggles.size(); i++){
             float slider_val = shader_states[x].sliders[i]->getValue();
             if(shader_states[x].toggles[i].get_selected_toggle() != 0){
 				float audio_val = volumes[shader_states[x].toggles[i].get_selected_toggle() - 1];
 				shader_states[x].sliders[i]->update_gradient_percent(audio_val * slider_val);
-                params.params[i] = audio_val * slider_val;
+                variable.value = audio_val * slider_val;
             }
         }
     }
@@ -219,7 +219,7 @@ void GuiInterface::set_theme_colour(ofVec4f theme_colour){
 }
 
 //------------------------------------
-void GuiInterface::draw(ShaderParams &params){
+void GuiInterface::draw(vector<ShaderVariable> &shader_variables){
     map_helper.set_theme_colour(theme_colour);
 
     ofSetColor(255);
@@ -230,7 +230,7 @@ void GuiInterface::draw(ShaderParams &params){
 //    }
     
     draw_add_shape(add_shape_rect);
-	draw_selected_layer(selected_layer_rect, params);
+	draw_selected_layer(selected_layer_rect, shader_variables);
 	draw_audio_analysis(audio_analysis_rect);
     draw_duplicate_and_remove(duplicate_remove_rect);
     draw_shader_toggles(shader_toggles_rect);
@@ -288,7 +288,7 @@ void GuiInterface::draw_add_shape(ofRectangle rect){
 }
 
 //------------------------------------
-void GuiInterface::draw_selected_layer(ofRectangle rect, ShaderParams &params){
+void GuiInterface::draw_selected_layer(ofRectangle rect, vector<ShaderVariable> &shader_variables){
     draw_border_background(rect);
     draw_border(rect);
     
@@ -298,26 +298,26 @@ void GuiInterface::draw_selected_layer(ofRectangle rect, ShaderParams &params){
     for(int i = 0; i < shader_states[selected_shader].sliders.size(); i++){
 
         ofSetColor(theme_colour.x,theme_colour.y,theme_colour.z);
-        font_mid.drawString(params.names[i], rect.x + padding.x, (param_gui_offset * i) + (rect.y+52));
+        font_mid.drawString(shader_variables[i].name, rect.x + padding.x, (param_gui_offset * i) + (rect.y+52));
         
         float slider_val = shader_states[selected_shader].sliders[i]->getValue();
         shader_states[selected_shader].sliders[i]->set_theme_colour(theme_colour);
 
         if(i < shader_states[selected_shader].toggles.size()){
             
-            shader_states[selected_shader].toggles[i].draw(params.names[i] + ofToString(i), ofVec2f(rect.x + padding.x, (param_gui_offset * i) + (rect.y+120)), ofVec2f(rect.width+10, 80), window_flags);
+            shader_states[selected_shader].toggles[i].draw(shader_variables[i].name + ofToString(i), ofVec2f(rect.x + padding.x, (param_gui_offset * i) + (rect.y+120)), ofVec2f(rect.width+10, 80), window_flags);
             
             if(shader_states[selected_shader].toggles[i].get_selected_toggle() == 0){
                 shader_states[selected_shader].sliders[i]->update_gradient_percent(slider_val);
-                params.params[i] = slider_val;
+                shader_variables[i].value = slider_val;
             } else {
 				float audio_val = volumes[shader_states[selected_shader].toggles[i].get_selected_toggle() - 1];
 				shader_states[selected_shader].sliders[i]->update_gradient_percent(audio_val * slider_val);
-                params.params[i] = audio_val * slider_val;
+                shader_variables[i].value = audio_val * slider_val;
             }
         } else {
             shader_states[selected_shader].sliders[i]->update_gradient_percent(slider_val);
-            params.params[i] = slider_val;
+            shader_variables[i].value = slider_val;
         }
     }
     

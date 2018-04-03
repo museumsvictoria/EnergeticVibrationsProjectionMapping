@@ -340,23 +340,12 @@ void ofApp::draw(){
     this->gui.begin();
     
     int selected_layer = gui_interface.get_selected_shader();
-    gui_interface.draw(layers[selected_layer]->shader_params[selected_layer]);
+    gui_interface.draw(layers[selected_layer]->shader_variables);
     
     this->gui.end();
 
     ofSetColor(255,255);
     mapper.draw();
-
-//    int size = 100;
-//    for(int i = 0; i < layers.size(); i++){
-//        layers[i]->FboSource::drawPreview(i * size, ofGetHeight()-size, size, size);
-//    }
-    //layers[0]->hue_fbo.fbo.draw(0,0,ofGetWidth(),ofGetHeight());
-
-    //cout << "selected surface = " << mapper._application.getSurfaceManager()->getSelectedSurface() << endl;
-    
-//    mapper._application.Gui::getSourcesEditorWidget();
-//    ofx::piMapper::Gui::getSourcesEditorWidget().getLoadedTexCount();
 }
 
 void ofApp::toggle_shaders() {

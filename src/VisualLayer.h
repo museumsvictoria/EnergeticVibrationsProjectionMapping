@@ -15,28 +15,10 @@
 #include "RenderFbo.h"
 #include "ShaderVariable.h"
 
-const int PATTERN_MESH_2D = 0;
-const int COLOUR_GRADIENT = 1;
-const int ESCHER_LIKE = 2;
-const int FLOWER_OF_LIFE = 3;
-const int TRI_LATTICE = 4;
-const int RADIAL_HEXAGON = 5;
-const int OP_ART_TWISTER = 6;
-const int HEXAGON_GRADIENT = 7;
-const int POLYGON_PATTERNS = 8;
-const int SNUB_QUADRILLE = 9;
-const int PENTAGON_TESSELLATIONS = 10;
-
-struct ShaderParams{
-    vector<float> params = {0.0,0.0,0.0,0.0};
-    vector<string> names = {"","","",""};
-};
-
 class VisualLayer : public ofx::piMapper::FboSource {
 public:
     
     VisualLayer();
-    void init_params();
     void setup(string name, int scene_num, vector<ShaderVariable> shader_variables);
     
     void load_movie(string file);
@@ -48,8 +30,6 @@ public:
 	bool is_shader() { return use_shader; }
 
     vector<ShaderVariable> shader_variables;
-    
-    vector<ShaderParams> shader_params;
 
     RenderFbo render_fbo;
 
