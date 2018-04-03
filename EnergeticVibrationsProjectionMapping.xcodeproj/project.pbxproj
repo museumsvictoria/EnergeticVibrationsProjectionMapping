@@ -1298,9 +1298,9 @@
 				9C1E03ED636188A91CB83CA1 /* GUI */,
 				FC8354AB460B2D74388B8D53 /* nodel */,
 				A1A567FBAE494BF84E54E83C /* Settings.h */,
+				135D4551207385D2006086DF /* ShaderVariable.h */,
 				33FD26B8A189EF712A8D172B /* video */,
 				5348DEFE9C38CE121EB7368B /* VisualLayer.cpp */,
-				135D4551207385D2006086DF /* ShaderVariable.h */,
 				3378AD9E1C9F6D3FFC74548B /* VisualLayer.h */,
 			);
 			path = src;

@@ -19,7 +19,8 @@ class VisualLayer : public ofx::piMapper::FboSource {
 public:
     
     VisualLayer();
-    void setup(string name, int scene_num, vector<ShaderVariable> shader_variables);
+    void setup(string name, int scene_num);
+    void init_variables(vector<ShaderVariable> shader_variables);
     
     void load_movie(string file);
     void set_scene_shader(ofShader scene_shader);

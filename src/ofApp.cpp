@@ -38,6 +38,8 @@ void ofApp::build_shader_src(){
     shader_dir.sort();
     util_dir.sort();
     
+    shader_variables.clear();
+    
     string fragShaderSrc;
     
     for(int i = 0; i < util_dir.size(); i++){
@@ -66,6 +68,8 @@ void ofApp::build_shader_src(){
         size_t lastindex = shader_dir.getName(i).find_last_of(".");
         string rawname = shader_dir.getName(i).substr(0, lastindex);
         shader_names.push_back(rawname);
+        
+        cout <<" shader name = " << rawname << endl;
         
         vector<ShaderVariable> variables;
         
@@ -182,7 +186,8 @@ void ofApp::setup(){
     for(int i = 0; i < num_layers; i++){
         VisualLayer *layer = new VisualLayer();
         layers.push_back(layer);
-        layers[i]->setup("Shader" + ofToString(1+i), i, shader_variables[i]);
+        layers[i]->setup("Shader" + ofToString(1+i), i);
+        layers[i]->init_variables(shader_variables[i]);
         mapper.registerFboSource(layers[i]);
     }
     
@@ -259,7 +264,9 @@ void ofApp::update(){
         scene_shader = temp_scene_shader;
         for(int i = 0; i < layers.size(); i++){
             layers[i]->set_scene_shader(scene_shader);
+            layers[i]->init_variables(shader_variables[i]);
         }
+        gui_interface.init_shader_variables(layers);
         isShaderDirty = false;
     }
     

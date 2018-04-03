@@ -99,6 +99,16 @@ void GuiInterface::onSurfaceSelected(int & surfaceIndex){
 }
 
 //------------------------------------
+void GuiInterface::init_shader_variables(vector<VisualLayer*> &layers){
+    for(int i = 0; i < num_layers; i++){
+        // Init the slider positions to the shader param defaluts
+        for(int x = 0; x < layers[i]->shader_variables.size(); x++){
+            shader_states[i].sliders[x]->setPercent(layers[i]->shader_variables[x].value);
+        }
+    }
+}
+
+//------------------------------------
 void GuiInterface::setup_shader_toggles(vector<VisualLayer*> &layers){
     for(int i = 0; i < num_layers; i++){
         ShaderToggle t;

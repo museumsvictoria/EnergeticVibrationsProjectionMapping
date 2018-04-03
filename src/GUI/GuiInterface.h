@@ -36,6 +36,7 @@ class GuiInterface{
     GuiInterface();
     ~GuiInterface();
     void init_window_flags();
+    void init_shader_variables(vector<VisualLayer*> &layers);
     void setup(ofxImGui::Gui &gui, ofxPiMapper& mapper, int num_layes, ofVec4f theme_colour);
     void setup_add_shape(ofxImGui::Gui &gui);
     void setup_shader_toggles(vector<VisualLayer*> &layers);

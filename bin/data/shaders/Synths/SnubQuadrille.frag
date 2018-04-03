@@ -1,3 +1,8 @@
+//------------CONTROLABLE PARAMETERS -----------//
+//# SPEED = (0.5) #  <--- SLIDER_1
+//# GLOW = (0.2) #   <--- SLIDER 2
+//# SIZE = (0.0) #   <--- SLIDER_3
+
 ////////////////////////////////////////////////////////////////////////////////
 //
 // Created by Matthew Arcus, 2018
@@ -10,11 +15,6 @@
 // 'r' shows square fundamental region
 //
 ////////////////////////////////////////////////////////////////////////////////
-
-//------------CONTROLABLE PARAMETERS -----------//
-//# SPEED = (0.5) #  <--- SLIDER_1
-//# GLOW = (0.2) #   <--- SLIDER 2
-//# SIZE = (0.0) #   <--- SLIDER_3
 
 vec3 getcolor0(int i) {
     return 0.25+0.75*getcol0(i);
