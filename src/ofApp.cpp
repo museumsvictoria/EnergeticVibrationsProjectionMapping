@@ -3,6 +3,7 @@
 
 #define STRINGIFY(A) #A
 
+//--------------------------------------------------------------
 std::string get_str_between_two_str(const std::string &s,
                                     const std::string &start_delim,
                                     const std::string &stop_delim)
@@ -20,6 +21,7 @@ std::string get_str_between_two_str(const std::string &s,
     }
 }
 
+//--------------------------------------------------------------
 string delSpaces(string &str)
 {
     str.erase(std::remove(str.begin(), str.end(), ' '), str.end());
@@ -59,16 +61,14 @@ void ofApp::build_shader_src(){
     
     vector<string> shader_names;
     
-    vector<vector<string> > param_names;
-    
     for(int i = 0; i < shader_dir.size(); i++){
         
         size_t lastindex = shader_dir.getName(i).find_last_of(".");
         string rawname = shader_dir.getName(i).substr(0, lastindex);
         shader_names.push_back(rawname);
         
-        vector<string> params;
-
+        vector<ShaderVariable> variables;
+        
         ifstream fin (ofToDataPath(shader_dir.getPath(i)).c_str()); //declare a file stream
 
         if(fin.is_open()){
@@ -84,6 +84,8 @@ void ofApp::build_shader_src(){
                 fragShaderSrc += str + "\n";
 
                 if(num_lines_counted < 5){
+                    ShaderVariable sv;
+                    
                     // Find the parameter names at the top of each frag file
                     // GET THE NAME
                     string s = str;
@@ -93,6 +95,7 @@ void ofApp::build_shader_src(){
                     if(name != "") {
                         delSpaces(name);
                         cout << "name = " << name;// << endl;
+                        sv.name = name;
                     }
                     
                     // GET THE VALUE
@@ -110,21 +113,24 @@ void ofApp::build_shader_src(){
                         string value = get_str_between_two_str(s,start,end);
                         if(value != "") {
                             cout << " - value = " << value << endl;
+                            sv.value = ofToFloat(value);
+                            variables.push_back(sv);
                         }
                     }
-                    
-
                 }
-                
                 num_lines_counted++;
             }
             fin.close();
         }
-        //param_names.push_back(params);
+        // Push Hue onto the end of the vector
+        ShaderVariable sv_hue;
+        sv_hue.name = "HUE";
+        sv_hue.value = 0.0;
+        variables.push_back(sv_hue);
+        shader_variables.push_back(variables);
     }
     
-
-                                   
+    
     fragShaderSrc += "void main(void) { \n \t vec3 final_out = vec3(0.0); \n";
     for(int i = 0; i < shader_dir.size(); i++){
        fragShaderSrc += "if(scene_select == " + ofToString(i) + "){" + "\n"
@@ -133,55 +139,11 @@ void ofApp::build_shader_src(){
     }
 
     fragShaderSrc += "gl_FragColor = vec4(final_out,1.0); \n }";
-                                   
-    
-//    fragShaderSrc += STRINGIFY(
-//                               
-//                                void main(void) {
-//                                    vec3 final_out = vec3(0.0);
-//
-//                                    if(scene_select == 0){
-//                                        final_out = HexagonGradient();
-//                                    }
-//                                    else if(scene_select == 1){
-//                                        final_out = ColourGradient();
-//                                    }
-//                                    else if(scene_select == 2){
-//                                        final_out = EscherLike();
-//                                    }
-//                                    else if(scene_select == 3){
-//                                        final_out = FlowerOfLife();
-//                                    }
-//                                    else if(scene_select == 4){
-//                                        final_out = TriLattice();
-//                                    }
-//                                    else if(scene_select == 5){
-//                                        final_out = RadialHexagon();
-//                                    }
-//                                    else if(scene_select == 6){
-//                                        final_out = OpArtTwister();
-//                                    }
-//                                    else if(scene_select == 7){
-//                                        final_out = PatternMesh2D();
-//                                    }
-//                                    else if(scene_select == 8){
-//                                        final_out = PolygonPatterns();
-//                                    }
-//                                    else if (scene_select == 9){
-//                                        final_out = SnubQuadrille();
-//                                    }
-//                                    else if (scene_select == 10){
-//                                        final_out = PentagonTessellations();
-//                                    }
-//
-//                                    gl_FragColor = vec4(final_out,1.0);
-//                                }
-//    );
-    
+
 //    cout << fragShaderSrc << endl;
 
-    s.setupShaderFromSource(GL_FRAGMENT_SHADER, fragShaderSrc);
-    s.linkProgram();
+    temp_scene_shader.setupShaderFromSource(GL_FRAGMENT_SHADER, fragShaderSrc);
+    temp_scene_shader.linkProgram();
 
 }
 //--------------------------------------------------------------
@@ -204,6 +166,9 @@ void ofApp::setup(){
 	ofAddListener(ofxWinTouchHook::touchUp, this, &ofApp::touchUp);
 #endif
 
+    build_shader_src();
+
+    
     isShaderDirty = true; // initialise dirty shader
 
     ofDirectory shader_dir;
@@ -217,11 +182,9 @@ void ofApp::setup(){
     for(int i = 0; i < num_layers; i++){
         VisualLayer *layer = new VisualLayer();
         layers.push_back(layer);
-        layers[i]->setup("Shader" + ofToString(1+i), i);        
+        layers[i]->setup("Shader" + ofToString(1+i), i, shader_variables[i]);
         mapper.registerFboSource(layers[i]);
     }
-    
-    build_shader_src();
     
     ofx::piMapper::VideoSource::enableAudio = false;
     ofx::piMapper::VideoSource::useHDMIForAudio = false;
@@ -292,23 +255,10 @@ void ofApp::drawProjections(ofEventArgs & args){
 //--------------------------------------------------------------
 void ofApp::update(){
     if (isShaderDirty){
-        // dirty shader pattern:
-        shared_ptr<ofShader> tmpShader = shared_ptr<ofShader>(new ofShader);
-        tmpShader->setGeometryInputType(GL_TRIANGLES);
-        tmpShader->setGeometryOutputType(GL_TRIANGLE_STRIP);
-        tmpShader->setGeometryOutputCount(4);
-        
-        if (tmpShader->load("shaders/passthrough.vert","shaders/shader_selector.frag")){
-            build_shader_src();
-            scene_shader = s;// tmpShader;
-            
-            for(int i = 0; i < layers.size(); i++){
-                layers[i]->set_scene_shader(scene_shader);                
-            }
-            
-            ofLogNotice() << ofGetTimestampString() << " reloaded Shader.";
-        } else {
-            ofLogError() << "Shader did not load successfully.";
+        build_shader_src();
+        scene_shader = temp_scene_shader;
+        for(int i = 0; i < layers.size(); i++){
+            layers[i]->set_scene_shader(scene_shader);
         }
         isShaderDirty = false;
     }

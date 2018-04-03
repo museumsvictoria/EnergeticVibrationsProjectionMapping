@@ -13,6 +13,7 @@
 #include "FboSource.h"
 #include "FullscreenQuad.h"
 #include "RenderFbo.h"
+#include "ShaderVariable.h"
 
 const int PATTERN_MESH_2D = 0;
 const int COLOUR_GRADIENT = 1;
@@ -36,10 +37,9 @@ public:
     
     VisualLayer();
     void init_params();
-    void setup(string name, int scene_num);
+    void setup(string name, int scene_num, vector<ShaderVariable> shader_variables);
     
     void load_movie(string file);
-  //  void set_scene_shader(shared_ptr<ofShader> scene_shader);
     void set_scene_shader(ofShader scene_shader);
     void update();
     void draw();
@@ -47,12 +47,13 @@ public:
 	void toggle_shader() { use_shader = !use_shader; }
 	bool is_shader() { return use_shader; }
 
+    vector<ShaderVariable> shader_variables;
+    
     vector<ShaderParams> shader_params;
 
     RenderFbo render_fbo;
 
 private:
-///    shared_ptr<ofShader> scene_shader;
     ofShader scene_shader;
     ofVideoPlayer player;
     FullscreenQuad quad;

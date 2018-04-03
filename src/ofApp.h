@@ -10,6 +10,7 @@
 #include "GuiInterface.h"
 #include "ofxJSON.h"
 
+#include "ShaderVariable.h"
 #include "SurfaceMask.h"
 #include "VisualLayer.h"
 #include "Settings.h"
@@ -23,6 +24,7 @@
 #endif
 
 #include <fstream>
+
 
 class ofApp : public ofBaseApp{
 
@@ -68,11 +70,11 @@ class ofApp : public ofBaseApp{
     
         ///------------- LAYERS
         vector<VisualLayer*> layers;
-//    shared_ptr<ofShader> scene_shader;
         ofShader scene_shader;
+        ofShader temp_scene_shader;
         bool isShaderDirty;
+        vector<vector<ShaderVariable> > shader_variables;
     
-    ofShader s;
 
 
         ///------------- GUI

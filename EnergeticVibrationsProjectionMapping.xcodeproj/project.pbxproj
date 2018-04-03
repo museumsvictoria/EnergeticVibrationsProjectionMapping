@@ -418,6 +418,7 @@
 		135D454E207361B2006086DF /* 6_colourise.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = 6_colourise.frag; sourceTree = "<group>"; };
 		135D454F207361B2006086DF /* 7_shared_functions.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = 7_shared_functions.glsl; sourceTree = "<group>"; };
 		135D4550207373E3006086DF /* ColourGradient.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ColourGradient.frag; sourceTree = "<group>"; };
+		135D4551207385D2006086DF /* ShaderVariable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShaderVariable.h; sourceTree = "<group>"; };
 		15F2C6477A769C03A56D1401 /* ofxSlider.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxSlider.cpp; path = ../../../addons/ofxGui/src/ofxSlider.cpp; sourceTree = SOURCE_ROOT; };
 		17E65988300FBD9AAA2CD0CA /* ofxGui.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxGui.h; path = ../../../addons/ofxGui/src/ofxGui.h; sourceTree = SOURCE_ROOT; };
 		1A5AD3623882B15542BEEE7D /* drag_manager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = drag_manager.cpp; path = src/drag_manager.cpp; sourceTree = SOURCE_ROOT; };
@@ -1299,6 +1300,7 @@
 				A1A567FBAE494BF84E54E83C /* Settings.h */,
 				33FD26B8A189EF712A8D172B /* video */,
 				5348DEFE9C38CE121EB7368B /* VisualLayer.cpp */,
+				135D4551207385D2006086DF /* ShaderVariable.h */,
 				3378AD9E1C9F6D3FFC74548B /* VisualLayer.h */,
 			);
 			path = src;

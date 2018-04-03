@@ -12,6 +12,7 @@
 
 //--------------------------------------------------------------
 VisualLayer::VisualLayer(){
+    ShaderVariable s;
 }
 
 //--------------------------------------------------------------
@@ -57,7 +58,7 @@ void VisualLayer::init_params(){
 }
 
 //--------------------------------------------------------------
-void VisualLayer::setup(string name, int scene_num){
+void VisualLayer::setup(string name, int scene_num, vector<ShaderVariable> shader_variables){
     
     this->name = name; // Give our source a decent name
     scene_select = scene_num;
@@ -67,6 +68,7 @@ void VisualLayer::setup(string name, int scene_num){
     
 	use_shader = true;
     
+    this->shader_variables = shader_variables;
     init_params();
 }
 
