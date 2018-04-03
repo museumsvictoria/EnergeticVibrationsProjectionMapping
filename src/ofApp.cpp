@@ -208,7 +208,7 @@ void ofApp::setup(){
     //theme_colour = ofVec4f(237, 60, 52, 255);
     
     // Custom
-    //theme_colour = ofVec4f(ofRandom(255), ofRandom(255), ofRandom(255), 255);
+    theme_colour = ofVec4f(ofRandom(255), ofRandom(255), ofRandom(255), 255);
     
     //load fonts first
     gui_theme.load_font();
@@ -224,7 +224,7 @@ void ofApp::setup(){
     
 	clear_touch_in_two_frames = 0;
 
-    projection_fbo.allocate(998,899,GL_RGBA);
+    projection_fbo.allocate(ofGetWidth(),ofGetHeight(),GL_RGBA);
     
     // OSC
     volumes = {1.0f,1.0f,1.0f};

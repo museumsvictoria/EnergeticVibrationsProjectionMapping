@@ -13,8 +13,8 @@ int main( ){
 	settings.windowMode = ofWindowMode::OF_WINDOW;
     shared_ptr<ofAppBaseWindow> mainWindow = ofCreateWindow(settings);
     
-    settings.width = 1920/5;
-    settings.height = 1080/5;
+    settings.width = 1920;
+    settings.height = 1080;
     settings.setPosition(ofVec2f(0,0));
     settings.resizable = true;
     // uncomment next line to share main's OpenGL resources with gui
