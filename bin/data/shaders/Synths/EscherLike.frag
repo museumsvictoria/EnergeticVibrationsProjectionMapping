@@ -1,10 +1,15 @@
+//------------CONTROLABLE PARAMETERS -----------//
+//# CIRCLE_OFFSET = (0.0) #  <--- SLIDER_1
+//# CIRCLE_ITER = (0.5) #    <--- SLIDER 2
+//# GRID_ITER = (1.0) #      <--- SLIDER_3
+
 vec3 EscherLike()
 {
     vec4 output_tex;
     
     vec2 U = (gl_FragCoord.xy / resolution.xy) - 0.5;
     
-    U *= remap(param3,0.0,1.0,4.0,16.0);///resolution.y;
+    U *= remap(param3,0.0,1.0,4.0,16.0);//resolution.y;
     output_tex-=output_tex;
     float iter = remap(param2,0.0,1.0,1.0,2.0);
     

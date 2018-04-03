@@ -1,24 +1,7 @@
-vec3 coordToHex(in vec2 coord, in float scale) {
-    float q = (1.0 / 3.0 * sqrt(3.0) * coord.x - 1.0 / 3.0 * coord.y) * scale;
-    float r = 2.0 / 3.0 * coord.y * scale;
-    return vec3(q, r, -q - r);
-}
-
-vec3 hexToCell(in vec3 hex, in float m) {
-    return fract(hex / m) * 2.0 - 1.0;
-}
-
-float absMax(in vec3 v) {
-    return max(max(abs(v.x), abs(v.y)), abs(v.z));
-}
-
-float nsin(in float value) {
-    return sin(value * TWO_PI) * 0.5 + 0.5;
-}
-
-float hexToFloat(in vec3 hex, in float amt) {
-    return mix(absMax(hex), 1.0 - length(hex) / sqrt(3.0), amt);
-}
+//------------CONTROLABLE PARAMETERS -----------//
+//# BRIGHTNESS = (1.0) #   <--- SLIDER_1
+//# TIME_SCALE = (0.0) #   <--- SLIDER 2
+//# GRID_SIZE = (0.3) #    <--- SLIDER_3
 
 float formula(in vec2 tx, in float time) {
     float len = length(tx.y) * sin(time);

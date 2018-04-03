@@ -1,7 +1,7 @@
-float rand(vec2 uv)
-{
-    return fract(sin(dot(uv, vec2(12.9898, 78.233))) * 43758.5453);
-}
+//------------CONTROLABLE PARAMETERS -----------//
+//# NUM_TRIANGLES = (1.0) #  <--- SLIDER_1
+//# ROTATION = (0.0) #       <--- SLIDER 2
+//# COLOUR_MIX = (1.0) #     <--- SLIDER_3
 
 vec2 uv2tri(vec2 uv)
 {

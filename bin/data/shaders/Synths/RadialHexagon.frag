@@ -1,3 +1,8 @@
+//------------CONTROLABLE PARAMETERS -----------//
+//# CIRCLE_ITER = (0.0) #  <--- SLIDER_1
+//# GRID_SIZE = (1.0) #    <--- SLIDER 2
+//# TIME_SKIP = (0.0) #    <--- SLIDER_3
+
 vec3 RadialHexagon()
 {    
     vec4 O;

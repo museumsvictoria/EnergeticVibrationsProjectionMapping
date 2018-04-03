@@ -1,3 +1,8 @@
+//------------CONTROLABLE PARAMETERS -----------//
+//# SPEED = (0.5) #         <--- SLIDER_1
+//# CIRCLE_ITER = (0.2) #   <--- SLIDER 2
+//# ITER = (0.0) #          <--- SLIDER_3
+
 vec3 HexagonGradient()
 {
     float speed = remap(param1,0.0,1.0,0.25,1.5);

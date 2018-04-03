@@ -930,15 +930,15 @@
         <vertices>
             <vertex>
                 <x>1035.000000000</x>
-                <y>260.000000000</y>
+                <y>261.000000000</y>
             </vertex>
             <vertex>
                 <x>1149.000000000</x>
-                <y>221.000000000</y>
+                <y>222.000000000</y>
             </vertex>
             <vertex>
                 <x>1172.000000000</x>
-                <y>277.000000000</y>
+                <y>278.000000000</y>
             </vertex>
         </vertices>
         <texCoords>
@@ -957,7 +957,7 @@
         </texCoords>
         <source>
             <source-type>fbo</source-type>
-            <source-name>Shader5</source-name>
+            <source-name>Shader2</source-name>
         </source>
     </surface>
     <surface type="0">

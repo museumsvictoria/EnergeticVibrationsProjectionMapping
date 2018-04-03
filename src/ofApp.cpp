@@ -3,6 +3,29 @@
 
 #define STRINGIFY(A) #A
 
+std::string get_str_between_two_str(const std::string &s,
+                                    const std::string &start_delim,
+                                    const std::string &stop_delim)
+{
+    unsigned first_delim_pos = s.find(start_delim);
+    unsigned end_pos_of_first_delim = first_delim_pos + start_delim.length();
+    unsigned last_delim_pos = s.find_first_of(stop_delim, end_pos_of_first_delim);
+    
+    
+    if(last_delim_pos - end_pos_of_first_delim < 150){
+    return s.substr(end_pos_of_first_delim,
+                    last_delim_pos - end_pos_of_first_delim);
+    } else {
+        return "";
+    }
+}
+
+string delSpaces(string &str)
+{
+    str.erase(std::remove(str.begin(), str.end(), ' '), str.end());
+    return str;
+}
+
 //--------------------------------------------------------------
 void ofApp::build_shader_src(){
     
@@ -36,17 +59,22 @@ void ofApp::build_shader_src(){
     
     vector<string> shader_names;
     
+    vector<vector<string> > param_names;
+    
     for(int i = 0; i < shader_dir.size(); i++){
         
         size_t lastindex = shader_dir.getName(i).find_last_of(".");
         string rawname = shader_dir.getName(i).substr(0, lastindex);
         shader_names.push_back(rawname);
         
+        vector<string> params;
+
         ifstream fin (ofToDataPath(shader_dir.getPath(i)).c_str()); //declare a file stream
-        shader_dir.getName(i);
+
         if(fin.is_open()){
             vector<string> data; //declare a vector of strings to store data
             
+            int num_lines_counted = 0; // how many lines have we read through in the file
             string str; //declare a string for storage
             //as long as theres still text to be read
             while(getline(fin, str)) //get a line from the file, put it in the string
@@ -54,10 +82,45 @@ void ofApp::build_shader_src(){
                 data.push_back(str); //push the string onto a vector of strings
                 
                 fragShaderSrc += str + "\n";
-                //cout << str << endl;
+
+                if(num_lines_counted < 5){
+                    // Find the parameter names at the top of each frag file
+                    // GET THE NAME
+                    string s = str;
+                    string start = "//#";
+                    string end = "=";
+                    string name = get_str_between_two_str(s,start,end);
+                    if(name != "") {
+                        delSpaces(name);
+                        cout << "name = " << name;// << endl;
+                    }
+                    
+                    // GET THE VALUE
+                    s = str;
+                    start = "//#";
+                    end = "#";
+                    string temp_value = get_str_between_two_str(s,start,end);
+                    
+                    if(temp_value != "") {
+                        delSpaces(temp_value);
+                        
+                        s = temp_value;
+                        start = "(";
+                        end = ")";
+                        string value = get_str_between_two_str(s,start,end);
+                        if(value != "") {
+                            cout << " - value = " << value << endl;
+                        }
+                    }
+                    
+
+                }
+                
+                num_lines_counted++;
             }
             fin.close();
         }
+        //param_names.push_back(params);
     }
     
 
@@ -70,7 +133,7 @@ void ofApp::build_shader_src(){
     }
 
     fragShaderSrc += "gl_FragColor = vec4(final_out,1.0); \n }";
-    
+                                   
     
 //    fragShaderSrc += STRINGIFY(
 //                               
@@ -236,6 +299,7 @@ void ofApp::update(){
         tmpShader->setGeometryOutputCount(4);
         
         if (tmpShader->load("shaders/passthrough.vert","shaders/shader_selector.frag")){
+            build_shader_src();
             scene_shader = s;// tmpShader;
             
             for(int i = 0; i < layers.size(); i++){

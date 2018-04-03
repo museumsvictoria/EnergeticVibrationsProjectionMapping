@@ -21,41 +21,41 @@
 
 void main(void)
 {
-    vec3 final_out = vec3(0.0);
-    
-    if(scene_select == 0){
-        final_out = hue(HexagonGradient(),hue_offset);
-    }
-    else if(scene_select == 1){
-        final_out = hue(ColourGradient(),hue_offset);
-    }
-    else if(scene_select == 2){
-        final_out = EscherLike() * MixColour();
-    }
-    else if(scene_select == 3){
-        final_out = hue(FlowerOfLife(),hue_offset);
-    }
-    else if(scene_select == 4){
-        final_out = hue(TriLattice(),hue_offset);
-    }
-    else if(scene_select == 5){
-        final_out = RadialHexagon() * MixColour();
-    }
-    else if(scene_select == 6){
-        final_out = hue(OpArtTwister(),hue_offset);
-    }
-    else if(scene_select == 7){
-        final_out = PatternMesh2D() * MixColour();
-    }
-    else if(scene_select == 8){
-        final_out = PolygonPatterns() * MixColour();
-    }
-    else if (scene_select == 9){
-        final_out = hue(SnubQuadrille(), hue_offset);
-    }
-    else if (scene_select == 10){
-        final_out = hue(PentagonTessellations(), hue_offset);
-    }
+//    vec3 final_out = vec3(0.0);
+//    
+//    if(scene_select == 0){
+//        final_out = hue(HexagonGradient(),hue_offset);
+//    }
+//    else if(scene_select == 1){
+//        final_out = hue(ColourGradient(),hue_offset);
+//    }
+//    else if(scene_select == 2){
+//        final_out = EscherLike() * MixColour();
+//    }
+//    else if(scene_select == 3){
+//        final_out = hue(FlowerOfLife(),hue_offset);
+//    }
+//    else if(scene_select == 4){
+//        final_out = hue(TriLattice(),hue_offset);
+//    }
+//    else if(scene_select == 5){
+//        final_out = RadialHexagon() * MixColour();
+//    }
+//    else if(scene_select == 6){
+//        final_out = hue(OpArtTwister(),hue_offset);
+//    }
+//    else if(scene_select == 7){
+//        final_out = PatternMesh2D() * MixColour();
+//    }
+//    else if(scene_select == 8){
+//        final_out = PolygonPatterns() * MixColour();
+//    }
+//    else if (scene_select == 9){
+//        final_out = hue(SnubQuadrille(), hue_offset);
+//    }
+//    else if (scene_select == 10){
+//        final_out = hue(PentagonTessellations(), hue_offset);
+//    }
 
-    gl_FragColor = vec4(final_out,1.0);
+//    gl_FragColor = vec4(final_out,1.0);
 }

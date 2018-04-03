@@ -382,8 +382,6 @@
 		13125CCB206F6ABF00664DFC /* passthrough.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = passthrough.vert; sourceTree = "<group>"; };
 		13125CCC206F6ABF00664DFC /* shader1.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader1.frag; sourceTree = "<group>"; };
 		13125CCD206F6ABF00664DFC /* shader_selector.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader_selector.frag; sourceTree = "<group>"; };
-		13125CCF206F6ABF00664DFC /* 2DPatternMesh.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = 2DPatternMesh.frag; sourceTree = "<group>"; };
-		13125CD0206F6ABF00664DFC /* ColourGradient.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = ColourGradient.frag; sourceTree = "<group>"; };
 		13125CD1206F6ABF00664DFC /* EscherLike.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = EscherLike.frag; sourceTree = "<group>"; };
 		13125CD2206F6ABF00664DFC /* FlowerOfLife.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = FlowerOfLife.frag; sourceTree = "<group>"; };
 		13125CD3206F6ABF00664DFC /* HexagonGradient.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = HexagonGradient.frag; sourceTree = "<group>"; };
@@ -391,13 +389,7 @@
 		13125CD5206F6ABF00664DFC /* PolygonPatterns.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = PolygonPatterns.frag; sourceTree = "<group>"; };
 		13125CD6206F6ABF00664DFC /* RadialHexagon.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = RadialHexagon.frag; sourceTree = "<group>"; };
 		13125CD7206F6ABF00664DFC /* TriLattice.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = TriLattice.frag; sourceTree = "<group>"; };
-		13125CD9206F6ABF00664DFC /* colourise.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = colourise.frag; sourceTree = "<group>"; };
-		13125CDA206F6ABF00664DFC /* easings.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = easings.glsl; sourceTree = "<group>"; };
-		13125CDB206F6ABF00664DFC /* hue_shift.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = hue_shift.frag; sourceTree = "<group>"; };
-		13125CDC206F6ABF00664DFC /* pi.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = pi.glsl; sourceTree = "<group>"; };
-		13125CDD206F6ABF00664DFC /* remap.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = remap.glsl; sourceTree = "<group>"; };
 		13125CDE206F852000664DFC /* SnubQuadrille.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = SnubQuadrille.frag; sourceTree = "<group>"; };
-		13125CDF206F869F00664DFC /* shared_functions.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = shared_functions.glsl; sourceTree = "<group>"; };
 		13125CE0206F877200664DFC /* PentagonTessellations.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = PentagonTessellations.frag; sourceTree = "<group>"; };
 		135D451B2070C61A006086DF /* blend_mask.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = blend_mask.frag; sourceTree = "<group>"; };
 		135D451E2070CA78006086DF /* PingPong.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PingPong.cpp; sourceTree = "<group>"; };
@@ -417,7 +409,15 @@
 		135D453E2072326C006086DF /* ofxJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxJSON.h; sourceTree = "<group>"; };
 		135D453F2072326C006086DF /* ofxJSONElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxJSONElement.cpp; sourceTree = "<group>"; };
 		135D45402072326C006086DF /* ofxJSONElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxJSONElement.h; sourceTree = "<group>"; };
-		135D45452072492A006086DF /* uniforms.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = uniforms.glsl; sourceTree = "<group>"; };
+		135D454820736166006086DF /* PatternMesh2D.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = PatternMesh2D.frag; sourceTree = "<group>"; };
+		135D4549207361B2006086DF /* 1_uniforms.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = 1_uniforms.glsl; sourceTree = "<group>"; };
+		135D454A207361B2006086DF /* 2_pi.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = 2_pi.glsl; sourceTree = "<group>"; };
+		135D454B207361B2006086DF /* 3_remap.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = 3_remap.glsl; sourceTree = "<group>"; };
+		135D454C207361B2006086DF /* 4_easings.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = 4_easings.glsl; sourceTree = "<group>"; };
+		135D454D207361B2006086DF /* 5_hue_shift.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = 5_hue_shift.frag; sourceTree = "<group>"; };
+		135D454E207361B2006086DF /* 6_colourise.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = 6_colourise.frag; sourceTree = "<group>"; };
+		135D454F207361B2006086DF /* 7_shared_functions.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = 7_shared_functions.glsl; sourceTree = "<group>"; };
+		135D4550207373E3006086DF /* ColourGradient.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ColourGradient.frag; sourceTree = "<group>"; };
 		15F2C6477A769C03A56D1401 /* ofxSlider.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxSlider.cpp; path = ../../../addons/ofxGui/src/ofxSlider.cpp; sourceTree = SOURCE_ROOT; };
 		17E65988300FBD9AAA2CD0CA /* ofxGui.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxGui.h; path = ../../../addons/ofxGui/src/ofxGui.h; sourceTree = SOURCE_ROOT; };
 		1A5AD3623882B15542BEEE7D /* drag_manager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = drag_manager.cpp; path = src/drag_manager.cpp; sourceTree = SOURCE_ROOT; };
@@ -928,8 +928,8 @@
 		13125CCE206F6ABF00664DFC /* Synths */ = {
 			isa = PBXGroup;
 			children = (
-				13125CCF206F6ABF00664DFC /* 2DPatternMesh.frag */,
-				13125CD0206F6ABF00664DFC /* ColourGradient.frag */,
+				135D4550207373E3006086DF /* ColourGradient.frag */,
+				135D454820736166006086DF /* PatternMesh2D.frag */,
 				13125CD1206F6ABF00664DFC /* EscherLike.frag */,
 				13125CD2206F6ABF00664DFC /* FlowerOfLife.frag */,
 				13125CD3206F6ABF00664DFC /* HexagonGradient.frag */,
@@ -946,13 +946,13 @@
 		13125CD8206F6ABF00664DFC /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				135D45452072492A006086DF /* uniforms.glsl */,
-				13125CDF206F869F00664DFC /* shared_functions.glsl */,
-				13125CD9206F6ABF00664DFC /* colourise.frag */,
-				13125CDA206F6ABF00664DFC /* easings.glsl */,
-				13125CDB206F6ABF00664DFC /* hue_shift.frag */,
-				13125CDC206F6ABF00664DFC /* pi.glsl */,
-				13125CDD206F6ABF00664DFC /* remap.glsl */,
+				135D4549207361B2006086DF /* 1_uniforms.glsl */,
+				135D454A207361B2006086DF /* 2_pi.glsl */,
+				135D454B207361B2006086DF /* 3_remap.glsl */,
+				135D454C207361B2006086DF /* 4_easings.glsl */,
+				135D454D207361B2006086DF /* 5_hue_shift.frag */,
+				135D454E207361B2006086DF /* 6_colourise.frag */,
+				135D454F207361B2006086DF /* 7_shared_functions.glsl */,
 			);
 			path = Util;
 			sourceTree = "<group>";

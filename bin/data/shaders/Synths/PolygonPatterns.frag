@@ -1,3 +1,8 @@
+//------------CONTROLABLE PARAMETERS -----------//
+//# PARAM1 = (0.5) #   <--- SLIDER_1
+//# PARAM2 = (0.2) #   <--- SLIDER 2
+//# PARAM3 = (0.0) #   <--- SLIDER_3
+
 float shape(vec2 p, float angle) {
     float d = 100.0;
     vec2 a = vec2(1.0, 0.0), b;

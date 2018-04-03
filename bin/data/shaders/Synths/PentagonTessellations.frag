@@ -12,6 +12,11 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+//------------CONTROLABLE PARAMETERS -----------//
+//# SPEED = (0.5) #  <--- SLIDER_1
+//# GLOW = (0.2) #   <--- SLIDER 2
+//# SIZE = (0.0) #   <--- SLIDER_3
+
 vec3 getcolor1(ivec2 s) {
     return getcol1(s);
 }

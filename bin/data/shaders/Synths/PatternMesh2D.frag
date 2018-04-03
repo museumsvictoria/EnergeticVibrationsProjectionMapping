@@ -1,3 +1,8 @@
+//------------CONTROLABLE PARAMETERS -----------//
+//# SPEED = (0.0) #        <--- SLIDER_1
+//# SHAPE_ITER = (0.0) #   <--- SLIDER 2
+//# GRID_ITER = (0.0) #    <--- SLIDER_3
+
 vec3 PatternMesh2D()
 {    
     vec2 u = -1.0 + 2.0 * gl_FragCoord.xy / resolution.xy;

@@ -38,3 +38,32 @@ vec3 getcol1(ivec2 s) {
     vec3 col = a + b*cos(TWO_PI*(c*t+d));
     return col;
 }
+
+//Hex
+vec3 coordToHex(in vec2 coord, in float scale) {
+    float q = (1.0 / 3.0 * sqrt(3.0) * coord.x - 1.0 / 3.0 * coord.y) * scale;
+    float r = 2.0 / 3.0 * coord.y * scale;
+    return vec3(q, r, -q - r);
+}
+
+vec3 hexToCell(in vec3 hex, in float m) {
+    return fract(hex / m) * 2.0 - 1.0;
+}
+
+float absMax(in vec3 v) {
+    return max(max(abs(v.x), abs(v.y)), abs(v.z));
+}
+
+float nsin(in float value) {
+    return sin(value * TWO_PI) * 0.5 + 0.5;
+}
+
+float hexToFloat(in vec3 hex, in float amt) {
+    return mix(absMax(hex), 1.0 - length(hex) / sqrt(3.0), amt);
+}
+
+//Random
+float rand(vec2 uv)
+{
+    return fract(sin(dot(uv, vec2(12.9898, 78.233))) * 43758.5453);
+}

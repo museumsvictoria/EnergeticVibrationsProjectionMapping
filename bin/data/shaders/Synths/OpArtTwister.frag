@@ -1,3 +1,7 @@
+//------------CONTROLABLE PARAMETERS -----------//
+//# ITER_SIZE = (1.0) #   <--- SLIDER_1
+//# GRID_ITER = (1.0) #   <--- SLIDER 2
+//# SPEED = (0.0) #       <--- SLIDER_3
 
 vec3 OpArtTwister()
 {    
