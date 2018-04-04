@@ -134,7 +134,7 @@ void GuiInterface::setup_selected_layer(ofxImGui::Gui &gui){
         ShaderState state;
         shader_states.push_back(state);
     }
-
+    
     for(int i = 0; i < shader_states.size(); i++){
         for(int x = 0; x < 3; x++){
             AudioToggles toggle;
@@ -204,10 +204,6 @@ void GuiInterface::update_active_sliders(){
 
 //------------------------------------
 void GuiInterface::update_volumes(vector<float> volumes){
-    //high 0.5 - 2.0 (2.5)
-    //mid 0.5 - 1.5
-    //low 0.3 - 1.3
-    
     this->volumes = volumes;
     
     volumes[0] = ofMap(volumes[0],0.3,1.3,0.0,1.0);
@@ -219,9 +215,10 @@ void GuiInterface::update_volumes(vector<float> volumes){
 void GuiInterface::update_audio_reactivity(vector<VisualLayer *> &layers){
     for(int x = 0; x < shader_states.size(); x++){
 
-        ShaderVariable& variable = layers[x]->shader_variables[x];
         for(int i = 0; i < shader_states[x].toggles.size(); i++){
+            ShaderVariable& variable = layers[x]->shader_variables[i];
             float slider_val = shader_states[x].sliders[i]->getValue();
+            
             if(shader_states[x].toggles[i].get_selected_toggle() != 0){
 				float audio_val = volumes[shader_states[x].toggles[i].get_selected_toggle() - 1];
 				shader_states[x].sliders[i]->update_gradient_percent(audio_val * slider_val);
@@ -330,7 +327,7 @@ void GuiInterface::draw_selected_layer(ofRectangle rect, vector<ShaderVariable> 
                 shader_variables[i].value = slider_val;
             } else {
 				float audio_val = volumes[shader_states[selected_shader].toggles[i].get_selected_toggle() - 1];
-				shader_states[selected_shader].sliders[i]->update_gradient_percent(audio_val * slider_val);
+				//shader_states[selected_shader].sliders[i]->update_gradient_percent(audio_val * slider_val);
                 shader_variables[i].value = audio_val * slider_val;
             }
         } else {

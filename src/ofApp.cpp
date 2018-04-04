@@ -277,10 +277,10 @@ void ofApp::update(){
 	//}
 
     update_osc();
-    mapper.update();
 	gui_interface.update_volumes(volumes);
     gui_interface.update_audio_reactivity(layers);
-	
+
+    mapper.update();
 	nodel.try_run();
 			
 }

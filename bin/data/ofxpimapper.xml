@@ -185,7 +185,7 @@
         </texCoords>
         <source>
             <source-type>fbo</source-type>
-            <source-name>Shader9</source-name>
+            <source-name>Shader5</source-name>
         </source>
         <properties>
             <perspectiveWarping>1</perspectiveWarping>
@@ -290,7 +290,7 @@
         </texCoords>
         <source>
             <source-type>fbo</source-type>
-            <source-name>Shader9</source-name>
+            <source-name>Shader7</source-name>
         </source>
     </surface>
     <surface type="0">
@@ -434,7 +434,7 @@
         </texCoords>
         <source>
             <source-type>fbo</source-type>
-            <source-name>Shader9</source-name>
+            <source-name>Shader1</source-name>
         </source>
         <properties>
             <perspectiveWarping>1</perspectiveWarping>
@@ -547,7 +547,7 @@
         </texCoords>
         <source>
             <source-type>fbo</source-type>
-            <source-name>Shader9</source-name>
+            <source-name>Shader5</source-name>
         </source>
         <properties>
             <perspectiveWarping>1</perspectiveWarping>
