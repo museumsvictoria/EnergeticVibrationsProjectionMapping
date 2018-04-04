@@ -83,6 +83,18 @@ void PiMapperHelper::duplicate_surface(){
 }
 
 //----------------------------------------
+std::string first_numberstring(std::string const & str)
+{
+    std::size_t const n = str.find_first_of("0123456789");
+    if (n != std::string::npos)
+    {
+        std::size_t const m = str.find_first_not_of("0123456789", n);
+        return str.substr(n, m != std::string::npos ? m-n : m);
+    }
+    return std::string();
+}
+
+//----------------------------------------
 int PiMapperHelper::get_selected_source(){
     if(!check_if_source_sxists()) return 0;
     
@@ -92,10 +104,11 @@ int PiMapperHelper::get_selected_source(){
         return current_src_idx;
     }
     else {
-        //ascii code numbers start from 48
+        string name = get_source()->getName();
+        string number = first_numberstring(name);
         // we subtract 1 from this cause our shaders are
         // indexed from 0 not 1
-        current_src_idx = (int)(get_source()->getName().back()) - 48 - 1;
+        current_src_idx = ofToInt(number) - 1;
         return current_src_idx;
     }
 }
