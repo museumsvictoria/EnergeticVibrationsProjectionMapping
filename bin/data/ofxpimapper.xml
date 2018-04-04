@@ -434,7 +434,7 @@
         </texCoords>
         <source>
             <source-type>fbo</source-type>
-            <source-name>Shader1</source-name>
+            <source-name>Shader11</source-name>
         </source>
         <properties>
             <perspectiveWarping>1</perspectiveWarping>

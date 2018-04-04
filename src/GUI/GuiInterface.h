@@ -37,11 +37,13 @@ class GuiInterface{
     ~GuiInterface();
     void init_window_flags();
     void init_shader_variables(vector<VisualLayer*> &layers);
-    void setup(ofxImGui::Gui &gui, ofxPiMapper& mapper, int num_layes, ofVec4f theme_colour);
+    void setup(ofxImGui::Gui &gui, ofxPiMapper& mapper, int num_layers, ofVec4f theme_colour);
     void setup_add_shape(ofxImGui::Gui &gui);
     void setup_shader_toggles(vector<VisualLayer*> &layers);
     void setup_mapping_panel(ofxImGui::Gui &gui);
     void setup_selected_layer(ofxImGui::Gui &gui);
+    
+    void push_back_shader_toggle(ofxImGui::Gui &gui, vector<VisualLayer*> &layers);
     
     void update_audio_reactivity(vector<VisualLayer*> &layers);
     void update_active_shader(int selected);

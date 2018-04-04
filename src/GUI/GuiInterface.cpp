@@ -48,8 +48,8 @@ void GuiInterface::init_window_flags(){
 }
 
 //------------------------------------
-void GuiInterface::setup(ofxImGui::Gui &gui, ofxPiMapper& mapper, int num_layes, ofVec4f theme_colour){
-    this->num_layers = num_layes;
+void GuiInterface::setup(ofxImGui::Gui &gui, ofxPiMapper& mapper, int num_layers, ofVec4f theme_colour){
+    this->num_layers = num_layers;
     this->theme_colour = theme_colour;
     
     map_helper.setup(mapper);
@@ -105,6 +105,34 @@ void GuiInterface::init_shader_variables(vector<VisualLayer*> &layers){
         for(int x = 0; x < layers[i]->shader_variables.size(); x++){
             shader_states[i].sliders[x]->setPercent(layers[i]->shader_variables[x].value);
         }
+    }
+}
+
+//------------------------------------
+void GuiInterface::push_back_shader_toggle(ofxImGui::Gui &gui, vector<VisualLayer*> &layers){
+    ShaderState state;
+    shader_states.push_back(state);
+    
+    for(int x = 0; x < 3; x++){
+        AudioToggles toggle;
+        toggle.setup(gui, theme_colour);
+        shader_states.back().toggles.push_back(toggle);
+    }
+    for(int y = 0; y < 4; y++){
+        CustomSlider* slider = new CustomSlider();
+        slider->setup(selected_layer_rect.x + padding.x + 10, (param_gui_offset * y) + (selected_layer_rect.y + 63),
+                      selected_layer_rect.width - (padding.x*2) - 16, 40,0.0,1.0,20,false, true, false);
+        shader_states.back().sliders.push_back(slider);
+    }
+    
+    ShaderToggle t;
+    t.b = false;
+    t.buttonID = (ImTextureID)layers.back()->render_fbo.fbo.getTexture().texData.textureID;
+    shader_toggles.push_back(t);
+    
+    // Init the slider positions to the shader param defaluts
+    for(int x = 0; x < layers.back()->shader_variables.size(); x++){
+        shader_states.back().sliders[x]->setPercent(layers.back()->shader_variables[x].value);
     }
 }
 
