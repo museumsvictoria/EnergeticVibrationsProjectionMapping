@@ -204,7 +204,15 @@ void GuiInterface::update_active_sliders(){
 
 //------------------------------------
 void GuiInterface::update_volumes(vector<float> volumes){
+    //high 0.5 - 2.0 (2.5)
+    //mid 0.5 - 1.5
+    //low 0.3 - 1.3
+    
     this->volumes = volumes;
+    
+    volumes[0] = ofMap(volumes[0],0.3,1.3,0.0,1.0);
+    volumes[1] = ofMap(volumes[1],0.5,1.5,0.0,1.0);
+    volumes[2] = ofMap(volumes[2],0.5,2.0,0.0,1.0);
 }
 
 //------------------------------------

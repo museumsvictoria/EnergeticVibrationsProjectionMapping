@@ -1,7 +1,7 @@
 //------------CONTROLABLE PARAMETERS -----------//
-//# CIRCLE_OFFSET = (0.0) #  <--- SLIDER_1
-//# CIRCLE_ITER = (0.5) #    <--- SLIDER 2
-//# GRID_ITER = (0.0) #      <--- SLIDER_3
+//# OFFSET = (0.0) #  <--- SLIDER_1
+//# POSITION = (0.5) #    <--- SLIDER 2
+//# ZOOM = (0.0) #      <--- SLIDER_3
 
 vec3 EscherLike()
 {

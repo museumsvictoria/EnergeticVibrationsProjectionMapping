@@ -230,8 +230,6 @@ void ofApp::setup(){
 	nodel.setup(nodel_dep);
 }
 
-
-
 //--------------------------------------------------------------
 void ofApp::setupProjectionWindow(){
     ofSetBackgroundColor(0);
@@ -247,10 +245,10 @@ void ofApp::drawProjections(ofEventArgs & args){
  
    if(projection_fbo.isAllocated()){
         projection_fbo.getTexture().draw(0,0,ofGetWidth(), ofGetHeight());
-       
-       surface_mask.set_source_texture(projection_fbo);
-       surface_mask.update();
-       surface_mask.draw();
+
+        surface_mask.set_source_texture(projection_fbo);
+        surface_mask.update();
+        surface_mask.draw();
     }
 }
 
@@ -332,7 +330,6 @@ void ofApp::update_osc(){
                 float diff = h_amp - volumes[2];
                 volumes[2] += diff * h_smooth;
             }
-        
         }
     }
 }
