@@ -170,15 +170,13 @@ void ofApp::setup(){
 	ofAddListener(ofxWinTouchHook::touchUp, this, &ofApp::touchUp);
 #endif
 
-    build_shader_src();
-
     
     isShaderDirty = true; // initialise dirty shader
 
     ofDirectory shader_dir;
     shader_dir.listDir("shaders/Synths/");
     shader_dir.sort();
-    
+        
     cout << "dir size = " << shader_dir.size() << endl;
     
     static int num_layers = shader_dir.size();
@@ -187,7 +185,6 @@ void ofApp::setup(){
         VisualLayer *layer = new VisualLayer();
         layers.push_back(layer);
         layers[i]->setup("Shader" + ofToString(1+i), i);
-        layers[i]->init_variables(shader_variables[i]);
         mapper.registerFboSource(layers[i]);
     }
     
@@ -310,9 +307,9 @@ void ofApp::update_osc(){
             float m_amp = ofMap(powf(mid - 1.0, m_shape), 1.0, 0.0, 0.0, 3.0);
             float h_amp = ofMap(powf(high - 1.0, h_shape), 1.0, 0.0, 0.0, 10.0);
 
-            float b_smooth = 0.1; // Make smaller for smoother
-            float m_smooth = 0.1; // Make smaller for smoother
-            float h_smooth = 0.05; // Make smaller for smoother
+            float b_smooth = 0.05; // Make smaller for smoother
+            float m_smooth = 0.05; // Make smaller for smoother
+            float h_smooth = 0.02; // Make smaller for smoother
 
             //-------- Bass
             if (b_amp > volumes[0]) {

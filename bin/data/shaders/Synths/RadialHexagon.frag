@@ -1,7 +1,7 @@
 //------------CONTROLABLE PARAMETERS -----------//
-//# CIRCLE_ITER = (0.0) #  <--- SLIDER_1
+//# CIRCLE_ITER = (0.3) #  <--- SLIDER_1
 //# GRID_SIZE = (1.0) #    <--- SLIDER 2
-//# TIME_SKIP = (0.0) #    <--- SLIDER_3
+//# BRIGHTNESS = (1.0) #    <--- SLIDER_3
 
 vec3 RadialHexagon()
 {    
@@ -28,10 +28,11 @@ vec3 RadialHexagon()
     U = uv-C;
     float  s = 2.*mod(ceil(C.x+C.y),2.)-1.,
     r = length(U)/(1.73/2.)*3.,
-    a = atan(U.y,U.x) - 3.*time + remap(param3,0.0,1.0,0.0,40.0);
+    a = atan(U.y,U.x) - 3.*time;
     //  spiral                   // fade with radius   // rainbow color scheme
     float iter = remap(param1,0.0,1.0,0.0,10.0);
-    O = pow(.5+.5*s*sin(iter*log(r)+a),1.) * exp(-.03*r*r) * sin(r+vec4(1,1.,1.,0));
+    float brightness = remap(param3,0.0,1.0,2.0,0.03);
+    O = pow(.5+.5*s*sin(iter*log(r)+a),1.) * exp(-brightness*r*r) * sin(r+vec4(1,1.,1.,0));
     
-    return O.rgb * MixColour();
+    return O.rgb * pow(MixColour(),vec3(2.0));
 }

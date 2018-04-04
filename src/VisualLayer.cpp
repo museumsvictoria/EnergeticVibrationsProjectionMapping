@@ -12,12 +12,10 @@
 
 //--------------------------------------------------------------
 VisualLayer::VisualLayer(){
-
 }
 
 //--------------------------------------------------------------
 void VisualLayer::setup(string name, int scene_num){
-    
     this->name = name; // Give our source a decent name
     scene_select = scene_num;
 

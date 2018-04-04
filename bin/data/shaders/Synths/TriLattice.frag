@@ -1,6 +1,6 @@
 //------------CONTROLABLE PARAMETERS -----------//
 //# NUM_TRIANGLES = (1.0) #  <--- SLIDER_1
-//# ROTATION = (0.0) #       <--- SLIDER 2
+//# SIZE = (0.0) #       <--- SLIDER 2
 //# COLOUR_MIX = (1.0) #     <--- SLIDER_3
 
 vec2 uv2tri(vec2 uv)
@@ -12,7 +12,7 @@ vec2 uv2tri(vec2 uv)
 
 vec3 TriLattice()
 {    
-    float res = resolution.y / (remap(param1,0.0,1.0,2.0,16.0));
+    float res = resolution.y / (remap(param1,0.0,1.0,2.0,8.0));
     
     vec2 uv = (gl_FragCoord.xy - resolution.xy / 2.0) / res;
     
@@ -26,11 +26,12 @@ vec3 TriLattice()
     float d = min(d1, d2);
     
     // border line
-    float c = clamp((d - 0.014) * res, 0.0, 1.0);
+    float thickness = remap(param2,0.0,1.0,0.014,0.2);
+    float c = clamp((d - thickness) * res, 0.0, 1.0);
     
     // gradient inside triangles
     float r = rand(uv2tri(uv));
-    c *= abs(remap(param2,0.0,1.0,0.5,0.53) - fract(d + r + time * remap(param2,0.0,1.0,.02,.20))) * 2.0;
+    c *= abs(0.53 - fract(d + r + time * 0.2)) * 2.0;
     
     // color variation
     float cb = sin(time * 4.8 + r * 32.984) * 0.5 + 0.5;

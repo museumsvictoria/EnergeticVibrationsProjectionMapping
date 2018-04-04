@@ -1,7 +1,7 @@
 //------------CONTROLABLE PARAMETERS -----------//
-//# SPEED = (0.0) #        <--- SLIDER_1
-//# SHAPE_ITER = (0.0) #   <--- SLIDER 2
-//# GRID_ITER = (0.0) #    <--- SLIDER_3
+//# SHAPE_ITER = (1.0) #   <--- SLIDER 1
+//# GRID_ITER = (0.4) #    <--- SLIDER_2
+//# INTENSITY = (0.0) #    <--- SLIDER_3
 
 vec3 PatternMesh2D()
 {    
@@ -11,9 +11,9 @@ vec3 PatternMesh2D()
 
     vec4 o = vec4(0.0);
 
-    float speed = remap(param1,0.0,1.0,0.05,1.0);
-    float iter = remap(param2,0.0,1.0,10.0,20.0);//100.0);
-    float grid_iter = remap(param3,0.0,1.0,0.5,6.0);//12.0);
+    float speed = 0.1;
+    float iter = remap(param1,0.0,1.0,5.0,10.0);//100.0);
+    float grid_iter = remap(param2,0.0,1.0,0.5,3.0);//12.0);
 
 
     u *= mat2(1,-1./1.73, 0,2./1.73) * grid_iter/ resolution.y;  // conversion to 
@@ -30,10 +30,10 @@ vec3 PatternMesh2D()
     
 #define s(x) (.5+.5*sin(x))
   o = .5+.5*sin(iter*o);                               // arabic version
-  //o.r = .5+.5*sin(1.*o.r * sin(time*.4)); 
-  //o = .5+.5*sin(10.*o + vec4(0,2.1,-2.1,0));         // psychedelic version
-  //o = .5+.5*sin(10.*o + vec4(0,2.1,-2.1,0) * s(time*.4));  
+  //o.r = .5+.5*sin(1.*o.r * sin(time*.4));
+  o = mix(o, .5+.5*sin(10.*o + vec4(0,2.1,-2.1,0)),  param3);         // psychedelic version
+  //o = .5+.5*sin(10.*o + vec4(0,2.1,-2.1,0) * s(time*.4));
   //  o = mix(o,  s(10.*o + vec4(0,2.1,-2.1,0)), s(time*.4));
 
-    return o.xyz * MixColour();
+    return o.xyz * pow(MixColour(),vec3(2.0));
 }

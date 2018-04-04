@@ -1,7 +1,7 @@
 //------------CONTROLABLE PARAMETERS -----------//
-//# SPEED = (0.5) #  <--- SLIDER_1
-//# GLOW = (0.2) #   <--- SLIDER 2
-//# SIZE = (0.0) #   <--- SLIDER_3
+//# SCALE = (0.5) #       <--- SLIDER_1
+//# THICKNESS = (0.2) #   <--- SLIDER 2
+//# BRIGHTNESS = (0.9) #  <--- SLIDER_3
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -32,8 +32,8 @@ ivec2 nextcell(ivec2 s, int q) {
 
 vec3 PentagonTessellations()
 {
-    float scale = 3.3;
-    float lwidth = 0.025;
+    float scale = remap(param1,0.0,1.0,0.5,3.3);
+    float lwidth = remap(param2,0.0,1.0,0.025, 0.25);
     // Half the width of the AA line edge
     float awidth = 1.5*scale/resolution.y;
     vec2 q,p =(2.0 * gl_FragCoord.xy - resolution.xy) / resolution.y;
@@ -67,7 +67,7 @@ vec3 PentagonTessellations()
     }
     vec3 col = getcolor1(s);
     col = mix(col,vec3(1),0.1);
-    col *= 0.75;
+    col *= remap(param3,0.0,1.0,0.2,1.0);
     col = mix(vec3(0),col,smoothstep(lwidth-awidth,lwidth+awidth,d));
     
     return hue(sqrt(col), hue_offset);
