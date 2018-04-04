@@ -31,7 +31,7 @@ BaseSurface * SurfaceFactory::createSurface(SurfaceType type){
 // of the mapping rectangle and a small size when created.
 void SurfaceFactory::init_defaults(){
     default_scale = 0.1;
-    default_pos = ofVec2f(460,40);
+    default_pos = ofVec2f(460,92);
 }
 
 TriangleSurface * SurfaceFactory::createTriangleSurface(){
