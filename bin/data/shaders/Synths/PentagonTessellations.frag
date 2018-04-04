@@ -67,7 +67,7 @@ vec3 PentagonTessellations()
     }
     vec3 col = getcolor1(s);
     col = mix(col,vec3(1),0.1);
-    col *= remap(param3,0.0,1.0,0.2,1.0);
+    col *= remap(param3,0.0,1.0,0.1,1.0);
     col = mix(vec3(0),col,smoothstep(lwidth-awidth,lwidth+awidth,d));
     
     return hue(sqrt(col), hue_offset);

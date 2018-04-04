@@ -1,7 +1,7 @@
 //------------CONTROLABLE PARAMETERS -----------//
-//# SPEED = (0.5) #  <--- SLIDER_1
-//# GLOW = (0.2) #   <--- SLIDER 2
-//# SIZE = (0.0) #   <--- SLIDER_3
+//# SCALE = (0.0) #  <--- SLIDER_1
+//# THICKNESS = (0.7) #   <--- SLIDER 2
+//# BRIGHTNESS = (0.9) #   <--- SLIDER_3
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -22,8 +22,8 @@ vec3 getcolor0(int i) {
 
 vec3 SnubQuadrille()
 {    
-    float scale = 2.3;
-    float lwidth = 0.015;
+    float scale = remap(param1,0.0,1.0,0.87,3.2);
+    float lwidth = remap(param2,0.0,1.0,0.315,0.015);
     
 
     // Half the width of the AA line edge
@@ -75,6 +75,8 @@ vec3 SnubQuadrille()
         d = min(d,segment(p,q1,q2));
         col = mix(vec3(0),col,smoothstep(lwidth-awidth,lwidth+awidth,d));
     }
+    col *= remap(param3,0.0,1.0,0.05,1.0);
+
     return hue(sqrt(col), hue_offset);
 }
 
