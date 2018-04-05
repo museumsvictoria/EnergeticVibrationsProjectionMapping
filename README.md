@@ -12,10 +12,9 @@ Finally, to add a new layer, either press on the rectangle or the triangle in th
 ![Figure 1-2](https://github.com/JoshuaBatty/EnergeticVibrationsProjectionMapping/blob/master/Wiki/Select%20Layer.png "Select Layer")
 
 ## Changing the Theme's Colour
+![Figure 1-3](https://github.com/JoshuaBatty/EnergeticVibrationsProjectionMapping/blob/master/Wiki/ThemeColourExample.png "Theme Colour Example")
 The file located at data/theme/theme_colour.json allows the user to change the colour used by the interface.
 ![Figure 1-2](https://github.com/JoshuaBatty/EnergeticVibrationsProjectionMapping/blob/master/Wiki/ThemeColour.png "Theme Colour")
-
-![Figure 1-3](https://github.com/JoshuaBatty/EnergeticVibrationsProjectionMapping/blob/master/Wiki/ThemeColourExample.png "Theme Colour Example")
 
 ## Sending Audio Data Via OSC
 If you would like to assign audio control to the shaders you need to send it data via the following OSC address
