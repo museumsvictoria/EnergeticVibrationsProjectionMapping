@@ -90,3 +90,7 @@ float p1 = remap(param1,0.0,1.0,0.0,0.5);
 float p2 = remap(param2,0.0,1.0,0.1,1.0);
 float p3 = remap(param3,0.0,1.0,1.0,12.0);
 ```
+
+---
+Finally in order to have the shader show up in the application, drag the file into the the folder called "Synths". Either restart the application or press the space bar for it to appear. 
+![Figure 1-3](https://github.com/JoshuaBatty/EnergeticVibrationsProjectionMapping/blob/master/Wiki/MyAwesomeShader.png "MyAwesomeShader")
