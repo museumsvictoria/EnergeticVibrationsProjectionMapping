@@ -18,8 +18,10 @@ If you would like to assign audio control to the shaders you need to send it dat
 There are 3 channels for bass, mid, high. Therefor you should send bass to argument 0, mid to argument 1, and high to argument 2; 
 
 ## Adding in Custom Shaders
+There is support for users to add their own custom shaders. In order to do so, use the Template.frag file as a starting point. Once we edit this shader we will be able to control it's parameters using sliders and audio reactivity. The file is found in the following location. 
 ![Figure 1-3](https://github.com/JoshuaBatty/EnergeticVibrationsProjectionMapping/blob/master/Wiki/CustomShaderPath.png "CustomShaderPath")
 
+If you open the file in a text editor it will look like this. 
 ```glsl
 //------------CONTROLABLE PARAMETERS -----------//
 //# PARAM1 = (0.5) #   <--- SLIDER_1
@@ -45,3 +47,14 @@ vec3 Template()
     return col * MixColour();
 }
 ```
+
+Up the top of the file you have 3 parameters that you can assign to control various parts of the shader that you either make or import from the web. The words PARAM1, PARAM2, PARAM3 are place holders for the 'name' that shows up ontop of the slider in the application. Change these to reflect the effect it has on the pattern (eg. SPEED, ZOOM etc..).
+
+The number inside the ( ) is the default value that you would like the pattern to start with. This number must be within a range of 0.0 to 1.0
+```glsl
+//------------CONTROLABLE PARAMETERS -----------//
+//# PARAM1 = (0.5) #   <--- SLIDER_1
+//# PARAM2 = (0.2) #   <--- SLIDER 2
+//# PARAM3 = (0.0) #   <--- SLIDER_3
+```
+
