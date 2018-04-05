@@ -48,9 +48,11 @@ vec3 Template()
 }
 ```
 
+---
 Up the top of the file you have 3 parameters that you can assign to control various parts of the shader that you either make or import from the web. The words PARAM1, PARAM2, PARAM3 are place holders for the 'name' that shows up ontop of the slider in the application. Change these to reflect the effect it has on the pattern (eg. SPEED, ZOOM etc..).
 
 The number inside the ( ) is the default value that you would like the pattern to start with. This number must be within a range of 0.0 to 1.0
+
 ```glsl
 //------------CONTROLABLE PARAMETERS -----------//
 //# PARAM1 = (0.5) #   <--- SLIDER_1
@@ -58,3 +60,4 @@ The number inside the ( ) is the default value that you would like the pattern t
 //# PARAM3 = (0.0) #   <--- SLIDER_3
 ```
 
+---
