@@ -389,6 +389,7 @@
 		13125CD7206F6ABF00664DFC /* TriLattice.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = TriLattice.frag; sourceTree = "<group>"; };
 		13125CDE206F852000664DFC /* SnubQuadrille.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = SnubQuadrille.frag; sourceTree = "<group>"; };
 		13125CE0206F877200664DFC /* PentagonTessellations.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = PentagonTessellations.frag; sourceTree = "<group>"; };
+		131DE503207625E400444691 /* ScrollArrows.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = ScrollArrows.frag; sourceTree = "<group>"; };
 		135D451B2070C61A006086DF /* blend_mask.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = blend_mask.frag; sourceTree = "<group>"; };
 		135D451E2070CA78006086DF /* PingPong.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PingPong.cpp; sourceTree = "<group>"; };
 		135D451F2070CA78006086DF /* PingPong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PingPong.h; sourceTree = "<group>"; };
@@ -928,6 +929,7 @@
 		13125CCE206F6ABF00664DFC /* Synths */ = {
 			isa = PBXGroup;
 			children = (
+				131DE503207625E400444691 /* ScrollArrows.frag */,
 				135D4550207373E3006086DF /* ColourGradient.frag */,
 				135D454820736166006086DF /* PatternMesh2D.frag */,
 				13125CD1206F6ABF00664DFC /* EscherLike.frag */,
