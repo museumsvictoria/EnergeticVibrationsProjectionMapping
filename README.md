@@ -1,5 +1,5 @@
 # Energetic Vibrations Projection Mapping
-This project was developed for Energetic Vibrations Projection Mapping installation as part of the Beyond Perception exhibition at Scienceworks. It is developed using openFrameworks, GLSL, and a modified version of ofxPiMapper. Multi touch support is also available for Windows touch screens.
+This project was developed for the Energetic Vibrations Projection Mapping Installation as part of the Beyond Perception exhibition at Scienceworks. It is developed using openFrameworks, GLSL, and a modified version of ofxPiMapper. Multi touch support is also available for Windows touch screens.
 
 ![Figure 1-1](https://github.com/JoshuaBatty/EnergeticVibrationsProjectionMapping/blob/master/Wiki/Interface.png "Main Interface")
 
@@ -11,3 +11,31 @@ Finally, to add a new layer, either press on the rectangle or the triangle in th
 
 ![Figure 1-2](https://github.com/JoshuaBatty/EnergeticVibrationsProjectionMapping/blob/master/Wiki/Select%20Layer.png "Select Layer")
 
+# Adding in Custom Shaders
+![Figure 1-3](https://github.com/JoshuaBatty/EnergeticVibrationsProjectionMapping/blob/master/Wiki/CustomShaderPath.png "CustomShaderPath")
+
+```glsl
+//------------CONTROLABLE PARAMETERS -----------//
+//# PARAM1 = (0.5) #   <--- SLIDER_1
+//# PARAM2 = (0.2) #   <--- SLIDER 2
+//# PARAM3 = (0.0) #   <--- SLIDER_3
+
+vec3 Template()
+{
+    // Incoming slider values
+    float p1 = remap(param1,0.0,1.0,0.0,1.0);
+    float p2 = remap(param2,0.0,1.0,0.0,1.0);
+    float p3 = remap(param3,0.0,1.0,0.0,1.0);
+    
+    // Pixel Coords 0.0 => 1.0
+    vec2 uv = gl_FragCoord.xy / resolution.xy;
+    
+    //------ WRITE YOUR SHADER HERE!
+
+    // Assign the final shaders output to the col variable
+    vec3 col = vec3(uv.x,uv.y,p3);
+    
+    // Return the output mixed with colour
+    return col * MixColour();
+}
+```
