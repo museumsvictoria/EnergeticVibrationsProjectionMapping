@@ -290,7 +290,7 @@
         </texCoords>
         <source>
             <source-type>fbo</source-type>
-            <source-name>Shader9</source-name>
+            <source-name>Shader6</source-name>
         </source>
     </surface>
     <surface type="0">

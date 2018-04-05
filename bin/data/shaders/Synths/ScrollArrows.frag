@@ -1,12 +1,7 @@
 //------------CONTROLABLE PARAMETERS -----------//
 //# ANGLE = (1.0) #   <--- SLIDER_1
-//# WIDTH = (0.9) #   <--- SLIDER 2
-//# COPIES = (0.2) #   <--- SLIDER_3
-
-#define STRIPE_WIDTH .9
-#define CLAMP_TOP .0
-#define CLAMP_BOTTOM .0
-
+//# WIDTH = (1.0) #   <--- SLIDER 2
+//# COPIES = (0.5) #  <--- SLIDER_3
 
 vec3 ScrollArrows()
 {
@@ -16,14 +11,14 @@ vec3 ScrollArrows()
     float p3 = remap(param3,0.0,1.0,1.0,12.0);
     
     // Pixel Coords 0.0 => 1.0
-    vec2 vUv = gl_FragCoord.xy / resolution.xy;
+    vec2 uv = gl_FragCoord.xy / resolution.xy;
 
     float num_stripes =  p3;
     float smooth_width = 0.04;
-    float angle_stripes = p1;//0.25;
+    float angle_stripes = p1;
     float stripe_width = p2;
     
-    vec2 rotatedUv = vUv;
+    vec2 rotatedUv = uv;
     
     // rotate context
     rotatedUv -= vec2(0.5);

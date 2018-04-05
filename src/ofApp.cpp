@@ -205,7 +205,7 @@ void ofApp::setup(){
     //theme_colour = ofVec4f(237, 60, 52, 255);
     
     // Custom
-    theme_colour = ofVec4f(ofRandom(255), ofRandom(255), ofRandom(255), 255);
+    //theme_colour = ofVec4f(ofRandom(255), ofRandom(255), ofRandom(255), 255);
     
     //load fonts first
     gui_theme.load_font();
