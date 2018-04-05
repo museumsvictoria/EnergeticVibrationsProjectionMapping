@@ -53,6 +53,7 @@ vec3 Template()
 ```
 
 ---
+#### Assigning sliders to parameters
 ```glsl
 //------------CONTROLABLE PARAMETERS -----------//
 //# PARAM1 = (0.5) #   <--- SLIDER_1
@@ -72,6 +73,7 @@ For example, if we wanted the sliders to show Angle, Width and Copies as their n
 ```
 
 ---
+#### Giving the shader a name
 Next is the name of our main function. **This must be the EXACT same name of the file**. 
 ```glsl
 vec3 Template()
@@ -83,6 +85,7 @@ vec3 MyAwesomeShader()
 ```
 
 ---
+#### Remapping the values to unique ranges
 The incoming values the the sliders are between 0.0 and 1.0. The next few lines of code allow you to __remap__ this range to another that may be more suitable to the parameter you are controlling. Simply change the last 2 values inside the remap() function to the ranges you would like the value to constrain within. Finally, use the p1, p2, p3 variables to hook the interface into parts of the shader. 
 ```glsl
 // Incoming slider values
@@ -92,5 +95,6 @@ float p3 = remap(param3,0.0,1.0,1.0,12.0);
 ```
 
 ---
+#### Use the new shader inside the application
 Finally in order to have the shader show up in the application, drag the file into the the folder called "Synths". Either restart the application or press the space bar for it to appear. 
 ![Figure 1-3](https://github.com/JoshuaBatty/EnergeticVibrationsProjectionMapping/blob/master/Wiki/MyAwesomeShader.png "MyAwesomeShader")
