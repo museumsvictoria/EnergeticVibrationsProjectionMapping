@@ -11,6 +11,12 @@ Finally, to add a new layer, either press on the rectangle or the triangle in th
 
 ![Figure 1-2](https://github.com/JoshuaBatty/EnergeticVibrationsProjectionMapping/blob/master/Wiki/Select%20Layer.png "Select Layer")
 
+# Sending Audio Data Via OSC
+If you would like to assign audio control to the shaders you need to send it data via the following OSC address.
+"ev/volumes"
+
+There are 3 channels for bass, mid, high. Therefor you should send bass to argument 0, mid to argument 1, and high to argument 2; 
+
 # Adding in Custom Shaders
 ![Figure 1-3](https://github.com/JoshuaBatty/EnergeticVibrationsProjectionMapping/blob/master/Wiki/CustomShaderPath.png "CustomShaderPath")
 
