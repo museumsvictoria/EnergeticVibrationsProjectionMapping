@@ -180,7 +180,7 @@ void ofApp::setup(){
     cout << "dir size = " << shader_dir.size() << endl;
     
     static int num_layers = shader_dir.size();
-    
+
     for(int i = 0; i < num_layers; i++){
         VisualLayer *layer = new VisualLayer();
         layers.push_back(layer);
@@ -253,6 +253,18 @@ void ofApp::drawProjections(ofEventArgs & args){
 }
 
 //--------------------------------------------------------------
+void ofApp::create_shader_source(int idx){
+    VisualLayer *layer = new VisualLayer();
+    layers.push_back(layer);
+    layers[idx]->setup("Shader" + ofToString(1+idx), idx);
+    layers[idx]->set_scene_shader(scene_shader);
+    layers[idx]->init_variables(shader_variables[idx]);
+    mapper.registerFboSource(layers[idx]);
+    
+    gui_interface.push_back_shader_toggle(gui, layers);
+}
+
+//--------------------------------------------------------------
 void ofApp::update(){
     if (isShaderDirty){
         build_shader_src();
@@ -260,29 +272,16 @@ void ofApp::update(){
         for(int i = 0; i < layers.size(); i++){
             layers[i]->set_scene_shader(scene_shader);
             layers[i]->init_variables(shader_variables[i]);
-            
-            cout << "first i = " << i << endl;
         }
         
         ofDirectory shader_dir;
         shader_dir.listDir("shaders/Synths/");
-
-        cout << "layers.size() = " << layers.size() << " -- shader dir size = " << shader_dir.size() << endl;
+        
         if(shader_dir.size() > layers.size()){
             int idx = shader_dir.size() - 1;
-
             cout << " -- idx = " << idx << endl;
-
-            VisualLayer *layer = new VisualLayer();
-            layers.push_back(layer);
-            layers[idx]->setup("Shader" + ofToString(1+idx), idx);
-            layers[idx]->set_scene_shader(scene_shader);
-            layers[idx]->init_variables(shader_variables[idx]);
-            mapper.registerFboSource(layers[idx]);
-            
-            gui_interface.push_back_shader_toggle(gui, layers);
+            create_shader_source(idx);
         }
-        
         gui_interface.init_shader_variables(layers);
         isShaderDirty = false;
     }

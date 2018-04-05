@@ -35,6 +35,9 @@ class ofApp : public ofBaseApp{
     
         void build_shader_src();
     
+        void create_shader_source(int idx);
+        void remove_shader_source(int idx);
+    
         void setupProjectionWindow();
         void drawProjections(ofEventArgs & args);
 		
