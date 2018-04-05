@@ -314,11 +314,21 @@ void ofApp::update_osc(){
         ofxOscMessage m;
         receiver.getNextMessage(m);
         
-        if(m.getAddress() == "/caco/0"){
-            //cout << "m.getArgAsFloat(0) = " << m.getArgAsFloat(0) << endl;
-            float bass = ofClamp(m.getArgAsFloat(2), 0.0, 1.0);
-            float mid = ofClamp(m.getArgAsFloat(3), 0.0, 1.0);
-            float high = ofClamp(m.getArgAsFloat(4), 0.0, 1.0);
+        float bass = 0.0;
+        float mid = 0.0;
+        float high = 0.0;
+        if(m.getAddress() == "/caco/0" || m.getAddress() == "ev/volumes"){
+
+            if(m.getAddress() == "/caco/0"){
+                bass = ofClamp(m.getArgAsFloat(2), 0.0, 1.0);
+                mid = ofClamp(m.getArgAsFloat(3), 0.0, 1.0);
+                high = ofClamp(m.getArgAsFloat(4), 0.0, 1.0);
+            }
+            else if(m.getAddress() == "/ev/volumes"){
+                bass = ofClamp(m.getArgAsFloat(0), 0.0, 1.0);
+                mid = ofClamp(m.getArgAsFloat(1), 0.0, 1.0);
+                high = ofClamp(m.getArgAsFloat(2), 0.0, 1.0);
+            }
             float b_shape = 4.0;
             float m_shape = 18.0;
             float h_shape = 18.0;
