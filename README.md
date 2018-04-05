@@ -15,6 +15,8 @@ Finally, to add a new layer, either press on the rectangle or the triangle in th
 The file located at data/theme/theme_colour.json allows the user to change the colour used by the interface.
 ![Figure 1-2](https://github.com/JoshuaBatty/EnergeticVibrationsProjectionMapping/blob/master/Wiki/ThemeColour.png "Theme Colour")
 
+![Figure 1-3](https://github.com/JoshuaBatty/EnergeticVibrationsProjectionMapping/blob/master/Wiki/ThemeColourExample.png "Theme Colour Example")
+
 ## Sending Audio Data Via OSC
 If you would like to assign audio control to the shaders you need to send it data via the following OSC address
 "ev/volumes" on OSC port 9002.
@@ -22,10 +24,9 @@ If you would like to assign audio control to the shaders you need to send it dat
 There are 3 channels for bass, mid, high. Therefor you should send bass to argument 0, mid to argument 1, and high to argument 2.
 
 Below is a simple example of how you could set that up using MaxMSP
-![Figure 1-3](https://github.com/JoshuaBatty/EnergeticVibrationsProjectionMapping/blob/master/Wiki/MaxOSC.png "Select Layer")
-
+![Figure 1-4](https://github.com/JoshuaBatty/EnergeticVibrationsProjectionMapping/blob/master/Wiki/MaxOSC.png "Select Layer")
 ## Adding in Custom Shaders
-![Figure 1-4](https://github.com/JoshuaBatty/EnergeticVibrationsProjectionMapping/blob/master/Wiki/CustomShaderPath.png "CustomShaderPath")
+![Figure 1-5](https://github.com/JoshuaBatty/EnergeticVibrationsProjectionMapping/blob/master/Wiki/CustomShaderPath.png "CustomShaderPath")
 There is support for users to add their own custom shaders. In order to do so, use the Template.frag file as a starting point. Once we edit this shader we will be able to control it's parameters using sliders and audio reactivity. The file is found in the above location. 
 
 
@@ -101,4 +102,4 @@ float p3 = remap(param3,0.0,1.0,1.0,12.0);
 ---
 ### Use the new shader inside the application
 Finally in order to have the shader show up in the application, drag the file into the the folder called "Synths". Either restart the application or press the space bar for it to appear. 
-![Figure 1-5](https://github.com/JoshuaBatty/EnergeticVibrationsProjectionMapping/blob/master/Wiki/MyAwesomeShader.png "MyAwesomeShader")
+![Figure 1-6](https://github.com/JoshuaBatty/EnergeticVibrationsProjectionMapping/blob/master/Wiki/MyAwesomeShader.png "MyAwesomeShader")
