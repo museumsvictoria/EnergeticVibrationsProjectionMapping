@@ -17,6 +17,9 @@ If you would like to assign audio control to the shaders you need to send it dat
 
 There are 3 channels for bass, mid, high. Therefor you should send bass to argument 0, mid to argument 1, and high to argument 2.
 
+Below is a simple example of how you could set that up using MaxMSP
+![Figure 1-2](https://github.com/JoshuaBatty/EnergeticVibrationsProjectionMapping/blob/master/Wiki/MaxOSC.png "Select Layer")
+
 
 ## Adding in Custom Shaders
 ![Figure 1-3](https://github.com/JoshuaBatty/EnergeticVibrationsProjectionMapping/blob/master/Wiki/CustomShaderPath.png "CustomShaderPath")
