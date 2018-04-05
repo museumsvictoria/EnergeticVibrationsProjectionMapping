@@ -62,3 +62,13 @@ The number inside the ( ) is the default value that you would like the pattern t
 ```
 
 ---
+Next is the name of our main function. **This must be the EXACT same name of the file**. 
+```glsl
+vec3 Template()
+```
+
+For example if you duplicate the Template.frag file and call it MyAwesomeShader.frag, then the name of the function must be MyAwesomeShader() like so. 
+```glsl
+vec3 MyAwesomeShader()
+```
+
