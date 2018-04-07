@@ -68,6 +68,10 @@ void ProjectionEditorWidget::mouseDragged(ofMouseEventArgs & args){
 					joints[i]->position = *allVertices[j];
 					ofVec2f clickDistance = joints[i]->position - ofVec2f(args.x, args.y);
 					joints[i]->setClickDistance(clickDistance);
+					if (joints[i]->isDragged()) {
+						surfaceManager->getSelectedSurface()->setVertex(i,
+							boundary::bounded_position(joints[i]->position));
+					}
 					break;
 				}
 			}
@@ -111,11 +115,19 @@ void ProjectionEditorWidget::touchMoved(map<int, ofTouchEventArgs> &active_joint
 						joints[i]->position = *allVertices[j];
 						ofVec2f clickDistance = joints[i]->position - ofVec2f(joint_touch.second.x, joint_touch.second.y);
 						joints[i]->setClickDistance(clickDistance);
+						if (joint_touch.first < joints.size() &&
+							joints[joint_touch.first]->isDragged()) {
+							if (!boundary::is_collided_joint(joint_touch.second, joints[joint_touch.first], joints)) {
+								surfaceManager->getSelectedSurface()->setVertex(i,
+									boundary::bounded_position(joints[i]->position));
+							}
+						}
 						break;
 					}
 				}
 			}
 		}
+		
 	}
 }
 
