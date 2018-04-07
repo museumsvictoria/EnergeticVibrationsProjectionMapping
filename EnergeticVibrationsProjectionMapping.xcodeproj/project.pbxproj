@@ -379,7 +379,6 @@
 		13125B9B2063953000664DFC /* ofxWinTouchHook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxWinTouchHook.h; sourceTree = "<group>"; };
 		13125CC9206F6ABF00664DFC /* gradient.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = gradient.frag; sourceTree = "<group>"; };
 		13125CCA206F6ABF00664DFC /* grid.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = grid.frag; sourceTree = "<group>"; };
-		13125CCC206F6ABF00664DFC /* shader1.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader1.frag; sourceTree = "<group>"; };
 		13125CCD206F6ABF00664DFC /* shader_selector.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader_selector.frag; sourceTree = "<group>"; };
 		13125CD1206F6ABF00664DFC /* EscherLike.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = EscherLike.frag; sourceTree = "<group>"; };
 		13125CD2206F6ABF00664DFC /* FlowerOfLife.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = FlowerOfLife.frag; sourceTree = "<group>"; };
@@ -906,7 +905,6 @@
 			children = (
 				135D451A2070C61A006086DF /* Masking */,
 				13125CC8206F6ABF00664DFC /* Interface */,
-				13125CCC206F6ABF00664DFC /* shader1.frag */,
 				13125CCD206F6ABF00664DFC /* shader_selector.frag */,
 				1370C2F52074874E00BA46CC /* Template.frag */,
 				13125CCE206F6ABF00664DFC /* Synths */,
