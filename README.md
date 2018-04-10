@@ -24,6 +24,9 @@ There are 3 channels for bass, mid, high. Therefor you should send bass to argum
 
 Below is a simple example of how you could set that up using MaxMSP
 ![Figure 1-4](https://github.com/JoshuaBatty/EnergeticVibrationsProjectionMapping/blob/master/Wiki/MaxOSC.png "Select Layer")
+## Fullscreen toggles
+To toggle full screen on and off, simply press click on the window that you want to toggle and press the 'f' key. This works with both the GUI window and the projection window.
+
 ## Adding in Custom Shaders
 ![Figure 1-5](https://github.com/JoshuaBatty/EnergeticVibrationsProjectionMapping/blob/master/Wiki/CustomShaderPath.png "CustomShaderPath")
 There is support for users to add their own custom shaders. In order to do so, use the Template.frag file as a starting point. Once we edit this shader we will be able to control it's parameters using sliders and audio reactivity. The file is found in the above location. 
@@ -110,6 +113,9 @@ A mask is applied to the output of the projection window to contain pixels withi
 ![Figure 1-7](https://github.com/JoshuaBatty/EnergeticVibrationsProjectionMapping/blob/master/Wiki/MadMapper.png "MadMapper")
 
 Make sure the image looks similar to the below reference image. Rename the file mask.png and replace the existing file in data/bin/images/mask.png
+
 ![Figure 1-8](https://github.com/JoshuaBatty/EnergeticVibrationsProjectionMapping/blob/master/bin/data/images/mask.png "Mask")
 
 If for some reason you would like no mask at all to be applied, simply create a 1920x1080 plain white image and use this for the mask.png file. 
+
+HAPPY MAPPING!
