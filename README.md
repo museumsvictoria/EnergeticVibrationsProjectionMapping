@@ -102,3 +102,8 @@ float p3 = remap(param3,0.0,1.0,1.0,12.0);
 ### Use the new shader inside the application
 Finally in order to have the shader show up in the application, drag the file into the the folder called "Synths". Either restart the application or press the space bar for it to appear. 
 ![Figure 1-6](https://github.com/JoshuaBatty/EnergeticVibrationsProjectionMapping/blob/master/Wiki/MyAwesomeShader.png "MyAwesomeShader")
+
+---
+## Working with the projection mask
+Finally in order to have the shader show up in the application, drag the file into the the folder called "Synths". Either restart the application or press the space bar for it to appear. 
+![Figure 1-7](https://github.com/JoshuaBatty/EnergeticVibrationsProjectionMapping/blob/master/Wiki/MapMapper.png "MadMapper")
