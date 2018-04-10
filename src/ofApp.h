@@ -1,6 +1,6 @@
 #pragma once
 
-#define WINDOWS_TOUCH
+//#define WINDOWS_TOUCH
 #define OSC_PORT 9002
 
 #include "ofMain.h"
@@ -38,8 +38,10 @@ class ofApp : public ofBaseApp{
         void create_shader_source(int idx);
         void remove_shader_source(int idx);
     
+        void assign_second_window_ptr(shared_ptr<ofAppBaseWindow> projectionWindow);
         void setupProjectionWindow();
         void drawProjections(ofEventArgs & args);
+        void keyPressedProjectionWindow(ofKeyEventArgs & key);
 		
 		void keyPressed(int key);
 		void keyReleased(int key);
@@ -53,6 +55,9 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 		
+        // Second Window
+        shared_ptr<ofAppBaseWindow> projectionWindow;
+    
         //----------------WINDOWS ONLY
 #ifdef WINDOWS_TOUCH
         // Touches //

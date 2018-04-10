@@ -220,8 +220,6 @@ void ofApp::setup(){
     gui_interface.setup_shader_toggles(layers);
     
 	clear_touch_in_two_frames = 0;
-
-    projection_fbo.allocate(ofGetWidth(),ofGetHeight(),GL_RGBA);
     
     // OSC
     volumes = {1.0f,1.0f,1.0f};
@@ -231,8 +229,14 @@ void ofApp::setup(){
 }
 
 //--------------------------------------------------------------
+void ofApp::assign_second_window_ptr(shared_ptr<ofAppBaseWindow> projectionWindow){
+    this->projectionWindow = projectionWindow;
+    
+}
+//--------------------------------------------------------------
 void ofApp::setupProjectionWindow(){
     ofSetBackgroundColor(0);
+    projection_fbo.allocate(projectionWindow->getWidth(),projectionWindow->getHeight(),GL_RGBA);
     mapper._application.getSurfaceManager()->assign_projection_fbo(&projection_fbo);
     
     surface_mask.setup();
@@ -249,6 +253,17 @@ void ofApp::drawProjections(ofEventArgs & args){
         surface_mask.set_source_texture(projection_fbo);
         surface_mask.update();
         surface_mask.draw();
+    }
+}
+//--------------------------------------------------------------
+void ofApp::keyPressedProjectionWindow(ofKeyEventArgs & key){
+    switch (key.key) {
+        case 'f':
+            ofToggleFullscreen();
+            setupProjectionWindow();
+            break;
+        default:
+            break;
     }
 }
 
@@ -389,6 +404,9 @@ void ofApp::keyPressed(int key){
         case ' ':
             isShaderDirty = true;
             break;
+        case 'f':
+            ofToggleFullscreen();
+            break;
         case 'm':
             mouse = !mouse;
             if (mouse) {
@@ -407,7 +425,7 @@ void ofApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
-		//mapper.keyReleased(key);
+    //mapper.keyReleased(key);
 
 }
 
