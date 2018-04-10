@@ -1,6 +1,6 @@
 #pragma once
 
-//#define WINDOWS_TOUCH
+#define WINDOWS_TOUCH
 #define OSC_PORT 9002
 
 #include "ofMain.h"
@@ -100,4 +100,5 @@ private:
 		bool mouse;
 		void toggle_shaders();
 		nodel_interpreter::Nodel nodel;
+		void ofApp::allocate_buffers();
 };
