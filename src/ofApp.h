@@ -100,5 +100,5 @@ private:
 		bool mouse;
 		void toggle_shaders();
 		nodel_interpreter::Nodel nodel;
-		void ofApp::allocate_buffers();
+		void allocate_buffers();
 };

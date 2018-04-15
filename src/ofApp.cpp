@@ -235,7 +235,9 @@ void ofApp::assign_second_window_ptr(shared_ptr<ofAppBaseWindow> projectionWindo
     
 }
 
+//--------------------------------------------------------------
 void ofApp::allocate_buffers() {
+    cout << " w = " << projectionWindow->getWidth() << " h = " << projectionWindow->getHeight() << endl;
     projection_fbo.allocate(projectionWindow->getWidth(),projectionWindow->getHeight(),GL_RGBA);
 }
 //--------------------------------------------------------------
@@ -264,8 +266,8 @@ void ofApp::keyPressedProjectionWindow(ofKeyEventArgs & key){
     switch (key.key) {
         case 'f':
             ofToggleFullscreen();
-			//allocate_buffers();
-            //setupProjectionWindow();
+			allocate_buffers();
+            setupProjectionWindow();
             break;
         default:
             break;
