@@ -226,6 +226,7 @@ void ofApp::setup(){
     receiver.setup(OSC_PORT);
 	nodel_interpreter::NodelDep nodel_dep(mapper, layers);
 	nodel.setup(nodel_dep);
+	allocate_buffers();
 }
 
 //--------------------------------------------------------------
@@ -233,10 +234,13 @@ void ofApp::assign_second_window_ptr(shared_ptr<ofAppBaseWindow> projectionWindo
     this->projectionWindow = projectionWindow;
     
 }
+
+void ofApp::allocate_buffers() {
+    projection_fbo.allocate(projectionWindow->getWidth(),projectionWindow->getHeight(),GL_RGBA);
+}
 //--------------------------------------------------------------
 void ofApp::setupProjectionWindow(){
     ofSetBackgroundColor(0);
-    projection_fbo.allocate(projectionWindow->getWidth(),projectionWindow->getHeight(),GL_RGBA);
     mapper._application.getSurfaceManager()->assign_projection_fbo(&projection_fbo);
     
     surface_mask.setup();
@@ -260,7 +264,8 @@ void ofApp::keyPressedProjectionWindow(ofKeyEventArgs & key){
     switch (key.key) {
         case 'f':
             ofToggleFullscreen();
-            setupProjectionWindow();
+			//allocate_buffers();
+            //setupProjectionWindow();
             break;
         default:
             break;
