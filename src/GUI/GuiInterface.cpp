@@ -54,13 +54,13 @@ void GuiInterface::setup(ofxImGui::Gui &gui, ofxPiMapper& mapper, int num_layers
     
     map_helper.setup(mapper);
     
-    img.load("BP_PROJECTION_INTERFACE.png");
+    img.load("images/BP_PROJECTION_INTERFACE.png");
     img_background.load("images/background.png");
     
 //    font_large.load("fonts/ArialRoundedBold.ttf", 15);
 //    font_mid.load("fonts/ArialRoundedBold.ttf", 12);
-    font_large.load("fonts/DINOffc-CondMedi.ttf", 18);
-    font_mid.load("fonts/DINOffc-CondMedi.ttf", 16);
+    font_large.load("fonts/DINOffc-CondMedi_mono.ttf", 18);
+    font_mid.load("fonts/DINOffc-CondMedi_mono.ttf", 16);
   
     padding.x = 10;
     padding.y = 25;
