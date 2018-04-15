@@ -18,6 +18,7 @@ int main( ){
     settings.setPosition(ofVec2f(0,0));
     settings.resizable = true;
     settings.windowMode = ofWindowMode::OF_WINDOW;
+	settings.decorated = true;
     // uncomment next line to share main's OpenGL resources with gui
     settings.shareContextWith = mainWindow;
     shared_ptr<ofAppBaseWindow> projectionWindow = ofCreateWindow(settings);
