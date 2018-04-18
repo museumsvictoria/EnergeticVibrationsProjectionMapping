@@ -38,6 +38,7 @@ class ofApp : public ofBaseApp{
         void create_shader_source(int idx);
         void remove_shader_source(int idx);
     
+		void set_multiple_windows(bool multiple_windows);
         void assign_second_window_ptr(shared_ptr<ofAppBaseWindow> projectionWindow);
         void setupProjectionWindow();
         void drawProjections(ofEventArgs & args);
@@ -57,7 +58,8 @@ class ofApp : public ofBaseApp{
 		
         // Second Window
         shared_ptr<ofAppBaseWindow> projectionWindow;
-    
+		bool multiple_windows;
+
         //----------------WINDOWS ONLY
 #ifdef WINDOWS_TOUCH
         // Touches //
@@ -82,8 +84,6 @@ class ofApp : public ofBaseApp{
         ofShader temp_scene_shader;
         bool isShaderDirty;
         vector<vector<ShaderVariable> > shader_variables;
-    
-
 
         ///------------- GUI
         ofxImGui::Gui gui;

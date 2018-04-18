@@ -170,7 +170,8 @@ void ofApp::setup(){
 	ofAddListener(ofxWinTouchHook::touchUp, this, &ofApp::touchUp);
 #endif
 
-    
+	allocate_buffers();
+
     isShaderDirty = true; // initialise dirty shader
 
     ofDirectory shader_dir;
@@ -180,6 +181,7 @@ void ofApp::setup(){
     cout << "dir size = " << shader_dir.size() << endl;
     
     static int num_layers = shader_dir.size();
+
 
     for(int i = 0; i < num_layers; i++){
         VisualLayer *layer = new VisualLayer();
@@ -226,7 +228,6 @@ void ofApp::setup(){
     receiver.setup(OSC_PORT);
 	nodel_interpreter::NodelDep nodel_dep(mapper, layers);
 	nodel.setup(nodel_dep);
-	allocate_buffers();
 }
 
 //--------------------------------------------------------------
@@ -236,42 +237,61 @@ void ofApp::assign_second_window_ptr(shared_ptr<ofAppBaseWindow> projectionWindo
 }
 
 //--------------------------------------------------------------
-void ofApp::allocate_buffers() {
-    cout << " w = " << projectionWindow->getWidth() << " h = " << projectionWindow->getHeight() << endl;
-    projection_fbo.allocate(projectionWindow->getWidth(),projectionWindow->getHeight(),GL_RGBA);
+void ofApp::set_multiple_windows(bool multiple_windows) {
+	multiple_windows = false;
 }
+
+//--------------------------------------------------------------
+void ofApp::allocate_buffers() {
+	int w, h;
+	if (multiple_windows) {
+		w = projectionWindow->getWidth();
+		h = projectionWindow->getHeight();
+	}
+	else {
+		w = ofGetWidth();
+		h = ofGetHeight();
+	}
+	projection_fbo.allocate(w,h, GL_RGBA);
+	mapper._application.getSurfaceManager()->assign_projection_fbo(&projection_fbo);
+}
+
 //--------------------------------------------------------------
 void ofApp::setupProjectionWindow(){
-    ofSetBackgroundColor(0);
-    mapper._application.getSurfaceManager()->assign_projection_fbo(&projection_fbo);
-    
-    surface_mask.setup();
+	if (multiple_windows = true) {
+		ofSetBackgroundColor(0);
+		mapper._application.getSurfaceManager()->assign_projection_fbo(&projection_fbo);
+		surface_mask.setup();
+		projectionWindow->setWindowPosition(1920, 0);
+	}
 }
 
 //--------------------------------------------------------------
 void ofApp::drawProjections(ofEventArgs & args){
-    ofShowCursor();
-    
- 
-   if(projection_fbo.isAllocated()){
-        projection_fbo.getTexture().draw(0,0,ofGetWidth(), ofGetHeight());
+	if (multiple_windows == true) {
+		ofShowCursor();
 
-        surface_mask.set_source_texture(projection_fbo);
-        surface_mask.update();
-        surface_mask.draw();
-    }
+		if (projection_fbo.isAllocated()) {
+			projection_fbo.getTexture().draw(0, 0, ofGetWidth(), ofGetHeight());
+
+			surface_mask.set_source_texture(projection_fbo);
+			surface_mask.update();
+			surface_mask.draw();
+		}
+	}
 }
 //--------------------------------------------------------------
 void ofApp::keyPressedProjectionWindow(ofKeyEventArgs & key){
-    switch (key.key) {
-        case 'f':
-            ofToggleFullscreen();
-			allocate_buffers();
-            setupProjectionWindow();
-            break;
-        default:
-            break;
-    }
+	if (multiple_windows == true) {
+		switch (key.key) {
+		case 'f':
+			projectionWindow->setWindowPosition(1920, 0);
+			projectionWindow->toggleFullscreen();
+			break;
+		default:
+			break;
+		}
+	}
 }
 
 //--------------------------------------------------------------
@@ -324,8 +344,7 @@ void ofApp::update(){
     gui_interface.update_audio_reactivity(layers);
 
     mapper.update();
-	nodel.try_run();
-			
+	nodel.try_run();			
 }
 
 //--------------------------------------------------------------
