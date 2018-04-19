@@ -42,8 +42,8 @@ int main( ){
 	else {
 		shared_ptr<ofApp> mainApp(new ofApp);
 		mainApp->set_multiple_windows(false);
+        mainApp->assign_second_window_ptr(mainWindow);
 		ofRunApp(mainWindow, mainApp);
-		mainApp->assign_second_window_ptr(mainWindow);
 
 	}
 
