@@ -1,3 +1,4 @@
+#version 120
 uniform vec3  resolution;
 
 const vec3 cWhite1 = vec3(.3,.3,.3);

@@ -144,7 +144,7 @@ void ofApp::build_shader_src(){
 
     fragShaderSrc += "gl_FragColor = vec4(final_out,1.0); \n }";
 
-//    cout << fragShaderSrc << endl;
+    cout << fragShaderSrc << endl;
 
     temp_scene_shader.setupShaderFromSource(GL_FRAGMENT_SHADER, fragShaderSrc);
     temp_scene_shader.linkProgram();
@@ -369,6 +369,8 @@ void ofApp::update_osc(){
                 bass = ofClamp(m.getArgAsFloat(0), 0.0, 1.0);
                 mid = ofClamp(m.getArgAsFloat(1), 0.0, 1.0);
                 high = ofClamp(m.getArgAsFloat(2), 0.0, 1.0);
+                cout << "address = " << m.getAddress() << endl;
+
             }
             float b_shape = 4.0;
             float m_shape = 18.0;

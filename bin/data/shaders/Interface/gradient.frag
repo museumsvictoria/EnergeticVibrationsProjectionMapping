@@ -1,3 +1,5 @@
+#version 120
+
 uniform vec3  resolution;
 uniform vec3  base_colour;
 uniform int verticle_or_horizontal; // 0 = horizontal, 1 = vertical

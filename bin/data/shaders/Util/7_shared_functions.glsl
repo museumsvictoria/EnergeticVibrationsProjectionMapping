@@ -29,7 +29,6 @@ vec3 getcol0(int i) {
 }
 
 vec3 getcol1(ivec2 s) {
-    // http://www.iquilezles.org/www/articles/palettes/palettes.htm
     float t = 0.1*time + 0.1*0.618*float(s.x+s.y);
     vec3 a = vec3(0.4);
     vec3 b = vec3(0.6);

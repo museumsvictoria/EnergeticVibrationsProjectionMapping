@@ -20,6 +20,7 @@ int main( ){
     shared_ptr<ofAppBaseWindow> mainWindow = ofCreateWindow(settings);
 
 	if (count > 1) {
+        settings.setGLVersion(2, 1);
 		settings.width = 1920;
 		settings.height = 1080;
 		settings.setPosition(ofVec2f(1920, 0));
