@@ -15,8 +15,8 @@ void SurfaceMask::init_fbos(){
     /// Shader FBOs
     ///-------------------------
     ofFbo::Settings fboSettings;
-    fboSettings.width = ofGetWidth();
-    fboSettings.height = ofGetHeight();
+    fboSettings.width = w;
+    fboSettings.height = h;
     fboSettings.internalformat = GL_RGBA;
     fboSettings.numSamples = 8;
     fboSettings.useDepth = false;
@@ -41,8 +41,8 @@ void SurfaceMask::init_fbos(){
     /// Final Render FBO
     ///-------------------------
     ofFbo::Settings renderFboSettings;
-    renderFboSettings.width = ofGetWidth();
-    renderFboSettings.height = ofGetHeight();
+    renderFboSettings.width = w;
+    renderFboSettings.height = h;
     renderFboSettings.internalformat = GL_RGBA;
     renderFboSettings.numSamples = 8;
     renderFboSettings.useDepth = false;
@@ -78,6 +78,14 @@ void SurfaceMask::set_source_texture(ofFbo& tex){
 }
 
 //--------------------------------------------------------------
+void SurfaceMask::set_dimensions(ofRectangle rect){
+    this->x = rect.x;
+    this->y = rect.y;
+    this->w = rect.width;
+    this->h = rect.height;
+}
+
+//--------------------------------------------------------------
 void SurfaceMask::update(){
     m_src_fbo.begin();
     ofClear(0,0,0,0);
@@ -110,6 +118,10 @@ void SurfaceMask::draw(){
     ////////////////////
     ofSetColor(ofColor::white);
     m_renderFbo.draw(0,0,ofGetWidth(),ofGetHeight());
+
+    mask_image.draw(x,y,w,h);
+    cout << "x = " << x << " - y = " << y << " - w = " << w << " - h = " << h << endl;
+
 }
 
 ofFbo& SurfaceMask::getFbo(){

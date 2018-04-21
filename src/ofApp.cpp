@@ -245,8 +245,13 @@ void ofApp::set_multiple_windows(bool multiple_windows) {
 void ofApp::allocate_buffers() {
 	int w, h;
 	if (multiple_windows) {
+#ifdef PORTRAIT_MODE
+        w = 1920;//ofGetWidth();
+        h = 1080;//ofGetHeight();
+#else
 		w = projectionWindow->getWidth();
 		h = projectionWindow->getHeight();
+#endif
 	}
 	else {
 		w = ofGetWidth();
@@ -254,14 +259,29 @@ void ofApp::allocate_buffers() {
 	}
 	projection_fbo.allocate(w,h, GL_RGBA);
 	mapper._application.getSurfaceManager()->assign_projection_fbo(&projection_fbo);
+    surface_mask.set_dimensions(get_projector_dimensions());
+    surface_mask.setup();
+}
+
+//--------------------------------------------------------------
+ofRectangle ofApp::get_projector_dimensions(){
+    float h = projection_fbo.getWidth();
+    float scale = h / projection_fbo.getHeight();
+    float w = scale * projection_fbo.getWidth();
+    float x_offset = projection_fbo.getHeight() * 0.5;
+    
+    ofRectangle rect = ofRectangle(-(w*0.5) + x_offset, 0, w, h);
+    return rect;
 }
 
 //--------------------------------------------------------------
 void ofApp::setupProjectionWindow(){
 	if (multiple_windows = true) {
 		ofSetBackgroundColor(0);
-		mapper._application.getSurfaceManager()->assign_projection_fbo(&projection_fbo);
-		surface_mask.setup();
+		//mapper._application.getSurfaceManager()->assign_projection_fbo(&projection_fbo);
+        
+        //surface_mask.set_dimensions(get_projector_dimensions());
+		//surface_mask.setup();
 		projectionWindow->setWindowPosition(1920, 0);
 	}
 }
@@ -272,7 +292,8 @@ void ofApp::drawProjections(ofEventArgs & args){
 		ofShowCursor();
 
 		if (projection_fbo.isAllocated()) {
-			projection_fbo.getTexture().draw(0, 0, ofGetWidth(), ofGetHeight());
+            ofRectangle rect = get_projector_dimensions();
+			//projection_fbo.getTexture().draw(rect.x,rect.y,rect.width,rect.height);
 
 			surface_mask.set_source_texture(projection_fbo);
 			surface_mask.update();

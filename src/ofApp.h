@@ -2,6 +2,7 @@
 
 #define WINDOWS_TOUCH
 #define OSC_PORT 9002
+#define PORTRAIT_MODE
 
 #include "ofMain.h"
 #include "ofxOsc.h"
@@ -57,9 +58,10 @@ class ofApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
 		
         // Second Window
+        ofRectangle get_projector_dimensions();
         shared_ptr<ofAppBaseWindow> projectionWindow;
 		bool multiple_windows;
-
+    
         //----------------WINDOWS ONLY
 #ifdef WINDOWS_TOUCH
         // Touches //

@@ -15,6 +15,7 @@ class SurfaceMask : public PingPong{
 public:
     void setup();
     void init_fbos();
+    void set_dimensions(ofRectangle rect);
     void set_source_texture(ofFbo& tex);
     void update();
     void draw();
@@ -24,4 +25,5 @@ public:
     ofShader shader_image;
     ofImage mask_image;
 
+    int x,y,w,h;
 };

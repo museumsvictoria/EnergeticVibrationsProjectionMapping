@@ -21,8 +21,8 @@ int main( ){
 
 	if (count > 1) {
         settings.setGLVersion(2, 1);
-		settings.width = 1920;
-		settings.height = 1080;
+		settings.width = 1080;
+		settings.height = 1920;
 		settings.setPosition(ofVec2f(1920, 0));
 		settings.resizable = true;
 		settings.windowMode = ofWindowMode::OF_WINDOW;
