@@ -1,3 +1,6 @@
+
+//#define PORTRAIT_MODE
+
 #include "ofMain.h"
 #include "ofApp.h"
 #include "ofAppGLFWWindow.h"
@@ -21,8 +24,15 @@ int main( ){
 
 	if (count > 1) {
         settings.setGLVersion(2, 1);
+#ifdef PORTRAIT_MODE
+        cout << "pppp" << endl;
 		settings.width = 1080;
 		settings.height = 1920;
+#else
+        cout << "lllll" << endl;
+        settings.width = 1920;
+        settings.height = 1080;
+#endif
 		settings.setPosition(ofVec2f(1920, 0));
 		settings.resizable = true;
 		settings.windowMode = ofWindowMode::OF_WINDOW;
@@ -34,8 +44,8 @@ int main( ){
 
 		shared_ptr<ofApp> mainApp(new ofApp);
 		mainApp->assign_second_window_ptr(projectionWindow);
+        mainApp->set_multiple_windows(true);
 		mainApp->setupProjectionWindow();
-		mainApp->set_multiple_windows(true);
 		ofAddListener(projectionWindow->events().draw, mainApp.get(), &ofApp::drawProjections);
 		ofAddListener(projectionWindow->events().keyPressed, mainApp.get(), &ofApp::keyPressedProjectionWindow);
 		ofRunApp(mainWindow, mainApp);

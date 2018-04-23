@@ -2,7 +2,6 @@
 
 #define WINDOWS_TOUCH
 #define OSC_PORT 9002
-#define PORTRAIT_MODE
 
 #include "ofMain.h"
 #include "ofxOsc.h"

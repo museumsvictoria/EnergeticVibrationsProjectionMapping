@@ -55,13 +55,18 @@ void SurfaceMask::init_fbos(){
     
     m_renderFbo.allocate( renderFboSettings );
     m_src_fbo.allocate( renderFboSettings );
+    
+    cout << "w = " << w << " -h = " << h << endl;
 }
 
 //--------------------------------------------------------------
 void SurfaceMask::setup(){
     shader_image.load("shaders/passthrough.vert","shaders/Masking/blend_mask.frag");
-    mask_image.load("images/mask.png");
-
+#ifdef PORTRAIT_MODE
+    mask_image.load("images/mask_portrait.png");
+#else
+    mask_image.load("images/mask_landscape.png");
+#endif
     shader_image.begin();
     shader_image.setUniform1i( "iChannel0", 1);
     shader_image.end();
@@ -73,7 +78,11 @@ void SurfaceMask::setup(){
 void SurfaceMask::set_source_texture(ofFbo& tex){
     m_fbos[ 0 ].begin();
     ofClear( 0, 0, 0, 0 );
+#ifdef PORTRAIT_MODE
     tex.draw(0,0,ofGetWidth(),ofGetHeight());
+#else
+    tex.draw(0,0,ofGetWidth(),ofGetHeight());
+#endif
     m_fbos[ 0 ].end();
 }
 
@@ -89,8 +98,17 @@ void SurfaceMask::set_dimensions(ofRectangle rect){
 void SurfaceMask::update(){
     m_src_fbo.begin();
     ofClear(0,0,0,0);
+#ifdef PORTRAIT_MODE
     ofSetColor(255,255);
     mask_image.draw(0,0,ofGetWidth(),ofGetHeight());
+    ofSetColor(255,0,0,125);
+    ofDrawRectangle(0, 0, ofGetWidth(), ofGetHeight());
+#else 
+    ofSetColor(255,255);
+    mask_image.draw(0,0,ofGetWidth(),ofGetHeight());
+    ofSetColor(255,0,0,125);
+    ofDrawRectangle(0, 0, ofGetWidth(), ofGetHeight());
+#endif
     m_src_fbo.end();
     
     /// Final Render
@@ -117,10 +135,13 @@ void SurfaceMask::draw(){
     /// Draw To Screen
     ////////////////////
     ofSetColor(ofColor::white);
-    m_renderFbo.draw(0,0,ofGetWidth(),ofGetHeight());
 
-    mask_image.draw(x,y,w,h);
-    cout << "x = " << x << " - y = " << y << " - w = " << w << " - h = " << h << endl;
+#ifdef PORTRAIT_MODE
+//    m_src_fbo.draw(0,0,1200,ofGetHeight());
+#else
+    m_renderFbo.draw(0,0,ofGetWidth(),ofGetHeight());
+#endif
+//    cout << "x = " << x << " - y = " << y << " - w = " << w << " - h = " << h << endl;
 
 }
 

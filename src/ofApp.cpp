@@ -238,7 +238,7 @@ void ofApp::assign_second_window_ptr(shared_ptr<ofAppBaseWindow> projectionWindo
 
 //--------------------------------------------------------------
 void ofApp::set_multiple_windows(bool multiple_windows) {
-	multiple_windows = false;
+	this->multiple_windows = multiple_windows;
 }
 
 //--------------------------------------------------------------
@@ -270,13 +270,18 @@ ofRectangle ofApp::get_projector_dimensions(){
     float w = scale * projection_fbo.getWidth();
     float x_offset = projection_fbo.getHeight() * 0.5;
     
-    ofRectangle rect = ofRectangle(-(w*0.5) + x_offset, 0, w, h);
+    ofRectangle rect;
+#ifdef PORTRAIT_MODE
+    rect = ofRectangle(-(w*0.5) + x_offset, 0, w, h);
+#else
+    rect = ofRectangle(0, 0,projectionWindow->getWidth(), projectionWindow->getHeight());
+#endif
     return rect;
 }
 
 //--------------------------------------------------------------
 void ofApp::setupProjectionWindow(){
-	if (multiple_windows = true) {
+	if (multiple_windows == true) {
 		ofSetBackgroundColor(0);
 		//mapper._application.getSurfaceManager()->assign_projection_fbo(&projection_fbo);
         
@@ -379,8 +384,7 @@ void ofApp::update_osc(){
         float bass = 0.0;
         float mid = 0.0;
         float high = 0.0;
-        if(m.getAddress() == "/caco/0" || m.getAddress() == "ev/volumes"){
-
+        if(m.getAddress() == "/caco/0" || m.getAddress() == "/ev/volumes"){
             if(m.getAddress() == "/caco/0"){
                 bass = ofClamp(m.getArgAsFloat(2), 0.0, 1.0);
                 mid = ofClamp(m.getArgAsFloat(3), 0.0, 1.0);
@@ -390,7 +394,6 @@ void ofApp::update_osc(){
                 bass = ofClamp(m.getArgAsFloat(0), 0.0, 1.0);
                 mid = ofClamp(m.getArgAsFloat(1), 0.0, 1.0);
                 high = ofClamp(m.getArgAsFloat(2), 0.0, 1.0);
-                cout << "address = " << m.getAddress() << endl;
 
             }
             float b_shape = 4.0;
