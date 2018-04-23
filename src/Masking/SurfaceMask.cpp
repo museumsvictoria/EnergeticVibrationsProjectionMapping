@@ -15,8 +15,8 @@ void SurfaceMask::init_fbos(){
     /// Shader FBOs
     ///-------------------------
     ofFbo::Settings fboSettings;
-    fboSettings.width = w;
-    fboSettings.height = h;
+    fboSettings.width = width;
+    fboSettings.height = height;
     fboSettings.internalformat = GL_RGBA;
     fboSettings.numSamples = 8;
     fboSettings.useDepth = false;
@@ -41,8 +41,8 @@ void SurfaceMask::init_fbos(){
     /// Final Render FBO
     ///-------------------------
     ofFbo::Settings renderFboSettings;
-    renderFboSettings.width = w;
-    renderFboSettings.height = h;
+    renderFboSettings.width = width;
+    renderFboSettings.height = height;
     renderFboSettings.internalformat = GL_RGBA;
     renderFboSettings.numSamples = 8;
     renderFboSettings.useDepth = false;
@@ -56,7 +56,7 @@ void SurfaceMask::init_fbos(){
     m_renderFbo.allocate( renderFboSettings );
     m_src_fbo.allocate( renderFboSettings );
     
-    cout << "w = " << w << " -h = " << h << endl;
+    cout << "w = " << width << " -h = " << height << endl;
 }
 
 //--------------------------------------------------------------
@@ -78,37 +78,30 @@ void SurfaceMask::setup(){
 void SurfaceMask::set_source_texture(ofFbo& tex){
     m_fbos[ 0 ].begin();
     ofClear( 0, 0, 0, 0 );
-#ifdef PORTRAIT_MODE
     tex.draw(0,0,ofGetWidth(),ofGetHeight());
-#else
-    tex.draw(0,0,ofGetWidth(),ofGetHeight());
-#endif
     m_fbos[ 0 ].end();
 }
 
 //--------------------------------------------------------------
+void SurfaceMask::set_size(int w, int h){
+    width = w;
+    height = h;
+}
+
+//--------------------------------------------------------------
 void SurfaceMask::set_dimensions(ofRectangle rect){
-    this->x = rect.x;
-    this->y = rect.y;
-    this->w = rect.width;
-    this->h = rect.height;
+    rect_dim.x = rect.x;
+    rect_dim.y = rect.y;
+    rect_dim.width = rect.width;
+    rect_dim.height = rect.height;
 }
 
 //--------------------------------------------------------------
 void SurfaceMask::update(){
     m_src_fbo.begin();
     ofClear(0,0,0,0);
-#ifdef PORTRAIT_MODE
     ofSetColor(255,255);
     mask_image.draw(0,0,ofGetWidth(),ofGetHeight());
-    ofSetColor(255,0,0,125);
-    ofDrawRectangle(0, 0, ofGetWidth(), ofGetHeight());
-#else 
-    ofSetColor(255,255);
-    mask_image.draw(0,0,ofGetWidth(),ofGetHeight());
-    ofSetColor(255,0,0,125);
-    ofDrawRectangle(0, 0, ofGetWidth(), ofGetHeight());
-#endif
     m_src_fbo.end();
     
     /// Final Render
@@ -137,11 +130,17 @@ void SurfaceMask::draw(){
     ofSetColor(ofColor::white);
 
 #ifdef PORTRAIT_MODE
-//    m_src_fbo.draw(0,0,1200,ofGetHeight());
+    m_renderFbo.draw(rect_dim.x, rect_dim.y, rect_dim.width, rect_dim.height);
+    
+    //ofSetColor(255,abs(cos(ofGetFrameNum()*0.06))*255);
+    //m_src_fbo.draw(0,0,ofGetWidth(),ofGetHeight());
+    
+//    ofSetColor(255,abs(sin(ofGetFrameNum()*0.1))*255);
+//    mask_image.draw(0,0,ofGetWidth(),ofGetHeight());
+
 #else
     m_renderFbo.draw(0,0,ofGetWidth(),ofGetHeight());
 #endif
-//    cout << "x = " << x << " - y = " << y << " - w = " << w << " - h = " << h << endl;
 
 }
 

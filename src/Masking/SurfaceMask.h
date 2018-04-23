@@ -9,12 +9,14 @@
 #pragma once
 #include "ofMain.h"
 #include "PingPong.h"
+#include "Settings.h"
 
 class SurfaceMask : public PingPong{
     
 public:
     void setup();
     void init_fbos();
+    void set_size(int w, int h);
     void set_dimensions(ofRectangle rect);
     void set_source_texture(ofFbo& tex);
     void update();
@@ -25,5 +27,8 @@ public:
     ofShader shader_image;
     ofImage mask_image;
 
-    int x,y,w,h;
+    ofRectangle rect_dim;
+    
+    int width;
+    int height;
 };

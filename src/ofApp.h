@@ -1,9 +1,7 @@
 #pragma once
 
-#define WINDOWS_TOUCH
-#define OSC_PORT 9002
-
 #include "ofMain.h"
+#include "Settings.h"
 #include "ofxOsc.h"
 #include "ofxImGui.h"
 #include "GuiTheme.h"
@@ -13,7 +11,6 @@
 #include "ShaderVariable.h"
 #include "SurfaceMask.h"
 #include "VisualLayer.h"
-#include "Settings.h"
 #include "ofxPiMapper.h"
 
 #include "nodel/nodel_interpreter.hpp"

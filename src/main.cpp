@@ -1,6 +1,5 @@
 
-//#define PORTRAIT_MODE
-
+#include "Settings.h"
 #include "ofMain.h"
 #include "ofApp.h"
 #include "ofAppGLFWWindow.h"

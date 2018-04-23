@@ -257,8 +257,21 @@ void ofApp::allocate_buffers() {
 		w = ofGetWidth();
 		h = ofGetHeight();
 	}
-	projection_fbo.allocate(w,h, GL_RGBA);
+    ofFbo::Settings s;
+    s.width = w;
+    s.height = h;
+    s.internalformat = GL_RGBA;
+    s.numSamples = 8;
+    s.useDepth = false;
+    s.useStencil = false;
+    s.textureTarget = GL_TEXTURE_2D;
+    s.minFilter = GL_LINEAR;
+    s.maxFilter = GL_LINEAR;
+    s.wrapModeHorizontal = GL_CLAMP_TO_EDGE;
+    s.wrapModeVertical = GL_CLAMP_TO_EDGE;
+	projection_fbo.allocate(s);
 	mapper._application.getSurfaceManager()->assign_projection_fbo(&projection_fbo);
+    surface_mask.set_size(projectionWindow->getWidth(), projectionWindow->getHeight());
     surface_mask.set_dimensions(get_projector_dimensions());
     surface_mask.setup();
 }
@@ -270,12 +283,7 @@ ofRectangle ofApp::get_projector_dimensions(){
     float w = scale * projection_fbo.getWidth();
     float x_offset = projection_fbo.getHeight() * 0.5;
     
-    ofRectangle rect;
-#ifdef PORTRAIT_MODE
-    rect = ofRectangle(-(w*0.5) + x_offset, 0, w, h);
-#else
-    rect = ofRectangle(0, 0,projectionWindow->getWidth(), projectionWindow->getHeight());
-#endif
+    ofRectangle rect = ofRectangle(-(w*0.5) + x_offset, 0, w, h);
     return rect;
 }
 
@@ -297,7 +305,6 @@ void ofApp::drawProjections(ofEventArgs & args){
 		ofShowCursor();
 
 		if (projection_fbo.isAllocated()) {
-            ofRectangle rect = get_projector_dimensions();
 			//projection_fbo.getTexture().draw(rect.x,rect.y,rect.width,rect.height);
 
 			surface_mask.set_source_texture(projection_fbo);
