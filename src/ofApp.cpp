@@ -305,8 +305,6 @@ void ofApp::drawProjections(ofEventArgs & args){
 		ofShowCursor();
 
 		if (projection_fbo.isAllocated()) {
-			//projection_fbo.getTexture().draw(rect.x,rect.y,rect.width,rect.height);
-
 			surface_mask.set_source_texture(projection_fbo);
 			surface_mask.update();
 			surface_mask.draw();

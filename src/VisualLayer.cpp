@@ -18,8 +18,8 @@ VisualLayer::VisualLayer(){
 void VisualLayer::setup(string name, int scene_num){
     this->name = name; // Give our source a decent name
     scene_select = scene_num;
-
-    allocate(LAYER_RENDER_SIZE_X, LAYER_RENDER_SIZE_Y); // Allocate our FBO source, decide how big it should be
+    
+    allocate(LAYER_RENDER_SIZE_X,LAYER_RENDER_SIZE_Y); // Allocate our FBO source, decide how big it should be
     render_fbo.init(LAYER_RENDER_SIZE_X, LAYER_RENDER_SIZE_Y);
     
 	use_shader = true;

@@ -22,7 +22,7 @@ public:
         renderFboSettings.width = width;
         renderFboSettings.height = height;
         renderFboSettings.internalformat = GL_RGBA;
-        renderFboSettings.numSamples = 1;
+        renderFboSettings.numSamples = 8;
         renderFboSettings.useDepth = false;
         renderFboSettings.useStencil = false;
         renderFboSettings.textureTarget = GL_TEXTURE_2D;

@@ -35,6 +35,7 @@ void FboSource::drawFbo(){
 	}
 	
 	fbo->begin();
+    ofClear(0);
 	draw();
 	fbo->end();
 }
@@ -49,6 +50,7 @@ void FboSource::setDisableDraw(bool b){
 }
 
 void FboSource::allocate(int width, int height){
+    ofDisableArbTex();
 	clear();
 	fbo = new ofFbo();
 	fbo->allocate(width, height);

@@ -8,8 +8,8 @@
 
 #pragma once 
 
-#define LAYER_RENDER_SIZE_X 500
-#define LAYER_RENDER_SIZE_Y 500
-//#define PORTRAIT_MODE
+#define LAYER_RENDER_SIZE_X 1000
+#define LAYER_RENDER_SIZE_Y 1000
+#define PORTRAIT_MODE
 #define WINDOWS_TOUCH
 #define OSC_PORT 9002
