@@ -390,8 +390,8 @@ void ofApp::update_osc(){
         float bass = 0.0;
         float mid = 0.0;
         float high = 0.0;
-        if(m.getAddress() == "/caco/0" || m.getAddress() == "/ev/volumes"){
-            if(m.getAddress() == "/caco/0"){
+        if(m.getAddress() == "/enpm" || m.getAddress() == "/energetic-vibratoins-projection-mapping" || m.getAddress() == "/ev/volumes"){
+            if(m.getAddress() == "/enpm" || m.getAddress() == "/energetic-vibrations-projection-mapping"){
                 bass = ofClamp(m.getArgAsFloat(2), 0.0, 1.0);
                 mid = ofClamp(m.getArgAsFloat(3), 0.0, 1.0);
                 high = ofClamp(m.getArgAsFloat(4), 0.0, 1.0);
@@ -484,6 +484,9 @@ void ofApp::keyPressed(int key){
 					if (loader.has_next()) {
 						l->load_movie(loader.next());
 					}
+				}
+				else {
+					l->close_video();
 				}
 			}
 		}

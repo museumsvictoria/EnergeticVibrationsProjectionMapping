@@ -29,6 +29,7 @@ public:
     
 	void toggle_shader() { use_shader = !use_shader; }
 	bool is_shader() { return use_shader; }
+	void close_video();
 
     vector<ShaderVariable> shader_variables;
 

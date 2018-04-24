@@ -33,7 +33,12 @@ void VisualLayer::init_variables(vector<ShaderVariable> shader_variables){
 //--------------------------------------------------------------
 void VisualLayer::load_movie(string file){
     player.load(file);
+	player.setVolume(0.0);
 	player.play();
+}
+
+void VisualLayer::close_video() {
+	player.close();
 }
 
 //--------------------------------------------------------------

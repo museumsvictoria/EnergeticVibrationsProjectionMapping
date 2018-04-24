@@ -2,7 +2,7 @@
 
 namespace video_controller {
 	bool Loader::has_next() {
-		return count < num_vids && count < NUM_VIDEOS;
+		return count < num_vids;
 	}
 
 	std::string Loader::next() {
