@@ -43,7 +43,6 @@ void VisualLayer::set_scene_shader(ofShader scene_shader){
 
 //--------------------------------------------------------------
 void VisualLayer::update(){
-
     render_fbo.fbo.begin();
         ofClear(0,0,0,0);
 		if (use_shader) {
@@ -60,8 +59,9 @@ void VisualLayer::update(){
 			scene_shader.end();
 		} else {
 			player.update();
-			player.draw(0, 0);
+			player.draw(0, 0, render_fbo.fbo.getWidth(), render_fbo.fbo.getHeight());
 		}
+	
     render_fbo.fbo.end();
 }
 
