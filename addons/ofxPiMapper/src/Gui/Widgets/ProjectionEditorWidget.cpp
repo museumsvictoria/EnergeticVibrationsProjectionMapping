@@ -39,7 +39,7 @@ void ProjectionEditorWidget::mouseDragged(ofMouseEventArgs & args){
 	
 	// Pass args to joint mouse events
 	for(unsigned int i = 0; i < joints.size(); ++i){
-		if (joints[i]->isDragged()) {
+		if (joints[i]->isDragged() && !boundary::is_collided_joint(ofVec2f(args.x, args.y), joints[i], joints)) {
 			surfaceManager->getSelectedSurface()->setVertex(i,
 				boundary::bounded_position(args));
 		}
@@ -64,7 +64,7 @@ void ProjectionEditorWidget::mouseDragged(ofMouseEventArgs & args){
 		if(joints[i]->isDragged()){
 			for(int j = 0; j < allVertices.size(); j++){
 				float distance = mousePosition.distance(*allVertices[j]);
-				if(distance < fSnapDistance){
+				if(distance < fSnapDistance && !boundary::is_collided_joint(ofVec2f(args.x, args.y), joints[i], joints)){
 					joints[i]->position = *allVertices[j];
 					ofVec2f clickDistance = joints[i]->position - ofVec2f(args.x, args.y);
 					joints[i]->setClickDistance(clickDistance);
@@ -111,16 +111,14 @@ void ProjectionEditorWidget::touchMoved(map<int, ofTouchEventArgs> &active_joint
 			if (joints[i]->isDragged()) {
 				for (int j = 0; j < allVertices.size(); j++) {
 					float distance = touchPosition.distance(*allVertices[j]);
-					if (distance < fSnapDistance) {
+					if (distance < fSnapDistance && !boundary::is_collided_joint(joint_touch.second, joints[joint_touch.first], joints)) {
 						joints[i]->position = *allVertices[j];
 						ofVec2f clickDistance = joints[i]->position - ofVec2f(joint_touch.second.x, joint_touch.second.y);
 						joints[i]->setClickDistance(clickDistance);
 						if (joint_touch.first < joints.size() &&
 							joints[joint_touch.first]->isDragged()) {
-							if (!boundary::is_collided_joint(joint_touch.second, joints[joint_touch.first], joints)) {
-								surfaceManager->getSelectedSurface()->setVertex(i,
-									boundary::bounded_position(joints[i]->position));
-							}
+							surfaceManager->getSelectedSurface()->setVertex(i,
+								boundary::bounded_position(joints[i]->position));
 						}
 						break;
 					}

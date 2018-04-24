@@ -1,5 +1,6 @@
 #include "ofApp.h"
 #include "nodel/nodel_dep.hpp"
+#include "video_controller.h"
 
 #define STRINGIFY(A) #A
 
@@ -473,6 +474,20 @@ void ofApp::keyPressed(int key){
                 cout << "Touch mode on" << endl;
             }
             break;
+		case 'v':
+		{
+			auto loader = video_controller::load();
+			for (int i = 0; i < layers.size(); i++) {
+				auto l = layers[i];
+				l->toggle_shader();
+				if (!l->is_shader()) {
+					if (loader.has_next()) {
+						l->load_movie(loader.next());
+					}
+				}
+			}
+		}
+			break;
         default:
             break;
 	}

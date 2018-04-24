@@ -121,7 +121,6 @@ void QuadSurface::setVertex(int index, ofVec2f p){
 	mesh.setVertex(index, p);
 	
 	if (is_concave()) {
-		cout << "concave" << endl;
 		mesh.setVertex(index, p_s);
 	}
 	ofVec3f v = mesh.getVertex(index);
