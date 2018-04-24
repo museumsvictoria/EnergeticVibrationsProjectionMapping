@@ -4,7 +4,6 @@
 
 namespace video_controller {
 	static constexpr auto VIDEO_PATH = "sources/videos";
-	static constexpr int NUM_VIDEOS = 7;
 	static constexpr int NUM_TYPES = 2;
 	static constexpr char* FILE_TYPES[NUM_TYPES] = { {"mp4"}, {"mov"} };
 

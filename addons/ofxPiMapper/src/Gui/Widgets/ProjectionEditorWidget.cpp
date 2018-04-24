@@ -107,24 +107,22 @@ void ProjectionEditorWidget::touchMoved(map<int, ofTouchEventArgs> &active_joint
 		}
 
 		// Snap currently dragged joint to nearest vertex
-		for (int i = 0; i < joints.size(); i++) {
-			if (joints[i]->isDragged()) {
-				for (int j = 0; j < allVertices.size(); j++) {
-					float distance = touchPosition.distance(*allVertices[j]);
-					if (distance < fSnapDistance && !boundary::is_collided_joint(joint_touch.second, joints[joint_touch.first], joints)) {
-						joints[i]->position = *allVertices[j];
-						ofVec2f clickDistance = joints[i]->position - ofVec2f(joint_touch.second.x, joint_touch.second.y);
-						joints[i]->setClickDistance(clickDistance);
-						if (joint_touch.first < joints.size() &&
-							joints[joint_touch.first]->isDragged()) {
-							surfaceManager->getSelectedSurface()->setVertex(i,
-								boundary::bounded_position(joints[i]->position));
-						}
-						break;
-					}
+		for (int j = 0; j < allVertices.size(); j++) {
+			float distance = touchPosition.distance(*allVertices[j]);
+			if (distance < fSnapDistance && !boundary::is_collided_joint(joint_touch.second, joints[joint_touch.first], joints)) {
+				ofVec2f clickDistance = joints[joint_touch.first]->position - ofVec2f(joint_touch.second.x, joint_touch.second.y);
+				joints[joint_touch.first]->setClickDistance(clickDistance);
+				if (joint_touch.first < joints.size() &&
+					joints[joint_touch.first]->isDragged()) {
+					joints[joint_touch.first]->position = *allVertices[j];
+					surfaceManager->getSelectedSurface()->setVertex(joint_touch.first,
+						boundary::bounded_position(joints[joint_touch.first]->position));
 				}
+				break;
 			}
 		}
+
+
 		
 	}
 }
