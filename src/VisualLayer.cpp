@@ -59,7 +59,8 @@ void VisualLayer::update(){
 			scene_shader.end();
 		} else {
 			player.update();
-			player.draw(0, 0, render_fbo.fbo.getWidth(), render_fbo.fbo.getHeight());
+            ofSetColor(255);
+            player.draw(0, 0, render_fbo.fbo.getWidth(), render_fbo.fbo.getHeight());
 		}
 	
     render_fbo.fbo.end();

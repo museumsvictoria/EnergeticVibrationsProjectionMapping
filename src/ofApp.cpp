@@ -70,7 +70,7 @@ void ofApp::build_shader_src(){
         string rawname = shader_dir.getName(i).substr(0, lastindex);
         shader_names.push_back(rawname);
         
-        cout <<" shader name = " << rawname << endl;
+        //cout <<" shader name = " << rawname << endl;
         
         vector<ShaderVariable> variables;
         
@@ -145,7 +145,7 @@ void ofApp::build_shader_src(){
 
     fragShaderSrc += "gl_FragColor = vec4(final_out,1.0); \n }";
 
-    cout << fragShaderSrc << endl;
+    //cout << fragShaderSrc << endl;
 
     temp_scene_shader.setupShaderFromSource(GL_FRAGMENT_SHADER, fragShaderSrc);
     temp_scene_shader.linkProgram();
@@ -296,7 +296,8 @@ void ofApp::setupProjectionWindow(){
         
         //surface_mask.set_dimensions(get_projector_dimensions());
 		//surface_mask.setup();
-		projectionWindow->setWindowPosition(1920, 0);
+		//projectionWindow->setWindowPosition(1920, 0);
+		//projectionWindow->toggleFullscreen();
 	}
 }
 

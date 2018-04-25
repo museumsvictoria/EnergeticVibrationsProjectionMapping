@@ -4,6 +4,8 @@
 #include "ofApp.h"
 #include "ofAppGLFWWindow.h"
 
+#pragma comment(linker, "/subsystem:\"windows\" /entry:\"mainCRTStartup\"")
+
 //========================================================================
 int main( ){
 	glfwInit();
@@ -17,18 +19,18 @@ int main( ){
     settings.height = 1080;
     settings.setPosition(ofVec2f(0,0));
     settings.resizable = true;
-	settings.windowMode = ofWindowMode::OF_FULLSCREEN;
-	//settings.decorated = true;
+	settings.windowMode = ofWindowMode::OF_WINDOW;
+	//settings.decorated = false;
     shared_ptr<ofAppBaseWindow> mainWindow = ofCreateWindow(settings);
 
 	if (count > 1) {
         settings.setGLVersion(2, 1);
 #ifdef PORTRAIT_MODE
-        cout << "pppp" << endl;
+        cout << "portrait" << endl;
 		settings.width = 1080;
 		settings.height = 1920;
 #else
-        cout << "lllll" << endl;
+        cout << "landscape" << endl;
         settings.width = 1920;
         settings.height = 1080;
 #endif
@@ -57,6 +59,11 @@ int main( ){
 
 	}
 
+	
+	glfwWindowHint(GLFW_FLOATING, GL_TRUE);
+	glfwWindowHint(GLFW_DECORATED, GL_FALSE);
+	glfwWindowHint(GLFW_AUTO_ICONIFY, GL_FALSE);
+	
     ofRunMainLoop();
     
 }
