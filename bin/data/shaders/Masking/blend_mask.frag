@@ -21,11 +21,16 @@ void main( void )
     vec4 shape_tex = texture2D(iChannel0,uv);
     
     vec4 tex1 = texture2D(iChannel1,uv);
-    
+
+
     if(shape_tex.rgb == vec3(0.0)){
         discard;
     } else {
         gl_FragColor = tex1;
     }
+
+    
+//gl_FragColor = vec4(uv.x, uv.y, 1.0, 1.0);
+
 }
 

@@ -8,10 +8,9 @@
 
 #pragma once
 #include "ofMain.h"
-#include "PingPong.h"
 #include "Settings.h"
 
-class SurfaceMask : public PingPong{
+class SurfaceMask{
     
 public:
     void setup();
@@ -22,12 +21,15 @@ public:
     void update();
     void draw();
     
-    ofFbo& getFbo();
-
     ofShader shader_image;
     ofImage mask_image;
 
     ofRectangle rect_dim;
+
+	/// FBOs
+	ofFbo       m_mapper_fbo; 
+	ofFbo       m_mask_fbo;
+	ofFbo       m_renderFbo; // final render fbo
     
     int width;
     int height;

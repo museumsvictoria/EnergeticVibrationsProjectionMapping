@@ -229,36 +229,23 @@ void ofApp::setup(){
     receiver.setup(OSC_PORT);
 	nodel_interpreter::NodelDep nodel_dep(mapper, layers);
 	nodel.setup(nodel_dep);
+
+
+
+	if (ofGetWidth() > 1920) {
+		multiple_windows = true;
+	}
+	else {
+		multiple_windows = false;
+	}
 }
 
-//--------------------------------------------------------------
-void ofApp::assign_second_window_ptr(shared_ptr<ofAppBaseWindow> projectionWindow){
-    this->projectionWindow = projectionWindow;
-    
-}
-
-//--------------------------------------------------------------
-void ofApp::set_multiple_windows(bool multiple_windows) {
-	this->multiple_windows = multiple_windows;
-}
 
 //--------------------------------------------------------------
 void ofApp::allocate_buffers() {
-	int w, h;
-	if (multiple_windows) {
-#ifdef PORTRAIT_MODE
-        w = 1920;//ofGetWidth();
-        h = 1080;//ofGetHeight();
-#else
-		w = projectionWindow->getWidth();
-		h = projectionWindow->getHeight();
-#endif
-	}
-	else {
-		w = ofGetWidth();
-		h = ofGetHeight();
-	}
     ofFbo::Settings s;
+	int w = 1920;
+	int h = 1080;
     s.width = w;
     s.height = h;
     s.internalformat = GL_RGBA;
@@ -272,59 +259,27 @@ void ofApp::allocate_buffers() {
     s.wrapModeVertical = GL_CLAMP_TO_EDGE;
 	projection_fbo.allocate(s);
 	mapper._application.getSurfaceManager()->assign_projection_fbo(&projection_fbo);
-    surface_mask.set_size(projectionWindow->getWidth(), projectionWindow->getHeight());
+    surface_mask.set_size(w,h);
     surface_mask.set_dimensions(get_projector_dimensions());
     surface_mask.setup();
 }
 
 //--------------------------------------------------------------
 ofRectangle ofApp::get_projector_dimensions(){
-    float h = projection_fbo.getWidth();
-    float scale = h / projection_fbo.getHeight();
-    float w = scale * projection_fbo.getWidth();
-    float x_offset = projection_fbo.getHeight() * 0.5;
+	/*
+	float h = ofGetWidth() / 2;
+    float scale = h / ofGetHeight();
+    float w = scale * ofGetWidth() / 2;
+    float x_offset = ofGetHeight() * 0.5;
+	*/
+	float h = ofGetWidth() / 2;
+	float scale = h / ofGetHeight();
+	float w = scale * ofGetWidth() / 2;
+	float x_offset = ofGetHeight() * 0.5;
+	
     
     ofRectangle rect = ofRectangle(-(w*0.5) + x_offset, 0, w, h);
     return rect;
-}
-
-//--------------------------------------------------------------
-void ofApp::setupProjectionWindow(){
-	if (multiple_windows == true) {
-		ofSetBackgroundColor(0);
-		//mapper._application.getSurfaceManager()->assign_projection_fbo(&projection_fbo);
-        
-        //surface_mask.set_dimensions(get_projector_dimensions());
-		//surface_mask.setup();
-		//projectionWindow->setWindowPosition(1920, 0);
-		//projectionWindow->toggleFullscreen();
-	}
-}
-
-//--------------------------------------------------------------
-void ofApp::drawProjections(ofEventArgs & args){
-	if (multiple_windows == true) {
-		ofShowCursor();
-
-		if (projection_fbo.isAllocated()) {
-			surface_mask.set_source_texture(projection_fbo);
-			surface_mask.update();
-			surface_mask.draw();
-		}
-	}
-}
-//--------------------------------------------------------------
-void ofApp::keyPressedProjectionWindow(ofKeyEventArgs & key){
-	if (multiple_windows == true) {
-		switch (key.key) {
-		case 'f':
-			projectionWindow->setWindowPosition(1920, 0);
-			projectionWindow->toggleFullscreen();
-			break;
-		default:
-			break;
-		}
-	}
 }
 
 //--------------------------------------------------------------
@@ -341,6 +296,10 @@ void ofApp::create_shader_source(int idx){
 
 //--------------------------------------------------------------
 void ofApp::update(){
+	if (ofGetFrameNum() == 2) {
+		ofSetFullscreen(true);
+	}
+
     if (isShaderDirty){
         build_shader_src();
         scene_shader = temp_scene_shader;
@@ -377,66 +336,15 @@ void ofApp::update(){
     gui_interface.update_audio_reactivity(layers);
 
     mapper.update();
-	nodel.try_run();			
-}
+	nodel.try_run();	
 
-//--------------------------------------------------------------
-void ofApp::update_osc(){
-    // check for waiting messages
-    while(receiver.hasWaitingMessages()){
-        // get the next message
-        ofxOscMessage m;
-        receiver.getNextMessage(m);
-        
-        float bass = 0.0;
-        float mid = 0.0;
-        float high = 0.0;
-        if(m.getAddress() == "/evpm/audioserver" || m.getAddress() == "/ev/volumes"){
-            if(m.getAddress() == "/evpm/audioserver"){
-                bass = ofClamp(m.getArgAsFloat(2), 0.0, 1.0);
-                mid = ofClamp(m.getArgAsFloat(3), 0.0, 1.0);
-                high = ofClamp(m.getArgAsFloat(4), 0.0, 1.0);
-            }
-            else if(m.getAddress() == "/ev/volumes"){
-                bass = ofClamp(m.getArgAsFloat(0), 0.0, 1.0);
-                mid = ofClamp(m.getArgAsFloat(1), 0.0, 1.0);
-                high = ofClamp(m.getArgAsFloat(2), 0.0, 1.0);
 
-            }
-            float b_shape = 4.0;
-            float m_shape = 18.0;
-            float h_shape = 18.0;
-            float b_amp = ofMap(powf(bass - 1.0, b_shape), 1.0, 0.0, 0.0, 1.5);
-            float m_amp = ofMap(powf(mid - 1.0, m_shape), 1.0, 0.0, 0.0, 3.0);
-            float h_amp = ofMap(powf(high - 1.0, h_shape), 1.0, 0.0, 0.0, 10.0);
-
-            float b_smooth = 0.05; // Make smaller for smoother
-            float m_smooth = 0.05; // Make smaller for smoother
-            float h_smooth = 0.02; // Make smaller for smoother
-
-            //-------- Bass
-            if (b_amp > volumes[0]) {
-                volumes[0] = b_amp;
-            } else {
-                float diff = b_amp - volumes[0];
-                volumes[0] += diff * b_smooth;
-            }
-            //-------- Mid
-            if (m_amp > volumes[1]) {
-                volumes[1] = m_amp;
-            } else {
-                float diff = m_amp - volumes[1];
-                volumes[1] += diff * m_smooth;
-            }
-            //-------- High
-            if (h_amp > volumes[2]) {
-                volumes[2] = h_amp;
-            } else {
-                float diff = h_amp - volumes[2];
-                volumes[2] += diff * h_smooth;
-            }
-        }
-    }
+	if (multiple_windows == true) {
+		//if (projection_fbo.isAllocated()) {
+			surface_mask.set_source_texture(projection_fbo);
+			surface_mask.update();
+		//}
+	}
 }
 
 //--------------------------------------------------------------
@@ -452,9 +360,71 @@ void ofApp::draw(){
 
     ofSetColor(255,255);
     mapper.draw();
+
+	surface_mask.draw();
 }
 
-void ofApp::toggle_shaders() {
+
+//--------------------------------------------------------------
+void ofApp::update_osc() {
+	// check for waiting messages
+	while (receiver.hasWaitingMessages()) {
+		// get the next message
+		ofxOscMessage m;
+		receiver.getNextMessage(m);
+
+		float bass = 0.0;
+		float mid = 0.0;
+		float high = 0.0;
+		if (m.getAddress() == "/caco/0" || m.getAddress() == "/ev/volumes") {
+			if (m.getAddress() == "/caco/0") {
+				bass = ofClamp(m.getArgAsFloat(2), 0.0, 1.0);
+				mid = ofClamp(m.getArgAsFloat(3), 0.0, 1.0);
+				high = ofClamp(m.getArgAsFloat(4), 0.0, 1.0);
+			}
+			else if (m.getAddress() == "/ev/volumes") {
+				bass = ofClamp(m.getArgAsFloat(0), 0.0, 1.0);
+				mid = ofClamp(m.getArgAsFloat(1), 0.0, 1.0);
+				high = ofClamp(m.getArgAsFloat(2), 0.0, 1.0);
+
+			}
+			float b_shape = 4.0;
+			float m_shape = 18.0;
+			float h_shape = 18.0;
+			float b_amp = ofMap(powf(bass - 1.0, b_shape), 1.0, 0.0, 0.0, 1.5);
+			float m_amp = ofMap(powf(mid - 1.0, m_shape), 1.0, 0.0, 0.0, 3.0);
+			float h_amp = ofMap(powf(high - 1.0, h_shape), 1.0, 0.0, 0.0, 10.0);
+
+			float b_smooth = 0.05; // Make smaller for smoother
+			float m_smooth = 0.05; // Make smaller for smoother
+			float h_smooth = 0.02; // Make smaller for smoother
+
+								   //-------- Bass
+			if (b_amp > volumes[0]) {
+				volumes[0] = b_amp;
+			}
+			else {
+				float diff = b_amp - volumes[0];
+				volumes[0] += diff * b_smooth;
+			}
+			//-------- Mid
+			if (m_amp > volumes[1]) {
+				volumes[1] = m_amp;
+			}
+			else {
+				float diff = m_amp - volumes[1];
+				volumes[1] += diff * m_smooth;
+			}
+			//-------- High
+			if (h_amp > volumes[2]) {
+				volumes[2] = h_amp;
+			}
+			else {
+				float diff = h_amp - volumes[2];
+				volumes[2] += diff * h_smooth;
+			}
+		}
+	}
 }
 
 //--------------------------------------------------------------
