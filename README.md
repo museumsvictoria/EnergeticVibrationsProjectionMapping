@@ -24,8 +24,12 @@ There are 3 channels for bass, mid, high. Therefor you should send bass to argum
 
 Below is a simple example of how you could set that up using MaxMSP
 ![Figure 1-4](https://github.com/JoshuaBatty/EnergeticVibrationsProjectionMapping/blob/master/Wiki/MaxOSC.png "Select Layer")
+The software also accepts OSC data from the Audio Server running at scienceworks via the address "evpm/audioserver"
+It differs in that the bass, mid, high channels are coming in on arguments 2,3 and 4. See below for how this is implemented. 
+![Figure 1-5](https://github.com/JoshuaBatty/EnergeticVibrationsProjectionMapping/blob/master/Wiki/OSC_addresses.png "OSC Addresses")
+
 ## Adding in Custom Shaders
-![Figure 1-5](https://github.com/JoshuaBatty/EnergeticVibrationsProjectionMapping/blob/master/Wiki/CustomShaderPath.png "CustomShaderPath")
+![Figure 1-6](https://github.com/JoshuaBatty/EnergeticVibrationsProjectionMapping/blob/master/Wiki/CustomShaderPath.png "CustomShaderPath")
 There is support for users to add their own custom shaders. In order to do so, use the Template.frag file as a starting point. Once we edit this shader we will be able to control it's parameters using sliders and audio reactivity. The file is found in the above location. 
 
 
@@ -101,17 +105,17 @@ float p3 = remap(param3,0.0,1.0,1.0,12.0);
 ---
 ### Use the new shader inside the application
 Finally in order to have the shader show up in the application, drag the file into the the folder called "Synths". Either restart the application or press the space bar for it to appear. 
-![Figure 1-6](https://github.com/JoshuaBatty/EnergeticVibrationsProjectionMapping/blob/master/Wiki/MyAwesomeShader.png "MyAwesomeShader")
+![Figure 1-7](https://github.com/JoshuaBatty/EnergeticVibrationsProjectionMapping/blob/master/Wiki/MyAwesomeShader.png "MyAwesomeShader")
 
 ---
 ## Working with the projection mask
 A mask is applied to the output of the projection window to contain pixels withing certain locations to prevent spill. These masks can be easily created in Resolume or in MadMapper (see below for layer setup). Essentially you just create a mask layer that matches the targeted projector. You should then export an image that contains the shape *coloured white* and any area that is outside of the target area should be *coloured black*.   
 
-![Figure 1-7](https://github.com/JoshuaBatty/EnergeticVibrationsProjectionMapping/blob/master/Wiki/MadMapper.png "MadMapper")
+![Figure 1-8](https://github.com/JoshuaBatty/EnergeticVibrationsProjectionMapping/blob/master/Wiki/MadMapper.png "MadMapper")
 
 Make sure the image looks similar to the below reference image. Rename the file mask.png and replace the existing file in data/bin/images/mask.png
 
-![Figure 1-8](https://github.com/JoshuaBatty/EnergeticVibrationsProjectionMapping/blob/master/bin/data/images/mask.png "Mask")
+![Figure 1-9](https://github.com/JoshuaBatty/EnergeticVibrationsProjectionMapping/blob/master/bin/data/images/mask.png "Mask")
 
 If for some reason you would like no mask at all to be applied, simply create a 1920x1080 plain white image and use this for the mask.png file. 
 
