@@ -100,7 +100,6 @@
 		13125C0D2063953000664DFC /* HomographyHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13125B942063953000664DFC /* HomographyHelper.cpp */; };
 		13125C0E2063953000664DFC /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 13125B982063953000664DFC /* README.md */; };
 		13125C0F2063953000664DFC /* ofxWinTouchHook.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 13125B9A2063953000664DFC /* ofxWinTouchHook.cpp */; };
-		135D45222070CA78006086DF /* PingPong.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 135D451E2070CA78006086DF /* PingPong.cpp */; };
 		135D45232070CA78006086DF /* SurfaceMask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 135D45202070CA78006086DF /* SurfaceMask.cpp */; };
 		135D45412072326C006086DF /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 135D453A2072326C006086DF /* jsoncpp.cpp */; };
 		135D45422072326C006086DF /* license.md in Sources */ = {isa = PBXBuildFile; fileRef = 135D453B2072326C006086DF /* license.md */; };
@@ -390,8 +389,6 @@
 		13125CE0206F877200664DFC /* PentagonTessellations.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = PentagonTessellations.frag; sourceTree = "<group>"; };
 		131DE503207625E400444691 /* ScrollArrows.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = ScrollArrows.frag; sourceTree = "<group>"; };
 		135D451B2070C61A006086DF /* blend_mask.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = blend_mask.frag; sourceTree = "<group>"; };
-		135D451E2070CA78006086DF /* PingPong.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PingPong.cpp; sourceTree = "<group>"; };
-		135D451F2070CA78006086DF /* PingPong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PingPong.h; sourceTree = "<group>"; };
 		135D45202070CA78006086DF /* SurfaceMask.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SurfaceMask.cpp; sourceTree = "<group>"; };
 		135D45212070CA78006086DF /* SurfaceMask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurfaceMask.h; sourceTree = "<group>"; };
 		135D4529207209CA006086DF /* asset_colour_changer.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = asset_colour_changer.frag; sourceTree = "<group>"; };
@@ -967,8 +964,6 @@
 		135D451D2070CA78006086DF /* Masking */ = {
 			isa = PBXGroup;
 			children = (
-				135D451E2070CA78006086DF /* PingPong.cpp */,
-				135D451F2070CA78006086DF /* PingPong.h */,
 				135D45202070CA78006086DF /* SurfaceMask.cpp */,
 				135D45212070CA78006086DF /* SurfaceMask.h */,
 			);
@@ -1571,7 +1566,6 @@
 				13125BC62063953000664DFC /* ApplicationBaseMode.cpp in Sources */,
 				13125BB92063953000664DFC /* README.md in Sources */,
 				9D44DC88EF9E7991B4A09951 /* tinyxmlerror.cpp in Sources */,
-				135D45222070CA78006086DF /* PingPong.cpp in Sources */,
 				13125BD32063953000664DFC /* DuplicateSurfaceCmd.cpp in Sources */,
 				5A4349E9754D6FA14C0F2A3A /* tinyxmlparser.cpp in Sources */,
 			);
