@@ -124,4 +124,14 @@ If for some reason you would like no mask at all to be applied, simply create a 
 ## Fullscreen toggles
 To toggle full screen on and off, simply press click on the window that you want to toggle and press the 'f' key. This works with both the GUI window and the projection window.
 
+---
+## Nodal Commands
+You can define certain settings via sending the following commands via Nodal. http://nodel.io/
+- "LoadPreset" [preset_name]
+- "SavePreset" [preset_name]
+- "Save"
+- "ClearAll"
+- "ToggleShaders"
+- "SetMaxSurfaces" [max_num_surfcaes]
+
 __HAPPY MAPPING!__
