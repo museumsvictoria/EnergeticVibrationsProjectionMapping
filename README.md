@@ -26,6 +26,7 @@ Below is a simple example of how you could set that up using MaxMSP
 ![Figure 1-4](https://github.com/JoshuaBatty/EnergeticVibrationsProjectionMapping/blob/master/Wiki/MaxOSC.png "Select Layer")
 The software also accepts OSC data from the Audio Server running at scienceworks via the address "evpm/audioserver"
 It differs in that the bass, mid, high channels are coming in on arguments 2,3 and 4. See below for how this is implemented. 
+
 ![Figure 1-5](https://github.com/JoshuaBatty/EnergeticVibrationsProjectionMapping/blob/master/Wiki/OSC_addresses.png "OSC Addresses")
 
 ## Adding in Custom Shaders
