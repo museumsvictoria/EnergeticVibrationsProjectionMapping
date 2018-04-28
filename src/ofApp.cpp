@@ -232,7 +232,7 @@ void ofApp::setup(){
 
 
 
-	if (ofGetWidth() > 1920) {
+	if (ofGetScreenWidth() > 1920) {
 		multiple_windows = true;
 	}
 	else {
@@ -361,7 +361,9 @@ void ofApp::draw(){
     ofSetColor(255,255);
     mapper.draw();
 
-	surface_mask.draw();
+    if (multiple_windows == true) {
+        surface_mask.draw();
+    }
 }
 
 
