@@ -2425,7 +2425,8 @@ static void SaveSettings()
 
     // Write .ini file
     // If a window wasn't opened in this session we preserve its settings
-    FILE* f = fopen(filename, "wt");
+    //FILE* f = fopen(filename, "wt");
+	FILE* f = nullptr;
     if (!f)
         return;
     for (int i = 0; i != g.Settings.Size; i++)

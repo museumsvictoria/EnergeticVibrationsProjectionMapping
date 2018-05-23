@@ -385,16 +385,13 @@
     <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxUDPManager.cpp">
       <Filter>addons\ofxNetwork\src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Masking\PingPong.cpp">
-      <Filter>src\Masking</Filter>
-    </ClCompile>
     <ClCompile Include="src\Masking\SurfaceMask.cpp">
       <Filter>src\Masking</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxJSON\src\ofxJSONElement.cpp">
+    <ClCompile Include="addons\ofxJSON\src\ofxJSONElement.cpp">
       <Filter>addons\ofxJSON</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxJSON\libs\jsoncpp\src\jsoncpp.cpp">
+    <ClCompile Include="addons\ofxJSON\libs\jsoncpp\src\jsoncpp.cpp">
       <Filter>addons\ofxJSON\libs</Filter>
     </ClCompile>
   </ItemGroup>
@@ -998,22 +995,19 @@
     <ClInclude Include="src\nodel\nodel_dep.hpp">
       <Filter>src\nodel</Filter>
     </ClInclude>
-    <ClInclude Include="src\Masking\PingPong.h">
-      <Filter>src\Masking</Filter>
-    </ClInclude>
     <ClInclude Include="src\Masking\SurfaceMask.h">
       <Filter>src\Masking</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxJSON\src\ofxJSON.h">
+    <ClInclude Include="addons\ofxJSON\src\ofxJSON.h">
       <Filter>addons\ofxJSON</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxJSON\src\ofxJSONElement.h">
+    <ClInclude Include="addons\ofxJSON\src\ofxJSONElement.h">
       <Filter>addons\ofxJSON</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\include\json\json.h">
+    <ClInclude Include="addons\ofxJSON\libs\jsoncpp\include\json\json.h">
       <Filter>addons\ofxJSON\libs</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\include\json\json-forwards.h">
+    <ClInclude Include="addons\ofxJSON\libs\jsoncpp\include\json\json-forwards.h">
       <Filter>addons\ofxJSON\libs</Filter>
     </ClInclude>
   </ItemGroup>

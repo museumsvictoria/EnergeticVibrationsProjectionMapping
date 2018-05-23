@@ -40,7 +40,9 @@ LRESULT __stdcall HookCallback(int nCode, WPARAM wParam, LPARAM lParam)
 					ScreenToClient(pStruct->hwnd, &p);
 
 					ofTouchEventArgs touchEventArgs;
-					touchEventArgs.x = p.x;
+					// Adjusting for Nvidia vision 
+					// This is a temp fix
+					touchEventArgs.x = p.x / 2.0;
 					touchEventArgs.y = p.y;
 					touchEventArgs.id = pointerInfo.pointerId;
 					

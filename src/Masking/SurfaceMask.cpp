@@ -28,58 +28,39 @@ void SurfaceMask::init_fbos(){
     fboSettings.wrapModeVertical = GL_CLAMP_TO_EDGE;
     
     // create our FBOs
-    m_fbos[ 0 ].allocate( fboSettings );
-    
+    m_mapper_fbo.allocate( fboSettings );
+	m_renderFbo.allocate(fboSettings);
+	m_mask_fbo.allocate(fboSettings);
+
     // setup FBOs
-    m_fbos[ 0 ].begin();
+	m_mapper_fbo.begin();
     ofClear( 0, 0, 0, 0 );
-    m_fbos[ 0 ].end();
-    m_fbos[ 0 ].getTexture().bind( 1 );
-    
-    //------------------------------
-    
-    /// Final Render FBO
-    ///-------------------------
-    ofFbo::Settings renderFboSettings;
-    renderFboSettings.width = width;
-    renderFboSettings.height = height;
-    renderFboSettings.internalformat = GL_RGBA;
-    renderFboSettings.numSamples = 8;
-    renderFboSettings.useDepth = false;
-    renderFboSettings.useStencil = false;
-    renderFboSettings.textureTarget = GL_TEXTURE_2D;
-    renderFboSettings.minFilter = GL_LINEAR;
-    renderFboSettings.maxFilter = GL_LINEAR;
-    renderFboSettings.wrapModeHorizontal = GL_CLAMP_TO_EDGE;
-    renderFboSettings.wrapModeVertical = GL_CLAMP_TO_EDGE;
-    
-    m_renderFbo.allocate( renderFboSettings );
-    m_src_fbo.allocate( renderFboSettings );
-    
-    cout << "w = " << width << " -h = " << height << endl;
+	m_mapper_fbo.end();
+	m_mapper_fbo.getTexture().bind( 1 );
+
+	m_renderFbo.begin();
+	ofClear(0, 0, 0, 0);
+	m_renderFbo.end();
+
+	m_mask_fbo.begin();
+	ofClear(0, 0, 0, 0);
+	m_mask_fbo.end();
+
 }
 
 //--------------------------------------------------------------
 void SurfaceMask::setup(){
     shader_image.load("shaders/passthrough.vert","shaders/Masking/blend_mask.frag");
 #ifdef PORTRAIT_MODE
-    mask_image.load("images/mask_portrait.png");
+	mask_image.load("images/mask_portrait.png");
 #else
-    mask_image.load("images/mask_landscape.png");
+	mask_image.load("images/mask_landscape.png");
 #endif
     shader_image.begin();
     shader_image.setUniform1i( "iChannel0", 1);
     shader_image.end();
     
     init_fbos();
-}
-
-//--------------------------------------------------------------
-void SurfaceMask::set_source_texture(ofFbo& tex){
-    m_fbos[ 0 ].begin();
-    ofClear( 0, 0, 0, 0 );
-    tex.draw(0,0,ofGetWidth(),ofGetHeight());
-    m_fbos[ 0 ].end();
 }
 
 //--------------------------------------------------------------
@@ -97,28 +78,37 @@ void SurfaceMask::set_dimensions(ofRectangle rect){
 }
 
 //--------------------------------------------------------------
+void SurfaceMask::set_source_texture(ofFbo& tex) {
+	m_mapper_fbo.begin();
+	ofClear(0, 0, 0, 0);
+	ofSetColor(255, 255);
+	tex.draw(0, 0, m_mapper_fbo.getWidth(), ofGetHeight());
+	m_mapper_fbo.end();
+}
+
+//--------------------------------------------------------------
 void SurfaceMask::update(){
-    m_src_fbo.begin();
-    ofClear(0,0,0,0);
-    ofSetColor(255,255);
-    mask_image.draw(0,0,ofGetWidth(),ofGetHeight());
-    m_src_fbo.end();
-    
+	m_mask_fbo.begin();
+	ofClear(0, 0, 0, 0);
+	ofSetColor(255, 255);
+	mask_image.draw(0, 0, m_mask_fbo.getWidth(), ofGetHeight());
+	m_mask_fbo.end();
+	
+	
     /// Final Render
     ////////////////
     m_renderFbo.begin();
-    {
+
         ofClear(0,0,0,255);
         shader_image.begin();
-        shader_image.setUniform3f("iResolution", ofGetWidth(), ofGetHeight(),1);
-        shader_image.setUniform1f("iTime", ofGetElapsedTimef());
-        shader_image.setUniformTexture( "iChannel0", m_src_fbo.getTexture(), 1);
-        shader_image.setUniformTexture( "iChannel1",  m_fbos[ 0 ].getTexture(), 2 );
+        shader_image.setUniform3f("iResolution", ofGetWidth() / 2, ofGetHeight(),1);
+		shader_image.setUniform1f("iTime", ofGetElapsedTimef());
+		shader_image.setUniformTexture("iChannel0", m_mask_fbo.getTexture(), 1);
+		shader_image.setUniformTexture("iChannel1", m_mapper_fbo.getTexture(), 2);
 
         ofSetColor(255,255);
-        ofDrawRectangle(0,0,ofGetWidth(),ofGetHeight());
-        shader_image.end();
-    }
+        ofDrawRectangle(0,0,ofGetWidth()/2,ofGetHeight());
+		shader_image.end();
     m_renderFbo.end();
 }
 
@@ -127,23 +117,35 @@ void SurfaceMask::draw(){
     
     /// Draw To Screen
     ////////////////////
-    ofSetColor(ofColor::white);
+    //ofSetColor(ofColor::white);
+	ofSetColor(255, 255);
 
 #ifdef PORTRAIT_MODE
-    m_renderFbo.draw(rect_dim.x, rect_dim.y, rect_dim.width, rect_dim.height);
-    
-    //ofSetColor(255,abs(cos(ofGetFrameNum()*0.06))*255);
-    //m_src_fbo.draw(0,0,ofGetWidth(),ofGetHeight());
-    
-//    ofSetColor(255,abs(sin(ofGetFrameNum()*0.1))*255);
-//    mask_image.draw(0,0,ofGetWidth(),ofGetHeight());
+	int start_x = ofGetWidth() / 2;
+	int center_x = start_x + ofGetWidth() / 4;
+	int center_y = ofGetHeight() / 2;
+	int fbo_w = m_renderFbo.getWidth();
+	int fbo_h = m_renderFbo.getHeight();
 
+	ofPushMatrix();
+		ofTranslate(center_x, center_y, 0);//move pivot to centre
+		ofRotate(270, 0, 0, 1);//rotate from centre
+		ofPushMatrix();
+			ofTranslate(-center_x, -center_y, 0);
+			int x = start_x;
+			int y = 0;
+			int new_fbo_h = fbo_w;
+			float scale = (float)new_fbo_h / (float)fbo_h;
+			int new_fbo_w = scale * (float)fbo_w;
+			float ratio = (float)fbo_w / (float)fbo_h;
+			float new_fbo_x = x - (((float)new_fbo_w - (float)fbo_w) / 2.0f);
+			float new_fbo_y = y - (new_fbo_w / 8);
+			m_renderFbo.draw(new_fbo_x, new_fbo_y, new_fbo_w, new_fbo_h);
+		ofPopMatrix();
+	ofPopMatrix();
 #else
-    m_renderFbo.draw(0,0,ofGetWidth(),ofGetHeight());
+	m_renderFbo.draw(ofGetWidth() / 2, 0, ofGetWidth() / 2, ofGetHeight());
 #endif
 
 }
 
-ofFbo& SurfaceMask::getFbo(){
-    return m_renderFbo;
-}

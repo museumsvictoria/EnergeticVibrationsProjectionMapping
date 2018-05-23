@@ -22,7 +22,6 @@
 
 #include <fstream>
 
-
 class ofApp : public ofBaseApp{
 
 	public:
@@ -34,12 +33,6 @@ class ofApp : public ofBaseApp{
     
         void create_shader_source(int idx);
         void remove_shader_source(int idx);
-    
-		void set_multiple_windows(bool multiple_windows);
-        void assign_second_window_ptr(shared_ptr<ofAppBaseWindow> projectionWindow);
-        void setupProjectionWindow();
-        void drawProjections(ofEventArgs & args);
-        void keyPressedProjectionWindow(ofKeyEventArgs & key);
 		
 		void keyPressed(int key);
 		void keyReleased(int key);
@@ -55,9 +48,8 @@ class ofApp : public ofBaseApp{
 		
         // Second Window
         ofRectangle get_projector_dimensions();
-        shared_ptr<ofAppBaseWindow> projectionWindow;
 		bool multiple_windows;
-    
+
         //----------------WINDOWS ONLY
 #ifdef WINDOWS_TOUCH
         // Touches //

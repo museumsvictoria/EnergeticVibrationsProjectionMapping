@@ -155,7 +155,7 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>src\video;C:\Program Files\boost\boost_1_66_0;%(AdditionalIncludeDirectories);src;src\GUI;src\Graphics_Tools;..\..\..\addons\ofxGui\src;addons\ofxImGui\libs;addons\ofxImGui\libs\imgui;addons\ofxImGui\libs\imgui\src;addons\ofxImGui\src;..\..\..\addons\ofxOsc\libs;..\..\..\addons\ofxOsc\libs\oscpack;..\..\..\addons\ofxOsc\libs\oscpack\src;..\..\..\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\posix;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32;..\..\..\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\addons\ofxOsc\src;addons\ofxPiMapper\src;addons\ofxPiMapper\src\Application;addons\ofxPiMapper\src\Application\Modes;addons\ofxPiMapper\src\Commands;addons\ofxPiMapper\src\Gui;addons\ofxPiMapper\src\Gui\Widgets;addons\ofxPiMapper\src\Info;addons\ofxPiMapper\src\MediaServer;addons\ofxPiMapper\src\Sources;addons\ofxPiMapper\src\Surfaces;addons\ofxPiMapper\src\UserInterface;addons\ofxPiMapper\src\Utils;addons\ofxWinTouchHook\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src;..\..\..\addons\ofxNetwork\src;..\..\..\addons\ofxJSON\src;src\Masking;C:\Users\DMSdeveloper\Documents\my_libs\of_v0.9.8_vs_release\addons\ofxJSON\libs\jsoncpp\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src\video;C:\Program Files\boost\boost_1_66_0;%(AdditionalIncludeDirectories);src;src\GUI;src\Graphics_Tools;..\..\..\addons\ofxGui\src;addons\ofxImGui\libs;addons\ofxImGui\libs\imgui;addons\ofxImGui\libs\imgui\src;addons\ofxImGui\src;..\..\..\addons\ofxOsc\libs;..\..\..\addons\ofxOsc\libs\oscpack;..\..\..\addons\ofxOsc\libs\oscpack\src;..\..\..\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\posix;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32;..\..\..\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\addons\ofxOsc\src;addons\ofxPiMapper\src;addons\ofxPiMapper\src\Application;addons\ofxPiMapper\src\Application\Modes;addons\ofxPiMapper\src\Commands;addons\ofxPiMapper\src\Gui;addons\ofxPiMapper\src\Gui\Widgets;addons\ofxPiMapper\src\Info;addons\ofxPiMapper\src\MediaServer;addons\ofxPiMapper\src\Sources;addons\ofxPiMapper\src\Surfaces;addons\ofxPiMapper\src\UserInterface;addons\ofxPiMapper\src\Utils;addons\ofxWinTouchHook\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src;..\..\..\addons\ofxNetwork\src;addons\ofxJSON\src;src\Masking;addons\ofxJSON\libs\jsoncpp\include\</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>
@@ -171,14 +171,13 @@
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\addons\ofxJSON\libs\jsoncpp\src\jsoncpp.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxJSON\src\ofxJSONElement.cpp" />
     <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxTCPClient.cpp" />
     <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxTCPManager.cpp" />
     <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxTCPServer.cpp" />
     <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxUDPManager.cpp" />
+    <ClCompile Include="addons\ofxJSON\libs\jsoncpp\src\jsoncpp.cpp" />
+    <ClCompile Include="addons\ofxJSON\src\ofxJSONElement.cpp" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\Masking\PingPong.cpp" />
     <ClCompile Include="src\Masking\SurfaceMask.cpp" />
     <ClCompile Include="src\nodel\commands_evpm.cpp" />
     <ClCompile Include="src\nodel\nodel_interpreter.cpp" />
@@ -303,17 +302,16 @@
     <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlparser.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\include\json\json-forwards.h" />
-    <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\include\json\json.h" />
-    <ClInclude Include="..\..\..\addons\ofxJSON\src\ofxJSON.h" />
-    <ClInclude Include="..\..\..\addons\ofxJSON\src\ofxJSONElement.h" />
     <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxNetwork.h" />
     <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxNetworkUtils.h" />
     <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxTCPClient.h" />
     <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxTCPManager.h" />
     <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxTCPServer.h" />
     <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxUDPManager.h" />
-    <ClInclude Include="src\Masking\PingPong.h" />
+    <ClInclude Include="addons\ofxJSON\libs\jsoncpp\include\json\json-forwards.h" />
+    <ClInclude Include="addons\ofxJSON\libs\jsoncpp\include\json\json.h" />
+    <ClInclude Include="addons\ofxJSON\src\ofxJSON.h" />
+    <ClInclude Include="addons\ofxJSON\src\ofxJSONElement.h" />
     <ClInclude Include="src\Masking\SurfaceMask.h" />
     <ClInclude Include="src\nodel\commands.hpp" />
     <ClInclude Include="src\nodel\commands_evpm.hpp" />

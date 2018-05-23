@@ -144,7 +144,8 @@ namespace ofxImGui
 		lastTime = currentTime;
 
 		// Update settings
-		io.MousePos = ImVec2((float)ofGetMouseX(), (float)ofGetMouseY());
+		// Temp fix for multi screen
+		io.MousePos = ImVec2((float)ofGetMouseX() / 2.0, (float)ofGetMouseY());
 		for (int i = 0; i < 5; i++) {
 			io.MouseDown[i] = engine->mousePressed[i];
 
