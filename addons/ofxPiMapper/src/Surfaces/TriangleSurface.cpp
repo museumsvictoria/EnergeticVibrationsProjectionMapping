@@ -134,7 +134,23 @@ int TriangleSurface::getType(){
 bool TriangleSurface::hitTest(ofVec2f p){
 	// Construct ofPolyline from vertices
 	ofPolyline line = getHitArea();
-
+	auto bb = line.getBoundingBox();
+	//if (bb.getHeight() == 0 || bb.getWidth() == 0) return false;
+	auto ar = min(fabs(bb.getWidth()), fabs(bb.getHeight())) / max(fabs(bb.getWidth()), fabs(bb.getHeight()));
+	if (bb.width < 15.0) {
+		bb.setWidth(15.0);
+	}
+	if (bb.height < 15.0) {
+		bb.setHeight(15.0);
+	}
+	if (ar < 0.2) {
+		if (bb.inside(p.x, p.y)) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 	if(line.inside(p.x, p.y)){
 		return true;
 	}else{

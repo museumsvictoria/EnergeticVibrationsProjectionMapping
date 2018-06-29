@@ -8,6 +8,40 @@ namespace boundary {
 		return position;
 	}
 
+	ofVec2f find_bounded_position(ofRectangle bound_box, ofVec2f move_by) {
+		auto new_move = move_by;
+		auto new_pos = bound_box;
+		new_pos.translate(new_move);
+		if (BOUNDARY_RECT.inside(new_pos)) {
+			return new_move;
+		}
+		new_move = move_by;
+		new_move.x *= -1.0;
+		new_pos = bound_box;
+		new_pos.translate(new_move);
+		if (BOUNDARY_RECT.inside(new_pos)) {
+			return new_move;
+		}
+		new_move = move_by;
+		new_move.x *= -1.0;
+		new_move.y *= -1.0;
+		new_pos = bound_box;
+		new_pos.translate(new_move);
+		if (BOUNDARY_RECT.inside(new_pos)) {
+			return new_move;
+		}
+		new_move = move_by;
+		new_move.y *= -1.0;
+		new_pos = bound_box;
+		new_pos.translate(new_move);
+		if (BOUNDARY_RECT.inside(new_pos)) {
+			return new_move;
+		}
+
+		return ofVec2f(BOUNDARY_RECT.getCenter() - bound_box.getCenter());
+
+	}
+
 	ofVec2f reduced_move_amount(ofVec3f vertex, ofVec2f move) {
 		ofVec2f new_pos = vertex + move;
 		ofVec2f amount(0,0);

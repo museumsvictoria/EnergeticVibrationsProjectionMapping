@@ -82,7 +82,9 @@ void ProjectionEditorWidget::mouseDragged(ofMouseEventArgs & args){
 void ProjectionEditorWidget::touchMoved(map<int, ofTouchEventArgs> &active_joint_move_touch) {
 
 	for (auto &joint_touch : active_joint_move_touch) {
-
+		auto bounded = boundary::bounded_position(joint_touch.second);
+		joint_touch.second.x = bounded.x;
+		joint_touch.second.y = bounded.y;
 		// Tom changed to only set active dragging joints
 		if (joint_touch.first < joints.size() && 
 			joints[joint_touch.first]->isDragged()) {

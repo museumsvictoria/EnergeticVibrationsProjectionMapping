@@ -9,6 +9,9 @@ namespace boundary {
 	// Takes a position and returns that position clamped
 	// to BOUNDARY_RECT
 	ofVec2f bounded_position(ofVec2f);
+	
+	ofVec2f find_bounded_position(ofRectangle, ofVec2f);
+
 	/*	Takes 
 		vector of Vec3: surface mesh
 		Vec3: the amount you're trying to move the

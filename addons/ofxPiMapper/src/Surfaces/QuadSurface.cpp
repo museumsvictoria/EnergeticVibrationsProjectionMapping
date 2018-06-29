@@ -201,7 +201,17 @@ int QuadSurface::getType(){
 bool QuadSurface::hitTest(ofVec2f p){
 	// Construct ofPolyline from vertices
 	ofPolyline line = getHitArea();
-
+	auto bb = line.getBoundingBox();
+	if (bb.getHeight() == 0 || bb.getWidth() == 0) return false;
+	auto ar = min(fabs(bb.getWidth()), fabs(bb.getHeight())) / max(fabs(bb.getWidth()), fabs(bb.getHeight()));
+	if (ar < 0.2) {
+		if (bb.inside(p.x, p.y)) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 	if(line.inside(p.x, p.y)){
 		return true;
 	}else{

@@ -576,5 +576,9 @@ void GuiInterface::touchMoved(map<int, ofTouchEventArgs> touchMap) {
 
 //--------------------------------------------------------------
 void GuiInterface::touchUp(map<int, ofTouchEventArgs> touchMap) {
-
+	vector<CustomSlider*> sliders = shader_states[get_selected_shader()].sliders;
+	for (int i = 0; i < sliders.size(); i++) {
+		sliders[i]->active_touch_idx = -1;
+	}
+	sb_slider.active_touch_idx = -1;
 }

@@ -54,7 +54,8 @@ void Application::update(){
 	if(_state != PresentationMode::instance()){
 		float timeNow = ofGetElapsedTimef();
 		if(timeNow - _lastSaveTime > _autoSaveInterval){
-			saveProject();
+			// Tom disabled save because it's not desired for this project
+			//saveProject();
 			_lastSaveTime = timeNow;
 		}
 	}

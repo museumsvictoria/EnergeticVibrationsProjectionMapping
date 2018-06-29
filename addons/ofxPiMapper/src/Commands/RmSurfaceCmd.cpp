@@ -14,7 +14,13 @@ void RmSurfaceCmd::exec(){
 	// removeSelectedSurface does not destroy the surface.
 	// The owner is being changed.
 	_surface = _surfaceManager->getSurface(_surfaceIndex);
-	_surfaceManager->removeSurface(_surfaceIndex);
+	try {
+		_surface = _surfaceManager->getSurface(_surfaceIndex);
+		_surfaceManager->removeSurface(_surfaceIndex);
+	}
+	catch (runtime_error & e) {
+		ofLog(OF_LOG_ERROR) << e.what();
+	}
 }
 
 void RmSurfaceCmd::undo(){

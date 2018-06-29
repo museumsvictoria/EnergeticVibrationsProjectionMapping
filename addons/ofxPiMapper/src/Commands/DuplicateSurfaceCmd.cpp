@@ -1,4 +1,5 @@
 #include "DuplicateSurfaceCmd.h"
+#include "boundary.hpp"
 
 namespace ofx {
 namespace piMapper {
@@ -12,8 +13,9 @@ void DuplicateSurfaceCmd::exec(){
 	ofLogNotice("DuplicateSurfaceCmd", "exec");
 	_duplicate = _surface->clone();
 	_surfaceManager->addSurface(_duplicate);
-	_duplicate->moveBy(ofVec2f(10.0f, 10.0f));
+	_duplicate->moveBy(boundary::find_bounded_position(_duplicate->getBoundingBox(), ofVec2f(10.0f, 10.0f)));
 	_surfaceManager->selectSurface(_duplicate);
+	
 }
 
 void DuplicateSurfaceCmd::undo(){
